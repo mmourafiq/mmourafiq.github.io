@@ -7,21 +7,21 @@ info:
   about_image:  Starry_Night_Over_the_Rhone.jpg
   about_image_caption: "Starry Night"
   logo:         logo.png
-  
+
   # Social links
   # facebook:     ''
   twitter:      mmourafiq
   github:       mouradmourafiq
   # gplus:        ''
-  
+
   # Comments
   disqus:
     # Eg. "exampleblog" Set to false to disable comments
     shortname:  mourafiq
-  
+
   # Google Analytics tracking ID. Leave blank to disable tracking
   google-analytics-id: 'UA-34892053-1'
-  
+
   # Sharing settings
   sharing:
     twitter:    true
@@ -29,12 +29,15 @@ info:
     gplus:      true
     hn:         true
     reddit:     true
-    
+
   # Google Fonts
   # eg. 'Droid+Sans:400,700|Droid+Serif:400,700'
   # google_font: 'Droid+Sans:400,700'
-  
+
   # Setup your fonts, colors etc at _assets/stylesheets/main.scss
+
+# workaround for jekyll-tag-was-never-closed
+excerpt_separator: ""
 
 # Root URL where the site will be published
 url:         http://mourafiq.com
@@ -46,6 +49,9 @@ paginate:             10
 
 # safe mode must be disabled to use jekyll-assets.
 safe:               false
+
+gems:
+  - jekyll-redirect-from
 
 #
 # jekyll-assets: see more at https://github.com/ixti/jekyll-assets

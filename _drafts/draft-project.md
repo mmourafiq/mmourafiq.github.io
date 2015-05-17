@@ -13,7 +13,7 @@ excerpt: "a discription of the project."
 author:
   name: Mourad Mourafiq.
   twitter: mmourafiq.
-  bio: Maths, Technologie, Philosophie, Startups, ...
+  bio: Maths, Technology, Philosophy, Startups, ...
   image: logo.png
 ---
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam augue libero, tincidunt non massa vel,

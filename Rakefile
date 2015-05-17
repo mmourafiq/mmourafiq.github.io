@@ -12,14 +12,14 @@ namespace :site do
     })).process
   end
 
-  desc "Generate and publish blog to gh-pages"
+  desc "Generate and publish blog to master"
   task :publish => [:generate] do
     Dir.mktmpdir do |tmp|
       system "mv _site/* #{tmp}"
-      if system "git show-ref --verify --quiet refs/heads/gh-pages"
-        system "git checkout gh-pages"
+      if system "git show-ref --verify --quiet refs/heads/master"
+        system "git checkout master"
       else
-        system "git checkout --orphan gh-pages"   # create new branch with no history
+        system "git checkout --orphan master"   # create new branch with no history
       end
       next if $?.exitstatus != 0      # abort if checkout failed
       system "rm -rf *"
@@ -27,8 +27,8 @@ namespace :site do
       message = "Site updated at #{Time.now.utc}"
       system "git add --all ."
       system "git commit -am #{message.shellescape}"
-      system "git push origin gh-pages --force"
-      system "git checkout master"
+      system "git push origin master --force"
+      system "git checkout source"
       puts "Site published successfully."
     end
   end
