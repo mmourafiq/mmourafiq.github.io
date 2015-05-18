@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A simple python object to get stock data! &mdash; Mourad Mourafiq</title>
+    <!--[if lt IE 9]><script src='https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js'></script><![endif]-->
+    
+    <link rel="stylesheet" href="/assets/app.css">
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script src="/assets/app.js"></script>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+<script>
+  var HN=[];HN.factory=function(e){return function(){HN.push([e].concat(Array.prototype.slice.call(arguments,0)))};},HN.on=HN.factory("on"),HN.once=HN.factory("once"),HN.off=HN.factory("off"),HN.emit=HN.factory("emit"),HN.load=function(){var e="hn-button.js";if(document.getElementById(e))return;var t=document.createElement("script");t.id=e,t.src="//hn-button.herokuapp.com/hn-button.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n)},HN.load();</script>
+</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-34892053-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+    <link rel="shortcut icon" href="/favicon.ico?v2" type="image/x-icon" />
+    <link rel="alternate" type="application/atom+xml" title="Mourad Mourafiq" href="/atom.xml" />
+    <meta name="title" content="A simple python object to get stock data! ">
+    <link rel="canonical" href="http://mourafiq.com/2012/05/20/simple-python-object-to-get-stock-data.html">
+     
+           
+    <meta property="og:title" content="A simple python object to get stock data!"/>
+    <meta property="og:url" content="http://mourafiq.com/2012/05/20/simple-python-object-to-get-stock-data.html"/>
+    <meta property="og:image" content="http://mourafiq.com/images/posts/stock-market.jpg"/>
+    
+    <meta property="og:description" content="YahooFinance is a python interface that lets you get stock related data from yahoo."/>
+    <meta name="description" content="YahooFinance is a python interface that lets you get stock related data from yahoo."/>
+    
+    <meta property="og:site_name" content="Mourad Mourafiq">
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</head>
+<body>
+
+    <header class="site-header">
+        <nav>
+            <a class="brand" href="/">
+                <img src="/images/logo.png" alt="Inc">
+            </a>
+            <a href="/about.html">About</a>
+        </nav>
+    </header>
+
+    
+<div class="cover  article-cover " style="background-image:url(/images/posts/stock-market.jpg)"></div>
+
+
+<div class='cover-caption'><a href='/about.html#pictures'>Stock market.</a></div>
+
+
+<article >
+    <div class="container">
+        <header>
+            
+            <div class="meta">
+                <!--
+                By
+                <address><a rel="author" href="" title="Mourad Mourafiq." target="_blank">
+                    Mourad Mourafiq.
+                </a></address> &mdash;
+                -->
+                <time pubdate datetime="2012-20-May" title="May 20, 2012">
+                    May 20, 2012
+                </time> &mdash;
+                
+5 min read
+            </div>
+            
+            <h1 class="title">A simple python object to get stock data!</h1>
+            <h2 class="subtitle">A python interface to get stock related data from yahoo.</h2>
+        </header>
+
+        <section>
+            <p>YahooFinance is a python interface that lets you get stock related data from yahoo.</p>
+
+<p>The object executes queries and returns set of quotes data of stocks, indices or currency exchanges.</p>
+
+<p>To use YahooFinance is quite easy:</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="n">yf</span> <span class="o">=</span> <span class="n">YahooFinance</span><span class="p">(</span><span class="s">&#39;GOOG,MSFT&#39;</span><span class="p">)</span>
+<span class="lineno"> 2</span>     <span class="k">print</span> <span class="n">yf</span><span class="o">.</span><span class="n">get_symbols</span><span class="p">()</span>    
+<span class="lineno"> 3</span> <span class="o">&gt;&gt;</span> <span class="n">GOOG</span><span class="o">+</span><span class="n">MSFT</span>
+<span class="lineno"> 4</span>     <span class="n">yf</span><span class="o">.</span><span class="n">add_symbol</span><span class="p">(</span><span class="s">&#39;AAPL&#39;</span><span class="p">)</span>
+<span class="lineno"> 5</span>     <span class="k">print</span> <span class="n">yf</span><span class="o">.</span><span class="n">get_symbols</span><span class="p">()</span>    
+<span class="lineno"> 6</span> <span class="o">&gt;&gt;</span> <span class="n">GOOG</span><span class="o">+</span><span class="n">AAPL</span><span class="o">+</span><span class="n">MSFT</span>
+<span class="lineno"> 7</span>     <span class="n">yf</span><span class="o">.</span><span class="n">remove_symbol</span><span class="p">(</span><span class="s">&#39;GOOG&#39;</span><span class="p">)</span>    
+<span class="lineno"> 8</span>     <span class="k">print</span> <span class="n">yf</span><span class="o">.</span><span class="n">get_symbols</span><span class="p">()</span>         
+<span class="lineno"> 9</span> <span class="o">&gt;&gt;</span> <span class="n">AAPL</span><span class="o">+</span><span class="n">MSFT</span>
+<span class="lineno">10</span>     <span class="k">print</span> <span class="n">yf</span><span class="o">.</span><span class="n">get_ask</span><span class="p">()</span>
+<span class="lineno">11</span> <span class="o">&gt;&gt;</span> <span class="mf">585.37</span>
+<span class="lineno">12</span> <span class="o">&gt;&gt;</span> <span class="mf">26.45</span>
+<span class="lineno">13</span>     <span class="k">print</span> <span class="n">yf</span><span class="o">.</span><span class="n">get_previous_close</span><span class="p">()</span>    
+<span class="lineno">14</span> <span class="o">&gt;&gt;</span> <span class="mf">585.28</span>
+<span class="lineno">15</span> <span class="o">&gt;&gt;</span> <span class="mf">26.615</span>
+<span class="lineno">16</span>     <span class="k">print</span> <span class="n">yf</span><span class="o">.</span><span class="n">get_52_week_high</span><span class="p">()</span>   
+<span class="lineno">17</span> <span class="o">&gt;&gt;</span> <span class="mf">705.07</span>
+<span class="lineno">18</span> <span class="o">&gt;&gt;</span> <span class="mf">32.95</span>
+<span class="lineno">19</span>     <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">yf</span><span class="o">.</span><span class="n">get_historical_prices</span><span class="p">(</span><span class="s">&#39;20120101&#39;</span><span class="p">,</span> <span class="s">&#39;20120201&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">):</span>
+<span class="lineno">20</span>         <span class="k">print</span> <span class="n">d</span>
+<span class="lineno">21</span> <span class="o">&gt;&gt;</span> <span class="p">(</span><span class="s">&#39;s=AAPL&#39;</span><span class="p">,</span> <span class="p">[[</span><span class="s">&#39;Date&#39;</span><span class="p">,</span> <span class="s">&#39;Open&#39;</span><span class="p">,</span> <span class="s">&#39;High&#39;</span><span class="p">,</span> <span class="s">&#39;Low&#39;</span><span class="p">,</span> <span class="s">&#39;Close&#39;</span><span class="p">,</span> <span class="s">&#39;Volume&#39;</span><span class="p">,</span> <span class="s">&#39;Adj Clos&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;2012-01-30&#39;</span><span class="p">,</span> <span class="s">&#39;445.71&#39;</span><span class="p">,</span> <span class="s">&#39;458.99&#39;</span><span class="p">,</span> <span class="s">&#39;445.39&#39;</span><span class="p">,</span> <span class="s">&#39;456.19&#39;</span><span class="p">,</span> <span class="s">&#39;12393700&#39;</span><span class="p">,</span> <span class="s">&#39;452.1&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;2012-01-23&#39;</span><span class="p">,</span> <span class="s">&#39;422.67&#39;</span><span class="p">,</span> <span class="s">&#39;454.45&#39;</span><span class="p">,</span> <span class="s">&#39;419.55&#39;</span><span class="p">,</span> <span class="s">&#39;447.28&#39;</span><span class="p">,</span> <span class="s">&#39;17397900&#39;</span><span class="p">,</span> <span class="s">&#39;443.3&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;2012-01-17&#39;</span><span class="p">,</span> <span class="s">&#39;424.20&#39;</span><span class="p">,</span> <span class="s">&#39;431.37&#39;</span><span class="p">,</span> <span class="s">&#39;419.75&#39;</span><span class="p">,</span> <span class="s">&#39;420.30&#39;</span><span class="p">,</span> <span class="s">&#39;10673200&#39;</span><span class="p">,</span> <span class="s">&#39;416.6&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;2012-01-09&#39;</span><span class="p">,</span> <span class="s">&#39;425.50&#39;</span><span class="p">,</span> <span class="s">&#39;427.75&#39;</span><span class="p">,</span> <span class="s">&#39;418.66&#39;</span><span class="p">,</span> <span class="s">&#39;419.81&#39;</span><span class="p">,</span> <span class="s">&#39;9327900&#39;</span><span class="p">,</span> <span class="s">&#39;416.1&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;2012-01-03&#39;</span><span class="p">,</span> <span class="s">&#39;409.40&#39;</span><span class="p">,</span> <span class="s">&#39;422.75&#39;</span><span class="p">,</span> <span class="s">&#39;409.00&#39;</span><span class="p">,</span> <span class="s">&#39;422.40&#39;</span><span class="p">,</span> <span class="s">&#39;10283900&#39;</span><span class="p">,</span> <span class="s">&#39;418.6&#39;</span><span class="p">]])</span>
+<span class="lineno">22</span> <span class="o">&gt;&gt;</span> <span class="p">(</span><span class="s">&#39;s=MSFT&#39;</span><span class="p">,</span> <span class="p">[[</span><span class="s">&#39;Date&#39;</span><span class="p">,</span> <span class="s">&#39;Open&#39;</span><span class="p">,</span> <span class="s">&#39;High&#39;</span><span class="p">,</span> <span class="s">&#39;Low&#39;</span><span class="p">,</span> <span class="s">&#39;Close&#39;</span><span class="p">,</span> <span class="s">&#39;Volume&#39;</span><span class="p">,</span> <span class="s">&#39;Adj Clos&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;2012-02-01&#39;</span><span class="p">,</span> <span class="s">&#39;29.79&#39;</span><span class="p">,</span> <span class="s">&#39;30.05&#39;</span><span class="p">,</span> <span class="s">&#39;29.76&#39;</span><span class="p">,</span> <span class="s">&#39;29.89&#39;</span><span class="p">,</span> <span class="s">&#39;67409900&#39;</span><span class="p">,</span> <span class="s">&#39;29.0&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;2012-01-31&#39;</span><span class="p">,</span> <span class="s">&#39;29.66&#39;</span><span class="p">,</span> <span class="s">&#39;29.70&#39;</span><span class="p">,</span> <span class="s">&#39;29.23&#39;</span><span class="p">,</span> <span class="s">&#39;29.53&#39;</span><span class="p">,</span> <span class="s">&#39;50572400&#39;</span><span class="p">,</span> <span class="s">&#39;28.7&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;2012-01-30&#39;</span><span class="p">,</span> <span class="s">&#39;28.97&#39;</span><span class="p">,</span> <span class="s">&#39;29.62&#39;</span><span class="p">,</span> <span class="s">&#39;28.83&#39;</span><span class="p">,</span> <span class="s">&#39;29.61&#39;</span><span class="p">,</span> <span class="s">&#39;51114800&#39;</span><span class="p">,</span> <span class="s">&#39;28.8&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;2012-01-27&#39;</span><span class="p">,</span> <span class="s">&#39;29.45&#39;</span><span class="p">,</span> <span class="s">&#39;29.53&#39;</span><span class="p">,</span> <span class="s">&#39;29.17&#39;</span><span class="p">,</span> <span class="s">&#39;29.23&#39;</span><span class="p">,</span> <span class="s">&#39;44187700&#39;</span><span class="p">,</span> <span class="s">&#39;28.4&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;2012-01-26&#39;</span><span class="p">,</span> <span class="s">&#39;29.61&#39;</span><span class="p">,</span> <span class="s">&#39;29.70&#39;</span><span class="p">,</span> <span class="s">&#39;29.40&#39;</span><span class="p">,</span> <span class="s">&#39;29.50&#39;</span><span class="p">,</span> <span class="s">&#39;49102800&#39;</span><span class="p">,</span> <span class="s">&#39;28.6&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;2012-01-25&#39;</span><span class="p">,</span> <span class="s">&#39;29.07&#39;</span><span class="p">,</span> <span class="s">&#39;29.65&#39;</span><span class="p">,</span> <span class="s">&#39;29.07&#39;</span><span class="p">,</span> <span class="s">&#39;29.56&#39;</span><span class="p">,</span> <span class="s">&#39;59231700&#39;</span><span class="p">,</span> <span class="s">&#39;28.7&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;2012-01-24&#39;</span><span class="p">,</span> <span class="s">&#39;29.47&#39;</span><span class="p">,</span> <span class="s">&#39;29.57&#39;</span><span class="p">,</span> <span class="s">&#39;29.18&#39;</span><span class="p">,</span> <span class="s">&#39;29.34&#39;</span><span class="p">,</span> <span class="s">&#39;51703300&#39;</span><span class="p">,</span> <span class="s">&#39;28.5&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;2012-01-23&#39;</span><span class="p">,</span> <span class="s">&#39;29.55&#39;</span><span class="p">,</span> <span class="s">&#39;29.95&#39;</span><span class="p">,</span> <span class="s">&#39;29.35&#39;</span><span class="p">,</span> <span class="s">&#39;29.73&#39;</span><span class="p">,</span> <span class="s">&#39;76078100&#39;</span><span class="p">,</span> <span class="s">&#39;28.9&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;2012-01-20&#39;</span><span class="p">,</span> <span class="s">&#39;28.82&#39;</span><span class="p">,</span> <span class="s">&#39;29.74&#39;</span><span class="p">,</span> <span class="s">&#39;28.75&#39;</span><span class="p">,</span> <span class="s">&#39;29.71&#39;</span><span class="p">,</span> <span class="s">&#39;165902900&#39;</span><span class="p">,</span> <span class="s">&#39;28.8&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;2012-01-19&#39;</span><span class="p">,</span> <span class="s">&#39;28.16&#39;</span><span class="p">,</span> <span class="s">&#39;28.44&#39;</span><span class="p">,</span> <span class="s">&#39;28.03&#39;</span><span class="p">,</span> <span class="s">&#39;28.12&#39;</span><span class="p">,</span> <span class="s">&#39;74053500&#39;</span><span class="p">,</span> <span class="s">&#39;27.3&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;2012-01-18&#39;</span><span class="p">,</span> <span class="s">&#39;28.31&#39;</span><span class="p">,</span> <span class="s">&#39;28.40&#39;</span><span class="p">,</span> <span class="s">&#39;27.97&#39;</span><span class="p">,</span> <span class="s">&#39;28.23&#39;</span><span class="p">,</span> <span class="s">&#39;64860600&#39;</span><span class="p">,</span> <span class="s">&#39;27.4&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;2012-01-17&#39;</span><span class="p">,</span> <span class="s">&#39;28.40&#39;</span><span class="p">,</span> <span class="s">&#39;28.65&#39;</span><span class="p">,</span> <span class="s">&#39;28.17&#39;</span><span class="p">,</span> <span class="s">&#39;28.26&#39;</span><span class="p">,</span> <span class="s">&#39;72395300&#39;</span><span class="p">,</span> <span class="s">&#39;27.4&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;2012-01-13&#39;</span><span class="p">,</span> <span class="s">&#39;27.93&#39;</span><span class="p">,</span> <span class="s">&#39;28.25&#39;</span><span class="p">,</span> <span class="s">&#39;27.79&#39;</span><span class="p">,</span> <span class="s">&#39;28.25&#39;</span><span class="p">,</span> <span class="s">&#39;60196100&#39;</span><span class="p">,</span> <span class="s">&#39;27.4&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;2012-01-12&#39;</span><span class="p">,</span> <span class="s">&#39;27.87&#39;</span><span class="p">,</span> <span class="s">&#39;28.02&#39;</span><span class="p">,</span> <span class="s">&#39;27.65&#39;</span><span class="p">,</span> <span class="s">&#39;28.00&#39;</span><span class="p">,</span> <span class="s">&#39;49370800&#39;</span><span class="p">,</span> <span class="s">&#39;27.2&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;2012-01-11&#39;</span><span class="p">,</span> <span class="s">&#39;27.43&#39;</span><span class="p">,</span> <span class="s">&#39;27.98&#39;</span><span class="p">,</span> <span class="s">&#39;27.37&#39;</span><span class="p">,</span> <span class="s">&#39;27.72&#39;</span><span class="p">,</span> <span class="s">&#39;65582400&#39;</span><span class="p">,</span> <span class="s">&#39;26.9&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;2012-01-10&#39;</span><span class="p">,</span> <span class="s">&#39;27.93&#39;</span><span class="p">,</span> <span class="s">&#39;28.15&#39;</span><span class="p">,</span> <span class="s">&#39;27.75&#39;</span><span class="p">,</span> <span class="s">&#39;27.84&#39;</span><span class="p">,</span> <span class="s">&#39;60014400&#39;</span><span class="p">,</span> <span class="s">&#39;27.0&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;2012-01-09&#39;</span><span class="p">,</span> <span class="s">&#39;28.05&#39;</span><span class="p">,</span> <span class="s">&#39;28.10&#39;</span><span class="p">,</span> <span class="s">&#39;27.72&#39;</span><span class="p">,</span> <span class="s">&#39;27.74&#39;</span><span class="p">,</span> <span class="s">&#39;59706800&#39;</span><span class="p">,</span> <span class="s">&#39;26.9&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;2012-01-06&#39;</span><span class="p">,</span> <span class="s">&#39;27.53&#39;</span><span class="p">,</span> <span class="s">&#39;28.19&#39;</span><span class="p">,</span> <span class="s">&#39;27.53&#39;</span><span class="p">,</span> <span class="s">&#39;28.11&#39;</span><span class="p">,</span> <span class="s">&#39;99455500&#39;</span><span class="p">,</span> <span class="s">&#39;27.3&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;2012-01-05&#39;</span><span class="p">,</span> <span class="s">&#39;27.38&#39;</span><span class="p">,</span> <span class="s">&#39;27.73&#39;</span><span class="p">,</span> <span class="s">&#39;27.29&#39;</span><span class="p">,</span> <span class="s">&#39;27.68&#39;</span><span class="p">,</span> <span class="s">&#39;56081400&#39;</span><span class="p">,</span> <span class="s">&#39;26.9&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;2012-01-04&#39;</span><span class="p">,</span> <span class="s">&#39;26.82&#39;</span><span class="p">,</span> <span class="s">&#39;27.47&#39;</span><span class="p">,</span> <span class="s">&#39;26.78&#39;</span><span class="p">,</span> <span class="s">&#39;27.40&#39;</span><span class="p">,</span> <span class="s">&#39;80516100&#39;</span><span class="p">,</span> <span class="s">&#39;26.6&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;2012-01-03&#39;</span><span class="p">,</span> <span class="s">&#39;26.55&#39;</span><span class="p">,</span> <span class="s">&#39;26.96&#39;</span><span class="p">,</span> <span class="s">&#39;26.39&#39;</span><span class="p">,</span> <span class="s">&#39;26.77&#39;</span><span class="p">,</span> <span class="s">&#39;64731500&#39;</span><span class="p">,</span> <span class="s">&#39;26.0&#39;</span><span class="p">]])</span></code></pre></div>
+
+            
+<div class="social">
+  
+  <div class='twitter'>
+    <a href="https://twitter.com/share" class="twitter-share-button"  data-text="A simple python object to get stock data!" data-related="mmourafiq">Tweet</a>
+  </div>
+  
+
+  
+  <div class='facebook'>
+    <div class="fb-share-button" data-layout="button_count"></div>
+  </div>
+  
+
+  
+  <div class='google'>
+    <div class="g-plusone" data-size="medium"></div>
+  </div>
+  
+    
+  
+  <div class='hn'>
+    <a href="https://news.ycombinator.com/submit" class="hn-button" data-title="A simple python object to get stock data!" data-url="http://mourafiq.com/2012/05/20/simple-python-object-to-get-stock-data.html" data-count="horizontal">Vote on Hacker News</a>
+  </div>
+  
+
+  
+  <div class='reddit'>
+    <a href="//www.reddit.com/submit" onclick="window.open('//www.reddit.com/submit?url=http://mourafiq.com/2012/05/20/simple-python-object-to-get-stock-data.html&title=A+simple+python+object+to+get+stock+data%21'); return false"> <img src="//www.redditstatic.com/spreddit7.gif" alt="submit to reddit" border="0" /> </a>
+  </div>
+  
+</div>
+
+        </section>
+
+        <footer>
+            <address>
+                <img src="/images/logo.png">
+                <p>
+                Written by <strong><a rel="author" href="https://twitter.com/mmourafiq." title="Mourad Mourafiq." target="_blank">Mourad Mourafiq.</a></strong><br>
+                    <span class="muted">Maths, Technologie, Philosophie, Startups, ...</span>
+                </p>
+            </address>
+            
+            
+            <section class="post_summary">
+                <h3 class="title">Next up: <a href="/2012/06/01/sharp-ratio.html" rel="prefetch">Sharp ratio.</a></h3>
+                <p>A basic approach to optimizing the risk and return of a portfolio is to maximize its Sharpe ratio, which is the ratio of its expected return to its standard deviation.</p>
+                <hr>
+            </section>
+             
+            
+            
+            <section class="post_summary">
+                <h3 class="title">Previous story: <a href="/2012/05/05/magic-formula-facebook.html" rel="prefetch">The magic formula from facebook!</a></h3>
+                <p>The mathematical formula by Elo, which allows to rate the relative skill levels in two-player games.</p>
+                <hr>
+            </section>
+             
+            
+            <section>
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'mourafiq';
+
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+            </section>
+            
+        </footer>
+    </div>
+</article>
+
+
+    <footer class="site-footer">
+        <div class="container">
+            &copy; 2015 Mourad Mourafiq
+
+            <nav>
+                <a href="/">Blog</a> &middot;
+                <a href="/about.html">About</a>
+            </nav>
+
+            <nav class="social">
+                
+<a href="https://twitter.com/mmourafiq" title="Follow on Twitter" target="_blank"><i class="icon icon-twitter"></i></a>
+
+
+<a href="https://github.com/mouradmourafiq" title="Watch on Github" target="_blank"><i class="icon icon-github"></i></a>
+
+
+<a href="/atom.xml" title="RSS Feed">
+  <i class="icon icon-rss"></i>
+</a>
+
+            </nav>
+            <div>Based on Incorporated theme by <a href="https://sendtoinc.com">Inc</a></div>
+        </div>
+    </footer>
+
+</body>
+</html>

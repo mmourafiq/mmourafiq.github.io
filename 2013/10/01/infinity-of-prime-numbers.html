@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinity of prime numbers. &mdash; Mourad Mourafiq</title>
+    <!--[if lt IE 9]><script src='https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js'></script><![endif]-->
+    
+    <link rel="stylesheet" href="/assets/app.css">
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script src="/assets/app.js"></script>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+<script>
+  var HN=[];HN.factory=function(e){return function(){HN.push([e].concat(Array.prototype.slice.call(arguments,0)))};},HN.on=HN.factory("on"),HN.once=HN.factory("once"),HN.off=HN.factory("off"),HN.emit=HN.factory("emit"),HN.load=function(){var e="hn-button.js";if(document.getElementById(e))return;var t=document.createElement("script");t.id=e,t.src="//hn-button.herokuapp.com/hn-button.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n)},HN.load();</script>
+</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-34892053-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+    <link rel="shortcut icon" href="/favicon.ico?v2" type="image/x-icon" />
+    <link rel="alternate" type="application/atom+xml" title="Mourad Mourafiq" href="/atom.xml" />
+    <meta name="title" content="Infinity of prime numbers. ">
+    <link rel="canonical" href="http://mourafiq.com/2013/10/01/infinity-of-prime-numbers.html">
+     
+           
+    <meta property="og:title" content="Infinity of prime numbers."/>
+    <meta property="og:url" content="http://mourafiq.com/2013/10/01/infinity-of-prime-numbers.html"/>
+    <meta property="og:image" content="http://mourafiq.com/images/posts/blueprint-math.jpg"/>
+    
+    <meta property="og:description" content="Proving the infinity of prime numbers, noted as P."/>
+    <meta name="description" content="Proving the infinity of prime numbers, noted as P."/>
+    
+    <meta property="og:site_name" content="Mourad Mourafiq">
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</head>
+<body>
+
+    <header class="site-header">
+        <nav>
+            <a class="brand" href="/">
+                <img src="/images/logo.png" alt="Inc">
+            </a>
+            <a href="/about.html">About</a>
+        </nav>
+    </header>
+
+    
+<div class="cover  article-cover " style="background-image:url(/images/posts/blueprint-math.jpg)"></div>
+
+
+<div class='cover-caption'><a href='/about.html#pictures'>Math</a></div>
+
+
+<article >
+    <div class="container">
+        <header>
+            
+            <div class="meta">
+                <!--
+                By
+                <address><a rel="author" href="" title="Mourad Mourafiq." target="_blank">
+                    Mourad Mourafiq.
+                </a></address> &mdash;
+                -->
+                <time pubdate datetime="2013-01-October" title="Oct 01, 2013">
+                    Oct 01, 2013
+                </time> &mdash;
+                
+2 min read
+            </div>
+            
+            <h1 class="title">Infinity of prime numbers.</h1>
+            <h2 class="subtitle">Proving the infinity of prime numbers, noted as P.</h2>
+        </header>
+
+        <section>
+            <p>In this post we will prove the infinity of prime numbers, noted as <script type="math/tex">P</script>.</p>
+
+<p>First, what is a prime number? a prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself, e.g. 2, 3, 5, 71, 97 …</p>
+
+<p>Throughout history, multiple mathematicians studied this branch of mathematics, particularly Euclid, Gauss, and Riemann. Euclid proved this mathematical property by multiplying all primes from 1 to n and adding 1.</p>
+
+<script type="math/tex; mode=display">\prod_{i=1}^{n} P_{i} + 1</script>
+
+<p>Hence the property seems obvious. In this post we will try Gauss’s method. In order to do that, we need these notions:</p>
+
+<ul>
+  <li>harmonic series</li>
+  <li>fundamental theorem of arithmetic or the <a href="/2012/04/01/unique-factorization.html">unique factorization theorem</a>.</li>
+</ul>
+
+<p>First let’s suppose that, the set of prime numbers is finite, which means that we can enumerate the elements of this set:</p>
+
+<p><script type="math/tex">P = {P_1, P_2, ..., P_r}</script> with <script type="math/tex">r = card(P)</script></p>
+
+<p>And we consider this series: <script type="math/tex">S_n = \sum_{i=1}^{k} 1/k</script></p>
+
+<p>If we apply the fundamental theorem of arithmetic, we find</p>
+
+<script type="math/tex; mode=display">S_n = \sum_{i=1}^{k} \frac{1}{\prod_{i=1}^{r}P_i ^{\alpha_i k}}</script>
+
+<p>Now, we will try to find a max for this series <script type="math/tex">S_n</script>. For this purpose let’s simplify our formula</p>
+
+<script type="math/tex; mode=display">S_n = \frac{1}{P_1} + \frac{1}{P_1*P_2} ... \frac{1}{\prod_{i=1}^{r}P_i ^{\alpha_i k}}</script>
+
+<p>And let’s consider also this value:</p>
+
+<script type="math/tex; mode=display">t = (1 + \frac{1}{P_1} + ... + \frac{1}{P_1^{\alpha_1}}) * ... * (1 + \frac{1}{P_r} + ... + \frac{1}{P_r^{\alpha_r}})</script>
+
+<p>with <script type="math/tex">\alpha_i$ the max of exponent of $P_i</script></p>
+
+<script type="math/tex; mode=display">\alpha_{i} = max(\alpha_{i,k})_{k=[1,n]}</script>
+
+<p>If we take one of this  <script type="math/tex">\alpha_i</script> and call it <script type="math/tex">\beta</script>, we then have</p>
+
+<script type="math/tex; mode=display">\frac{1}{P_1^{\beta_{1}}} * \frac{1}{P_2^{\beta_{2}}} * ... * \frac{1}{P_r^{\beta_{r}}}</script>
+
+<p>We can then conclude that <script type="math/tex">% <![CDATA[
+S_n < t %]]></script> And since terms in <script type="math/tex">t</script> are geometric sequences. We find then:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+S_{n} < \prod_{i=1}^{r} \frac{1 - \frac{1}{P_i ^{\alpha_i + 1}}}{1 - \frac{1}{P_{i}}} < \prod_{i=1}^{r} \frac{1}{1-P_{i}} %]]></script>
+
+<p>and this quantity is finite, However since harmonic series diverge, we find that: <script type="math/tex">% <![CDATA[
++\infty < X %]]></script></p>
+
+<p>Which is absurd, hence we can say that prime numbers are infinite.</p>
+
+            
+<div class="social">
+  
+  <div class='twitter'>
+    <a href="https://twitter.com/share" class="twitter-share-button"  data-text="Infinity of prime numbers." data-related="mmourafiq">Tweet</a>
+  </div>
+  
+
+  
+  <div class='facebook'>
+    <div class="fb-share-button" data-layout="button_count"></div>
+  </div>
+  
+
+  
+  <div class='google'>
+    <div class="g-plusone" data-size="medium"></div>
+  </div>
+  
+    
+  
+  <div class='hn'>
+    <a href="https://news.ycombinator.com/submit" class="hn-button" data-title="Infinity of prime numbers." data-url="http://mourafiq.com/2013/10/01/infinity-of-prime-numbers.html" data-count="horizontal">Vote on Hacker News</a>
+  </div>
+  
+
+  
+  <div class='reddit'>
+    <a href="//www.reddit.com/submit" onclick="window.open('//www.reddit.com/submit?url=http://mourafiq.com/2013/10/01/infinity-of-prime-numbers.html&title=Infinity+of+prime+numbers.'); return false"> <img src="//www.redditstatic.com/spreddit7.gif" alt="submit to reddit" border="0" /> </a>
+  </div>
+  
+</div>
+
+        </section>
+
+        <footer>
+            <address>
+                <img src="/images/logo.png">
+                <p>
+                Written by <strong><a rel="author" href="https://twitter.com/mmourafiq." title="Mourad Mourafiq." target="_blank">Mourad Mourafiq.</a></strong><br>
+                    <span class="muted">Maths, Technologie, Philosophie, Startups, ...</span>
+                </p>
+            </address>
+             
+            
+            
+            <section class="post_summary">
+                <h3 class="title">Previous story: <a href="/2013/09/01/intuition-behind-the-delta-dirac-function.html" rel="prefetch">Intuition behind the Delta Dirac function.</a></h3>
+                <p>Particular function that is zero everywhere except at zero where it approaches infinity.</p>
+                <hr>
+            </section>
+             
+            
+            <section>
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'mourafiq';
+
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+            </section>
+            
+        </footer>
+    </div>
+</article>
+
+
+    <footer class="site-footer">
+        <div class="container">
+            &copy; 2015 Mourad Mourafiq
+
+            <nav>
+                <a href="/">Blog</a> &middot;
+                <a href="/about.html">About</a>
+            </nav>
+
+            <nav class="social">
+                
+<a href="https://twitter.com/mmourafiq" title="Follow on Twitter" target="_blank"><i class="icon icon-twitter"></i></a>
+
+
+<a href="https://github.com/mouradmourafiq" title="Watch on Github" target="_blank"><i class="icon icon-github"></i></a>
+
+
+<a href="/atom.xml" title="RSS Feed">
+  <i class="icon icon-rss"></i>
+</a>
+
+            </nav>
+            <div>Based on Incorporated theme by <a href="https://sendtoinc.com">Inc</a></div>
+        </div>
+    </footer>
+
+</body>
+</html>

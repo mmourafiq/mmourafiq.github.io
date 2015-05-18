@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quora Answer Classifier (Part 3, linear and non linear classifiers). &mdash; Mourad Mourafiq</title>
+    <!--[if lt IE 9]><script src='https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js'></script><![endif]-->
+    
+    <link rel="stylesheet" href="/assets/app.css">
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script src="/assets/app.js"></script>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+<script>
+  var HN=[];HN.factory=function(e){return function(){HN.push([e].concat(Array.prototype.slice.call(arguments,0)))};},HN.on=HN.factory("on"),HN.once=HN.factory("once"),HN.off=HN.factory("off"),HN.emit=HN.factory("emit"),HN.load=function(){var e="hn-button.js";if(document.getElementById(e))return;var t=document.createElement("script");t.id=e,t.src="//hn-button.herokuapp.com/hn-button.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n)},HN.load();</script>
+</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-34892053-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+    <link rel="shortcut icon" href="/favicon.ico?v2" type="image/x-icon" />
+    <link rel="alternate" type="application/atom+xml" title="Mourad Mourafiq" href="/atom.xml" />
+    <meta name="title" content="Quora Answer Classifier (Part 3, linear and non linear classifiers). ">
+    <link rel="canonical" href="http://mourafiq.com/2012/12/15/quora-answer-classifier-3.html">
+     
+           
+    <meta property="og:title" content="Quora Answer Classifier (Part 3, linear and non linear classifiers)."/>
+    <meta property="og:url" content="http://mourafiq.com/2012/12/15/quora-answer-classifier-3.html"/>
+    <meta property="og:image" content="http://mourafiq.com/images/posts/quora.png"/>
+    
+    <meta property="og:description" content="Designing an algorithm to develop classifier that is able to tell good answers from bad answers, as well as humans can."/>
+    <meta name="description" content="Designing an algorithm to develop classifier that is able to tell good answers from bad answers, as well as humans can."/>
+    
+    <meta property="og:site_name" content="Mourad Mourafiq">
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</head>
+<body>
+
+    <header class="site-header">
+        <nav>
+            <a class="brand" href="/">
+                <img src="/images/logo.png" alt="Inc">
+            </a>
+            <a href="/about.html">About</a>
+        </nav>
+    </header>
+
+    
+<div class="cover  article-cover " style="background-image:url(/images/posts/quora.png)"></div>
+
+
+<div class='cover-caption'><a href='/about.html#pictures'>Quora</a></div>
+
+
+<article >
+    <div class="container">
+        <header>
+            
+            <div class="meta">
+                <!--
+                By
+                <address><a rel="author" href="" title="Mourad Mourafiq." target="_blank">
+                    Mourad Mourafiq.
+                </a></address> &mdash;
+                -->
+                <time pubdate datetime="2012-15-December" title="Dec 15, 2012">
+                    Dec 15, 2012
+                </time> &mdash;
+                
+13 min read
+            </div>
+            
+            <h1 class="title">Quora Answer Classifier (Part 3, linear and non linear classifiers).</h1>
+            <h2 class="subtitle">Designing an algorithm to develop classifier that is able to tell good answers from bad answers, as well as humans can.</h2>
+        </header>
+
+        <section>
+            <p>We saw in previous posts how we could use decision trees and K-nearest neighbors to classify answers.</p>
+
+<p>In this post, the last of this series of posts, we will be using two classifiers; linear and non linear classifiers.</p>
+
+<p>Grab the code of the model item from part 1. Since we are going to use it for this two classifiers.</p>
+
+<h2 id="linear-classifiers">Linear Classifiers</h2>
+
+<p>It is one of the simplest classifiers to construct. It works by finding the average of all the data in each class and constructing a point that represents the center of the class. It can then classify new points by determining to which center point they are closest.</p>
+
+<p>First we need a function that calculates the average of items. Then we need a way to calculate the closeness of new item. While we can use Euclidean distance, which will work for this classifier, we can take a different approach using vectors and dot-products. Also we will be using the scaling method, since all the variables aren’t really comparable.</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="k">def</span> <span class="nf">linear_mean</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">t_value</span><span class="p">,</span> <span class="n">f_value</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<span class="lineno"> 2</span>     <span class="c">#two categories</span>
+<span class="lineno"> 3</span>     <span class="n">t_coords</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="lineno"> 4</span>     <span class="n">f_coords</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="lineno"> 5</span>     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+<span class="lineno"> 6</span>         <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">t_value</span><span class="p">:</span>
+<span class="lineno"> 7</span>             <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+<span class="lineno"> 8</span>                 <span class="n">t_coords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">scaled_coords</span><span class="p">)</span>
+<span class="lineno"> 9</span>             <span class="k">else</span><span class="p">:</span>
+<span class="lineno">10</span>                 <span class="n">t_coords</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">item</span><span class="o">.</span><span class="n">scaled_coords</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">scaled_coords</span><span class="p">))</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">mask</span><span class="p">])</span>
+<span class="lineno">11</span>         <span class="k">elif</span> <span class="n">item</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">f_value</span><span class="p">:</span>
+<span class="lineno">12</span>             <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+<span class="lineno">13</span>                 <span class="n">f_coords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">scaled_coords</span><span class="p">)</span>
+<span class="lineno">14</span>             <span class="k">else</span><span class="p">:</span>
+<span class="lineno">15</span>                 <span class="n">f_coords</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">item</span><span class="o">.</span><span class="n">scaled_coords</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">scaled_coords</span><span class="p">))</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">mask</span><span class="p">])</span>
+<span class="lineno">16</span>     <span class="n">t_mean</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t_coords</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+<span class="lineno">17</span>     <span class="n">f_mean</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">f_coords</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+<span class="lineno">18</span>     <span class="k">return</span> <span class="n">t_mean</span><span class="p">,</span> <span class="n">f_mean</span>
+<span class="lineno">19</span>  
+<span class="lineno">20</span> <span class="k">def</span> <span class="nf">dot_product_classification</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">means</span><span class="p">,</span> <span class="n">t_value</span><span class="p">,</span> <span class="n">f_value</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<span class="lineno">21</span>     <span class="n">t_mean</span><span class="p">,</span> <span class="n">f_mean</span> <span class="o">=</span> <span class="n">means</span>
+<span class="lineno">22</span>     <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+<span class="lineno">23</span>         <span class="n">item_coords</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">scaled_coords</span><span class="p">)</span>
+<span class="lineno">24</span>     <span class="k">else</span><span class="p">:</span>
+<span class="lineno">25</span>         <span class="n">item_coords</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">item</span><span class="o">.</span><span class="n">scaled_coords</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">scaled_coords</span><span class="p">))</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">mask</span><span class="p">])</span>
+<span class="lineno">26</span>     <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">f_mean</span><span class="p">,</span> <span class="n">f_mean</span><span class="p">)</span> <span class="o">-</span> <span class="n">numpy</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">t_mean</span><span class="p">,</span> <span class="n">t_mean</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="lineno">27</span>     <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">item_coords</span><span class="p">,</span> <span class="n">t_mean</span><span class="p">)</span> <span class="o">-</span> <span class="n">numpy</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">item_coords</span><span class="p">,</span> <span class="n">f_mean</span><span class="p">))</span> <span class="o">+</span> <span class="n">y</span>
+<span class="lineno">28</span>     <span class="k">return</span> <span class="n">t_value</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">f_value</span></code></pre></div>
+
+<h2 id="non-linear-classifiers">Non Linear Classifiers</h2>
+
+<p>We will be using a very basic non linear classifier. also we will be using the radial-basis function as a kernel trick for our classifier. which replaces the dot-product function, returning what the dot-product would have been if the data had first been transformed to a higher dimensional space using some mapping function.</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="k">def</span> <span class="nf">radial_basis</span><span class="p">(</span><span class="n">item1</span><span class="p">,</span> <span class="n">item2</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+<span class="lineno"> 2</span>     <span class="n">diff_item</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">item1</span><span class="o">.</span><span class="n">coords</span><span class="p">)</span> <span class="o">-</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">item2</span><span class="o">.</span><span class="n">coords</span><span class="p">)</span>
+<span class="lineno"> 3</span>     <span class="n">dist_item</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">diff_item</span><span class="p">))</span>
+<span class="lineno"> 4</span>     <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">e</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="n">gamma</span> <span class="o">*</span> <span class="n">dist_item</span><span class="p">)</span>
+<span class="lineno"> 5</span>  
+<span class="lineno"> 6</span> <span class="k">def</span> <span class="nf">non_linear_classification</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">t_value</span><span class="p">,</span> <span class="n">f_value</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+<span class="lineno"> 7</span>     <span class="n">t_sum</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="lineno"> 8</span>     <span class="n">t_count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="lineno"> 9</span>     <span class="n">f_sum</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="lineno">10</span>     <span class="n">f_count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="lineno">11</span>     <span class="k">for</span> <span class="n">item2</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+<span class="lineno">12</span>         <span class="k">if</span> <span class="n">item2</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">t_value</span><span class="p">:</span>
+<span class="lineno">13</span>             <span class="n">t_sum</span> <span class="o">+=</span> <span class="n">radial_basis</span><span class="p">(</span><span class="n">item2</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">gamma</span><span class="p">)</span>
+<span class="lineno">14</span>             <span class="n">t_count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="lineno">15</span>         <span class="k">elif</span> <span class="n">item2</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">f_value</span><span class="p">:</span>
+<span class="lineno">16</span>             <span class="n">f_sum</span> <span class="o">+=</span> <span class="n">radial_basis</span><span class="p">(</span><span class="n">item2</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">gamma</span><span class="p">)</span>
+<span class="lineno">17</span>             <span class="n">f_count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="lineno">18</span>     <span class="n">res</span> <span class="o">=</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">t_sum</span><span class="p">)</span> <span class="o">/</span> <span class="n">t_count</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">f_sum</span><span class="p">)</span> <span class="o">/</span> <span class="n">f_count</span><span class="p">)</span> <span class="o">+</span> <span class="n">offset</span>
+<span class="lineno">19</span>     <span class="k">return</span> <span class="n">t_value</span> <span class="k">if</span> <span class="n">res</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">f_value</span>
+<span class="lineno">20</span>  
+<span class="lineno">21</span> <span class="k">def</span> <span class="nf">calculate_offset</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">t_value</span><span class="p">,</span> <span class="n">f_value</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+<span class="lineno">22</span>     <span class="n">t_data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="lineno">23</span>     <span class="n">f_data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="lineno">24</span>     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+<span class="lineno">25</span>         <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">t_value</span><span class="p">:</span>
+<span class="lineno">26</span>             <span class="n">t_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="lineno">27</span>         <span class="k">elif</span> <span class="n">item</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">f_value</span><span class="p">:</span>
+<span class="lineno">28</span>             <span class="n">f_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="lineno">29</span>     <span class="n">t_sum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">sum</span><span class="p">([</span><span class="n">radial_basis</span><span class="p">(</span><span class="n">item1</span><span class="p">,</span> <span class="n">item2</span><span class="p">,</span> <span class="n">gamma</span><span class="p">)</span> <span class="k">for</span> <span class="n">item1</span> <span class="ow">in</span> <span class="n">t_data</span><span class="p">])</span> <span class="k">for</span> <span class="n">item2</span> <span class="ow">in</span> <span class="n">t_data</span><span class="p">)</span>
+<span class="lineno">30</span>     <span class="n">f_sum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">sum</span><span class="p">([</span><span class="n">radial_basis</span><span class="p">(</span><span class="n">item1</span><span class="p">,</span> <span class="n">item2</span><span class="p">,</span> <span class="n">gamma</span><span class="p">)</span> <span class="k">for</span> <span class="n">item1</span> <span class="ow">in</span> <span class="n">f_data</span><span class="p">])</span> <span class="k">for</span> <span class="n">item2</span> <span class="ow">in</span> <span class="n">f_data</span><span class="p">)</span>
+<span class="lineno">31</span>     <span class="k">return</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">f_sum</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">f_data</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span> <span class="o">-</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">t_sum</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t_data</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span></code></pre></div>
+
+<p>Finally some utilities to run everything together:</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="k">def</span> <span class="nf">create_score_factors_linear</span><span class="p">(</span><span class="n">training_data</span><span class="p">,</span> <span class="n">classify_data</span><span class="p">,</span> <span class="n">results</span><span class="p">):</span>
+<span class="lineno"> 2</span>     <span class="n">len_coords</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">training_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">coords</span><span class="p">)</span>
+<span class="lineno"> 3</span>     <span class="n">corrects</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">len_coords</span>
+<span class="lineno"> 4</span>     <span class="n">factors</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">len_coords</span>
+<span class="lineno"> 5</span>     <span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">len_coords</span>
+<span class="lineno"> 6</span>     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">len_coords</span><span class="p">):</span>
+<span class="lineno"> 7</span>         <span class="n">means</span> <span class="o">=</span> <span class="n">linear_mean</span><span class="p">(</span><span class="n">training_set</span><span class="p">,</span> <span class="s">&quot;+1&quot;</span><span class="p">,</span> <span class="s">&quot;-1&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="lineno"> 8</span>         <span class="k">for</span> <span class="n">obs</span> <span class="ow">in</span> <span class="n">classify_data</span><span class="p">:</span>
+<span class="lineno"> 9</span>             <span class="k">if</span> <span class="n">dot_product_classification</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="n">means</span><span class="p">,</span> <span class="s">&quot;+1&quot;</span><span class="p">,</span> <span class="s">&quot;-1&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">==</span> <span class="n">results</span><span class="p">[</span><span class="n">obs</span><span class="o">.</span><span class="n">id</span><span class="p">]:</span>
+<span class="lineno">10</span>                 <span class="n">corrects</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="lineno">11</span>     <span class="n">scores</span> <span class="o">=</span> <span class="p">[(</span><span class="n">corrects</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">len_coords</span><span class="p">)]</span>
+<span class="lineno">12</span>     <span class="n">scores</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="lineno">13</span>     <span class="n">mask</span> <span class="o">=</span> <span class="p">[</span><span class="n">scores</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]]</span>
+<span class="lineno">14</span>     <span class="n">current_correct</span> <span class="o">=</span> <span class="n">scores</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="lineno">15</span>     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">len_coords</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+<span class="lineno">16</span>         <span class="n">new_mask</span> <span class="o">=</span> <span class="n">mask</span><span class="p">[:]</span>
+<span class="lineno">17</span>         <span class="n">new_mask</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+<span class="lineno">18</span>         <span class="n">means</span> <span class="o">=</span> <span class="n">linear_mean</span><span class="p">(</span><span class="n">training_set</span><span class="p">,</span> <span class="s">&quot;+1&quot;</span><span class="p">,</span> <span class="s">&quot;-1&quot;</span><span class="p">,</span> <span class="n">new_mask</span><span class="p">)</span>
+<span class="lineno">19</span>         <span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="lineno">20</span>         <span class="k">for</span> <span class="n">obs</span> <span class="ow">in</span> <span class="n">classify_data</span><span class="p">:</span>
+<span class="lineno">21</span>             <span class="k">if</span> <span class="n">dot_product_classification</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="n">means</span><span class="p">,</span> <span class="s">&quot;+1&quot;</span><span class="p">,</span> <span class="s">&quot;-1&quot;</span><span class="p">,</span> <span class="n">new_mask</span><span class="p">)</span> <span class="o">==</span> <span class="n">results</span><span class="p">[</span><span class="n">obs</span><span class="o">.</span><span class="n">id</span><span class="p">]:</span>
+<span class="lineno">22</span>                 <span class="n">correct</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="lineno">23</span>         <span class="k">if</span> <span class="n">correct</span> <span class="o">&gt;=</span> <span class="n">current_correct</span><span class="p">:</span>
+<span class="lineno">24</span>             <span class="n">current_correct</span> <span class="o">=</span> <span class="n">correct</span>
+<span class="lineno">25</span>             <span class="n">mask</span> <span class="o">=</span> <span class="n">new_mask</span><span class="p">[:]</span>
+<span class="lineno">26</span>     <span class="n">min_corrects</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">corrects</span><span class="p">)</span>
+<span class="lineno">27</span>     <span class="n">max_corrects</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">corrects</span><span class="p">)</span>
+<span class="lineno">28</span>     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">len_coords</span><span class="p">):</span>
+<span class="lineno">29</span>         <span class="n">factors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">corrects</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">min_corrects</span><span class="p">)</span> <span class="o">/</span> <span class="p">((</span><span class="n">max_corrects</span> <span class="o">-</span> <span class="n">min_corrects</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.000001</span><span class="p">))</span>
+<span class="lineno">30</span>     <span class="k">return</span> <span class="n">mask</span><span class="p">,</span> <span class="n">factors</span>
+<span class="lineno">31</span>  
+<span class="lineno">32</span>  
+<span class="lineno">33</span> <span class="n">r_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;test.txt&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span>
+<span class="lineno">34</span> <span class="n">w_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;results.txt&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span>
+<span class="lineno">35</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">r_file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span>
+<span class="lineno">36</span> <span class="n">training_set</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="lineno">37</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+<span class="lineno">38</span>     <span class="n">current_line</span> <span class="o">=</span> <span class="n">r_file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="lineno">39</span>     <span class="nb">id</span> <span class="o">=</span> <span class="n">current_line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="lineno">40</span>     <span class="n">value</span> <span class="o">=</span> <span class="n">current_line</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="lineno">41</span>     <span class="n">coords</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;:&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">current_line</span><span class="p">[</span><span class="mi">2</span><span class="p">:]]</span>
+<span class="lineno">42</span>     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span> <span class="o">==</span> <span class="n">M</span>
+<span class="lineno">43</span>     <span class="c">#coords=[coords[i] for i in xrange(M) if i in [1, 2, 4, 6, 7, 11, 14, 18]]</span>
+<span class="lineno">44</span>     <span class="n">training_set</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Item</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span> <span class="n">coords</span><span class="o">=</span><span class="n">coords</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">))</span>
+<span class="lineno">45</span> <span class="n">Q</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">r_file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">))</span>
+<span class="lineno">46</span> <span class="n">classify_set</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="lineno">47</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">Q</span><span class="p">):</span>
+<span class="lineno">48</span>     <span class="n">current_line</span> <span class="o">=</span> <span class="n">r_file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="lineno">49</span>     <span class="nb">id</span> <span class="o">=</span> <span class="n">current_line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="lineno">50</span>     <span class="n">coords</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;:&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">current_line</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
+<span class="lineno">51</span>     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span> <span class="o">==</span> <span class="n">M</span>
+<span class="lineno">52</span>     <span class="c">#coords=[coords[i] for i in xrange(M) if i in [1, 2, 4, 6, 7, 11, 14, 18]]</span>
+<span class="lineno">53</span>     <span class="n">classify_set</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Item</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span> <span class="n">coords</span><span class="o">=</span><span class="n">coords</span><span class="p">))</span>
+<span class="lineno">54</span> <span class="c">#reading the results</span>
+<span class="lineno">55</span> <span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="lineno">56</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">Q</span><span class="p">):</span>
+<span class="lineno">57</span>     <span class="n">current_line</span> <span class="o">=</span> <span class="n">w_file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="lineno">58</span>     <span class="n">results</span><span class="p">[</span><span class="n">current_line</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">current_line</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="lineno">59</span>  
+<span class="lineno">60</span> <span class="c">#linear</span>
+<span class="lineno">61</span> <span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="lineno">62</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">training_set</span><span class="p">:</span>
+<span class="lineno">63</span>     <span class="n">item</span><span class="o">.</span><span class="n">scale</span><span class="p">()</span>
+<span class="lineno">64</span> <span class="n">means</span> <span class="o">=</span> <span class="n">linear_mean</span><span class="p">(</span><span class="n">training_set</span><span class="p">,</span> <span class="s">&quot;+1&quot;</span><span class="p">,</span> <span class="s">&quot;-1&quot;</span><span class="p">)</span>
+<span class="lineno">65</span> <span class="k">for</span> <span class="n">obs</span> <span class="ow">in</span> <span class="n">classify_set</span><span class="p">:</span>
+<span class="lineno">66</span>     <span class="n">obs</span><span class="o">.</span><span class="n">scale</span><span class="p">()</span>
+<span class="lineno">67</span>     <span class="k">if</span> <span class="n">dot_product_classification</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="n">means</span><span class="p">,</span> <span class="s">&quot;+1&quot;</span><span class="p">,</span> <span class="s">&quot;-1&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">results</span><span class="p">[</span><span class="n">obs</span><span class="o">.</span><span class="n">id</span><span class="p">]:</span>
+<span class="lineno">68</span>         <span class="n">correct</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="lineno">69</span> <span class="k">print</span> <span class="n">correct</span>
+<span class="lineno">70</span>  
+<span class="lineno">71</span> <span class="c">#non linear</span>
+<span class="lineno">72</span> <span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="lineno">73</span> <span class="n">offset</span> <span class="o">=</span> <span class="n">calculate_offset</span><span class="p">(</span><span class="n">training_set</span><span class="p">,</span> <span class="s">&quot;+1&quot;</span><span class="p">,</span> <span class="s">&quot;-1&quot;</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="lineno">74</span> <span class="k">for</span> <span class="n">obs</span> <span class="ow">in</span> <span class="n">classify_set</span><span class="p">:</span>
+<span class="lineno">75</span>     <span class="k">if</span> <span class="n">non_linear_classification</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="n">training_set</span><span class="p">,</span> <span class="s">&quot;+1&quot;</span><span class="p">,</span> <span class="s">&quot;-1&quot;</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="o">==</span> <span class="n">results</span><span class="p">[</span><span class="n">obs</span><span class="o">.</span><span class="n">id</span><span class="p">]:</span>
+<span class="lineno">76</span>         <span class="n">correct</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="lineno">77</span> <span class="k">print</span> <span class="n">correct</span></code></pre></div>
+
+            
+<div class="social">
+  
+  <div class='twitter'>
+    <a href="https://twitter.com/share" class="twitter-share-button"  data-text="Quora Answer Classifier (Part 3, linear and non linear classifiers)." data-related="mmourafiq">Tweet</a>
+  </div>
+  
+
+  
+  <div class='facebook'>
+    <div class="fb-share-button" data-layout="button_count"></div>
+  </div>
+  
+
+  
+  <div class='google'>
+    <div class="g-plusone" data-size="medium"></div>
+  </div>
+  
+    
+  
+  <div class='hn'>
+    <a href="https://news.ycombinator.com/submit" class="hn-button" data-title="Quora Answer Classifier (Part 3, linear and non linear classifiers)." data-url="http://mourafiq.com/2012/12/15/quora-answer-classifier-3.html" data-count="horizontal">Vote on Hacker News</a>
+  </div>
+  
+
+  
+  <div class='reddit'>
+    <a href="//www.reddit.com/submit" onclick="window.open('//www.reddit.com/submit?url=http://mourafiq.com/2012/12/15/quora-answer-classifier-3.html&title=Quora+Answer+Classifier+%28Part+3%2C+linear+and+non+linear+classifiers%29.'); return false"> <img src="//www.redditstatic.com/spreddit7.gif" alt="submit to reddit" border="0" /> </a>
+  </div>
+  
+</div>
+
+        </section>
+
+        <footer>
+            <address>
+                <img src="/images/logo.png">
+                <p>
+                Written by <strong><a rel="author" href="https://twitter.com/mmourafiq." title="Mourad Mourafiq." target="_blank">Mourad Mourafiq.</a></strong><br>
+                    <span class="muted">Maths, Technologie, Philosophie, Startups, ...</span>
+                </p>
+            </address>
+            
+            
+            <section class="post_summary">
+                <h3 class="title">Next up: <a href="/2013/01/01/bitwise-operations-with-python.html" rel="prefetch">Bitwise operations with python.</a></h3>
+                <p>Bitwise operators allows us to write more efficient code due to the fact that CPUs are good at handling bits.</p>
+                <hr>
+            </section>
+             
+            
+            
+            <section class="post_summary">
+                <h3 class="title">Previous story: <a href="/2012/12/01/quora-answer-classifier-2.html" rel="prefetch">Quora Answer Classifier (Part 2, with KNN).</a></h3>
+                <p>Designing an algorithm to develop classifier that is able to tell good answers from bad answers, as well as humans can.</p>
+                <hr>
+            </section>
+             
+            
+            <section>
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'mourafiq';
+
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+            </section>
+            
+        </footer>
+    </div>
+</article>
+
+
+    <footer class="site-footer">
+        <div class="container">
+            &copy; 2015 Mourad Mourafiq
+
+            <nav>
+                <a href="/">Blog</a> &middot;
+                <a href="/about.html">About</a>
+            </nav>
+
+            <nav class="social">
+                
+<a href="https://twitter.com/mmourafiq" title="Follow on Twitter" target="_blank"><i class="icon icon-twitter"></i></a>
+
+
+<a href="https://github.com/mouradmourafiq" title="Watch on Github" target="_blank"><i class="icon icon-github"></i></a>
+
+
+<a href="/atom.xml" title="RSS Feed">
+  <i class="icon icon-rss"></i>
+</a>
+
+            </nav>
+            <div>Based on Incorporated theme by <a href="https://sendtoinc.com">Inc</a></div>
+        </div>
+    </footer>
+
+</body>
+</html>

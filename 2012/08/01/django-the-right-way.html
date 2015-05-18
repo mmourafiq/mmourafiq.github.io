@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django the right way. &mdash; Mourad Mourafiq</title>
+    <!--[if lt IE 9]><script src='https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js'></script><![endif]-->
+    
+    <link rel="stylesheet" href="/assets/app.css">
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script src="/assets/app.js"></script>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+<script>
+  var HN=[];HN.factory=function(e){return function(){HN.push([e].concat(Array.prototype.slice.call(arguments,0)))};},HN.on=HN.factory("on"),HN.once=HN.factory("once"),HN.off=HN.factory("off"),HN.emit=HN.factory("emit"),HN.load=function(){var e="hn-button.js";if(document.getElementById(e))return;var t=document.createElement("script");t.id=e,t.src="//hn-button.herokuapp.com/hn-button.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n)},HN.load();</script>
+</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-34892053-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+    <link rel="shortcut icon" href="/favicon.ico?v2" type="image/x-icon" />
+    <link rel="alternate" type="application/atom+xml" title="Mourad Mourafiq" href="/atom.xml" />
+    <meta name="title" content="Django the right way. ">
+    <link rel="canonical" href="http://mourafiq.com/2012/08/01/django-the-right-way.html">
+     
+           
+    <meta property="og:title" content="Django the right way."/>
+    <meta property="og:url" content="http://mourafiq.com/2012/08/01/django-the-right-way.html"/>
+    <meta property="og:image" content="http://mourafiq.com/images/posts/django.png"/>
+    
+    <meta property="og:description" content="One of the things I wish I had known when I begun developing in Django, is how to start a django the right way. I am not saying that the official documentation lacks pedagogic approach, but mostly it doesn’t reflect the real life; a Django project from developing phase to deploying phase."/>
+    <meta name="description" content="One of the things I wish I had known when I begun developing in Django, is how to start a django the right way. I am not saying that the official documentation lacks pedagogic approach, but mostly it doesn’t reflect the real life; a Django project from developing phase to deploying phase."/>
+    
+    <meta property="og:site_name" content="Mourad Mourafiq">
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</head>
+<body>
+
+    <header class="site-header">
+        <nav>
+            <a class="brand" href="/">
+                <img src="/images/logo.png" alt="Inc">
+            </a>
+            <a href="/about.html">About</a>
+        </nav>
+    </header>
+
+    
+<div class="cover  article-cover " style="background-image:url(/images/posts/django.png)"></div>
+
+
+<div class='cover-caption'><a href='/about.html#pictures'>Django</a></div>
+
+
+<article >
+    <div class="container">
+        <header>
+            
+            <div class="meta">
+                <!--
+                By
+                <address><a rel="author" href="" title="Mourad Mourafiq." target="_blank">
+                    Mourad Mourafiq.
+                </a></address> &mdash;
+                -->
+                <time pubdate datetime="2012-01-August" title="Aug 01, 2012">
+                    Aug 01, 2012
+                </time> &mdash;
+                
+5 min read
+            </div>
+            
+            <h1 class="title">Django the right way.</h1>
+            <h2 class="subtitle">How to start a correct django project.</h2>
+        </header>
+
+        <section>
+            <p>One of the things I wish I had known when I begun developing in Django, is how to do it the right way. I am not saying that the official documentation lacks pedagogic approach, but mostly it doesn’t reflect the real life; a Django project from developing phase to deploying phase.</p>
+
+<p><em>N.B.</em> Some prior experience with Django is highly appreciated, but not strictly mandatory.</p>
+
+<p>You need to have <a href="https://pypi.python.org/pypi/virtualenv">virtualenv</a> to set your your python development environment, and <a href="http://www.git-scm.com/">git</a> for version control.</p>
+
+<p>Let’s start by he first thing first, installing Django. But, not yet, installing it directly in your site-package area is not a good idea, especially if you consider working on different projects that need different versions of Django or Django apps. Which means you’ll run into dependencies issues. So, what you will need to do is set a virtual environment to manage your packages installation, one of the practices of good python development.</p>
+
+<p>Create a virtual environment for your Django development, and make it active:</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span> virtualenv env
+<span class="gp">&gt;</span> <span class="nb">source</span> ./env/bin/activate</code></pre></div>
+
+<p>And to stop using this current virtualenv:</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span>  deactivate</code></pre></div>
+
+<p>To install django:</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span>  pip install django</code></pre></div>
+
+<p>To install some interesting apps, they will make you life easier, check this post <a href="/2012/07/15/best-of-django.html">What makes django amazing</a>.</p>
+
+<p>Now, you can start your project:</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span>  django-admin.py startproject myproject</code></pre></div>
+
+<p>Before you go any further, you need to track your Django project using git.</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span>  <span class="nb">cd </span>myproject
+<span class="gp">&gt;</span>  git init</code></pre></div>
+
+<p>Also, you should know that you don’t have to track all files in your project, for this:</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span>  <span class="nv">$ </span>vi .gitignore
+
+<span class="go">*.pyc</span>
+<span class="go">*~</span>
+<span class="go">local_settings.py</span>
+<span class="go">wsgi.py</span></code></pre></div>
+
+<p>This tells git not to track all files finishing with .pyc, any temp file, you will see why we don’t track local_settings.py in the very end fo the post.</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span>  git add .
+<span class="gp">&gt;</span>  git commit -m ’initial commit of myproject’</code></pre></div>
+
+<p>If you are interested by using a service like Github or Bitbucket, or otherwise using a personal server, it is time to make your first push.</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span>  git psuh origin master</code></pre></div>
+
+<p>Now it’s time to manage database, if you didn’t followed the steps from the <a href="/2012/07/15/best-of-django.html">What makes django amazing!</a>, you should install South:</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span>  pip install south</code></pre></div>
+
+<p>Add south to the list of your INSTALLED_APP in your “settings.py” file, and execute:</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span>  python manage.py syncdb</code></pre></div>
+
+<p>You can commit to git this changes, in case something goes wrong you can go back;</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span>  git add .
+<span class="gp">&gt;</span>  git commit -m ’added south to the list of installed apps’</code></pre></div>
+
+<p>To start a new app;</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span>  python manage.py startapp myapp</code></pre></div>
+
+<p>add it to your INSTALLED_APP in your ’settings.py’ file.</p>
+
+<p>To tell south that you want to manage this app;</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span>  python manage.py schemamigration myapp –initial</code></pre></div>
+
+<p>Which creates a migration file that will allow you to make changes or revert them, in case of any changes in your model;</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span>  python manage.py migrate myapp</code></pre></div>
+
+<p>To tell south that it should manage your model automatically;</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span>  python manage.py schemamigration myapp –auto</code></pre></div>
+
+<p>Sometimes, you will need to work on different issues or anomalies in your project, the best way to track all of them is by creating branches, git is very tolerant and you can create as much branches as issues that you have;</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span>  pgit checkout -b &lt;brachnme&gt;</code></pre></div>
+
+<p>Finally, comes the deployment, if you don’t have already <a href="http://docs.fabfile.org/en/1.4.3/index.html">fabric</a>, then you need to install it:</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span>  pip install fabric</code></pre></div>
+
+<p>Fabric expects a fabfile.py in you myproject directory to define for it all actions that it needs to execute, add this to your fabfile.py:</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="kn">from</span> <span class="nn">fabric.api</span> <span class="kn">import</span> <span class="n">local</span>
+<span class="lineno"> 2</span> <span class="kn">from</span> <span class="nn">fabric.api</span> <span class="kn">import</span> <span class="n">lcd</span>
+<span class="lineno"> 3</span>  
+<span class="lineno"> 4</span> <span class="k">def</span> <span class="nf">prepare_deployment</span><span class="p">(</span><span class="n">branch_name</span><span class="p">):</span>
+<span class="lineno"> 5</span>     <span class="n">local</span><span class="p">(</span><span class="s">&#39;python manage.py test myapp&#39;</span><span class="p">)</span>
+<span class="lineno"> 6</span>     <span class="n">local</span><span class="p">(</span><span class="s">&#39;git add -p &amp;&amp; git commit&#39;</span><span class="p">)</span>
+<span class="lineno"> 7</span>     <span class="n">local</span><span class="p">(</span><span class="s">&#39;git checkout master &amp;&amp; git merge &#39;</span> <span class="o">+</span> <span class="n">branchname</span><span class="p">)</span>
+<span class="lineno"> 8</span>  
+<span class="lineno"> 9</span>  
+<span class="lineno">10</span> <span class="k">def</span> <span class="nf">deploy</span><span class="p">():</span>
+<span class="lineno">11</span>     <span class="k">with</span> <span class="n">lcd</span><span class="p">(</span><span class="s">&#39;/path/to/my/prod/area/&#39;</span><span class="p">):</span>
+<span class="lineno">12</span>         <span class="n">local</span><span class="p">(</span><span class="s">&#39;git pull /my/path/to/dev/area/&#39;</span><span class="p">)</span>
+<span class="lineno">13</span>         <span class="n">local</span><span class="p">(</span><span class="s">&#39;python manage.py migrate myapp&#39;</span><span class="p">)</span>
+<span class="lineno">14</span>         <span class="n">local</span><span class="p">(</span><span class="s">&#39;python manage.py test myapp&#39;</span><span class="p">)</span>
+<span class="lineno">15</span>         <span class="n">local</span><span class="p">(</span><span class="s">&#39;/my/command/to/restart/webserver&#39;</span><span class="p">)</span></code></pre></div>
+
+<p>This will pull your changes from the development master branch, run any migrations you’ve made, run your tests, and restart your webserver. All in one simple command from the command line. If one of those steps fails, the script stops and reports what happened. Once you fix the issue, there is no need to run the steps manually. Simply rerun the deploy command and all will be well.</p>
+
+<p>So now that we have our fabfile.py created, how do we actually deploy? Simple. Just run:</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span>  fab prepare_deployment
+<span class="gp">&gt;</span>  fab deploy</code></pre></div>
+
+<p>Finally, you could separate your development settings from your production settings, especially passwords, apis keys and ids and so on. You only need to take all your confidential elements and put them in a file, ‘local_settings.py’ (this file should be different depending on the environment) and import everything from this file in your settings.py file.</p>
+
+<p>Et voila, you have a working Django project ready to serve your project.</p>
+
+            
+<div class="social">
+  
+  <div class='twitter'>
+    <a href="https://twitter.com/share" class="twitter-share-button"  data-text="Django the right way." data-related="mmourafiq">Tweet</a>
+  </div>
+  
+
+  
+  <div class='facebook'>
+    <div class="fb-share-button" data-layout="button_count"></div>
+  </div>
+  
+
+  
+  <div class='google'>
+    <div class="g-plusone" data-size="medium"></div>
+  </div>
+  
+    
+  
+  <div class='hn'>
+    <a href="https://news.ycombinator.com/submit" class="hn-button" data-title="Django the right way." data-url="http://mourafiq.com/2012/08/01/django-the-right-way.html" data-count="horizontal">Vote on Hacker News</a>
+  </div>
+  
+
+  
+  <div class='reddit'>
+    <a href="//www.reddit.com/submit" onclick="window.open('//www.reddit.com/submit?url=http://mourafiq.com/2012/08/01/django-the-right-way.html&title=Django+the+right+way.'); return false"> <img src="//www.redditstatic.com/spreddit7.gif" alt="submit to reddit" border="0" /> </a>
+  </div>
+  
+</div>
+
+        </section>
+
+        <footer>
+            <address>
+                <img src="/images/logo.png">
+                <p>
+                Written by <strong><a rel="author" href="https://twitter.com/mmourafiq." title="Mourad Mourafiq." target="_blank">Mourad Mourafiq.</a></strong><br>
+                    <span class="muted">Maths, Technologie, Philosophie, Startups, ...</span>
+                </p>
+            </address>
+            
+            
+            <section class="post_summary">
+                <h3 class="title">Next up: <a href="/2012/08/15/splitting-django-models.html" rel="prefetch">Splitting Django models.</a></h3>
+                <p>Sometimes, it just makes sense to split up your models over multiple files instead of populating one models.py file. Allowing simple organization, easy maintenance clarity for new coder.</p>
+                <hr>
+            </section>
+             
+            
+            
+            <section class="post_summary">
+                <h3 class="title">Previous story: <a href="/2012/07/15/best-of-django.html" rel="prefetch">What makes django amazing!</a></h3>
+                <p>My favourite Django-apps and packages that i use in almost every Django project.</p>
+                <hr>
+            </section>
+             
+            
+            <section>
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'mourafiq';
+
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+            </section>
+            
+        </footer>
+    </div>
+</article>
+
+
+    <footer class="site-footer">
+        <div class="container">
+            &copy; 2015 Mourad Mourafiq
+
+            <nav>
+                <a href="/">Blog</a> &middot;
+                <a href="/about.html">About</a>
+            </nav>
+
+            <nav class="social">
+                
+<a href="https://twitter.com/mmourafiq" title="Follow on Twitter" target="_blank"><i class="icon icon-twitter"></i></a>
+
+
+<a href="https://github.com/mouradmourafiq" title="Watch on Github" target="_blank"><i class="icon icon-github"></i></a>
+
+
+<a href="/atom.xml" title="RSS Feed">
+  <i class="icon icon-rss"></i>
+</a>
+
+            </nav>
+            <div>Based on Incorporated theme by <a href="https://sendtoinc.com">Inc</a></div>
+        </div>
+    </footer>
+
+</body>
+</html>

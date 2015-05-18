@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>End to end web app with Django-Rest-Framework & AngularJS. &mdash; Mourad Mourafiq</title>
+    <!--[if lt IE 9]><script src='https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js'></script><![endif]-->
+    
+    <link rel="stylesheet" href="/assets/app.css">
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script src="/assets/app.js"></script>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+<script>
+  var HN=[];HN.factory=function(e){return function(){HN.push([e].concat(Array.prototype.slice.call(arguments,0)))};},HN.on=HN.factory("on"),HN.once=HN.factory("once"),HN.off=HN.factory("off"),HN.emit=HN.factory("emit"),HN.load=function(){var e="hn-button.js";if(document.getElementById(e))return;var t=document.createElement("script");t.id=e,t.src="//hn-button.herokuapp.com/hn-button.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n)},HN.load();</script>
+</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-34892053-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+    <link rel="shortcut icon" href="/favicon.ico?v2" type="image/x-icon" />
+    <link rel="alternate" type="application/atom+xml" title="Mourad Mourafiq" href="/atom.xml" />
+    <meta name="title" content="End to end web app with Django-Rest-Framework & AngularJS. ">
+    <link rel="canonical" href="http://mourafiq.com/2013/07/15/end-to-end-web-app-with-django-angular-2.html">
+     
+           
+    <meta property="og:title" content="End to end web app with Django-Rest-Framework & AngularJS."/>
+    <meta property="og:url" content="http://mourafiq.com/2013/07/15/end-to-end-web-app-with-django-angular-2.html"/>
+    <meta property="og:image" content="http://mourafiq.com/images/posts/django+angular.png"/>
+    
+    <meta property="og:description" content="[Part 2]."/>
+    <meta name="description" content="[Part 2]."/>
+    
+    <meta property="og:site_name" content="Mourad Mourafiq">
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</head>
+<body>
+
+    <header class="site-header">
+        <nav>
+            <a class="brand" href="/">
+                <img src="/images/logo.png" alt="Inc">
+            </a>
+            <a href="/about.html">About</a>
+        </nav>
+    </header>
+
+    
+<div class="cover  article-cover " style="background-image:url(/images/posts/django+angular.png)"></div>
+
+
+<div class='cover-caption'><a href='/about.html#pictures'>django+angular</a></div>
+
+
+<article >
+    <div class="container">
+        <header>
+            
+            <div class="meta">
+                <!--
+                By
+                <address><a rel="author" href="" title="Mourad Mourafiq." target="_blank">
+                    Mourad Mourafiq.
+                </a></address> &mdash;
+                -->
+                <time pubdate datetime="2013-15-July" title="Jul 15, 2013">
+                    Jul 15, 2013
+                </time> &mdash;
+                
+22 min read
+            </div>
+            
+            <h1 class="title">End to end web app with Django-Rest-Framework & AngularJS.</h1>
+            <h2 class="subtitle">[Part 2].</h2>
+        </header>
+
+        <section>
+            <p>Let’s pick up where we left off. If you haven’t already, make sure you go through part1 to create your base Django app with the Django REST Framework API setup.</p>
+
+<p>Now, that we have our backend up and runing, we can get our hands dirty using AngularJs. We will create a simple one page app:</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span>  git checkout part2</code></pre></div>
+
+<p>Let’s create this one page served by our Django project.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="lineno"> 1</span> {% extends &quot;base.html&quot; %}
+<span class="lineno"> 2</span> {% load i18n %}
+<span class="lineno"> 3</span> {% block extra_head %}
+<span class="lineno"> 4</span>     <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;keywords&quot;</span> <span class="na">content=</span><span class="s">&quot;&quot;</span><span class="nt">/&gt;</span>
+<span class="lineno"> 5</span>     <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;description&quot;</span> <span class="na">content=</span><span class="s">&quot;&quot;</span><span class="nt">/&gt;</span>
+<span class="lineno"> 6</span>     <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;{{ STATIC_URL }}js/app/controllers/app-controller.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="lineno"> 7</span>     <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;{{ STATIC_URL }}js/app/controllers/feed-controller.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="lineno"> 8</span>     <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;{{ STATIC_URL }}js/app/controllers/posts-controller.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="lineno"> 9</span>     <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;{{ STATIC_URL }}js/app/services/app-service.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="lineno">10</span>     <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;{{ STATIC_URL }}js/app/services/posts-service.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="lineno">11</span>     <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;{{ STATIC_URL }}js/app/directives/directives.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="lineno">12</span>     <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;{{ STATIC_URL }}js/app/filters/filters.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="lineno">13</span> {% endblock %}
+<span class="lineno">14</span> {% block content %}
+<span class="lineno">15</span>     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;padded-content&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">16</span>         <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;main-content&quot;</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">17</span>             <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">18</span>                 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;span12&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">19</span>                     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;pending-bg&quot;</span> <span class="na">pendingbar</span><span class="nt">&gt;</span>
+<span class="lineno">20</span>                         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-warning&quot;</span><span class="nt">&gt;</span>loading ...<span class="nt">&lt;/div&gt;</span>
+<span class="lineno">21</span>                     <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">22</span>                 <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">23</span>              <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">24</span>                 <span class="nt">&lt;ng-view</span> <span class="na">viewstate</span><span class="nt">&gt;&lt;/ng-view&gt;</span>
+<span class="lineno">25</span>         <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">26</span>     <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">27</span> {% endblock %}
+<span class="lineno">28</span> {% block extra_content %}
+<span class="lineno">29</span> <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="lineno">30</span> {% endblock %}</code></pre></div>
+
+<p>As you can see, our “index” page is very simple, it inherits from a “base” page, and has two important features, or new html tags. This tags, directives in the angular language, extend our html abilities. We will go through this a bit later.</p>
+
+<p>For now, let’s have a look at the structure of our angular app.</p>
+
+<p>N.B: There are a couple of different ways we can add Angular into our application. In this project, I didn’t follow any particular one.</p>
+
+<ul>
+  <li>static
+    <ul>
+      <li>css</li>
+      <li>img</li>
+      <li>js
+        <ul>
+          <li>app</li>
+          <li>controllers</li>
+          <li>directives</li>
+          <li>filters</li>
+          <li>services</li>
+          <li>views</li>
+          <li>app.js</li>
+        </ul>
+      </li>
+      <li>libs</li>
+    </ul>
+  </li>
+</ul>
+
+<p>My angular app will live under the folder app following this particular structure. At this point it is fairly simple, and should allow us to do basic interaction with the backend (create post, list posts, view a post by id, and edit a post).</p>
+
+<p><strong>App.js</strong></p>
+
+<p>First thing first, let’s start with the “app.js”. This file is important because it is there where we set some global settings, and set the routing of our app.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno"> 1</span> <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+<span class="lineno"> 2</span>  
+<span class="lineno"> 3</span> <span class="c1">//(1)</span>
+<span class="lineno"> 4</span> <span class="kd">var</span> <span class="nx">Blog</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">&quot;Blog&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ui.bootstrap&quot;</span><span class="p">,</span> <span class="s2">&quot;ngCookies&quot;</span><span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$interpolateProvider</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 5</span>         <span class="nx">$interpolateProvider</span><span class="p">.</span><span class="nx">startSymbol</span><span class="p">(</span><span class="s2">&quot;{[{&quot;</span><span class="p">);</span>
+<span class="lineno"> 6</span>         <span class="nx">$interpolateProvider</span><span class="p">.</span><span class="nx">endSymbol</span><span class="p">(</span><span class="s2">&quot;}]}&quot;</span><span class="p">);</span>
+<span class="lineno"> 7</span>     <span class="p">}</span>
+<span class="lineno"> 8</span> <span class="p">);</span>
+<span class="lineno"> 9</span>  
+<span class="lineno">10</span> <span class="c1">//(2)</span>
+<span class="lineno">11</span> <span class="nx">Blog</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">$http</span><span class="p">,</span> <span class="nx">$cookies</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">12</span>     <span class="nx">$http</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">common</span><span class="p">[</span><span class="s1">&#39;X-CSRFToken&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">$cookies</span><span class="p">[</span><span class="s1">&#39;csrftoken&#39;</span><span class="p">];</span>
+<span class="lineno">13</span> <span class="p">})</span>
+<span class="lineno">14</span>  
+<span class="lineno">15</span> <span class="c1">//(3)</span>
+<span class="lineno">16</span> <span class="nx">Blog</span><span class="p">.</span><span class="nx">config</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">$routeProvider</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">17</span>     <span class="nx">$routeProvider</span>
+<span class="lineno">18</span>         <span class="p">.</span><span class="nx">when</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="p">{</span>
+<span class="lineno">19</span>             <span class="nx">templateUrl</span><span class="o">:</span> <span class="s2">&quot;static/js/app/views/feed.html&quot;</span><span class="p">,</span>
+<span class="lineno">20</span>             <span class="nx">controller</span><span class="o">:</span> <span class="s2">&quot;FeedController&quot;</span><span class="p">,</span>
+<span class="lineno">21</span>             <span class="nx">resolve</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno">22</span>                 <span class="nx">posts</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">PostService</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">23</span>                     <span class="k">return</span> <span class="nx">PostService</span><span class="p">.</span><span class="nx">list</span><span class="p">();</span>
+<span class="lineno">24</span>                 <span class="p">}</span>
+<span class="lineno">25</span>             <span class="p">}</span>
+<span class="lineno">26</span>         <span class="p">})</span>
+<span class="lineno">27</span>         <span class="p">.</span><span class="nx">when</span><span class="p">(</span><span class="s2">&quot;/post/:id&quot;</span><span class="p">,</span> <span class="p">{</span>
+<span class="lineno">28</span>             <span class="nx">templateUrl</span><span class="o">:</span> <span class="s2">&quot;static/js/app/views/view.html&quot;</span><span class="p">,</span>
+<span class="lineno">29</span>             <span class="nx">controller</span><span class="o">:</span> <span class="s2">&quot;PostController&quot;</span><span class="p">,</span>
+<span class="lineno">30</span>             <span class="nx">resolve</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno">31</span>                 <span class="nx">post</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$route</span><span class="p">,</span> <span class="nx">PostService</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">32</span>                     <span class="kd">var</span> <span class="nx">postId</span> <span class="o">=</span> <span class="nx">$route</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span>
+<span class="lineno">33</span>                     <span class="k">return</span> <span class="nx">PostService</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">postId</span><span class="p">);</span>
+<span class="lineno">34</span>                 <span class="p">}</span>
+<span class="lineno">35</span>             <span class="p">}</span>
+<span class="lineno">36</span>         <span class="p">})</span>
+<span class="lineno">37</span>         <span class="p">.</span><span class="nx">otherwise</span><span class="p">({</span>
+<span class="lineno">38</span>             <span class="nx">redirectTo</span><span class="o">:</span> <span class="s1">&#39;/&#39;</span>
+<span class="lineno">39</span>         <span class="p">})</span>
+<span class="lineno">40</span> <span class="p">})</span></code></pre></div>
+
+<p><strong>(1)</strong>: Since both Angular and Django use double braces, we need to set a new rule for Angular to separate between them. It’s not obligatory, but it is recommended. Especially if you want to get most of both frameworks.</p>
+
+<p>We also add the dependency of ui.bootstrap  and ngCookies.</p>
+
+<p><strong>(2)</strong>:  Sets the CSRF token, this needs angular-cookies.js</p>
+
+<p><strong>(3)</strong>: routing for our app. We have two rules:</p>
+
+<ol>
+  <li>“/” : pull the list of all posts</li>
+  <li>“/post/:id” : the details of a particular post</li>
+</ol>
+
+<p>You should notice that each view is delivered with controller. Also you can notice that we are using the resolve, to load data before changing the view. This have a better user experience, than changing the view and having to wait for the data to load.</p>
+
+<p>Another thing to notice is that we don’t use routeParams,butinsteadweuseroute to access the params. Because $routeParams doesn’t get resolved until after the route is changed.</p>
+
+<p><strong>Directives</strong></p>
+
+<p>To make the user experience even better, we will create some directives.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Blog</span><span class="p">.</span><span class="nx">directive</span><span class="p">(</span><span class="s1">&#39;timeAgo&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$timeout</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="nx">restrict</span><span class="o">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span>
+        <span class="nx">scope</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;@&#39;</span>
+        <span class="p">},</span>
+        <span class="nx">link</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">scope</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">attrs</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">updateTime</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">attrs</span><span class="p">.</span><span class="nx">title</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">elem</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">moment</span><span class="p">(</span><span class="nx">attrs</span><span class="p">.</span><span class="nx">title</span><span class="p">).</span><span class="nx">fromNow</span><span class="p">());</span>
+                    <span class="nx">$timeout</span><span class="p">(</span><span class="nx">updateTime</span><span class="p">,</span> <span class="mi">15000</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">};</span>
+            <span class="nx">scope</span><span class="p">.</span><span class="nx">$watch</span><span class="p">(</span><span class="nx">attrs</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span> <span class="nx">updateTime</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+<span class="p">});</span>
+ 
+<span class="nx">Blog</span><span class="p">.</span><span class="nx">directive</span><span class="p">(</span><span class="s1">&#39;pendingbar&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;$rootScope&#39;</span><span class="p">,</span>
+    <span class="kd">function</span> <span class="p">(</span><span class="nx">$rootScope</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="nx">link</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">scope</span><span class="p">,</span> <span class="nx">element</span><span class="p">,</span> <span class="nx">attrs</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">element</span><span class="p">.</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;hide&#39;</span><span class="p">);</span>
+                <span class="nx">$rootScope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s1">&#39;$routeChangeStart&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                    <span class="nx">element</span><span class="p">.</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">&#39;hide&#39;</span><span class="p">);</span>
+                <span class="p">});</span>
+                <span class="nx">$rootScope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s1">&#39;$routeChangeSuccess&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                    <span class="nx">element</span><span class="p">.</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;hide&#39;</span><span class="p">);</span>
+                <span class="p">});</span>
+                <span class="nx">$rootScope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s1">&#39;$routeChangeError&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                    <span class="nx">element</span><span class="p">.</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">&#39;hide&#39;</span><span class="p">);</span>
+                <span class="p">});</span>
+            <span class="p">}</span>
+        <span class="p">};</span>
+    <span class="p">}]);</span>
+ 
+<span class="nx">Blog</span><span class="p">.</span><span class="nx">directive</span><span class="p">(</span><span class="s1">&#39;viewstate&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;$rootScope&#39;</span><span class="p">,</span>
+    <span class="kd">function</span> <span class="p">(</span><span class="nx">$rootScope</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="nx">link</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">scope</span><span class="p">,</span> <span class="nx">element</span><span class="p">,</span> <span class="nx">attrs</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">element</span><span class="p">.</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;hide&#39;</span><span class="p">);</span>
+                <span class="nx">$rootScope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s1">&#39;$routeChangeStart&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                    <span class="nx">element</span><span class="p">.</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;hide&#39;</span><span class="p">);</span>
+                <span class="p">});</span>
+                <span class="nx">$rootScope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s1">&#39;$routeChangeSuccess&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                    <span class="nx">element</span><span class="p">.</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">&#39;hide&#39;</span><span class="p">);</span>
+                <span class="p">});</span>
+                <span class="nx">$rootScope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s1">&#39;$routeChangeError&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                    <span class="nx">element</span><span class="p">.</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;hide&#39;</span><span class="p">);</span>
+                <span class="p">});</span>
+            <span class="p">}</span>
+        <span class="p">};</span>
+    <span class="p">}]);</span></code></pre></div>
+
+<ul>
+  <li>timeAgo: Formats a date as the time since creation. What is particular without this directive is that it updats itself with refreshing the page.</li>
+  <li>pendingBar : This is a pending bar that shows when the user try to switch to another view.</li>
+  <li>viewState : This hides the view until the routing is completed.</li>
+</ul>
+
+<p><strong>Services</strong></p>
+
+<p>Our Angular part is going to access the data from our API using servieces. ngResource enables interation with RESTful server-side data sources, but in this post we will be using http and q.</p>
+
+<p>Angular services are singletons that carry out specific tasks common to web apps. Services are commonly used to perform the XHR interaction with the server.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno">1</span> <span class="nx">Blog</span><span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">&#39;GlobalService&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<span class="lineno">2</span>     <span class="kd">var</span> <span class="nx">vars</span> <span class="o">=</span> <span class="p">{</span>
+<span class="lineno">3</span>         <span class="nx">is_authenticated</span><span class="o">:</span> <span class="kc">false</span>
+<span class="lineno">4</span>     <span class="p">}</span>
+<span class="lineno">5</span> 	<span class="k">return</span> <span class="nx">vars</span><span class="p">;</span>
+<span class="lineno">6</span> <span class="p">});</span></code></pre></div>
+
+<p>Our first service will allow to communicate between controllers and hold global variables. You can put some informations from the request [for example the context].</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno"> 1</span> <span class="nx">Blog</span><span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">&#39;PostService&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$http</span><span class="p">,</span> <span class="nx">$q</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="kd">var</span> <span class="nx">api_url</span> <span class="o">=</span> <span class="s2">&quot;/posts/&quot;</span><span class="p">;</span>
+<span class="lineno"> 3</span>     <span class="k">return</span> <span class="p">{</span>
+<span class="lineno"> 4</span>         <span class="nx">get</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">post_id</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 5</span>             <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">api_url</span> <span class="o">+</span> <span class="nx">post_id</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span><span class="p">;</span>
+<span class="lineno"> 6</span>             <span class="kd">var</span> <span class="nx">defer</span> <span class="o">=</span> <span class="nx">$q</span><span class="p">.</span><span class="nx">defer</span><span class="p">();</span>
+<span class="lineno"> 7</span>             <span class="nx">$http</span><span class="p">({</span><span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="nx">url</span><span class="o">:</span> <span class="nx">url</span><span class="p">}).</span>
+<span class="lineno"> 8</span>                 <span class="nx">success</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">status</span><span class="p">,</span> <span class="nx">headers</span><span class="p">,</span> <span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 9</span>                     <span class="nx">defer</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="lineno">10</span>                 <span class="p">})</span>
+<span class="lineno">11</span>                 <span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">status</span><span class="p">,</span> <span class="nx">headers</span><span class="p">,</span> <span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">12</span>                     <span class="nx">defer</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="nx">status</span><span class="p">);</span>
+<span class="lineno">13</span>                 <span class="p">});</span>
+<span class="lineno">14</span>             <span class="k">return</span> <span class="nx">defer</span><span class="p">.</span><span class="nx">promise</span><span class="p">;</span>
+<span class="lineno">15</span>         <span class="p">},</span>
+<span class="lineno">16</span>         <span class="nx">list</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<span class="lineno">17</span>             <span class="kd">var</span> <span class="nx">defer</span> <span class="o">=</span> <span class="nx">$q</span><span class="p">.</span><span class="nx">defer</span><span class="p">();</span>
+<span class="lineno">18</span>             <span class="nx">$http</span><span class="p">({</span><span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="nx">url</span><span class="o">:</span> <span class="nx">api_url</span><span class="p">}).</span>
+<span class="lineno">19</span>                 <span class="nx">success</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">status</span><span class="p">,</span> <span class="nx">headers</span><span class="p">,</span> <span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">20</span>                     <span class="nx">defer</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="lineno">21</span>                 <span class="p">}).</span><span class="nx">error</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">status</span><span class="p">,</span> <span class="nx">headers</span><span class="p">,</span> <span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">22</span>                     <span class="nx">defer</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="nx">status</span><span class="p">);</span>
+<span class="lineno">23</span>                 <span class="p">});</span>
+<span class="lineno">24</span>             <span class="k">return</span> <span class="nx">defer</span><span class="p">.</span><span class="nx">promise</span><span class="p">;</span>
+<span class="lineno">25</span>         <span class="p">},</span>
+<span class="lineno">26</span>         <span class="nx">update</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">post</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">27</span>             <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">api_url</span> <span class="o">+</span> <span class="nx">post</span><span class="p">.</span><span class="nx">id</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span><span class="p">;</span>
+<span class="lineno">28</span>             <span class="kd">var</span> <span class="nx">defer</span> <span class="o">=</span> <span class="nx">$q</span><span class="p">.</span><span class="nx">defer</span><span class="p">();</span>
+<span class="lineno">29</span>             <span class="nx">$http</span><span class="p">({</span><span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;PUT&#39;</span><span class="p">,</span>
+<span class="lineno">30</span>                 <span class="nx">url</span><span class="o">:</span> <span class="nx">url</span><span class="p">,</span>
+<span class="lineno">31</span>                 <span class="nx">data</span><span class="o">:</span> <span class="nx">post</span><span class="p">}).</span>
+<span class="lineno">32</span>                 <span class="nx">success</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">status</span><span class="p">,</span> <span class="nx">headers</span><span class="p">,</span> <span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">33</span>                     <span class="nx">defer</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="lineno">34</span>                 <span class="p">}).</span><span class="nx">error</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">status</span><span class="p">,</span> <span class="nx">headers</span><span class="p">,</span> <span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">35</span>                     <span class="nx">defer</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="nx">status</span><span class="p">);</span>
+<span class="lineno">36</span>                 <span class="p">});</span>
+<span class="lineno">37</span>             <span class="k">return</span> <span class="nx">defer</span><span class="p">.</span><span class="nx">promise</span><span class="p">;</span>
+<span class="lineno">38</span>         <span class="p">},</span>
+<span class="lineno">39</span>         <span class="nx">save</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">post</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">40</span>             <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">api_url</span><span class="p">;</span>
+<span class="lineno">41</span>             <span class="kd">var</span> <span class="nx">defer</span> <span class="o">=</span> <span class="nx">$q</span><span class="p">.</span><span class="nx">defer</span><span class="p">();</span>
+<span class="lineno">42</span>             <span class="nx">$http</span><span class="p">({</span><span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+<span class="lineno">43</span>                 <span class="nx">url</span><span class="o">:</span> <span class="nx">url</span><span class="p">,</span>
+<span class="lineno">44</span>                 <span class="nx">data</span><span class="o">:</span> <span class="nx">post</span><span class="p">}).</span>
+<span class="lineno">45</span>                 <span class="nx">success</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">status</span><span class="p">,</span> <span class="nx">headers</span><span class="p">,</span> <span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">46</span>                     <span class="nx">defer</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="lineno">47</span>                 <span class="p">}).</span><span class="nx">error</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">status</span><span class="p">,</span> <span class="nx">headers</span><span class="p">,</span> <span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">48</span>                     <span class="nx">defer</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="nx">status</span><span class="p">);</span>
+<span class="lineno">49</span>                 <span class="p">});</span>
+<span class="lineno">50</span>             <span class="k">return</span> <span class="nx">defer</span><span class="p">.</span><span class="nx">promise</span><span class="p">;</span>
+<span class="lineno">51</span>         <span class="p">},</span>
+<span class="lineno">52</span>     <span class="p">}</span>
+<span class="lineno">53</span> <span class="p">});</span></code></pre></div>
+
+<p>The second service, is an object for accessing a Post object of our REST API.</p>
+
+<p><strong>Controllers</strong></p>
+
+<p>For this app, we create 3 controllers.</p>
+
+<p>A controller to initialize our app. This is a global controller that we put at the beginning of our app.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno"> 1</span> <span class="kd">var</span> <span class="nx">appController</span> <span class="o">=</span> <span class="nx">Blog</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;AppController&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$rootScope</span><span class="p">,</span> <span class="nx">$location</span><span class="p">,</span> <span class="nx">GlobalService</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="kd">var</span> <span class="nx">failureCb</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">status</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 3</span>         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">status</span><span class="p">);</span>
+<span class="lineno"> 4</span>     <span class="p">};</span>
+<span class="lineno"> 5</span>     <span class="nx">$scope</span><span class="p">.</span><span class="nx">globals</span> <span class="o">=</span> <span class="nx">GlobalService</span><span class="p">;</span>
+<span class="lineno"> 6</span>  
+<span class="lineno"> 7</span>     <span class="nx">$scope</span><span class="p">.</span><span class="nx">initialize</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">is_authenticated</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 8</span>         <span class="nx">$scope</span><span class="p">.</span><span class="nx">globals</span><span class="p">.</span><span class="nx">is_authenticated</span> <span class="o">=</span> <span class="nx">is_authenticated</span><span class="p">;</span>
+<span class="lineno"> 9</span>     <span class="p">};</span>
+<span class="lineno">10</span> <span class="p">})</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="lineno">1</span> <span class="nt">&lt;body</span> <span class="na">data-spy=</span><span class="s">&quot;scroll&quot;</span> <span class="na">id=</span><span class="s">&quot;index&quot;</span> <span class="na">style=</span><span class="s">&quot;zoom: 1;&quot;</span> <span class="na">ng-controller=</span><span class="s">&quot;AppController&quot;</span> <span class="na">ng-init=</span><span class="s">&quot;initialize(&#39;&#39;)&quot;</span><span class="nt">&gt;</span></code></pre></div>
+
+<p>A controller to manage the list of posts, and create new ones</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno"> 1</span> <span class="nx">Blog</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;FeedController&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">GlobalService</span><span class="p">,</span> <span class="nx">PostService</span><span class="p">,</span> <span class="nx">posts</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="nx">$scope</span><span class="p">.</span><span class="nx">posts</span> <span class="o">=</span> <span class="nx">posts</span><span class="p">;</span>
+<span class="lineno"> 3</span>     <span class="nx">$scope</span><span class="p">.</span><span class="nx">globals</span> <span class="o">=</span> <span class="nx">GlobalService</span><span class="p">;</span>
+<span class="lineno"> 4</span>     <span class="c1">//options for modals</span>
+<span class="lineno"> 5</span>     <span class="nx">$scope</span><span class="p">.</span><span class="nx">opts</span> <span class="o">=</span> <span class="p">{</span>
+<span class="lineno"> 6</span>         <span class="nx">backdropFade</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="lineno"> 7</span>         <span class="nx">dialogFade</span><span class="o">:</span> <span class="kc">true</span>
+<span class="lineno"> 8</span>     <span class="p">};</span>
+<span class="lineno"> 9</span>     <span class="c1">//open modals</span>
+<span class="lineno">10</span>     <span class="nx">$scope</span><span class="p">.</span><span class="nx">open</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">11</span>         <span class="k">if</span> <span class="p">(</span><span class="nx">action</span> <span class="o">===</span> <span class="s1">&#39;create&#39;</span><span class="p">){</span>
+<span class="lineno">12</span>             <span class="nx">$scope</span><span class="p">.</span><span class="nx">postModalCreate</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="lineno">13</span>             <span class="nx">$scope</span><span class="p">.</span><span class="nx">post</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span>
+<span class="lineno">14</span>         <span class="p">};</span>
+<span class="lineno">15</span>     <span class="p">};</span>
+<span class="lineno">16</span>     <span class="c1">//close modals</span>
+<span class="lineno">17</span>     <span class="nx">$scope</span><span class="p">.</span><span class="nx">close</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">18</span>         <span class="k">if</span> <span class="p">(</span><span class="nx">action</span> <span class="o">===</span> <span class="s1">&#39;create&#39;</span><span class="p">){</span>
+<span class="lineno">19</span>             <span class="nx">$scope</span><span class="p">.</span><span class="nx">postModalCreate</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="lineno">20</span>         <span class="p">};</span>
+<span class="lineno">21</span>     <span class="p">};</span>
+<span class="lineno">22</span>     <span class="c1">//calling board service</span>
+<span class="lineno">23</span>     <span class="nx">$scope</span><span class="p">.</span><span class="nx">create</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<span class="lineno">24</span>         <span class="nx">PostService</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">post</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">25</span>             <span class="nx">$scope</span><span class="p">.</span><span class="nx">post</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+<span class="lineno">26</span>             <span class="nx">$scope</span><span class="p">.</span><span class="nx">posts</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="lineno">27</span>             <span class="nx">$scope</span><span class="p">.</span><span class="nx">postModalCreate</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="lineno">28</span>         <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">status</span><span class="p">){</span>
+<span class="lineno">29</span>             <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">status</span><span class="p">);</span>
+<span class="lineno">30</span>         <span class="p">});</span>
+<span class="lineno">31</span>     <span class="p">};</span>
+<span class="lineno">32</span> <span class="p">});</span></code></pre></div>
+
+<p>A controller to view and edit a single post</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno"> 1</span> <span class="nx">Blog</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;PostController&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$routeParams</span><span class="p">,</span> <span class="nx">$location</span><span class="p">,</span> <span class="nx">PostService</span><span class="p">,</span> <span class="nx">GlobalService</span><span class="p">,</span> <span class="nx">post</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="nx">$scope</span><span class="p">.</span><span class="nx">post</span> <span class="o">=</span> <span class="nx">post</span><span class="p">;</span>
+<span class="lineno"> 3</span>     <span class="nx">$scope</span><span class="p">.</span><span class="nx">globals</span> <span class="o">=</span> <span class="nx">GlobalService</span><span class="p">;</span>
+<span class="lineno"> 4</span>     <span class="kd">var</span> <span class="nx">failureCb</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">status</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 5</span>         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">status</span><span class="p">);</span>
+<span class="lineno"> 6</span>     <span class="p">}</span>
+<span class="lineno"> 7</span>     <span class="c1">//options for modals</span>
+<span class="lineno"> 8</span>     <span class="nx">$scope</span><span class="p">.</span><span class="nx">opts</span> <span class="o">=</span> <span class="p">{</span>
+<span class="lineno"> 9</span>         <span class="nx">backdropFade</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="lineno">10</span>         <span class="nx">dialogFade</span><span class="o">:</span> <span class="kc">true</span>
+<span class="lineno">11</span>     <span class="p">};</span>
+<span class="lineno">12</span>     <span class="c1">//open modals</span>
+<span class="lineno">13</span>     <span class="nx">$scope</span><span class="p">.</span><span class="nx">open</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">14</span>         <span class="nx">$scope</span><span class="p">.</span><span class="nx">postName</span> <span class="o">=</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">post</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="lineno">15</span>         <span class="nx">$scope</span><span class="p">.</span><span class="nx">postDescription</span> <span class="o">=</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">post</span><span class="p">.</span><span class="nx">description</span><span class="p">;</span>
+<span class="lineno">16</span>         <span class="k">if</span> <span class="p">(</span><span class="nx">action</span> <span class="o">===</span> <span class="s1">&#39;edit&#39;</span><span class="p">){</span>
+<span class="lineno">17</span>             <span class="nx">$scope</span><span class="p">.</span><span class="nx">postModalEdit</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="lineno">18</span>         <span class="p">};</span>
+<span class="lineno">19</span>     <span class="p">};</span>
+<span class="lineno">20</span>     <span class="c1">//close modals</span>
+<span class="lineno">21</span>     <span class="nx">$scope</span><span class="p">.</span><span class="nx">close</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">22</span>         <span class="nx">$scope</span><span class="p">.</span><span class="nx">postName</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="lineno">23</span>         <span class="nx">$scope</span><span class="p">.</span><span class="nx">postDescription</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="lineno">24</span>         <span class="k">if</span> <span class="p">(</span><span class="nx">action</span> <span class="o">===</span> <span class="s1">&#39;edit&#39;</span><span class="p">){</span>
+<span class="lineno">25</span>             <span class="nx">$scope</span><span class="p">.</span><span class="nx">postModalEdit</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="lineno">26</span>         <span class="p">};</span>
+<span class="lineno">27</span>     <span class="p">};</span>
+<span class="lineno">28</span>     <span class="c1">//calling board service</span>
+<span class="lineno">29</span>     <span class="nx">$scope</span><span class="p">.</span><span class="nx">update</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<span class="lineno">30</span>         <span class="nx">PostService</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">post</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">31</span>             <span class="nx">$scope</span><span class="p">.</span><span class="nx">post</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+<span class="lineno">32</span>             <span class="nx">$scope</span><span class="p">.</span><span class="nx">postModalEdit</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="lineno">33</span>         <span class="p">},</span> <span class="nx">failureCb</span><span class="p">);</span>
+<span class="lineno">34</span>     <span class="p">};</span>
+<span class="lineno">35</span> <span class="p">});</span></code></pre></div>
+
+<p><strong>filters</strong></p>
+
+<p>For aesthetic purposes, we create a simple filter to truncate the posts’ description.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno"> 1</span> <span class="nx">Blog</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="s1">&#39;truncate&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<span class="lineno"> 2</span>         <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">text</span><span class="p">,</span> <span class="nx">length</span><span class="p">,</span> <span class="nx">end</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 3</span>             <span class="k">if</span> <span class="p">(</span><span class="nb">isNaN</span><span class="p">(</span><span class="nx">length</span><span class="p">))</span>
+<span class="lineno"> 4</span>                 <span class="nx">length</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="lineno"> 5</span>  
+<span class="lineno"> 6</span>             <span class="k">if</span> <span class="p">(</span><span class="nx">end</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span>
+<span class="lineno"> 7</span>                 <span class="nx">end</span> <span class="o">=</span> <span class="s2">&quot;...&quot;</span><span class="p">;</span>
+<span class="lineno"> 8</span>  
+<span class="lineno"> 9</span>             <span class="k">if</span> <span class="p">(</span><span class="nx">text</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;=</span> <span class="nx">length</span> <span class="o">||</span> <span class="nx">text</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="nx">end</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;=</span> <span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">10</span>                 <span class="k">return</span> <span class="nx">text</span><span class="p">;</span>
+<span class="lineno">11</span>             <span class="p">}</span>
+<span class="lineno">12</span>             <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">13</span>                 <span class="k">return</span> <span class="nb">String</span><span class="p">(</span><span class="nx">text</span><span class="p">).</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">length</span><span class="o">-</span><span class="nx">end</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="o">+</span> <span class="nx">end</span><span class="p">;</span>
+<span class="lineno">14</span>             <span class="p">}</span>
+<span class="lineno">15</span>  
+<span class="lineno">16</span>         <span class="p">};</span>
+<span class="lineno">17</span>     <span class="p">});</span></code></pre></div>
+
+<p><strong>Views</strong></p>
+
+<p>We need 2 views:</p>
+
+<p>feed.html : List of posts and creation of new posts</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="lineno"> 1</span> <span class="nt">&lt;br&gt;</span>
+<span class="lineno"> 2</span> <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+<span class="lineno"> 3</span>     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;span9 main&quot;</span><span class="nt">&gt;</span>
+<span class="lineno"> 4</span>         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+<span class="lineno"> 5</span>             <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;span9&quot;</span><span class="nt">&gt;</span>
+<span class="lineno"> 6</span>                 <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;btn&quot;</span> <span class="na">ng-click=</span><span class="s">&quot;open(&#39;create&#39;)&quot;</span><span class="nt">&gt;</span> Create<span class="nt">&lt;/a&gt;</span>
+<span class="lineno"> 7</span>  
+<span class="lineno"> 8</span>                 <span class="nt">&lt;div</span> <span class="na">modal=</span><span class="s">&quot;postModalCreate&quot;</span> <span class="na">close=</span><span class="s">&quot;close(&#39;create&#39;)&quot;</span> <span class="na">options=</span><span class="s">&quot;opts&quot;</span><span class="nt">&gt;</span>
+<span class="lineno"> 9</span>                     <span class="nt">&lt;a</span> <span class="na">ng-click=</span><span class="s">&quot;close(&#39;create&#39;)&quot;</span> <span class="na">class=</span><span class="s">&quot;close&quot;</span> <span class="na">data-dismiss=</span><span class="s">&quot;modal&quot;</span><span class="nt">&gt;</span>×<span class="nt">&lt;/a&gt;</span>
+<span class="lineno">10</span>  
+<span class="lineno">11</span>                     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;modal-header&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">12</span>                         <span class="nt">&lt;h4&gt;</span>Edit tip<span class="nt">&lt;/h4&gt;</span>
+<span class="lineno">13</span>                     <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">14</span>                     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;modal-body&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">15</span>                         <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">16</span>                             <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;control-group&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">17</span>                                 <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;control-label&quot;</span> <span class="na">for=</span><span class="s">&quot;id_title&quot;</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/label&gt;</span>
+<span class="lineno">18</span>  
+<span class="lineno">19</span>                                 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;controls&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">20</span>                                     <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;id_title&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Title&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;post.title&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">21</span>                                 <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">22</span>                             <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">23</span>                             <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;control-group&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">24</span>                                 <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;control-label&quot;</span> <span class="na">for=</span><span class="s">&quot;id_description&quot;</span><span class="nt">&gt;</span>Description<span class="nt">&lt;/label&gt;</span>
+<span class="lineno">25</span>  
+<span class="lineno">26</span>                                 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;controls&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">27</span>                                     <span class="nt">&lt;textarea</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;id_description&quot;</span>
+<span class="lineno">28</span>                                               <span class="na">ng-model=</span><span class="s">&quot;post.description&quot;</span><span class="nt">&gt;&lt;/textarea&gt;</span>
+<span class="lineno">29</span>                                 <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">30</span>                             <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">31</span>                         <span class="nt">&lt;/form&gt;</span>
+<span class="lineno">32</span>                     <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">33</span>                     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;modal-footer&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">34</span>                         <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-success&quot;</span> <span class="na">ng-click=</span><span class="s">&quot;create()&quot;</span><span class="nt">&gt;</span>create<span class="nt">&lt;/button&gt;</span>
+<span class="lineno">35</span>                         <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-danger&quot;</span> <span class="na">ng-click=</span><span class="s">&quot;close(&#39;create&#39;)&quot;</span><span class="nt">&gt;</span>Cancel<span class="nt">&lt;/button&gt;</span>
+<span class="lineno">36</span>                     <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">37</span>                 <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">38</span>             <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">39</span>         <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">40</span>         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span> <span class="na">ng-repeat=</span><span class="s">&quot;post in posts&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">41</span>             <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;span9&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">42</span>                 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;bg&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="lineno">43</span>                 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;overlay&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">44</span>                     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">45</span>                         <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;clip-open&quot;</span> <span class="na">href=</span><span class="s">&quot;{[{post.api_url}]}&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">46</span>                             <span class="nt">&lt;h3&gt;</span>{[{post.title}]}<span class="nt">&lt;/h3&gt;</span>
+<span class="lineno">47</span>                         <span class="nt">&lt;/a&gt;</span>
+<span class="lineno">48</span>  
+<span class="lineno">49</span>                         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;meta clips-note&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">50</span>                             <span class="nt">&lt;p&gt;</span>
+<span class="lineno">51</span>                                 {[{post.description|truncate:150}]}
+<span class="lineno">52</span>                             <span class="nt">&lt;/p&gt;</span>
+<span class="lineno">53</span>                         <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">54</span>                         <span class="nt">&lt;small&gt;&lt;abbr</span> <span class="na">time-ago</span> <span class="na">title=</span><span class="s">&quot;{[{post.created_on}]}&quot;</span> <span class="na">class=</span><span class="s">&quot;date&quot;</span><span class="nt">&gt;&lt;/abbr&gt;&lt;/small&gt;</span>
+<span class="lineno">55</span>                     <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">56</span>                 <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">57</span>             <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">58</span>         <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">59</span>     <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">60</span> <span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+<p>view.html : View and update a  single post.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="lineno"> 1</span> <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+<span class="lineno"> 2</span>     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;span9 main&quot;</span><span class="nt">&gt;</span>
+<span class="lineno"> 3</span>         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+<span class="lineno"> 4</span>             <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;span9&quot;</span><span class="nt">&gt;</span>
+<span class="lineno"> 5</span>                 <span class="nt">&lt;h3&gt;</span>{[{ post.title }]}<span class="nt">&lt;/h3&gt;</span>
+<span class="lineno"> 6</span>                 <span class="nt">&lt;p&gt;</span>
+<span class="lineno"> 7</span>                     {[{ post.description }]}
+<span class="lineno"> 8</span>                 <span class="nt">&lt;/p&gt;</span>
+<span class="lineno"> 9</span>             <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">10</span>         <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">11</span>         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">12</span>             <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;span9&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">13</span>                 <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;btn&quot;</span> <span class="na">ng-click=</span><span class="s">&quot;open(&#39;edit&#39;)&quot;</span><span class="nt">&gt;</span> Edit<span class="nt">&lt;/a&gt;</span>
+<span class="lineno">14</span>                 <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;btn&quot;</span> <span class="na">href=</span><span class="s">&quot;#/&quot;</span><span class="nt">&gt;</span> Go back<span class="nt">&lt;/a&gt;</span>
+<span class="lineno">15</span>                 <span class="nt">&lt;div</span> <span class="na">modal=</span><span class="s">&quot;postModalEdit&quot;</span> <span class="na">close=</span><span class="s">&quot;close(&#39;create&#39;)&quot;</span> <span class="na">options=</span><span class="s">&quot;opts&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">16</span>                     <span class="nt">&lt;a</span> <span class="na">ng-click=</span><span class="s">&quot;close(&#39;edit&#39;)&quot;</span> <span class="na">class=</span><span class="s">&quot;close&quot;</span> <span class="na">data-dismiss=</span><span class="s">&quot;modal&quot;</span><span class="nt">&gt;</span>×<span class="nt">&lt;/a&gt;</span>
+<span class="lineno">17</span>  
+<span class="lineno">18</span>                     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;modal-header&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">19</span>                         <span class="nt">&lt;h4&gt;</span>Edit tip<span class="nt">&lt;/h4&gt;</span>
+<span class="lineno">20</span>                     <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">21</span>                     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;modal-body&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">22</span>                         <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">23</span>                             <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;control-group&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">24</span>                                 <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;control-label&quot;</span> <span class="na">for=</span><span class="s">&quot;id_title&quot;</span><span class="nt">&gt;</span>Title<span class="nt">&lt;/label&gt;</span>
+<span class="lineno">25</span>  
+<span class="lineno">26</span>                                 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;controls&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">27</span>                                     <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;id_title&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Title&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;post.title&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">28</span>                                 <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">29</span>                             <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">30</span>                             <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;control-group&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">31</span>                                 <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;control-label&quot;</span> <span class="na">for=</span><span class="s">&quot;id_description&quot;</span><span class="nt">&gt;</span>Description<span class="nt">&lt;/label&gt;</span>
+<span class="lineno">32</span>  
+<span class="lineno">33</span>                                 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;controls&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">34</span>                                     <span class="nt">&lt;textarea</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;id_description&quot;</span>
+<span class="lineno">35</span>                                               <span class="na">ng-model=</span><span class="s">&quot;post.description&quot;</span><span class="nt">&gt;&lt;/textarea&gt;</span>
+<span class="lineno">36</span>                                 <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">37</span>                             <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">38</span>                         <span class="nt">&lt;/form&gt;</span>
+<span class="lineno">39</span>                     <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">40</span>                     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;modal-footer&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">41</span>                         <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-success&quot;</span> <span class="na">ng-click=</span><span class="s">&quot;update()&quot;</span><span class="nt">&gt;</span>Update<span class="nt">&lt;/button&gt;</span>
+<span class="lineno">42</span>                         <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-danger&quot;</span> <span class="na">ng-click=</span><span class="s">&quot;close(&#39;edit&#39;)&quot;</span><span class="nt">&gt;</span>Cancel<span class="nt">&lt;/button&gt;</span>
+<span class="lineno">43</span>                     <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">44</span>                 <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">45</span>             <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">46</span>         <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">47</span>     <span class="nt">&lt;/div&gt;</span>
+<span class="lineno">48</span> <span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+<p>In the next parts, we’ll add permissions, tags, sorting, searching, and pagination.</p>
+
+            
+<div class="social">
+  
+  <div class='twitter'>
+    <a href="https://twitter.com/share" class="twitter-share-button"  data-text="End to end web app with Django-Rest-Framework & AngularJS." data-related="mmourafiq">Tweet</a>
+  </div>
+  
+
+  
+  <div class='facebook'>
+    <div class="fb-share-button" data-layout="button_count"></div>
+  </div>
+  
+
+  
+  <div class='google'>
+    <div class="g-plusone" data-size="medium"></div>
+  </div>
+  
+    
+  
+  <div class='hn'>
+    <a href="https://news.ycombinator.com/submit" class="hn-button" data-title="End to end web app with Django-Rest-Framework & AngularJS." data-url="http://mourafiq.com/2013/07/15/end-to-end-web-app-with-django-angular-2.html" data-count="horizontal">Vote on Hacker News</a>
+  </div>
+  
+
+  
+  <div class='reddit'>
+    <a href="//www.reddit.com/submit" onclick="window.open('//www.reddit.com/submit?url=http://mourafiq.com/2013/07/15/end-to-end-web-app-with-django-angular-2.html&title=End+to+end+web+app+with+Django-Rest-Framework+%26+AngularJS.'); return false"> <img src="//www.redditstatic.com/spreddit7.gif" alt="submit to reddit" border="0" /> </a>
+  </div>
+  
+</div>
+
+        </section>
+
+        <footer>
+            <address>
+                <img src="/images/logo.png">
+                <p>
+                Written by <strong><a rel="author" href="https://twitter.com/mmourafiq." title="Mourad Mourafiq." target="_blank">Mourad Mourafiq.</a></strong><br>
+                    <span class="muted">Maths, Technologie, Philosophie, Startups, ...</span>
+                </p>
+            </address>
+            
+            
+            <section class="post_summary">
+                <h3 class="title">Next up: <a href="/2013/08/01/end-to-end-web-app-with-django-angular-3.html" rel="prefetch">End to end web app with Django-Rest-Framework & AngularJS.</a></h3>
+                <p>[Part 3].</p>
+                <hr>
+            </section>
+             
+            
+            
+            <section class="post_summary">
+                <h3 class="title">Previous story: <a href="/2013/07/01/end-to-end-web-app-with-django-angular-1.html" rel="prefetch">End to end web app with Django-Rest-Framework & AngularJS.</a></h3>
+                <p>[Part 1].</p>
+                <hr>
+            </section>
+             
+            
+            <section>
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'mourafiq';
+
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+            </section>
+            
+        </footer>
+    </div>
+</article>
+
+
+    <footer class="site-footer">
+        <div class="container">
+            &copy; 2015 Mourad Mourafiq
+
+            <nav>
+                <a href="/">Blog</a> &middot;
+                <a href="/about.html">About</a>
+            </nav>
+
+            <nav class="social">
+                
+<a href="https://twitter.com/mmourafiq" title="Follow on Twitter" target="_blank"><i class="icon icon-twitter"></i></a>
+
+
+<a href="https://github.com/mouradmourafiq" title="Watch on Github" target="_blank"><i class="icon icon-github"></i></a>
+
+
+<a href="/atom.xml" title="RSS Feed">
+  <i class="icon icon-rss"></i>
+</a>
+
+            </nav>
+            <div>Based on Incorporated theme by <a href="https://sendtoinc.com">Inc</a></div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django migrations with South. &mdash; Mourad Mourafiq</title>
+    <!--[if lt IE 9]><script src='https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js'></script><![endif]-->
+    
+    <link rel="stylesheet" href="/assets/app.css">
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script src="/assets/app.js"></script>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+<script>
+  var HN=[];HN.factory=function(e){return function(){HN.push([e].concat(Array.prototype.slice.call(arguments,0)))};},HN.on=HN.factory("on"),HN.once=HN.factory("once"),HN.off=HN.factory("off"),HN.emit=HN.factory("emit"),HN.load=function(){var e="hn-button.js";if(document.getElementById(e))return;var t=document.createElement("script");t.id=e,t.src="//hn-button.herokuapp.com/hn-button.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n)},HN.load();</script>
+</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-34892053-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+    <link rel="shortcut icon" href="/favicon.ico?v2" type="image/x-icon" />
+    <link rel="alternate" type="application/atom+xml" title="Mourad Mourafiq" href="/atom.xml" />
+    <meta name="title" content="Django migrations with South. ">
+    <link rel="canonical" href="http://mourafiq.com/2013/02/15/django-migrations-with-south.html">
+     
+           
+    <meta property="og:title" content="Django migrations with South."/>
+    <meta property="og:url" content="http://mourafiq.com/2013/02/15/django-migrations-with-south.html"/>
+    <meta property="og:image" content="http://mourafiq.com/images/posts/django.png"/>
+    
+    <meta property="og:description" content="Intelligent schema and data migrations for django project."/>
+    <meta name="description" content="Intelligent schema and data migrations for django project."/>
+    
+    <meta property="og:site_name" content="Mourad Mourafiq">
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</head>
+<body>
+
+    <header class="site-header">
+        <nav>
+            <a class="brand" href="/">
+                <img src="/images/logo.png" alt="Inc">
+            </a>
+            <a href="/about.html">About</a>
+        </nav>
+    </header>
+
+    
+<div class="cover  article-cover " style="background-image:url(/images/posts/django.png)"></div>
+
+
+<div class='cover-caption'><a href='/about.html#pictures'>Django</a></div>
+
+
+<article >
+    <div class="container">
+        <header>
+            
+            <div class="meta">
+                <!--
+                By
+                <address><a rel="author" href="" title="Mourad Mourafiq." target="_blank">
+                    Mourad Mourafiq.
+                </a></address> &mdash;
+                -->
+                <time pubdate datetime="2013-15-February" title="Feb 15, 2013">
+                    Feb 15, 2013
+                </time> &mdash;
+                
+4 min read
+            </div>
+            
+            <h1 class="title">Django migrations with South.</h1>
+            <h2 class="subtitle">Intelligent schema and data migrations for django project.</h2>
+        </header>
+
+        <section>
+            <p>South is an “intelligent schema and data migrations for django projects”</p>
+
+<p>In this post we will go through the steps required in order to set up south in your django project.</p>
+
+<h3 id="installation">installation</h3>
+
+<p>To install south:</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span>  pip install south</code></pre></div>
+
+<p>To see the list of management functions offered by south, just type ./manage.py  and go to [south]</p>
+
+<p>In this post we will cover the following three functionalities of south:</p>
+
+<ol>
+  <li>schemamigration</li>
+  <li>migrate</li>
+  <li>datamigrate : changing data within our database to match the new structure of schema</li>
+</ol>
+
+<h3 id="schema-migration">Schema migration</h3>
+
+<p>Suppose we have a posts app with a model: Post</p>
+
+<p>The first thing to do is tell south to manage and builld history migrations for this app. This is called initial migration:</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span>  ./manage schemamigration posts --initial</code></pre></div>
+
+<p>South will show us that we can apply this first migration with migrate.</p>
+
+<p>Now, we are not going to apply this migration yet, first, we are going to add a new model and apply the migrationschema, but this time with auto instead of initial. Auto tells south to automatically detect any changes in our models and update our schema and the migration appropriately.</p>
+
+<h3 id="migrate">migrate</h3>
+
+<p>To apply migrations we need to use the command :</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span>  ./manage.py migrate posts</code></pre></div>
+
+<p>N.B. if you are updating tables that are already in the database, the initial migration should be followed by the statement –fake.</p>
+
+<p>Now, suppose we want to change the model. All we need to do is to go back and run:</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span>  ./manage.py schemamigration posts --auto</code></pre></div>
+
+<p>Depending on the changes you have made. You will be asked to specify a default value.</p>
+
+<ul>
+  <li>You can quit and specify the default values in your django model.</li>
+  <li>Specify a one off value to use for existing columns</li>
+</ul>
+
+<p>Now run the command :</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span>  ./manage.py migrate posts</code></pre></div>
+
+<p>Suppose we missed something, or we are not completely happy with last changes, to roll back the migration we run:</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span>  ./manage.py migrate posts 000X</code></pre></div>
+
+<p>(where “000X” is the migration number, e.g: “0002”)</p>
+
+<p>In case you changed your mind another time and you want to move forward, you only need to run:</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span>  ./manage.py migrate posts</code></pre></div>
+
+<p>If on the other hand you happened to think that migration “x” isn’t what I want, you just need to go ahead a delete it physically from the migrations folder.</p>
+
+<h3 id="data-migration">Data migration</h3>
+
+<p>Now suppose we want to get rid of a field and migrate into two different fields, but keep the data and make some changes. In this case we need to go through 3 stages. Of course these 3 stages are only required when we have data in the initial field and we want to keep them.</p>
+
+<ol>
+  <li>We need to create the new fields in our model, without deleting the initial field.</li>
+  <li>Then we need a data migration; which will process whatever is in the initial field and populate the newly created fields with the appropriate data.</li>
+  <li>Finally we need a schemamigration to get rid of the old field and leave the newly created fields there.</li>
+</ol>
+
+<p>-&gt; Go then and create two new fields. run:</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span>  ./manage.py schemamigration posts -- auto</code></pre></div>
+
+<p>-&gt; We need now a datamigration. run :</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span>  ./manage.py datamigration posts convert_names</code></pre></div>
+
+<p>(where “convert_names” is the name of the data we need to migrate, it creates a file in the migrations folder with an empty forwards and backwards function that we need to fill appropriately)</p>
+
+<p>-&gt; What we need to do is access the models in the database using the orm. e.g:</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="k">def</span> <span class="nf">forwards</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">orm</span><span class="p">):</span> 
+<span class="lineno"> 2</span>     <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">orm</span><span class="o">.</span><span class="n">Author</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">all</span><span class="p">():</span> 
+<span class="lineno"> 3</span>         <span class="k">try</span><span class="p">:</span> 
+<span class="lineno"> 4</span>             <span class="n">a</span><span class="o">.</span><span class="n">first_name</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">second_name</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">)</span>
+<span class="lineno"> 5</span>         <span class="k">except</span><span class="p">:</span>
+<span class="lineno"> 6</span>             <span class="n">a</span><span class="o">.</span><span class="n">first_name</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">second_name</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s">&quot;&quot;</span> 
+<span class="lineno"> 7</span>         <span class="n">c</span><span class="o">.</span><span class="n">save</span><span class="p">()</span> 
+<span class="lineno"> 8</span>  
+<span class="lineno"> 9</span>  <span class="k">def</span> <span class="nf">backwards</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">orm</span><span class="p">):</span> 
+<span class="lineno">10</span>     <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">orm</span><span class="o">.</span><span class="n">Author</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+<span class="lineno">11</span>         <span class="n">a</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+<span class="lineno">12</span>         <span class="n">a</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></code></pre></div>
+
+<p>-&gt; Now we can create another migration to delete the older field. Go to your model and delete the initial field. and then run:</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span>  ./manage.py schemamigration posts --auto</code></pre></div>
+
+            
+<div class="social">
+  
+  <div class='twitter'>
+    <a href="https://twitter.com/share" class="twitter-share-button"  data-text="Django migrations with South." data-related="mmourafiq">Tweet</a>
+  </div>
+  
+
+  
+  <div class='facebook'>
+    <div class="fb-share-button" data-layout="button_count"></div>
+  </div>
+  
+
+  
+  <div class='google'>
+    <div class="g-plusone" data-size="medium"></div>
+  </div>
+  
+    
+  
+  <div class='hn'>
+    <a href="https://news.ycombinator.com/submit" class="hn-button" data-title="Django migrations with South." data-url="http://mourafiq.com/2013/02/15/django-migrations-with-south.html" data-count="horizontal">Vote on Hacker News</a>
+  </div>
+  
+
+  
+  <div class='reddit'>
+    <a href="//www.reddit.com/submit" onclick="window.open('//www.reddit.com/submit?url=http://mourafiq.com/2013/02/15/django-migrations-with-south.html&title=Django+migrations+with+South.'); return false"> <img src="//www.redditstatic.com/spreddit7.gif" alt="submit to reddit" border="0" /> </a>
+  </div>
+  
+</div>
+
+        </section>
+
+        <footer>
+            <address>
+                <img src="/images/logo.png">
+                <p>
+                Written by <strong><a rel="author" href="https://twitter.com/mmourafiq." title="Mourad Mourafiq." target="_blank">Mourad Mourafiq.</a></strong><br>
+                    <span class="muted">Maths, Technologie, Philosophie, Startups, ...</span>
+                </p>
+            </address>
+            
+            
+            <section class="post_summary">
+                <h3 class="title">Next up: <a href="/2013/03/01/estimating-pi.html" rel="prefetch">Estimating Pi with Monte Carlo method.</a></h3>
+                <p>Using the Monte Carlo method to estimate the value of pi.</p>
+                <hr>
+            </section>
+             
+            
+            
+            <section class="post_summary">
+                <h3 class="title">Previous story: <a href="/2013/02/01/json-serializable-django.html" rel="prefetch">[] is not JSON serializable (django).</a></h3>
+                <p>Serializing Django values_list.</p>
+                <hr>
+            </section>
+             
+            
+            <section>
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'mourafiq';
+
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+            </section>
+            
+        </footer>
+    </div>
+</article>
+
+
+    <footer class="site-footer">
+        <div class="container">
+            &copy; 2015 Mourad Mourafiq
+
+            <nav>
+                <a href="/">Blog</a> &middot;
+                <a href="/about.html">About</a>
+            </nav>
+
+            <nav class="social">
+                
+<a href="https://twitter.com/mmourafiq" title="Follow on Twitter" target="_blank"><i class="icon icon-twitter"></i></a>
+
+
+<a href="https://github.com/mouradmourafiq" title="Watch on Github" target="_blank"><i class="icon icon-github"></i></a>
+
+
+<a href="/atom.xml" title="RSS Feed">
+  <i class="icon icon-rss"></i>
+</a>
+
+            </nav>
+            <div>Based on Incorporated theme by <a href="https://sendtoinc.com">Inc</a></div>
+        </div>
+    </footer>
+
+</body>
+</html>

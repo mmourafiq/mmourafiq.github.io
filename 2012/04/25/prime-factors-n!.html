@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Factors of n! &mdash; Mourad Mourafiq</title>
+    <!--[if lt IE 9]><script src='https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js'></script><![endif]-->
+    
+    <link rel="stylesheet" href="/assets/app.css">
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script src="/assets/app.js"></script>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+<script>
+  var HN=[];HN.factory=function(e){return function(){HN.push([e].concat(Array.prototype.slice.call(arguments,0)))};},HN.on=HN.factory("on"),HN.once=HN.factory("once"),HN.off=HN.factory("off"),HN.emit=HN.factory("emit"),HN.load=function(){var e="hn-button.js";if(document.getElementById(e))return;var t=document.createElement("script");t.id=e,t.src="//hn-button.herokuapp.com/hn-button.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n)},HN.load();</script>
+</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-34892053-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+    <link rel="shortcut icon" href="/favicon.ico?v2" type="image/x-icon" />
+    <link rel="alternate" type="application/atom+xml" title="Mourad Mourafiq" href="/atom.xml" />
+    <meta name="title" content="Prime Factors of n! ">
+    <link rel="canonical" href="http://mourafiq.com/2012/04/25/prime-factors-n!.html">
+     
+           
+    <meta property="og:title" content="Prime Factors of n!"/>
+    <meta property="og:url" content="http://mourafiq.com/2012/04/25/prime-factors-n!.html"/>
+    <meta property="og:image" content="http://mourafiq.com/images/posts/math.png"/>
+    
+    <meta property="og:description" content="The purpose of this post is to explain an algorithm for computing the prime factorization of the integer n!."/>
+    <meta name="description" content="The purpose of this post is to explain an algorithm for computing the prime factorization of the integer n!."/>
+    
+    <meta property="og:site_name" content="Mourad Mourafiq">
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</head>
+<body>
+
+    <header class="site-header">
+        <nav>
+            <a class="brand" href="/">
+                <img src="/images/logo.png" alt="Inc">
+            </a>
+            <a href="/about.html">About</a>
+        </nav>
+    </header>
+
+    
+<div class="cover  article-cover " style="background-image:url(/images/posts/math.png)"></div>
+
+
+<div class='cover-caption'><a href='/about.html#pictures'>math.</a></div>
+
+
+<article >
+    <div class="container">
+        <header>
+            
+            <div class="meta">
+                <!--
+                By
+                <address><a rel="author" href="" title="Mourad Mourafiq." target="_blank">
+                    Mourad Mourafiq.
+                </a></address> &mdash;
+                -->
+                <time pubdate datetime="2012-25-April" title="Apr 25, 2012">
+                    Apr 25, 2012
+                </time> &mdash;
+                
+3 min read
+            </div>
+            
+            <h1 class="title">Prime Factors of n!</h1>
+            <h2 class="subtitle">Algorithm for computing the prime factorization of the integer n!</h2>
+        </header>
+
+        <section>
+            <p>The purpose of this post is to explain an algorithm for computing the prime factorization of the integer <script type="math/tex">n!</script>. We covered in a previous post the <a href="/2012/04/01/unique-factorization.html">Unique Factorization Theorem</a> stating that every integer strictly positive could be written as a product of prime numbers. Every prime factor of n is also a prime factor of n!, but usually with a higher multiplicity. Except for the trivial case <script type="math/tex">n = 2</script>, <script type="math/tex">n!</script> always has additional prime factors that <script type="math/tex">n</script> doesn’t have.</p>
+
+<p>Finding prime factors of <script type="math/tex">n!</script> has a great impact on how to calculate the exact values for permutations and combinations, specially when it comes to big numbers.</p>
+
+<p>We shall prove that, for every positive integer n, we have:</p>
+
+<script type="math/tex; mode=display">\begin{align*}
+n! = p_1^{r_1} * p_2^{r_2}* ... * p_i^{r_i}
+\end{align*}</script>
+
+<ul>
+  <li><strong>Theorem1</strong>:</li>
+</ul>
+
+<p>For every positive integer n. Let p be any prime where p &lt;= n. If p is a prime factor of n! then its multiplicity is given by:</p>
+
+<script type="math/tex; mode=display">\begin{align*}
+\sum_k IntPart(n/p^k)\ ,\ where\ IntPart\ is\ integer\ the\ part.
+\end{align*}</script>
+
+<ul>
+  <li><strong>Proof</strong>:</li>
+</ul>
+
+<p>For each <script type="math/tex">k</script> we need to compute how many times <script type="math/tex">p^k</script> appears in the list of numbers between 1 and n. While <script type="math/tex">% <![CDATA[
+p^k <= n %]]></script>, each such appearance contributes</p>
+
+<script type="math/tex; mode=display">\begin{align*}
+IntPart(n/p^k)
+\end{align*}</script>
+
+<p>to the final power of <script type="math/tex">p</script> that is part of the factorization of <script type="math/tex">n!</script></p>
+
+<ul>
+  <li><strong>Theorem2</strong>:</li>
+</ul>
+
+<p>For every positive integer <script type="math/tex">n>1</script>, let <script type="math/tex">p</script> be such that <script type="math/tex">% <![CDATA[
+1<p<=n %]]></script> , let <script type="math/tex">k>1</script> denote any positive integer where <script type="math/tex">% <![CDATA[
+p^{k+1} <= 1 %]]></script> we have then,</p>
+
+<script type="math/tex; mode=display">IntPart(n/p^{k+1}) = IntPart(\frac{IntPart(n/p^k)}{p})</script>
+
+<ul>
+  <li><strong>Proof</strong>:</li>
+</ul>
+
+<p>First note that every multiple of <script type="math/tex">p^{k+1}</script> is also a multiple of <script type="math/tex">p^k</script> . The number of multiples of <script type="math/tex">p^{k+1}</script> is less than or equal to n, if anything, is smaller than the number of multiples of <script type="math/tex">p^k</script> that are less than or equal to <script type="math/tex">n</script>. The last multiple of <script type="math/tex">p^k</script> that is less than or equal to <script type="math/tex">n</script>, if anything, is larger than the last multiple of <script type="math/tex">p^{k+1}</script> that is less than or equal to $n$.</p>
+
+<p>If  <script type="math/tex">p^{k+1} > n</script>, this theorem is still true, but then it says 0 = 0. So in practice we assume <script type="math/tex">% <![CDATA[
+p^{k+1} <= n %]]></script>.</p>
+
+<p>Let <script type="math/tex">r = IntPart(n/p^k) * p^k</script> and <script type="math/tex">s = IntPart()n/p^{k+1}</script> Then <script type="math/tex">r>=s</script>.
+There exits an integer <script type="math/tex">j</script> such that <script type="math/tex">s+j=r</script>, where <script type="math/tex">% <![CDATA[
+0 <= j <= p^{k+1} %]]></script>. That  <script type="math/tex">% <![CDATA[
+j < p^{k+1} %]]></script> is because s is the last multiple of <script type="math/tex">p^{k+1}</script> that is less or equal to <script type="math/tex">n</script>. Which implies that <script type="math/tex">% <![CDATA[
+\frac{j}{p^{k+1}}<1 %]]></script></p>
+
+<p>Finally, <script type="math/tex">r = s + j</script>, <script type="math/tex">IntPart(n/p^k) * p^k = IntPart(n/p^{k+1}) * p^{k+1} + j</script></p>
+
+<p>Now we divide by <script type="math/tex">p^{k+1}</script> in both sides of the equation.</p>
+
+<script type="math/tex; mode=display">\begin{align*}
+IntPart(\frac{IntPart(n/p^k)}{p}) = IntPart(n/p^{k+1})
+\end{align*}</script>
+
+            
+<div class="social">
+  
+  <div class='twitter'>
+    <a href="https://twitter.com/share" class="twitter-share-button"  data-text="Prime Factors of n!" data-related="mmourafiq">Tweet</a>
+  </div>
+  
+
+  
+  <div class='facebook'>
+    <div class="fb-share-button" data-layout="button_count"></div>
+  </div>
+  
+
+  
+  <div class='google'>
+    <div class="g-plusone" data-size="medium"></div>
+  </div>
+  
+    
+  
+  <div class='hn'>
+    <a href="https://news.ycombinator.com/submit" class="hn-button" data-title="Prime Factors of n!" data-url="http://mourafiq.com/2012/04/25/prime-factors-n!.html" data-count="horizontal">Vote on Hacker News</a>
+  </div>
+  
+
+  
+  <div class='reddit'>
+    <a href="//www.reddit.com/submit" onclick="window.open('//www.reddit.com/submit?url=http://mourafiq.com/2012/04/25/prime-factors-n!.html&title=Prime+Factors+of+n%21'); return false"> <img src="//www.redditstatic.com/spreddit7.gif" alt="submit to reddit" border="0" /> </a>
+  </div>
+  
+</div>
+
+        </section>
+
+        <footer>
+            <address>
+                <img src="/images/logo.png">
+                <p>
+                Written by <strong><a rel="author" href="https://twitter.com/mmourafiq." title="Mourad Mourafiq." target="_blank">Mourad Mourafiq.</a></strong><br>
+                    <span class="muted">Maths, Technologie, Philosophie, Startups, ...</span>
+                </p>
+            </address>
+            
+            
+            <section class="post_summary">
+                <h3 class="title">Next up: <a href="/2012/04/30/implementation-prime-factors-n!.html" rel="prefetch">Finding prime factors of n! and their multiplicities</a></h3>
+                <p>The purpose of this post is to write a small algorithm to compute all prime factors of n!, given a positive integer n.</p>
+                <hr>
+            </section>
+             
+            
+            
+            <section class="post_summary">
+                <h3 class="title">Previous story: <a href="/2012/04/15/finding-prime-factors.html" rel="prefetch">Finding prime factors of x</a></h3>
+                <p><p>In a previous post, we showed how any number can be written, in a unique way, as the product of prime numbers.</p>
+
+</p>
+                <hr>
+            </section>
+             
+            
+            <section>
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'mourafiq';
+
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+            </section>
+            
+        </footer>
+    </div>
+</article>
+
+
+    <footer class="site-footer">
+        <div class="container">
+            &copy; 2015 Mourad Mourafiq
+
+            <nav>
+                <a href="/">Blog</a> &middot;
+                <a href="/about.html">About</a>
+            </nav>
+
+            <nav class="social">
+                
+<a href="https://twitter.com/mmourafiq" title="Follow on Twitter" target="_blank"><i class="icon icon-twitter"></i></a>
+
+
+<a href="https://github.com/mouradmourafiq" title="Watch on Github" target="_blank"><i class="icon icon-github"></i></a>
+
+
+<a href="/atom.xml" title="RSS Feed">
+  <i class="icon icon-rss"></i>
+</a>
+
+            </nav>
+            <div>Based on Incorporated theme by <a href="https://sendtoinc.com">Inc</a></div>
+        </div>
+    </footer>
+
+</body>
+</html>

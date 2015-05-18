@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estimating Pi with Monte Carlo method. &mdash; Mourad Mourafiq</title>
+    <!--[if lt IE 9]><script src='https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js'></script><![endif]-->
+    
+    <link rel="stylesheet" href="/assets/app.css">
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script src="/assets/app.js"></script>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+<script>
+  var HN=[];HN.factory=function(e){return function(){HN.push([e].concat(Array.prototype.slice.call(arguments,0)))};},HN.on=HN.factory("on"),HN.once=HN.factory("once"),HN.off=HN.factory("off"),HN.emit=HN.factory("emit"),HN.load=function(){var e="hn-button.js";if(document.getElementById(e))return;var t=document.createElement("script");t.id=e,t.src="//hn-button.herokuapp.com/hn-button.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n)},HN.load();</script>
+</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-34892053-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+    <link rel="shortcut icon" href="/favicon.ico?v2" type="image/x-icon" />
+    <link rel="alternate" type="application/atom+xml" title="Mourad Mourafiq" href="/atom.xml" />
+    <meta name="title" content="Estimating Pi with Monte Carlo method. ">
+    <link rel="canonical" href="http://mourafiq.com/2013/03/01/estimating-pi.html">
+     
+           
+    <meta property="og:title" content="Estimating Pi with Monte Carlo method."/>
+    <meta property="og:url" content="http://mourafiq.com/2013/03/01/estimating-pi.html"/>
+    <meta property="og:image" content="http://mourafiq.com/images/posts/random.jpg"/>
+    
+    <meta property="og:description" content="Using the Monte Carlo method to estimate the value of pi."/>
+    <meta name="description" content="Using the Monte Carlo method to estimate the value of pi."/>
+    
+    <meta property="og:site_name" content="Mourad Mourafiq">
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</head>
+<body>
+
+    <header class="site-header">
+        <nav>
+            <a class="brand" href="/">
+                <img src="/images/logo.png" alt="Inc">
+            </a>
+            <a href="/about.html">About</a>
+        </nav>
+    </header>
+
+    
+<div class="cover  article-cover " style="background-image:url(/images/posts/random.jpg)"></div>
+
+
+<div class='cover-caption'><a href='/about.html#pictures'>Random</a></div>
+
+
+<article >
+    <div class="container">
+        <header>
+            
+            <div class="meta">
+                <!--
+                By
+                <address><a rel="author" href="" title="Mourad Mourafiq." target="_blank">
+                    Mourad Mourafiq.
+                </a></address> &mdash;
+                -->
+                <time pubdate datetime="2013-01-March" title="Mar 01, 2013">
+                    Mar 01, 2013
+                </time> &mdash;
+                
+5 min read
+            </div>
+            
+            <h1 class="title">Estimating Pi with Monte Carlo method.</h1>
+            <h2 class="subtitle">Using the Monte Carlo method to estimate the value of pi.</h2>
+        </header>
+
+        <section>
+            <p><a href="http://en.wikipedia.org/wiki/Monte_Carlo_method">Monte Carlo</a> is statistical method based on a series of random numbers. Monte Carlos are used in a wide-range of physical systems, finance and other research field.</p>
+
+<p>In this post, we are going to use the Monte Carlo method to estimate the value of pi.</p>
+
+<p>First, consider a circle inscribed in a square (as in the figure).</p>
+
+<p><img src="/images/posts/circle-square.gif" alt="circle-square" /></p>
+
+<p>f assume that the radius of the circle is <script type="math/tex">R</script>, then the Area of the circle <script type="math/tex">= Pi * R^2</script> and the Area of the squar <script type="math/tex">= (2 * R)^2 = 4 * R^2</script>.</p>
+
+<p>If we throw a dart blindly inside of the square, what is the probability (P) the dart will actually land inside the circle?</p>
+
+<p>P = Area of the circle / Area of the square  = Pi / 4</p>
+
+<p>So the chances of hitting the circle are Pi / 4.</p>
+
+<p>In other words, <script type="math/tex">pi = 4 * P</script></p>
+
+<p>Let’s try to do this in python:</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno">1</span> <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
+<span class="lineno">2</span> <span class="kn">import</span> <span class="nn">numpy</span>
+<span class="lineno">3</span>  
+<span class="lineno">4</span> <span class="n">NBR_POINTS</span> <span class="o">=</span> <span class="mi">1000000</span>
+<span class="lineno">5</span> <span class="n">RADIUS</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">NBR_POINTS</span><span class="p">)</span>
+<span class="lineno">6</span>  
+<span class="lineno">7</span> <span class="k">print</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">RADIUS</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">RADIUS</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">&lt;</span><span class="n">RADIUS</span><span class="p">,</span><span class="nb">xrange</span><span class="p">(</span><span class="n">NBR_POINTS</span><span class="p">)))</span><span class="o">/</span><span class="n">NBR_POINTS</span><span class="p">)</span><span class="o">*</span><span class="mi">4</span></code></pre></div>
+
+<p>If you have problem with the filter, <a href="http://localhost:4000/2012/03/01/pythonic-lists.html">read this</a>!</p>
+
+<p>To go a little bit further with this we can imagine a map-reduce system to make the estimation faster.</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>  
+<span class="lineno"> 2</span> <span class="kn">import</span> <span class="nn">collections</span>
+<span class="lineno"> 3</span> <span class="kn">import</span> <span class="nn">itertools</span>
+<span class="lineno"> 4</span> <span class="kn">import</span> <span class="nn">multiprocessing</span>
+<span class="lineno"> 5</span> <span class="kn">import</span> <span class="nn">numpy</span>
+<span class="lineno"> 6</span>  
+<span class="lineno"> 7</span> <span class="k">class</span> <span class="nc">MapReduce</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="lineno"> 8</span>     <span class="sd">&quot;&quot;&quot;</span>
+<span class="lineno"> 9</span> <span class="sd">    The map reduce object, should be initialized with:</span>
+<span class="lineno">10</span> <span class="sd">        map_fn</span>
+<span class="lineno">11</span> <span class="sd">        reduce_fn</span>
+<span class="lineno">12</span> <span class="sd">        nbr_workers</span>
+<span class="lineno">13</span> <span class="sd">    &quot;&quot;&quot;</span>
+<span class="lineno">14</span>     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">map_fn</span><span class="p">,</span> <span class="n">reduce_fn</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<span class="lineno">15</span>         <span class="sd">&quot;&quot;&quot;</span>
+<span class="lineno">16</span> <span class="sd">        initiaize the mapreduce object</span>
+<span class="lineno">17</span> <span class="sd">            map_fn : Function to map inputs to intermediate data, takes as </span>
+<span class="lineno">18</span> <span class="sd">            input one arg and returns a tuple (key, value)</span>
+<span class="lineno">19</span> <span class="sd">            reduce_fn : Function to reduce intermediate data to final result</span>
+<span class="lineno">20</span> <span class="sd">            takes as arg keys as produced from the map, and the values associated with it</span>
+<span class="lineno">21</span> <span class="sd">        &quot;&quot;&quot;</span>
+<span class="lineno">22</span>         <span class="bp">self</span><span class="o">.</span><span class="n">map_fn</span> <span class="o">=</span> <span class="n">map_fn</span>
+<span class="lineno">23</span>         <span class="bp">self</span><span class="o">.</span><span class="n">reduce_fn</span> <span class="o">=</span> <span class="n">reduce_fn</span>
+<span class="lineno">24</span>         <span class="bp">self</span><span class="o">.</span><span class="n">pool</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Pool</span><span class="p">(</span><span class="n">num_workers</span><span class="p">)</span>
+<span class="lineno">25</span>         
+<span class="lineno">26</span>     <span class="k">def</span> <span class="nf">partition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mapped_values</span><span class="p">):</span>
+<span class="lineno">27</span>         <span class="sd">&quot;&quot;&quot;</span>
+<span class="lineno">28</span> <span class="sd">        returns the mapped_values organised by their keys. (keys, associated values)</span>
+<span class="lineno">29</span> <span class="sd">        &quot;&quot;&quot;</span> 
+<span class="lineno">30</span>         <span class="n">organised_data</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+<span class="lineno">31</span>         <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">mapped_values</span><span class="p">:</span>
+<span class="lineno">32</span>             <span class="n">organised_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="lineno">33</span>         <span class="k">return</span> <span class="n">organised_data</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+<span class="lineno">34</span>     
+<span class="lineno">35</span>     <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">chunk_size</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="lineno">36</span>         <span class="sd">&quot;&quot;&quot;</span>
+<span class="lineno">37</span> <span class="sd">        process the data through the map reduce functions.</span>
+<span class="lineno">38</span> <span class="sd">        inputs : iterable</span>
+<span class="lineno">39</span> <span class="sd">        chank_size : amount of data to hand to each worker </span>
+<span class="lineno">40</span> <span class="sd">        &quot;&quot;&quot;</span>
+<span class="lineno">41</span>         <span class="n">mapped_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">map_fn</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">chunksize</span> <span class="o">=</span> <span class="n">chunk_size</span><span class="p">)</span>
+<span class="lineno">42</span>         <span class="n">partioned_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="n">mapped_data</span><span class="p">))</span>
+<span class="lineno">43</span>         <span class="n">reduced_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reduce_fn</span><span class="p">,</span> <span class="n">partioned_data</span><span class="p">)</span>
+<span class="lineno">44</span>         <span class="k">return</span> <span class="n">reduced_data</span>
+<span class="lineno">45</span>         
+<span class="lineno">46</span>  
+<span class="lineno">47</span> <span class="n">NBR_POINTS</span> <span class="o">=</span> <span class="mi">1000000</span>
+<span class="lineno">48</span> <span class="n">RADIUS</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">NBR_POINTS</span><span class="p">)</span>
+<span class="lineno">49</span> <span class="n">NBR_WORKERS</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="lineno">50</span> <span class="n">NBR_PER_WORKER</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">NBR_POINTS</span><span class="o">/</span><span class="n">NBR_WORKERS</span><span class="p">)</span>
+<span class="lineno">51</span>  
+<span class="lineno">52</span>  
+<span class="lineno">53</span> <span class="k">def</span> <span class="nf">probability_calculation</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+<span class="lineno">54</span>     <span class="k">print</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">current_process</span><span class="p">()</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s">&#39;calculating&#39;</span><span class="p">,</span> <span class="n">item</span>
+<span class="lineno">55</span>     <span class="n">output</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="lineno">56</span>     <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="p">(</span><span class="s">&#39;pi&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">RADIUS</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">RADIUS</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">&lt;</span><span class="n">RADIUS</span><span class="p">,</span><span class="nb">xrange</span><span class="p">(</span><span class="n">NBR_PER_WORKER</span><span class="p">))))</span> <span class="p">)</span>
+<span class="lineno">57</span>     <span class="k">return</span> <span class="n">output</span>
+<span class="lineno">58</span>  
+<span class="lineno">59</span>  
+<span class="lineno">60</span> <span class="k">def</span> <span class="nf">estimate_pi</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>   
+<span class="lineno">61</span>     <span class="n">keys</span><span class="p">,</span> <span class="n">occurrences</span> <span class="o">=</span> <span class="n">items</span>
+<span class="lineno">62</span>     <span class="k">return</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">occurrences</span><span class="p">)</span><span class="o">/</span><span class="n">NBR_POINTS</span><span class="p">)</span><span class="o">*</span><span class="mi">4</span>
+<span class="lineno">63</span>  
+<span class="lineno">64</span> <span class="n">mapper</span> <span class="o">=</span> <span class="n">MapReduce</span><span class="p">(</span><span class="n">probability_calculation</span><span class="p">,</span> <span class="n">estimate_pi</span><span class="p">)</span>
+<span class="lineno">65</span> <span class="n">pi</span> <span class="o">=</span> <span class="n">mapper</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">NBR_WORKERS</span><span class="p">)])</span>
+<span class="lineno">66</span> <span class="k">print</span> <span class="n">pi</span></code></pre></div>
+
+
+            
+<div class="social">
+  
+  <div class='twitter'>
+    <a href="https://twitter.com/share" class="twitter-share-button"  data-text="Estimating Pi with Monte Carlo method." data-related="mmourafiq">Tweet</a>
+  </div>
+  
+
+  
+  <div class='facebook'>
+    <div class="fb-share-button" data-layout="button_count"></div>
+  </div>
+  
+
+  
+  <div class='google'>
+    <div class="g-plusone" data-size="medium"></div>
+  </div>
+  
+    
+  
+  <div class='hn'>
+    <a href="https://news.ycombinator.com/submit" class="hn-button" data-title="Estimating Pi with Monte Carlo method." data-url="http://mourafiq.com/2013/03/01/estimating-pi.html" data-count="horizontal">Vote on Hacker News</a>
+  </div>
+  
+
+  
+  <div class='reddit'>
+    <a href="//www.reddit.com/submit" onclick="window.open('//www.reddit.com/submit?url=http://mourafiq.com/2013/03/01/estimating-pi.html&title=Estimating+Pi+with+Monte+Carlo+method.'); return false"> <img src="//www.redditstatic.com/spreddit7.gif" alt="submit to reddit" border="0" /> </a>
+  </div>
+  
+</div>
+
+        </section>
+
+        <footer>
+            <address>
+                <img src="/images/logo.png">
+                <p>
+                Written by <strong><a rel="author" href="https://twitter.com/mmourafiq." title="Mourad Mourafiq." target="_blank">Mourad Mourafiq.</a></strong><br>
+                    <span class="muted">Maths, Technologie, Philosophie, Startups, ...</span>
+                </p>
+            </address>
+            
+            
+            <section class="post_summary">
+                <h3 class="title">Next up: <a href="/2013/04/01/flipping-coin.html" rel="prefetch">Flipping coin.</a></h3>
+                <p>How many coin flips does it take, on average, to get n consecutive heads?</p>
+                <hr>
+            </section>
+             
+            
+            
+            <section class="post_summary">
+                <h3 class="title">Previous story: <a href="/2013/02/15/django-migrations-with-south.html" rel="prefetch">Django migrations with South.</a></h3>
+                <p>Intelligent schema and data migrations for django project.</p>
+                <hr>
+            </section>
+             
+            
+            <section>
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'mourafiq';
+
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+            </section>
+            
+        </footer>
+    </div>
+</article>
+
+
+    <footer class="site-footer">
+        <div class="container">
+            &copy; 2015 Mourad Mourafiq
+
+            <nav>
+                <a href="/">Blog</a> &middot;
+                <a href="/about.html">About</a>
+            </nav>
+
+            <nav class="social">
+                
+<a href="https://twitter.com/mmourafiq" title="Follow on Twitter" target="_blank"><i class="icon icon-twitter"></i></a>
+
+
+<a href="https://github.com/mouradmourafiq" title="Watch on Github" target="_blank"><i class="icon icon-github"></i></a>
+
+
+<a href="/atom.xml" title="RSS Feed">
+  <i class="icon icon-rss"></i>
+</a>
+
+            </nav>
+            <div>Based on Incorporated theme by <a href="https://sendtoinc.com">Inc</a></div>
+        </div>
+    </footer>
+
+</body>
+</html>

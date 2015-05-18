@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flipping coin. &mdash; Mourad Mourafiq</title>
+    <!--[if lt IE 9]><script src='https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js'></script><![endif]-->
+    
+    <link rel="stylesheet" href="/assets/app.css">
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script src="/assets/app.js"></script>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+<script>
+  var HN=[];HN.factory=function(e){return function(){HN.push([e].concat(Array.prototype.slice.call(arguments,0)))};},HN.on=HN.factory("on"),HN.once=HN.factory("once"),HN.off=HN.factory("off"),HN.emit=HN.factory("emit"),HN.load=function(){var e="hn-button.js";if(document.getElementById(e))return;var t=document.createElement("script");t.id=e,t.src="//hn-button.herokuapp.com/hn-button.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n)},HN.load();</script>
+</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-34892053-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+    <link rel="shortcut icon" href="/favicon.ico?v2" type="image/x-icon" />
+    <link rel="alternate" type="application/atom+xml" title="Mourad Mourafiq" href="/atom.xml" />
+    <meta name="title" content="Flipping coin. ">
+    <link rel="canonical" href="http://mourafiq.com/2013/04/01/flipping-coin.html">
+     
+           
+    <meta property="og:title" content="Flipping coin."/>
+    <meta property="og:url" content="http://mourafiq.com/2013/04/01/flipping-coin.html"/>
+    <meta property="og:image" content="http://mourafiq.com/images/posts/random.jpg"/>
+    
+    <meta property="og:description" content="How many coin flips does it take, on average, to get n consecutive heads?"/>
+    <meta name="description" content="How many coin flips does it take, on average, to get n consecutive heads?"/>
+    
+    <meta property="og:site_name" content="Mourad Mourafiq">
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</head>
+<body>
+
+    <header class="site-header">
+        <nav>
+            <a class="brand" href="/">
+                <img src="/images/logo.png" alt="Inc">
+            </a>
+            <a href="/about.html">About</a>
+        </nav>
+    </header>
+
+    
+<div class="cover  article-cover " style="background-image:url(/images/posts/random.jpg)"></div>
+
+
+<div class='cover-caption'><a href='/about.html#pictures'>Random</a></div>
+
+
+<article >
+    <div class="container">
+        <header>
+            
+            <div class="meta">
+                <!--
+                By
+                <address><a rel="author" href="" title="Mourad Mourafiq." target="_blank">
+                    Mourad Mourafiq.
+                </a></address> &mdash;
+                -->
+                <time pubdate datetime="2013-01-April" title="Apr 01, 2013">
+                    Apr 01, 2013
+                </time> &mdash;
+                
+4 min read
+            </div>
+            
+            <h1 class="title">Flipping coin.</h1>
+            <h2 class="subtitle">How many coin flips does it take, on average, to get n consecutive heads?</h2>
+        </header>
+
+        <section>
+            <p>Let’s assume that we have a coin with a probability p (=0.5 if fair coin) of coming up head.</p>
+
+<p>Let <script type="math/tex">Avg_1</script> be the average number of flips before getting the first head. In this case, if the first flip is head, then the answer is 1. If, on the other hand, the first flip is tail, then we used 1 flip and we should do <script type="math/tex">Avg_1</script> more flips before getting a head.</p>
+
+<p>In other words, we have: <script type="math/tex">Avg_1 = (1 - p) * (1 + Avg_1) + p * 1</script></p>
+
+<p>Which leads to : <script type="math/tex">Avg_1 = \frac{1}{p}</script></p>
+
+<p>This seems right, since for a fair coin (p=0.5) the average number of flips to get a head is 2.</p>
+
+<p>Now let <script type="math/tex">Avg_2</script> be the average number of flips before getting two heads in a row. Which means, if the first flip is a tail, we should expect <script type="math/tex">(1 - p) * (1 + Avg_2)</script> flips before getting heads. In case we have a head in the first flip, there are two probabilities for what’s next. If next is tail, then two flips are gone and we are back to the start point. But if next is head, then we get what we want.</p>
+
+<p>In other terms, we have:</p>
+
+<script type="math/tex; mode=display">Avg_2 = (1 - p) * (1 + Avg_2) + p * (1 - p) * (2 + Avg_2) + p^2 * 2</script>
+
+<p>Which leads to : <script type="math/tex">Avg_2 = \frac{1 + p}{p^2}</script></p>
+
+<p>For the fair coin, the average number of flips to get two heads in a row is 6.</p>
+
+<p>If we follow the same reasoning for the average number of flips to get 3 heads in a  row.</p>
+
+<script type="math/tex; mode=display">Avg_3 = (1 - p) * (1 + Avg_3) + p * (1 - p) * (2 + Avg_3) + p^2 * (1 - p) * (3 + Avg_3) + p^3 * 3</script>
+
+<p>which leads to : <script type="math/tex">Avg_3 = \frac{1 + p + p^2}{p^3}</script></p>
+
+<p>And for the fair coin, you should expect 14 flips on average to get 3 heads in a row.</p>
+
+<p>In general:</p>
+
+<script type="math/tex; mode=display">Avg_n = \frac{1 + p + p^2 + ... + p^{n-1}}{p^n} = \frac{1 - p^n}{p^n * (1 - p)}</script>
+
+<p>For the fair coin, we find that <script type="math/tex">Avg_n = 2^{n+1} - 2</script> flips required to get n  heads in a row.</p>
+
+<p>Now having said that, doesn’t mean that we will have our heads!</p>
+
+<p>let’s go back to <script type="math/tex">n = 1</script> we said that we need on average 2 flips to get one head. The probability to get this head is : 3/4 = 0.75.
+ Because the list of possible outcomes are : {(0,0), (0,1), (1,0), (1,1)}</p>
+
+<p>Suppose now we want to calculate the probability for getting k heads in row with n flips. Sure we can use the Markov chain to calculate this probability, but it will get difficult when our experience grow.</p>
+
+<p>Another solution is to simulate this process by doing a Monte Carlo.</p>
+
+<p>A programme that simulates this operation:</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno">1</span> <span class="c">#generate the flips</span>
+<span class="lineno">2</span> <span class="n">flip</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n_times</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_times</span><span class="p">)])</span>
+<span class="lineno">3</span> <span class="c">#flip(10) would give 1011100000 for ex </span>
+<span class="lineno">4</span> <span class="c">#calculate the payoff</span>
+<span class="lineno">5</span> <span class="n">payoff</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n_times</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="mf">1.0</span> <span class="k">if</span> <span class="s">&#39;1&#39;</span><span class="o">*</span><span class="n">k</span> <span class="ow">in</span> <span class="n">flip</span><span class="p">(</span><span class="n">n_times</span><span class="p">)</span> <span class="k">else</span> <span class="mf">0.0</span>
+<span class="lineno">6</span> <span class="c">#payoff returns 1.0 if k heads is found in n_times flips</span>
+<span class="lineno">7</span> <span class="c">#monte carlo</span>
+<span class="lineno">8</span> <span class="n">monte_carlo</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n_times</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> <span class="nb">sum</span><span class="p">([</span><span class="n">payoff</span><span class="p">(</span><span class="n">n_times</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">j</span><span class="p">)])</span><span class="o">/</span><span class="n">j</span></code></pre></div>
+
+<p>monte_carlo(2, 1, 1000000) = 0.750024 approximately the same from a Markov chain method 3/4 = 0.75.</p>
+
+<p>monte_carlo(10, 3, 1000000) = 0.508233 approximately the same from a Markov chain method  520/1024 = 0.5078125</p>
+
+            
+<div class="social">
+  
+  <div class='twitter'>
+    <a href="https://twitter.com/share" class="twitter-share-button"  data-text="Flipping coin." data-related="mmourafiq">Tweet</a>
+  </div>
+  
+
+  
+  <div class='facebook'>
+    <div class="fb-share-button" data-layout="button_count"></div>
+  </div>
+  
+
+  
+  <div class='google'>
+    <div class="g-plusone" data-size="medium"></div>
+  </div>
+  
+    
+  
+  <div class='hn'>
+    <a href="https://news.ycombinator.com/submit" class="hn-button" data-title="Flipping coin." data-url="http://mourafiq.com/2013/04/01/flipping-coin.html" data-count="horizontal">Vote on Hacker News</a>
+  </div>
+  
+
+  
+  <div class='reddit'>
+    <a href="//www.reddit.com/submit" onclick="window.open('//www.reddit.com/submit?url=http://mourafiq.com/2013/04/01/flipping-coin.html&title=Flipping+coin.'); return false"> <img src="//www.redditstatic.com/spreddit7.gif" alt="submit to reddit" border="0" /> </a>
+  </div>
+  
+</div>
+
+        </section>
+
+        <footer>
+            <address>
+                <img src="/images/logo.png">
+                <p>
+                Written by <strong><a rel="author" href="https://twitter.com/mmourafiq." title="Mourad Mourafiq." target="_blank">Mourad Mourafiq.</a></strong><br>
+                    <span class="muted">Maths, Technologie, Philosophie, Startups, ...</span>
+                </p>
+            </address>
+            
+            
+            <section class="post_summary">
+                <h3 class="title">Next up: <a href="/2013/05/01/pricing-options-with-python.html" rel="prefetch">Pricing options with python.</a></h3>
+                <p>The black-scholes formula is a must-know  differential equation in financial mathematics. It is used for various purposes to price financial derivatives. In this post we will price vanilla European puts/calls.</p>
+                <hr>
+            </section>
+             
+            
+            
+            <section class="post_summary">
+                <h3 class="title">Previous story: <a href="/2013/03/01/estimating-pi.html" rel="prefetch">Estimating Pi with Monte Carlo method.</a></h3>
+                <p>Using the Monte Carlo method to estimate the value of pi.</p>
+                <hr>
+            </section>
+             
+            
+            <section>
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'mourafiq';
+
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+            </section>
+            
+        </footer>
+    </div>
+</article>
+
+
+    <footer class="site-footer">
+        <div class="container">
+            &copy; 2015 Mourad Mourafiq
+
+            <nav>
+                <a href="/">Blog</a> &middot;
+                <a href="/about.html">About</a>
+            </nav>
+
+            <nav class="social">
+                
+<a href="https://twitter.com/mmourafiq" title="Follow on Twitter" target="_blank"><i class="icon icon-twitter"></i></a>
+
+
+<a href="https://github.com/mouradmourafiq" title="Watch on Github" target="_blank"><i class="icon icon-github"></i></a>
+
+
+<a href="/atom.xml" title="RSS Feed">
+  <i class="icon icon-rss"></i>
+</a>
+
+            </nav>
+            <div>Based on Incorporated theme by <a href="https://sendtoinc.com">Inc</a></div>
+        </div>
+    </footer>
+
+</body>
+</html>

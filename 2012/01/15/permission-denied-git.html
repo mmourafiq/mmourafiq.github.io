@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git : Permission denied (publickey) &mdash; Mourad Mourafiq</title>
+    <!--[if lt IE 9]><script src='https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js'></script><![endif]-->
+    
+    <link rel="stylesheet" href="/assets/app.css">
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script src="/assets/app.js"></script>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+<script>
+  var HN=[];HN.factory=function(e){return function(){HN.push([e].concat(Array.prototype.slice.call(arguments,0)))};},HN.on=HN.factory("on"),HN.once=HN.factory("once"),HN.off=HN.factory("off"),HN.emit=HN.factory("emit"),HN.load=function(){var e="hn-button.js";if(document.getElementById(e))return;var t=document.createElement("script");t.id=e,t.src="//hn-button.herokuapp.com/hn-button.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n)},HN.load();</script>
+</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-34892053-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+    <link rel="shortcut icon" href="/favicon.ico?v2" type="image/x-icon" />
+    <link rel="alternate" type="application/atom+xml" title="Mourad Mourafiq" href="/atom.xml" />
+    <meta name="title" content="Git : Permission denied (publickey) ">
+    <link rel="canonical" href="http://mourafiq.com/2012/01/15/permission-denied-git.html">
+     
+           
+    <meta property="og:title" content="Git : Permission denied (publickey)"/>
+    <meta property="og:url" content="http://mourafiq.com/2012/01/15/permission-denied-git.html"/>
+    <meta property="og:image" content="http://mourafiq.com/images/posts/git.png"/>
+    
+    <meta property="og:description" content="Sometimes it happens that you want to change your paraphrase for you public key, either because you forget it or you want to enhance it..."/>
+    <meta name="description" content="Sometimes it happens that you want to change your paraphrase for you public key, either because you forget it or you want to enhance it..."/>
+    
+    <meta property="og:site_name" content="Mourad Mourafiq">
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</head>
+<body>
+
+    <header class="site-header">
+        <nav>
+            <a class="brand" href="/">
+                <img src="/images/logo.png" alt="Inc">
+            </a>
+            <a href="/about.html">About</a>
+        </nav>
+    </header>
+
+    
+<div class="cover  article-cover " style="background-image:url(/images/posts/git.png)"></div>
+
+
+<div class='cover-caption'><a href='/about.html#pictures'>Git.</a></div>
+
+
+<article >
+    <div class="container">
+        <header>
+            
+            <div class="meta">
+                <!--
+                By
+                <address><a rel="author" href="" title="Mourad Mourafiq." target="_blank">
+                    Mourad Mourafiq.
+                </a></address> &mdash;
+                -->
+                <time pubdate datetime="2012-15-January" title="Jan 15, 2012">
+                    Jan 15, 2012
+                </time> &mdash;
+                
+2 min read
+            </div>
+            
+            <h1 class="title">Git : Permission denied (publickey)</h1>
+            <h2 class="subtitle">Permission denied (publickey). fatal: The remote end hung up unexpectedly</h2>
+        </header>
+
+        <section>
+            <p>Sometimes it happens that you want to change your paraphrase for you public key, either because you forget it or you want to enhance it. The thing is that you may encounter this problem :</p>
+
+<p><code>Permission denied (publickey). fatal: The remote end hung up unexpectedly</code></p>
+
+<p>After some googling, many answers were not yielding to any results, and because of that I am writing this post to recapitulate the steps needed to solve this problem.</p>
+
+<ul>
+  <li>Step 1:</li>
+</ul>
+
+<p>Check for SSH keys <code>$ cd ~/.ssh</code> to see if there is a directory named <code>.ssh</code> in your user directory, If it says “<em>No such file or directory</em>” skip to <strong>Step 3</strong>. Otherwise continue to <strong>Step 2</strong>.</p>
+
+<ul>
+  <li>Step 2:</li>
+</ul>
+
+<p>Backup and remove existing SSH keys.</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span> mkdir key_backup
+
+<span class="gp">#</span> Makes a subdirectory called <span class="s2">&quot;key_backup&quot;</span> in the current directory
+
+<span class="go">cp id_rsa* key_backup</span>
+
+<span class="gp">#</span> Copies the id_rsa keypair into key_backup
+
+<span class="go">rm id_rsa*</span>
+
+<span class="gp">#</span> Deletes the id_rsa keypair</code></pre></div>
+
+<ul>
+  <li>Step 3:</li>
+</ul>
+
+<p>Generate a new SSH key</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span> ssh-keygen -t rsa -C “your_email@youremail.com”
+<span class="gp">#</span> Creates a new ssh key using the provided email
+
+<span class="gp">#</span> Generating public/private rsa key pair.
+
+<span class="gp">#</span> Enter file in which to save the key <span class="o">(</span>/home/you/.ssh/id_rsa<span class="o">)</span>:
+
+<span class="gp">#</span> Enter passphrase <span class="o">(</span>empty <span class="k">for</span> no passphrase<span class="o">)</span>: <span class="o">[</span>Type a passphrase<span class="o">]</span>
+
+<span class="gp">#</span> Enter same passphrase again: <span class="o">[</span>Type passphrase again<span class="o">]</span> Your identification has been saved in /home/you/.ssh/id_rsa.
+
+<span class="gp">#</span> Your public key has been saved in /home/you/.ssh/id_rsa.pub.
+
+<span class="gp">#</span> The key fingerprint is:
+
+<span class="gp">#</span> 01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db your_email@youremail.com</code></pre></div>
+
+<ul>
+  <li>Step 4:</li>
+</ul>
+
+<p>Add your SSH key to GitHub</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span> sudo apt-get install xclip
+
+<span class="gp">#</span> Downloads and installs xclip <span class="nv">$ </span>xclip -sel clip &lt; ~/.ssh/id_rsa.pub
+
+<span class="gp">#</span> Copies the contents of the id_rsa.pub file to your clipboard</code></pre></div>
+
+<p>Then, go to hithub, and do:</p>
+
+<ol>
+  <li>Go to your Account Settings</li>
+  <li>Click “SSH Keys” in the left sidebar</li>
+  <li>Click “Add SSH key”</li>
+  <li>Paste your key into the “Key” field</li>
+  <li>Click “Add key”</li>
+  <li>Confirm the action by entering your GitHub password</li>
+</ol>
+
+<ul>
+  <li>Step 5:</li>
+</ul>
+
+<p>Test everything out <code>$ ssh -T git@github.com # Attempts to ssh to github</code></p>
+
+<p>If ok, you’ll see Hi username! You’ve successfully authenticated, but GitHub does not # provide shell access.</p>
+
+<p>Otherwise (it happened with me), you will see Agent admitted failure to sign using the key. # debug1: No more authentication methods to try. # Permission denied (publickey).</p>
+
+<p>To solve this:</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span> ssh-add <span class="c"># Enter passphrase for /home/you/.ssh/id_rsa: </span>
+
+<span class="gp">#</span> Identity added: /home/you/.ssh/id_rsa <span class="o">(</span>/home/you/.ssh/id_rsa<span class="o">)</span></code></pre></div>
+
+            
+<div class="social">
+  
+  <div class='twitter'>
+    <a href="https://twitter.com/share" class="twitter-share-button"  data-text="Git : Permission denied (publickey)" data-related="mmourafiq">Tweet</a>
+  </div>
+  
+
+  
+  <div class='facebook'>
+    <div class="fb-share-button" data-layout="button_count"></div>
+  </div>
+  
+
+  
+  <div class='google'>
+    <div class="g-plusone" data-size="medium"></div>
+  </div>
+  
+    
+  
+  <div class='hn'>
+    <a href="https://news.ycombinator.com/submit" class="hn-button" data-title="Git : Permission denied (publickey)" data-url="http://mourafiq.com/2012/01/15/permission-denied-git.html" data-count="horizontal">Vote on Hacker News</a>
+  </div>
+  
+
+  
+  <div class='reddit'>
+    <a href="//www.reddit.com/submit" onclick="window.open('//www.reddit.com/submit?url=http://mourafiq.com/2012/01/15/permission-denied-git.html&title=Git+%3A+Permission+denied+%28publickey%29'); return false"> <img src="//www.redditstatic.com/spreddit7.gif" alt="submit to reddit" border="0" /> </a>
+  </div>
+  
+</div>
+
+        </section>
+
+        <footer>
+            <address>
+                <img src="/images/logo.png">
+                <p>
+                Written by <strong><a rel="author" href="https://twitter.com/mmourafiq." title="Mourad Mourafiq." target="_blank">Mourad Mourafiq.</a></strong><br>
+                    <span class="muted">Maths, Technologie, Philosophie, Startups, ...</span>
+                </p>
+            </address>
+            
+            
+            <section class="post_summary">
+                <h3 class="title">Next up: <a href="/2012/02/01/pythonic-code.html" rel="prefetch">Make your code pythonic</a></h3>
+                <p>How to make a python compatible code.</p>
+                <hr>
+            </section>
+             
+            
+            
+            <section class="post_summary">
+                <h3 class="title">Previous story: <a href="/2012/01/01/the-medici-effect.html" rel="prefetch">The medici effect</a></h3>
+                <p>Made connection with everything you have in hand and everything you have in mind.</p>
+                <hr>
+            </section>
+             
+            
+            <section>
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'mourafiq';
+
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+            </section>
+            
+        </footer>
+    </div>
+</article>
+
+
+    <footer class="site-footer">
+        <div class="container">
+            &copy; 2015 Mourad Mourafiq
+
+            <nav>
+                <a href="/">Blog</a> &middot;
+                <a href="/about.html">About</a>
+            </nav>
+
+            <nav class="social">
+                
+<a href="https://twitter.com/mmourafiq" title="Follow on Twitter" target="_blank"><i class="icon icon-twitter"></i></a>
+
+
+<a href="https://github.com/mouradmourafiq" title="Watch on Github" target="_blank"><i class="icon icon-github"></i></a>
+
+
+<a href="/atom.xml" title="RSS Feed">
+  <i class="icon icon-rss"></i>
+</a>
+
+            </nav>
+            <div>Based on Incorporated theme by <a href="https://sendtoinc.com">Inc</a></div>
+        </div>
+    </footer>
+
+</body>
+</html>
