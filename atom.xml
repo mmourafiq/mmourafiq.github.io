@@ -4,7 +4,7 @@
  <title>Mourad Mourafiq</title>
  <link href="http://mourafiq.com/atom.xml" rel="self"/>
  <link href="http://mourafiq.com"/>
- <updated>2015-05-30T15:25:28+02:00</updated>
+ <updated>2015-05-30T15:35:22+02:00</updated>
  <id>http://mourafiq.com/atom.xml</id>
  <author>
    <name>Mourad Mourafiq</name>
@@ -18,7 +18,7 @@
    <published>2015-05-30T00:00:00+02:00</published>
    <updated>2015-05-30T00:00:00+02:00</updated>
    <id>http://mourafiq.com/2015/05/30/adding-spark-to-python-projects</id>
-   <content type="html">&lt;p&gt;Spark is data processing and clustering framework that allows developers to create parallel in Scala, Java, and Python.&lt;/p&gt;
+   <content type="html">&lt;p&gt;Spark is data processing and clustering framework that allows developers to create parallel apps in Scala, Java, and Python.&lt;/p&gt;
 
 &lt;p&gt;For Python developers, Spark exposes it’s programming model through a Python API (&lt;a href=&quot;https://spark.apache.org/docs/latest/api/python/index.html&quot;&gt;pyspark&lt;/a&gt;). And in order to communicate with Spark from a python application, let’s say django, we need context during this communication.&lt;/p&gt;
 
