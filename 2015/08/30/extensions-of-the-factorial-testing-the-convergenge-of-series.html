@@ -120,18 +120,14 @@
 
 <h2 id="convergence-and-divergence">Convergence and divergence</h2>
 
-<p>Let <script type="math/tex">\left( {\mathbb{E}}, \|.\| \right)</script> be normed vector space, <script type="math/tex">\sum U_n</script> a series defined in <script type="math/tex">{\mathbb{E}}</script> and <script type="math/tex">{\left( S_n \right)}_n</script> the sequence of patial sums.</p>
+<p>Let <script type="math/tex">\left( {\mathbb{E}}, \|.\| \right</script> be normed vector space, <script type="math/tex">\sum U_n</script> a series defined in <script type="math/tex">{\mathbb{E}}</script> and <script type="math/tex">{\left( S_n \right)}_n</script> the sequence of partial sums.</p>
 
 <ul>
-  <li>
-    <p>We say that the series <script type="math/tex">\sum U_n</script> converges (respectively diverges) in <script type="math/tex">\left( {\mathbb{E}}, \|.\| \right)</script> if the sequence <script type="math/tex">{\left( S_n \right)}_n</script> converges (respectively diverges) in <script type="math/tex">\left( {\mathbb{E}}, \|.\| \right)</script>.</p>
-  </li>
-  <li>
-    <p>In this case, the limit <script type="math/tex">S</script> of the sequence <script type="math/tex">{\left( S_n \right)}_n</script> is called the sum of the series <script type="math/tex">\sum U_n</script>, and is noted: <script type="math/tex">\sum_{n=0}^{\infty} U_n = S = \lim_{n \to \infty} S_n</script></p>
-  </li>
+  <li>We say that the series <script type="math/tex">\sum U_</script> converges (respectively diverges) in <script type="math/tex">\left( {\mathbb{E}}, \|.\| \right</script> if the sequence <script type="math/tex">{\left( S_n \right)}_n</script> converges (respectively diverges) in <script type="math/tex">\left( {\mathbb{E}}, \|.\| \right</script> if the sequence $$.</li>
+  <li>In this case, the limit <script type="math/tex">S</script> of the sequence <script type="math/tex">{\left( S_n \right)}_n</script> is called the sum of the series <script type="math/tex">\sum U_n</script>, and is noted: <script type="math/tex">\sum_{n=0}^{\infty} U_n = S = \lim_{n \to \infty} S_n</script></li>
 </ul>
 
-<h2 id="examples">Examples</h2>
+<p><strong>Examples</strong></p>
 
 <ul>
   <li>the geometric series for complex numbers.</li>
@@ -245,12 +241,12 @@ The series converges implies that <script type="math/tex">(S_n)_{n}</script> con
 
 <script type="math/tex; mode=display">% <![CDATA[
 \begin{aligned}
-S_n & = \sum_{k=1}^{n} \frac{-1^{k+1}}{k} \\
- & = \sum_{k=1}^{n} \left(-1\right)^{k+1} \int_{0}^{1} x^{k-1} dx \\
- & = \int_{0}^{1} \sum_{k=1}^{n} (-x)^{k-1} dx \\
- & = \int_{0}^{1} \frac{ 1 - (-x)^n }{ 1 + x } dx \\
- & = \int_{0}^{1} \frac{ dx }{ 1 + x } - \frac{ \left(-x\right)^n }{ 1 + x } dx \\
- & = ln(2) - \int_{0}^{1} \frac{ \left(-x\right)^n }{ 1 + x } dx
+ S_n & = \sum_{k=1}^{n} \frac{-1^{k+1}}{k} \\
+  & = \sum_{k=1}^{n} \left(-1\right)^{k+1} \int_{0}^{1} x^{k-1} dx \\
+  & = \int_{0}^{1} \sum_{k=1}^{n} (-x)^{k-1} dx \\
+  & = \int_{0}^{1} \frac{ 1 - (-x)^n }{ 1 + x } dx \\
+  & = \int_{0}^{1} \frac{ dx }{ 1 + x } - \frac{ \left(-x\right)^n }{ 1 + x } dx \\
+  & = ln(2) - \int_{0}^{1} \frac{ \left(-x\right)^n }{ 1 + x } dx
 \end{aligned} %]]></script>
 
 <p>And since <script type="math/tex">% <![CDATA[
@@ -266,12 +262,12 @@ S_n & = \sum_{k=1}^{n} \frac{-1^{k+1}}{k} \\
 
 <h3 id="leibnitz-rule-for-testing-the-convergence-of-alternating-series">3- Leibnitz rule for testing the convergence of alternating series</h3>
 
-<p>Let <script type="math/tex">\sum U_n</script> be a series over reals, if <script type="math/tex">\sum U_{n}</script> is an alternating series, i.e. <script type="math/tex">U_n = (-1)^{n} \lvert U_n \lvert \, \text{or} \, U_n = (-1)^{ n + 1 } \lvert U_n \lvert</script>, and <script type="math/tex">(\lvert U_n \lvert)_n</script> is decreasing and converges to 0, then the series <script type="math/tex">\sum U_n</script> converges and <script type="math/tex">% <![CDATA[
+<p>Let <script type="math/tex">\sum U_n</script> be a series over reals, if <script type="math/tex">\sum U_{n}</script> is an alternating series, i.e. <script type="math/tex">U_n = (-1)^{n} \lvert U_n \lvert</script> or <script type="math/tex">U_n = (-1)^{ n + 1 } \lvert U_n \lvert</script>, and <script type="math/tex">(\lvert U_n \lvert)_n</script> is decreasing and converges to 0, then the series <script type="math/tex">\sum U_n</script> converges and <script type="math/tex">% <![CDATA[
 R_n = S - S_n < \lvert U_{ n + 1} \lvert %]]></script></p>
 
 <p><strong>Proof</strong></p>
 
-<p>Let’s suppose that <script type="math/tex">\forall n \in {\mathbb{ N }} U_n = (-1)^n \lvert U_n \lvert</script> and <script type="math/tex">\forall n \in {\mathbb{ N }} S_n = \sum_{k=0}^{n} U_k</script></p>
+<p>Let’s suppose that <script type="math/tex">\forall n \in {\mathbb{ N }} U_n = (-1)^n \lvert U_n \lvert</script> and <script type="math/tex">\forall n \in {\mathbb{ N }} \,\, S_n = \sum_{k=0}^{n} U_k</script></p>
 
 <script type="math/tex; mode=display">% <![CDATA[
 \begin{aligned}
@@ -321,16 +317,16 @@ We cal a Riemann series, a series of the form <script type="math/tex">\sum \frac
 \alpha <= 0 %]]></script></li>
 </ul>
 
-<p>The series <script type="math/tex">\sum \frac{1}{ n^\alpha }</script> obviously diverges</p>
+<p>The series <script type="math/tex">\sum \frac{1}{ n^\alpha }</script> obviously diverges.</p>
 
 <ul>
   <li>Case when <script type="math/tex">\alpha = 1</script></li>
 </ul>
 
-<p>We saw that <script type="math/tex">\sum \frac{1}{n}</script> diverges</p>
+<p>We saw that <script type="math/tex">\sum \frac{1}{n}</script> diverges.</p>
 
 <ul>
-  <li>Case when <script type="math/tex">\alpha \in \left[ 0, 1 \right]</script></li>
+  <li>Case when <script type="math/tex">\alpha \in [ 0, 1 ]</script></li>
 </ul>
 
 <p>The series <script type="math/tex">\sum \frac{1}{ n^\alpha }</script> diverges, because <script type="math/tex">\frac{1}{n} =o \frac{1}{ n^\alpha }</script></p>
@@ -351,13 +347,13 @@ x & \mapsto \frac{ x^{1 -\alpha } }{ 1 - \alpha }
 
 <p>And since <script type="math/tex">\theta_n \sim n</script></p>
 
-<p>then <script type="math/tex">\frac{1}{ { \theta_n }^\alpha } \sim \frac{1}{ n^\alpha }</script></p>
+<p>It follows that <script type="math/tex">\frac{1}{ { \theta_n }^\alpha } \sim \frac{1}{ n^\alpha }</script></p>
 
 <p>Which means that <script type="math/tex">\frac{1}{ n^\alpha } \sim \left( f\left( n+1 \right) - f\left( n \right) \right)</script></p>
 
 <p>We know that the series <script type="math/tex">\sum \left( f\left( n+1 \right) - f\left( n \right) \right)</script> converges, because <script type="math/tex">\sum_{ k = 1 }^{ n } \left( f\left( n+1 \right) - f\left( n \right) \right) = f\left( n+1 \right) - f\left( 1 \right) \require{AMScd} \begin{CD} @>>{n \to \infty}>\end{CD} -f \left( 1 \right)</script></p>
 
-<p>Finally <script type="math/tex">\sum \frac{1}{n^\alpha}</script> converges.</p>
+<p>Finally <script type="math/tex">\sum \frac{1}{n^\alpha}</script> converges if <script type="math/tex">\alpha > 1</script>.</p>
 
             
 <div class="social">

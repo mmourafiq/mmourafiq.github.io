@@ -4,7 +4,7 @@
  <title>Mourad Mourafiq</title>
  <link href="http://mourafiq.com/atom.xml" rel="self"/>
  <link href="http://mourafiq.com"/>
- <updated>2015-09-03T23:21:07+02:00</updated>
+ <updated>2015-09-04T00:29:30+02:00</updated>
  <id>http://mourafiq.com/atom.xml</id>
  <author>
    <name>Mourad Mourafiq</name>
@@ -34,18 +34,14 @@
 
 &lt;h2 id=&quot;convergence-and-divergence&quot;&gt;Convergence and divergence&lt;/h2&gt;
 
-&lt;p&gt;Let &lt;script type=&quot;math/tex&quot;&gt;\left( {\mathbb{E}}, \|.\| \right)&lt;/script&gt; be normed vector space, &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt; a series defined in &lt;script type=&quot;math/tex&quot;&gt;{\mathbb{E}}&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;{\left( S_n \right)}_n&lt;/script&gt; the sequence of patial sums.&lt;/p&gt;
+&lt;p&gt;Let &lt;script type=&quot;math/tex&quot;&gt;\left( {\mathbb{E}}, \|.\| \right&lt;/script&gt; be normed vector space, &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt; a series defined in &lt;script type=&quot;math/tex&quot;&gt;{\mathbb{E}}&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;{\left( S_n \right)}_n&lt;/script&gt; the sequence of partial sums.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;We say that the series &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt; converges (respectively diverges) in &lt;script type=&quot;math/tex&quot;&gt;\left( {\mathbb{E}}, \|.\| \right)&lt;/script&gt; if the sequence &lt;script type=&quot;math/tex&quot;&gt;{\left( S_n \right)}_n&lt;/script&gt; converges (respectively diverges) in &lt;script type=&quot;math/tex&quot;&gt;\left( {\mathbb{E}}, \|.\| \right)&lt;/script&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;In this case, the limit &lt;script type=&quot;math/tex&quot;&gt;S&lt;/script&gt; of the sequence &lt;script type=&quot;math/tex&quot;&gt;{\left( S_n \right)}_n&lt;/script&gt; is called the sum of the series &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt;, and is noted: &lt;script type=&quot;math/tex&quot;&gt;\sum_{n=0}^{\infty} U_n = S = \lim_{n \to \infty} S_n&lt;/script&gt;&lt;/p&gt;
-  &lt;/li&gt;
+  &lt;li&gt;We say that the series &lt;script type=&quot;math/tex&quot;&gt;\sum U_&lt;/script&gt; converges (respectively diverges) in &lt;script type=&quot;math/tex&quot;&gt;\left( {\mathbb{E}}, \|.\| \right&lt;/script&gt; if the sequence &lt;script type=&quot;math/tex&quot;&gt;{\left( S_n \right)}_n&lt;/script&gt; converges (respectively diverges) in &lt;script type=&quot;math/tex&quot;&gt;\left( {\mathbb{E}}, \|.\| \right&lt;/script&gt; if the sequence $$.&lt;/li&gt;
+  &lt;li&gt;In this case, the limit &lt;script type=&quot;math/tex&quot;&gt;S&lt;/script&gt; of the sequence &lt;script type=&quot;math/tex&quot;&gt;{\left( S_n \right)}_n&lt;/script&gt; is called the sum of the series &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt;, and is noted: &lt;script type=&quot;math/tex&quot;&gt;\sum_{n=0}^{\infty} U_n = S = \lim_{n \to \infty} S_n&lt;/script&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;examples&quot;&gt;Examples&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Examples&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;the geometric series for complex numbers.&lt;/li&gt;
@@ -159,12 +155,12 @@ The series converges implies that &lt;script type=&quot;math/tex&quot;&gt;(S_n)_
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
 \begin{aligned}
-S_n &amp; = \sum_{k=1}^{n} \frac{-1^{k+1}}{k} \\
- &amp; = \sum_{k=1}^{n} \left(-1\right)^{k+1} \int_{0}^{1} x^{k-1} dx \\
- &amp; = \int_{0}^{1} \sum_{k=1}^{n} (-x)^{k-1} dx \\
- &amp; = \int_{0}^{1} \frac{ 1 - (-x)^n }{ 1 + x } dx \\
- &amp; = \int_{0}^{1} \frac{ dx }{ 1 + x } - \frac{ \left(-x\right)^n }{ 1 + x } dx \\
- &amp; = ln(2) - \int_{0}^{1} \frac{ \left(-x\right)^n }{ 1 + x } dx
+ S_n &amp; = \sum_{k=1}^{n} \frac{-1^{k+1}}{k} \\
+  &amp; = \sum_{k=1}^{n} \left(-1\right)^{k+1} \int_{0}^{1} x^{k-1} dx \\
+  &amp; = \int_{0}^{1} \sum_{k=1}^{n} (-x)^{k-1} dx \\
+  &amp; = \int_{0}^{1} \frac{ 1 - (-x)^n }{ 1 + x } dx \\
+  &amp; = \int_{0}^{1} \frac{ dx }{ 1 + x } - \frac{ \left(-x\right)^n }{ 1 + x } dx \\
+  &amp; = ln(2) - \int_{0}^{1} \frac{ \left(-x\right)^n }{ 1 + x } dx
 \end{aligned} %]]&gt;&lt;/script&gt;
 
 &lt;p&gt;And since &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
@@ -180,12 +176,12 @@ S_n &amp; = \sum_{k=1}^{n} \frac{-1^{k+1}}{k} \\
 
 &lt;h3 id=&quot;leibnitz-rule-for-testing-the-convergence-of-alternating-series&quot;&gt;3- Leibnitz rule for testing the convergence of alternating series&lt;/h3&gt;
 
-&lt;p&gt;Let &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt; be a series over reals, if &lt;script type=&quot;math/tex&quot;&gt;\sum U_{n}&lt;/script&gt; is an alternating series, i.e. &lt;script type=&quot;math/tex&quot;&gt;U_n = (-1)^{n} \lvert U_n \lvert \, \text{or} \, U_n = (-1)^{ n + 1 } \lvert U_n \lvert&lt;/script&gt;, and &lt;script type=&quot;math/tex&quot;&gt;(\lvert U_n \lvert)_n&lt;/script&gt; is decreasing and converges to 0, then the series &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt; converges and &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+&lt;p&gt;Let &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt; be a series over reals, if &lt;script type=&quot;math/tex&quot;&gt;\sum U_{n}&lt;/script&gt; is an alternating series, i.e. &lt;script type=&quot;math/tex&quot;&gt;U_n = (-1)^{n} \lvert U_n \lvert&lt;/script&gt; or &lt;script type=&quot;math/tex&quot;&gt;U_n = (-1)^{ n + 1 } \lvert U_n \lvert&lt;/script&gt;, and &lt;script type=&quot;math/tex&quot;&gt;(\lvert U_n \lvert)_n&lt;/script&gt; is decreasing and converges to 0, then the series &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt; converges and &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
 R_n = S - S_n &lt; \lvert U_{ n + 1} \lvert %]]&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Proof&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Let’s suppose that &lt;script type=&quot;math/tex&quot;&gt;\forall n \in {\mathbb{ N }} U_n = (-1)^n \lvert U_n \lvert&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\forall n \in {\mathbb{ N }} S_n = \sum_{k=0}^{n} U_k&lt;/script&gt;&lt;/p&gt;
+&lt;p&gt;Let’s suppose that &lt;script type=&quot;math/tex&quot;&gt;\forall n \in {\mathbb{ N }} U_n = (-1)^n \lvert U_n \lvert&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\forall n \in {\mathbb{ N }} \,\, S_n = \sum_{k=0}^{n} U_k&lt;/script&gt;&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
 \begin{aligned}
@@ -235,16 +231,16 @@ We cal a Riemann series, a series of the form &lt;script type=&quot;math/tex&quo
 \alpha &lt;= 0 %]]&gt;&lt;/script&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;The series &lt;script type=&quot;math/tex&quot;&gt;\sum \frac{1}{ n^\alpha }&lt;/script&gt; obviously diverges&lt;/p&gt;
+&lt;p&gt;The series &lt;script type=&quot;math/tex&quot;&gt;\sum \frac{1}{ n^\alpha }&lt;/script&gt; obviously diverges.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Case when &lt;script type=&quot;math/tex&quot;&gt;\alpha = 1&lt;/script&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;We saw that &lt;script type=&quot;math/tex&quot;&gt;\sum \frac{1}{n}&lt;/script&gt; diverges&lt;/p&gt;
+&lt;p&gt;We saw that &lt;script type=&quot;math/tex&quot;&gt;\sum \frac{1}{n}&lt;/script&gt; diverges.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Case when &lt;script type=&quot;math/tex&quot;&gt;\alpha \in \left[ 0, 1 \right]&lt;/script&gt;&lt;/li&gt;
+  &lt;li&gt;Case when &lt;script type=&quot;math/tex&quot;&gt;\alpha \in [ 0, 1 ]&lt;/script&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;The series &lt;script type=&quot;math/tex&quot;&gt;\sum \frac{1}{ n^\alpha }&lt;/script&gt; diverges, because &lt;script type=&quot;math/tex&quot;&gt;\frac{1}{n} =o \frac{1}{ n^\alpha }&lt;/script&gt;&lt;/p&gt;
@@ -265,13 +261,13 @@ x &amp; \mapsto \frac{ x^{1 -\alpha } }{ 1 - \alpha }
 
 &lt;p&gt;And since &lt;script type=&quot;math/tex&quot;&gt;\theta_n \sim n&lt;/script&gt;&lt;/p&gt;
 
-&lt;p&gt;then &lt;script type=&quot;math/tex&quot;&gt;\frac{1}{ { \theta_n }^\alpha } \sim \frac{1}{ n^\alpha }&lt;/script&gt;&lt;/p&gt;
+&lt;p&gt;It follows that &lt;script type=&quot;math/tex&quot;&gt;\frac{1}{ { \theta_n }^\alpha } \sim \frac{1}{ n^\alpha }&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;Which means that &lt;script type=&quot;math/tex&quot;&gt;\frac{1}{ n^\alpha } \sim \left( f\left( n+1 \right) - f\left( n \right) \right)&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;We know that the series &lt;script type=&quot;math/tex&quot;&gt;\sum \left( f\left( n+1 \right) - f\left( n \right) \right)&lt;/script&gt; converges, because &lt;script type=&quot;math/tex&quot;&gt;\sum_{ k = 1 }^{ n } \left( f\left( n+1 \right) - f\left( n \right) \right) = f\left( n+1 \right) - f\left( 1 \right) \require{AMScd} \begin{CD} @&gt;&gt;{n \to \infty}&gt;\end{CD} -f \left( 1 \right)&lt;/script&gt;&lt;/p&gt;
 
-&lt;p&gt;Finally &lt;script type=&quot;math/tex&quot;&gt;\sum \frac{1}{n^\alpha}&lt;/script&gt; converges.&lt;/p&gt;
+&lt;p&gt;Finally &lt;script type=&quot;math/tex&quot;&gt;\sum \frac{1}{n^\alpha}&lt;/script&gt; converges if &lt;script type=&quot;math/tex&quot;&gt;\alpha &gt; 1&lt;/script&gt;.&lt;/p&gt;
 </content>
  </entry>
  
