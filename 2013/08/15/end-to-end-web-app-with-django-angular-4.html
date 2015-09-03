@@ -115,15 +115,15 @@
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
 <span class="lineno"> 2</span> <span class="kn">from</span> <span class="nn">django.utils.translation</span> <span class="kn">import</span> <span class="n">ugettext_lazy</span> <span class="k">as</span> <span class="n">_</span>
 <span class="lineno"> 3</span> <span class="kn">from</span> <span class="nn">django.template.defaultfilters</span> <span class="kn">import</span> <span class="n">slugify</span>
-<span class="lineno"> 4</span>  
-<span class="lineno"> 5</span>  
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> 
 <span class="lineno"> 6</span> <span class="k">class</span> <span class="nc">Tag</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
 <span class="lineno"> 7</span>     <span class="n">slug</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SlugField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="n">_</span><span class="p">(</span><span class="s">&#39;slug&#39;</span><span class="p">),</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="lineno"> 8</span>     <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="lineno"> 9</span>  
+<span class="lineno"> 9</span> 
 <span class="lineno">10</span>     <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="lineno">11</span>         <span class="k">return</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
-<span class="lineno">12</span>  
+<span class="lineno">12</span> 
 <span class="lineno">13</span>     <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="lineno">14</span>         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">pk</span><span class="p">:</span>
 <span class="lineno">15</span>             <span class="bp">self</span><span class="o">.</span><span class="n">slug</span> <span class="o">=</span> <span class="n">slugify</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
@@ -133,8 +133,8 @@
 
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="kn">from</span> <span class="nn">django.db.models</span> <span class="kn">import</span> <span class="n">signals</span>
 <span class="lineno"> 2</span> <span class="kn">from</span> <span class="nn">tags.models</span> <span class="kn">import</span> <span class="n">Tag</span>
-<span class="lineno"> 3</span>  
-<span class="lineno"> 4</span>  
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span> 
 <span class="lineno"> 5</span> <span class="k">def</span> <span class="nf">create_tags</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">created_models</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="lineno"> 6</span>         <span class="n">Tag</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;Architecture&quot;</span><span class="p">)</span>
 <span class="lineno"> 7</span>         <span class="n">Tag</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;Art&quot;</span><span class="p">)</span>
@@ -170,7 +170,7 @@
 <span class="lineno">37</span>         <span class="n">Tag</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;Weddings&quot;</span><span class="p">)</span>
 <span class="lineno">38</span>         <span class="n">Tag</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;Women&quot;</span><span class="p">)</span>
 <span class="lineno">39</span>         <span class="n">Tag</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;Videos&quot;</span><span class="p">)</span>
-<span class="lineno">40</span>  
+<span class="lineno">40</span> 
 <span class="lineno">41</span> <span class="n">signals</span><span class="o">.</span><span class="n">post_syncdb</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">create_tags</span><span class="p">,</span> <span class="n">dispatch_uid</span><span class="o">=</span><span class="n">Tag</span><span class="p">)</span></code></pre></div>
 
 <p>the app contains a migration, use south to migrate this app.</p>
@@ -181,13 +181,13 @@
 <span class="lineno"> 2</span> <span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">permissions</span>
 <span class="lineno"> 3</span> <span class="kn">from</span> <span class="nn">tags.models</span> <span class="kn">import</span> <span class="n">Tag</span>
 <span class="lineno"> 4</span> <span class="kn">from</span> <span class="nn">tags.serializers</span> <span class="kn">import</span> <span class="n">TagSerializer</span>
-<span class="lineno"> 5</span>  
-<span class="lineno"> 6</span>  
+<span class="lineno"> 5</span> 
+<span class="lineno"> 6</span> 
 <span class="lineno"> 7</span> <span class="k">class</span> <span class="nc">TagList</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">ListAPIView</span><span class="p">):</span>
 <span class="lineno"> 8</span>     <span class="n">model</span> <span class="o">=</span> <span class="n">Tag</span>
 <span class="lineno"> 9</span>     <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">TagSerializer</span>
 <span class="lineno">10</span>     <span class="n">permission_classes</span> <span class="o">=</span> <span class="p">(</span><span class="n">permissions</span><span class="o">.</span><span class="n">IsAuthenticatedOrReadOnly</span><span class="p">,)</span>
-<span class="lineno">11</span>  
+<span class="lineno">11</span> 
 <span class="lineno">12</span>     <span class="k">def</span> <span class="nf">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="lineno">13</span>         <span class="sd">&quot;&quot;&quot;</span>
 <span class="lineno">14</span> <span class="sd">        This view should return a list of</span>
@@ -199,8 +199,8 @@
 <span class="lineno">20</span>         <span class="k">if</span> <span class="n">query</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
 <span class="lineno">21</span>             <span class="n">queryset</span> <span class="o">=</span> <span class="n">queryset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name__icontains</span><span class="o">=</span><span class="n">query</span><span class="p">)</span>
 <span class="lineno">22</span>         <span class="k">return</span> <span class="n">queryset</span>
-<span class="lineno">23</span>  
-<span class="lineno">24</span>  
+<span class="lineno">23</span> 
+<span class="lineno">24</span> 
 <span class="lineno">25</span> <span class="k">class</span> <span class="nc">TagDetail</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">RetrieveUpdateDestroyAPIView</span><span class="p">):</span>
 <span class="lineno">26</span>     <span class="sd">&quot;&quot;&quot;</span>
 <span class="lineno">27</span> <span class="sd">    Retrieve, update or delete a tag instance.</span>
@@ -218,19 +218,19 @@
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">serializers</span>
 <span class="lineno"> 2</span> <span class="kn">from</span> <span class="nn">posts.models</span> <span class="kn">import</span> <span class="n">Post</span>
 <span class="lineno"> 3</span> <span class="kn">from</span> <span class="nn">tags.serializers</span> <span class="kn">import</span> <span class="n">TagSerializer</span>
-<span class="lineno"> 4</span>  
-<span class="lineno"> 5</span>  
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> 
 <span class="lineno"> 6</span> <span class="k">class</span> <span class="nc">PostSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">HyperlinkedModelSerializer</span><span class="p">):</span>
 <span class="lineno"> 7</span>     <span class="n">author</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s">&#39;author.username&#39;</span><span class="p">)</span>
 <span class="lineno"> 8</span>     <span class="n">tags_details</span> <span class="o">=</span> <span class="n">TagSerializer</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s">&#39;tags&#39;</span><span class="p">,</span> <span class="n">read_only</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="lineno"> 9</span>     <span class="n">api_url</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">SerializerMethodField</span><span class="p">(</span><span class="s">&#39;get_api_url&#39;</span><span class="p">)</span>
-<span class="lineno">10</span>  
+<span class="lineno">10</span> 
 <span class="lineno">11</span>     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
 <span class="lineno">12</span>         <span class="n">model</span> <span class="o">=</span> <span class="n">Post</span>
 <span class="lineno">13</span>         <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;id&#39;</span><span class="p">,</span> <span class="s">&#39;title&#39;</span><span class="p">,</span> <span class="s">&#39;description&#39;</span><span class="p">,</span> <span class="s">&#39;created_on&#39;</span><span class="p">,</span> <span class="s">&#39;author&#39;</span><span class="p">,</span> <span class="s">&#39;tags&#39;</span><span class="p">,</span>
 <span class="lineno">14</span>                   <span class="s">&#39;tags_details&#39;</span><span class="p">,</span> <span class="s">&#39;url&#39;</span><span class="p">,</span> <span class="s">&#39;api_url&#39;</span><span class="p">)</span>
 <span class="lineno">15</span>         <span class="n">read_only_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;id&#39;</span><span class="p">,</span> <span class="s">&#39;created_on&#39;</span><span class="p">)</span>
-<span class="lineno">16</span>  
+<span class="lineno">16</span> 
 <span class="lineno">17</span>     <span class="k">def</span> <span class="nf">get_api_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
 <span class="lineno">18</span>         <span class="k">return</span> <span class="s">&quot;#/post/</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">obj</span><span class="o">.</span><span class="n">id</span></code></pre></div>
 
@@ -344,6 +344,7 @@
 <span class="lineno">6</span>    <span class="nt">&lt;/ul&gt;</span>
 <span class="lineno">7</span> <span class="nt">&lt;/p&gt;</span></code></pre></div>
 
+
             
 <div class="social">
   
@@ -384,7 +385,7 @@
                 <img src="/images/logo.png">
                 <p>
                 Written by <strong><a rel="author" href="https://twitter.com/mmourafiq." title="Mourad Mourafiq." target="_blank">Mourad Mourafiq.</a></strong><br>
-                    <span class="muted">Maths, Technologie, Philosophie, Startups, ...</span>
+                    <span class="muted">Maths, Technology, Philosophy, Startups, ...</span>
                 </p>
             </address>
             

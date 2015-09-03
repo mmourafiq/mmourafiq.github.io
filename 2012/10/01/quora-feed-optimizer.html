@@ -297,42 +297,42 @@ to avoid local minimum until the temperature is totally down)</li>
 
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="k">class</span> <span class="nc">Story</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="lineno"> 2</span>     <span class="sd">&quot;&quot;&quot;</span>
-<span class="lineno"> 3</span> <span class="sd">    Story object </span>
-<span class="lineno"> 4</span> <span class="sd">    </span>
+<span class="lineno"> 3</span> <span class="sd">    Story object</span>
+<span class="lineno"> 4</span> 
 <span class="lineno"> 5</span> <span class="sd">    @type _cpt: int</span>
 <span class="lineno"> 6</span> <span class="sd">    @param _cpt: counts the number of instance created.</span>
-<span class="lineno"> 7</span> <span class="sd">    </span>
+<span class="lineno"> 7</span> 
 <span class="lineno"> 8</span> <span class="sd">    @type _height: int</span>
 <span class="lineno"> 9</span> <span class="sd">    @param _height: The stroy&#39;s height.</span>
-<span class="lineno">10</span> <span class="sd">        </span>
+<span class="lineno">10</span> 
 <span class="lineno">11</span> <span class="sd">    @type _time: int</span>
 <span class="lineno">12</span> <span class="sd">    @param _time: The time of publication.</span>
-<span class="lineno">13</span> <span class="sd">    </span>
+<span class="lineno">13</span> 
 <span class="lineno">14</span> <span class="sd">    @type _id: int</span>
 <span class="lineno">15</span> <span class="sd">    @param _id: The story&#39;s id.</span>
-<span class="lineno">16</span> <span class="sd">    </span>
+<span class="lineno">16</span> 
 <span class="lineno">17</span> <span class="sd">    @type _score: int</span>
 <span class="lineno">18</span> <span class="sd">    @param _score: The story&#39;s score.</span>
-<span class="lineno">19</span> <span class="sd">    </span>
+<span class="lineno">19</span> 
 <span class="lineno">20</span> <span class="sd">    @type _height: int</span>
-<span class="lineno">21</span> <span class="sd">    @param _height: The stroy&#39;s height.   </span>
-<span class="lineno">22</span> <span class="sd">    </span>
+<span class="lineno">21</span> <span class="sd">    @param _height: The stroy&#39;s height.</span>
+<span class="lineno">22</span> 
 <span class="lineno">23</span> <span class="sd">    @type _proportioned_score: float</span>
-<span class="lineno">24</span> <span class="sd">    @param _proportioned_score: The stroy&#39;s _score proportioned to height.    </span>
+<span class="lineno">24</span> <span class="sd">    @param _proportioned_score: The stroy&#39;s _score proportioned to height.</span>
 <span class="lineno">25</span> <span class="sd">    &quot;&quot;&quot;</span>
 <span class="lineno">26</span>     <span class="n">__cpt</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="lineno">27</span>     
-<span class="lineno">28</span>     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">score</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">height</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>                
+<span class="lineno">27</span> 
+<span class="lineno">28</span>     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">score</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">height</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 <span class="lineno">29</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="n">Story</span><span class="o">.</span><span class="n">__cpt</span>
 <span class="lineno">30</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_time</span> <span class="o">=</span> <span class="n">time</span>
 <span class="lineno">31</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_score</span> <span class="o">=</span> <span class="n">score</span>
-<span class="lineno">32</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_height</span> <span class="o">=</span> <span class="n">height</span>     
+<span class="lineno">32</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_height</span> <span class="o">=</span> <span class="n">height</span>
 <span class="lineno">33</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_proportioned_score</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">/</span><span class="n">height</span>
-<span class="lineno">34</span>         <span class="n">Story</span><span class="o">.</span><span class="n">__cpt</span> <span class="o">+=</span> <span class="mi">1</span>        
-<span class="lineno">35</span>     
+<span class="lineno">34</span>         <span class="n">Story</span><span class="o">.</span><span class="n">__cpt</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="lineno">35</span> 
 <span class="lineno">36</span>     <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="lineno">37</span>         <span class="k">return</span> <span class="s">&quot;id: </span><span class="si">%s</span><span class="s">, time: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_time</span><span class="p">)</span>    
-<span class="lineno">38</span>     
+<span class="lineno">37</span>         <span class="k">return</span> <span class="s">&quot;id: </span><span class="si">%s</span><span class="s">, time: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_time</span><span class="p">)</span>
+<span class="lineno">38</span> 
 <span class="lineno">39</span>     <span class="k">def</span> <span class="nf">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">story</span><span class="p">):</span>
 <span class="lineno">40</span>         <span class="k">if</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_proportioned_score</span> <span class="o">&gt;</span> <span class="n">story</span><span class="o">.</span><span class="n">_proportioned_score</span><span class="p">):</span>
 <span class="lineno">41</span>             <span class="k">return</span> <span class="bp">True</span>
@@ -341,7 +341,7 @@ to avoid local minimum until the temperature is totally down)</li>
 <span class="lineno">44</span>         <span class="k">if</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">&lt;</span> <span class="n">story</span><span class="o">.</span><span class="n">_id</span><span class="p">):</span>
 <span class="lineno">45</span>             <span class="k">return</span> <span class="bp">True</span>
 <span class="lineno">46</span>         <span class="k">return</span> <span class="bp">False</span>
-<span class="lineno">47</span>     
+<span class="lineno">47</span> 
 <span class="lineno">48</span>     <span class="k">def</span> <span class="nf">_better_score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">story</span><span class="p">):</span>
 <span class="lineno">49</span>         <span class="k">if</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_score</span> <span class="o">&gt;</span> <span class="n">story</span><span class="o">.</span><span class="n">_score</span><span class="p">):</span>
 <span class="lineno">50</span>             <span class="k">return</span> <span class="bp">True</span>
@@ -356,29 +356,29 @@ to avoid local minimum until the temperature is totally down)</li>
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="lineno"> 2</span>     <span class="sd">&quot;&quot;&quot;</span>
 <span class="lineno"> 3</span> <span class="sd">    Potential solution for the upcoming reload</span>
-<span class="lineno"> 4</span> <span class="sd">    </span>
+<span class="lineno"> 4</span> 
 <span class="lineno"> 5</span> <span class="sd">    @type _stories: list</span>
 <span class="lineno"> 6</span> <span class="sd">    @param _stories: The list of potential items.</span>
 <span class="lineno"> 7</span> 
 <span class="lineno"> 8</span> <span class="sd">    @type _len_stories : int</span>
-<span class="lineno"> 9</span> <span class="sd">    @param _len_stories: The length of the list of stories.    </span>
-<span class="lineno">10</span> <span class="sd">    </span>
+<span class="lineno"> 9</span> <span class="sd">    @param _len_stories: The length of the list of stories.</span>
+<span class="lineno">10</span> 
 <span class="lineno">11</span> <span class="sd">    @type _score: int</span>
 <span class="lineno">12</span> <span class="sd">    @param _score: The current solution&#39;s score.</span>
-<span class="lineno">13</span> <span class="sd">    </span>
+<span class="lineno">13</span> 
 <span class="lineno">14</span> <span class="sd">    @type _height: int</span>
-<span class="lineno">15</span> <span class="sd">    @param _height: The current solution&#39;s height.    </span>
+<span class="lineno">15</span> <span class="sd">    @param _height: The current solution&#39;s height.</span>
 <span class="lineno">16</span> <span class="sd">    &quot;&quot;&quot;</span>
-<span class="lineno">17</span>     
+<span class="lineno">17</span> 
 <span class="lineno">18</span>     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="lineno">19</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_stories</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="lineno">20</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_len_stories</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="lineno">21</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_score</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="lineno">22</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_height</span> <span class="o">=</span> <span class="mi">0</span>          
-<span class="lineno">23</span>     
+<span class="lineno">22</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_height</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="lineno">23</span> 
 <span class="lineno">24</span>     <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="lineno">25</span>         <span class="k">return</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_score</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_len_stories</span><span class="p">,</span> <span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">story</span><span class="o">.</span><span class="n">_id</span><span class="p">)</span> <span class="k">for</span> <span class="n">story</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stories</span><span class="p">])))</span>
-<span class="lineno">26</span>     
+<span class="lineno">26</span> 
 <span class="lineno">27</span>     <span class="k">def</span> <span class="nf">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">solution</span><span class="p">):</span>
 <span class="lineno">28</span>         <span class="c">#check who&#39;s score is better</span>
 <span class="lineno">29</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_score</span> <span class="o">&gt;</span> <span class="n">solution</span><span class="o">.</span><span class="n">_score</span><span class="p">:</span>
@@ -395,7 +395,7 @@ to avoid local minimum until the temperature is totally down)</li>
 <span class="lineno">40</span>             <span class="k">return</span> <span class="bp">True</span>
 <span class="lineno">41</span>         <span class="k">else</span><span class="p">:</span>
 <span class="lineno">42</span>             <span class="k">return</span> <span class="bp">False</span>
-<span class="lineno">43</span>  
+<span class="lineno">43</span> 
 <span class="lineno">44</span>     <span class="nd">@classmethod</span>
 <span class="lineno">45</span>     <span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">solution</span><span class="p">):</span>
 <span class="lineno">46</span>         <span class="n">clone_solution</span> <span class="o">=</span> <span class="n">cls</span><span class="p">()</span>
@@ -404,20 +404,20 @@ to avoid local minimum until the temperature is totally down)</li>
 <span class="lineno">49</span>         <span class="n">clone_solution</span><span class="o">.</span><span class="n">_score</span> <span class="o">=</span> <span class="n">solution</span><span class="o">.</span><span class="n">_score</span>
 <span class="lineno">50</span>         <span class="n">clone_solution</span><span class="o">.</span><span class="n">_height</span> <span class="o">=</span> <span class="n">solution</span><span class="o">.</span><span class="n">_height</span>
 <span class="lineno">51</span>         <span class="k">return</span> <span class="n">clone_solution</span>
-<span class="lineno">52</span>     
-<span class="lineno">53</span>     <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">story</span><span class="p">):</span>    
+<span class="lineno">52</span> 
+<span class="lineno">53</span>     <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">story</span><span class="p">):</span>
 <span class="lineno">54</span>         <span class="sd">&quot;&quot;&quot;</span>
 <span class="lineno">55</span> <span class="sd">        add story to the solution</span>
 <span class="lineno">56</span> <span class="sd">        &quot;&quot;&quot;</span>
 <span class="lineno">57</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_stories</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">story</span><span class="p">)</span>
 <span class="lineno">58</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_score</span> <span class="o">+=</span> <span class="n">story</span><span class="o">.</span><span class="n">_score</span>
-<span class="lineno">59</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_height</span> <span class="o">+=</span> <span class="n">story</span><span class="o">.</span><span class="n">_height</span> 
+<span class="lineno">59</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_height</span> <span class="o">+=</span> <span class="n">story</span><span class="o">.</span><span class="n">_height</span>
 <span class="lineno">60</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_len_stories</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="lineno">61</span>         
+<span class="lineno">61</span> 
 <span class="lineno">62</span>     <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">story</span><span class="p">):</span>
 <span class="lineno">63</span>         <span class="sd">&quot;&quot;&quot;</span>
 <span class="lineno">64</span> <span class="sd">        remove story from the solution</span>
-<span class="lineno">65</span> <span class="sd">        &quot;&quot;&quot;</span>    
+<span class="lineno">65</span> <span class="sd">        &quot;&quot;&quot;</span>
 <span class="lineno">66</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_stories</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">story</span><span class="p">)</span>
 <span class="lineno">67</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_score</span> <span class="o">-=</span> <span class="n">story</span><span class="o">.</span><span class="n">_score</span>
 <span class="lineno">68</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_height</span> <span class="o">-=</span> <span class="n">story</span><span class="o">.</span><span class="n">_height</span>
@@ -437,48 +437,48 @@ to avoid local minimum until the temperature is totally down)</li>
 <span class="lineno"> 10</span> <span class="kn">import</span> <span class="nn">copy</span>
 <span class="lineno"> 11</span> <span class="kn">import</span> <span class="nn">math</span>
 <span class="lineno"> 12</span> <span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">choice</span><span class="p">,</span> <span class="n">random</span>
-<span class="lineno"> 13</span>  
+<span class="lineno"> 13</span> 
 <span class="lineno"> 14</span> <span class="n">BRUTE_FORCE</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="lineno"> 15</span> <span class="n">ANNEALING_SIMULATED</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="lineno"> 16</span>  
+<span class="lineno"> 16</span> 
 <span class="lineno"> 17</span> <span class="k">class</span> <span class="nc">Story</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="lineno"> 18</span>     <span class="sd">&quot;&quot;&quot;</span>
-<span class="lineno"> 19</span> <span class="sd">    Story object </span>
-<span class="lineno"> 20</span> <span class="sd">    </span>
+<span class="lineno"> 19</span> <span class="sd">    Story object</span>
+<span class="lineno"> 20</span> 
 <span class="lineno"> 21</span> <span class="sd">    @type _cpt: int</span>
 <span class="lineno"> 22</span> <span class="sd">    @param _cpt: counts the number of instance created.</span>
-<span class="lineno"> 23</span> <span class="sd">    </span>
+<span class="lineno"> 23</span> 
 <span class="lineno"> 24</span> <span class="sd">    @type _height: int</span>
 <span class="lineno"> 25</span> <span class="sd">    @param _height: The stroy&#39;s height.</span>
-<span class="lineno"> 26</span> <span class="sd">        </span>
+<span class="lineno"> 26</span> 
 <span class="lineno"> 27</span> <span class="sd">    @type _time: int</span>
 <span class="lineno"> 28</span> <span class="sd">    @param _time: The time of publication.</span>
-<span class="lineno"> 29</span> <span class="sd">    </span>
+<span class="lineno"> 29</span> 
 <span class="lineno"> 30</span> <span class="sd">    @type _id: int</span>
 <span class="lineno"> 31</span> <span class="sd">    @param _id: The story&#39;s id.</span>
-<span class="lineno"> 32</span> <span class="sd">    </span>
+<span class="lineno"> 32</span> 
 <span class="lineno"> 33</span> <span class="sd">    @type _score: int</span>
 <span class="lineno"> 34</span> <span class="sd">    @param _score: The story&#39;s score.</span>
-<span class="lineno"> 35</span> <span class="sd">    </span>
+<span class="lineno"> 35</span> 
 <span class="lineno"> 36</span> <span class="sd">    @type _height: int</span>
-<span class="lineno"> 37</span> <span class="sd">    @param _height: The stroy&#39;s height.   </span>
-<span class="lineno"> 38</span> <span class="sd">    </span>
+<span class="lineno"> 37</span> <span class="sd">    @param _height: The stroy&#39;s height.</span>
+<span class="lineno"> 38</span> 
 <span class="lineno"> 39</span> <span class="sd">    @type _proportioned_score: float</span>
-<span class="lineno"> 40</span> <span class="sd">    @param _proportioned_score: The stroy&#39;s _score proportioned to height.    </span>
+<span class="lineno"> 40</span> <span class="sd">    @param _proportioned_score: The stroy&#39;s _score proportioned to height.</span>
 <span class="lineno"> 41</span> <span class="sd">    &quot;&quot;&quot;</span>
 <span class="lineno"> 42</span>     <span class="n">__cpt</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="lineno"> 43</span>     
-<span class="lineno"> 44</span>     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">score</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">height</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>                
+<span class="lineno"> 43</span> 
+<span class="lineno"> 44</span>     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">score</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">height</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 <span class="lineno"> 45</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="n">Story</span><span class="o">.</span><span class="n">__cpt</span>
 <span class="lineno"> 46</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_time</span> <span class="o">=</span> <span class="n">time</span>
 <span class="lineno"> 47</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_score</span> <span class="o">=</span> <span class="n">score</span>
-<span class="lineno"> 48</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_height</span> <span class="o">=</span> <span class="n">height</span>     
+<span class="lineno"> 48</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_height</span> <span class="o">=</span> <span class="n">height</span>
 <span class="lineno"> 49</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_proportioned_score</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">/</span><span class="n">height</span>
-<span class="lineno"> 50</span>         <span class="n">Story</span><span class="o">.</span><span class="n">__cpt</span> <span class="o">+=</span> <span class="mi">1</span>        
-<span class="lineno"> 51</span>     
+<span class="lineno"> 50</span>         <span class="n">Story</span><span class="o">.</span><span class="n">__cpt</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="lineno"> 51</span> 
 <span class="lineno"> 52</span>     <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="lineno"> 53</span>         <span class="k">return</span> <span class="s">&quot;id: </span><span class="si">%s</span><span class="s">, time: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_time</span><span class="p">)</span>    
-<span class="lineno"> 54</span>     
+<span class="lineno"> 53</span>         <span class="k">return</span> <span class="s">&quot;id: </span><span class="si">%s</span><span class="s">, time: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_time</span><span class="p">)</span>
+<span class="lineno"> 54</span> 
 <span class="lineno"> 55</span>     <span class="k">def</span> <span class="nf">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">story</span><span class="p">):</span>
 <span class="lineno"> 56</span>         <span class="k">if</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_proportioned_score</span> <span class="o">&gt;</span> <span class="n">story</span><span class="o">.</span><span class="n">_proportioned_score</span><span class="p">):</span>
 <span class="lineno"> 57</span>             <span class="k">return</span> <span class="bp">True</span>
@@ -487,7 +487,7 @@ to avoid local minimum until the temperature is totally down)</li>
 <span class="lineno"> 60</span>         <span class="k">if</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">&lt;</span> <span class="n">story</span><span class="o">.</span><span class="n">_id</span><span class="p">):</span>
 <span class="lineno"> 61</span>             <span class="k">return</span> <span class="bp">True</span>
 <span class="lineno"> 62</span>         <span class="k">return</span> <span class="bp">False</span>
-<span class="lineno"> 63</span>     
+<span class="lineno"> 63</span> 
 <span class="lineno"> 64</span>     <span class="k">def</span> <span class="nf">_better_score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">story</span><span class="p">):</span>
 <span class="lineno"> 65</span>         <span class="k">if</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_score</span> <span class="o">&gt;</span> <span class="n">story</span><span class="o">.</span><span class="n">_score</span><span class="p">):</span>
 <span class="lineno"> 66</span>             <span class="k">return</span> <span class="bp">True</span>
@@ -496,34 +496,34 @@ to avoid local minimum until the temperature is totally down)</li>
 <span class="lineno"> 69</span>         <span class="k">if</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">&lt;</span> <span class="n">story</span><span class="o">.</span><span class="n">_id</span><span class="p">):</span>
 <span class="lineno"> 70</span>             <span class="k">return</span> <span class="bp">True</span>
 <span class="lineno"> 71</span>         <span class="k">return</span> <span class="bp">False</span>
-<span class="lineno"> 72</span>  
-<span class="lineno"> 73</span>  
+<span class="lineno"> 72</span> 
+<span class="lineno"> 73</span> 
 <span class="lineno"> 74</span> <span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="lineno"> 75</span>     <span class="sd">&quot;&quot;&quot;</span>
 <span class="lineno"> 76</span> <span class="sd">    Potential solution for the upcoming reload</span>
-<span class="lineno"> 77</span> <span class="sd">    </span>
+<span class="lineno"> 77</span> 
 <span class="lineno"> 78</span> <span class="sd">    @type _stories: list</span>
 <span class="lineno"> 79</span> <span class="sd">    @param _stories: The list of potential items.</span>
 <span class="lineno"> 80</span> 
 <span class="lineno"> 81</span> <span class="sd">    @type _len_stories : int</span>
-<span class="lineno"> 82</span> <span class="sd">    @param _len_stories: The length of the list of stories.    </span>
-<span class="lineno"> 83</span> <span class="sd">    </span>
+<span class="lineno"> 82</span> <span class="sd">    @param _len_stories: The length of the list of stories.</span>
+<span class="lineno"> 83</span> 
 <span class="lineno"> 84</span> <span class="sd">    @type _score: int</span>
 <span class="lineno"> 85</span> <span class="sd">    @param _score: The current solution&#39;s score.</span>
-<span class="lineno"> 86</span> <span class="sd">    </span>
+<span class="lineno"> 86</span> 
 <span class="lineno"> 87</span> <span class="sd">    @type _height: int</span>
-<span class="lineno"> 88</span> <span class="sd">    @param _height: The current solution&#39;s height.    </span>
+<span class="lineno"> 88</span> <span class="sd">    @param _height: The current solution&#39;s height.</span>
 <span class="lineno"> 89</span> <span class="sd">    &quot;&quot;&quot;</span>
-<span class="lineno"> 90</span>     
+<span class="lineno"> 90</span> 
 <span class="lineno"> 91</span>     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="lineno"> 92</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_stories</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="lineno"> 93</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_len_stories</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="lineno"> 94</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_score</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="lineno"> 95</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_height</span> <span class="o">=</span> <span class="mi">0</span>          
-<span class="lineno"> 96</span>     
+<span class="lineno"> 95</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_height</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="lineno"> 96</span> 
 <span class="lineno"> 97</span>     <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="lineno"> 98</span>         <span class="k">return</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_score</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_len_stories</span><span class="p">,</span> <span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">story</span><span class="o">.</span><span class="n">_id</span><span class="p">)</span> <span class="k">for</span> <span class="n">story</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stories</span><span class="p">])))</span>
-<span class="lineno"> 99</span>     
+<span class="lineno"> 99</span> 
 <span class="lineno">100</span>     <span class="k">def</span> <span class="nf">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">solution</span><span class="p">):</span>
 <span class="lineno">101</span>         <span class="c">#check who&#39;s score is better</span>
 <span class="lineno">102</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_score</span> <span class="o">&gt;</span> <span class="n">solution</span><span class="o">.</span><span class="n">_score</span><span class="p">:</span>
@@ -540,7 +540,7 @@ to avoid local minimum until the temperature is totally down)</li>
 <span class="lineno">113</span>             <span class="k">return</span> <span class="bp">True</span>
 <span class="lineno">114</span>         <span class="k">else</span><span class="p">:</span>
 <span class="lineno">115</span>             <span class="k">return</span> <span class="bp">False</span>
-<span class="lineno">116</span>  
+<span class="lineno">116</span> 
 <span class="lineno">117</span>     <span class="nd">@classmethod</span>
 <span class="lineno">118</span>     <span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">solution</span><span class="p">):</span>
 <span class="lineno">119</span>         <span class="n">clone_solution</span> <span class="o">=</span> <span class="n">cls</span><span class="p">()</span>
@@ -549,56 +549,56 @@ to avoid local minimum until the temperature is totally down)</li>
 <span class="lineno">122</span>         <span class="n">clone_solution</span><span class="o">.</span><span class="n">_score</span> <span class="o">=</span> <span class="n">solution</span><span class="o">.</span><span class="n">_score</span>
 <span class="lineno">123</span>         <span class="n">clone_solution</span><span class="o">.</span><span class="n">_height</span> <span class="o">=</span> <span class="n">solution</span><span class="o">.</span><span class="n">_height</span>
 <span class="lineno">124</span>         <span class="k">return</span> <span class="n">clone_solution</span>
-<span class="lineno">125</span>     
-<span class="lineno">126</span>     <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">story</span><span class="p">):</span>    
+<span class="lineno">125</span> 
+<span class="lineno">126</span>     <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">story</span><span class="p">):</span>
 <span class="lineno">127</span>         <span class="sd">&quot;&quot;&quot;</span>
 <span class="lineno">128</span> <span class="sd">        add story to the solution</span>
 <span class="lineno">129</span> <span class="sd">        &quot;&quot;&quot;</span>
 <span class="lineno">130</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_stories</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">story</span><span class="p">)</span>
 <span class="lineno">131</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_score</span> <span class="o">+=</span> <span class="n">story</span><span class="o">.</span><span class="n">_score</span>
-<span class="lineno">132</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_height</span> <span class="o">+=</span> <span class="n">story</span><span class="o">.</span><span class="n">_height</span> 
+<span class="lineno">132</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_height</span> <span class="o">+=</span> <span class="n">story</span><span class="o">.</span><span class="n">_height</span>
 <span class="lineno">133</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_len_stories</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="lineno">134</span>         
+<span class="lineno">134</span> 
 <span class="lineno">135</span>     <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">story</span><span class="p">):</span>
 <span class="lineno">136</span>         <span class="sd">&quot;&quot;&quot;</span>
 <span class="lineno">137</span> <span class="sd">        remove story from the solution</span>
-<span class="lineno">138</span> <span class="sd">        &quot;&quot;&quot;</span>    
+<span class="lineno">138</span> <span class="sd">        &quot;&quot;&quot;</span>
 <span class="lineno">139</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_stories</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">story</span><span class="p">)</span>
 <span class="lineno">140</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_score</span> <span class="o">-=</span> <span class="n">story</span><span class="o">.</span><span class="n">_score</span>
 <span class="lineno">141</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_height</span> <span class="o">-=</span> <span class="n">story</span><span class="o">.</span><span class="n">_height</span>
 <span class="lineno">142</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_len_stories</span> <span class="o">-=</span> <span class="mi">1</span>  
-<span class="lineno">143</span>  
-<span class="lineno">144</span>  
+<span class="lineno">143</span> 
+<span class="lineno">144</span> 
 <span class="lineno">145</span> <span class="k">class</span> <span class="nc">Optimizer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="lineno">146</span>     <span class="sd">&quot;&quot;&quot;</span>
 <span class="lineno">147</span> <span class="sd">    Keep track of stories that can potentially make a solution.</span>
 <span class="lineno">148</span> <span class="sd">    The stories should be sorted by time of publication.</span>
-<span class="lineno">149</span> <span class="sd">    </span>
+<span class="lineno">149</span> 
 <span class="lineno">150</span> <span class="sd">    @type _stories: list</span>
 <span class="lineno">151</span> <span class="sd">    @param stories: The list of stories that can potentially make a solution.</span>
-<span class="lineno">152</span> <span class="sd">    </span>
+<span class="lineno">152</span> 
 <span class="lineno">153</span> <span class="sd">    @type _len_stories : int</span>
 <span class="lineno">154</span> <span class="sd">    @param _len_stories: The length of the list of stories.</span>
-<span class="lineno">155</span> <span class="sd">    </span>
-<span class="lineno">156</span> <span class="sd">    @type __height: int </span>
+<span class="lineno">155</span> 
+<span class="lineno">156</span> <span class="sd">    @type __height: int</span>
 <span class="lineno">157</span> <span class="sd">    @param window: The height of the browser.  </span>
-<span class="lineno">158</span> <span class="sd">    </span>
-<span class="lineno">159</span> <span class="sd">    @type __window: int </span>
-<span class="lineno">160</span> <span class="sd">    @param window: The window of recent stories.   </span>
-<span class="lineno">161</span> <span class="sd">    </span>
+<span class="lineno">158</span> 
+<span class="lineno">159</span> <span class="sd">    @type __window: int</span>
+<span class="lineno">160</span> <span class="sd">    @param window: The window of recent stories.</span>
+<span class="lineno">161</span> 
 <span class="lineno">162</span> <span class="sd">    @type _best_story: Stroy</span>
-<span class="lineno">163</span> <span class="sd">    @param _best_story: The  best story so far.   </span>
+<span class="lineno">163</span> <span class="sd">    @param _best_story: The  best story so far.</span>
 <span class="lineno">164</span> <span class="sd">    &quot;&quot;&quot;</span>
 <span class="lineno">165</span>     <span class="n">__height</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="lineno">166</span>     <span class="n">__window</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="lineno">167</span>     
+<span class="lineno">167</span> 
 <span class="lineno">168</span>     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
 <span class="lineno">169</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_stories</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="lineno">170</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_len_stories</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="lineno">171</span>         <span class="n">Optimizer</span><span class="o">.</span><span class="n">__window</span> <span class="o">=</span> <span class="n">window</span>
 <span class="lineno">172</span>         <span class="n">Optimizer</span><span class="o">.</span><span class="n">__height</span> <span class="o">=</span> <span class="n">height</span>
 <span class="lineno">173</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_best_story</span> <span class="o">=</span> <span class="n">Story</span><span class="p">()</span>
-<span class="lineno">174</span>     
+<span class="lineno">174</span> 
 <span class="lineno">175</span>     <span class="k">def</span> <span class="nf">_purge_old_stories</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current_time</span><span class="p">):</span>
 <span class="lineno">176</span>         <span class="sd">&quot;&quot;&quot;</span>
 <span class="lineno">177</span> <span class="sd">        remove old stories form the current list of stories</span>
@@ -612,8 +612,8 @@ to avoid local minimum until the temperature is totally down)</li>
 <span class="lineno">185</span>                 <span class="n">to_be_removed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">old_story</span><span class="p">)</span>
 <span class="lineno">186</span>         <span class="k">for</span> <span class="n">old_story</span> <span class="ow">in</span> <span class="n">to_be_removed</span><span class="p">:</span>
 <span class="lineno">187</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_stories</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">old_story</span><span class="p">)</span>  
-<span class="lineno">188</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_len_stories</span> <span class="o">-=</span> <span class="mi">1</span>   
-<span class="lineno">189</span>     
+<span class="lineno">188</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_len_stories</span> <span class="o">-=</span> <span class="mi">1</span>
+<span class="lineno">189</span> 
 <span class="lineno">190</span>     <span class="k">def</span> <span class="nf">_brute_force</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="lineno">191</span>         <span class="sd">&quot;&quot;&quot;</span>
 <span class="lineno">192</span> <span class="sd">        check all possibilities:</span>
@@ -622,13 +622,13 @@ to avoid local minimum until the temperature is totally down)</li>
 <span class="lineno">195</span> <span class="sd">            .</span>
 <span class="lineno">196</span> <span class="sd">            .</span>
 <span class="lineno">197</span> <span class="sd">            l-1) best solution for combination of l-1 stories (if it exists).</span>
-<span class="lineno">198</span> <span class="sd">            </span>
+<span class="lineno">198</span> 
 <span class="lineno">199</span> <span class="sd">            l : being the length of the current stories.</span>
-<span class="lineno">200</span> <span class="sd">        &quot;&quot;&quot;</span>        
+<span class="lineno">200</span> <span class="sd">        &quot;&quot;&quot;</span>
 <span class="lineno">201</span>         <span class="n">best_solution</span> <span class="o">=</span> <span class="n">Solution</span><span class="p">()</span>
 <span class="lineno">202</span>         <span class="n">best_solution</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_best_story</span><span class="p">)</span>
 <span class="lineno">203</span>         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_len_stories</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-<span class="lineno">204</span>             <span class="k">for</span> <span class="n">tuple_stories</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_stories</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>                
+<span class="lineno">204</span>             <span class="k">for</span> <span class="n">tuple_stories</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_stories</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
 <span class="lineno">205</span>                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">addable</span><span class="p">(</span><span class="n">tuple_stories</span><span class="p">):</span>
 <span class="lineno">206</span>                     <span class="n">current_solution</span> <span class="o">=</span> <span class="n">Solution</span><span class="p">()</span>
 <span class="lineno">207</span>                     <span class="k">for</span> <span class="n">story</span> <span class="ow">in</span> <span class="n">tuple_stories</span><span class="p">:</span>
@@ -636,12 +636,12 @@ to avoid local minimum until the temperature is totally down)</li>
 <span class="lineno">209</span>                     <span class="k">if</span> <span class="n">current_solution</span> <span class="o">&gt;</span> <span class="n">best_solution</span><span class="p">:</span>
 <span class="lineno">210</span>                         <span class="n">best_solution</span> <span class="o">=</span> <span class="n">current_solution</span>
 <span class="lineno">211</span>         <span class="k">return</span> <span class="n">best_solution</span>
-<span class="lineno">212</span>         
+<span class="lineno">212</span> 
 <span class="lineno">213</span>     <span class="k">def</span> <span class="nf">_annealing_simulated</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">,</span><span class="n">cool</span><span class="o">=</span><span class="mf">0.35</span><span class="p">):</span>
 <span class="lineno">214</span>         <span class="sd">&quot;&quot;&quot;</span>
 <span class="lineno">215</span> <span class="sd">        perform the annealing simulated algorithm:</span>
 <span class="lineno">216</span> <span class="sd">            1) start with a random solution.</span>
-<span class="lineno">217</span> <span class="sd">            2) move to a neighbour solution. </span>
+<span class="lineno">217</span> <span class="sd">            2) move to a neighbour solution.</span>
 <span class="lineno">218</span> <span class="sd">                (favors better solutions, and accepts worst solutions with a certain probabilities</span>
 <span class="lineno">219</span> <span class="sd">                 to avoid local minimum until the temperature is totally down)</span>
 <span class="lineno">220</span> <span class="sd">        &quot;&quot;&quot;</span>
@@ -656,11 +656,11 @@ to avoid local minimum until the temperature is totally down)</li>
 <span class="lineno">229</span>             <span class="n">stories_at_true</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_len_stories</span><span class="p">)</span> <span class="k">if</span> <span class="n">stories_in_temp</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
 <span class="lineno">230</span>             <span class="c">#check if there is still stories</span>
 <span class="lineno">231</span>             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">stories_at_true</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_len_stories</span><span class="p">:</span>
-<span class="lineno">232</span>                 <span class="k">break</span> 
+<span class="lineno">232</span>                 <span class="k">break</span>
 <span class="lineno">233</span>             <span class="c">#choose a story and remove it</span>
 <span class="lineno">234</span>             <span class="k">if</span> <span class="n">stories_at_true</span><span class="p">:</span>
 <span class="lineno">235</span>                 <span class="n">indice</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">stories_at_true</span><span class="p">)</span>
-<span class="lineno">236</span>                 <span class="n">stories_in_temp</span><span class="p">[</span><span class="n">indice</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>            
+<span class="lineno">236</span>                 <span class="n">stories_in_temp</span><span class="p">[</span><span class="n">indice</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
 <span class="lineno">237</span>                 <span class="n">temp_solution</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">ordered_stories</span><span class="p">[</span><span class="n">indice</span><span class="p">])</span>
 <span class="lineno">238</span>             <span class="k">else</span><span class="p">:</span>
 <span class="lineno">239</span>                 <span class="n">indice</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
@@ -685,32 +685,32 @@ to avoid local minimum until the temperature is totally down)</li>
 <span class="lineno">258</span>             <span class="c">#the algorithm states that we can still give it a try depending on a probability</span>
 <span class="lineno">259</span>             <span class="k">else</span><span class="p">:</span>
 <span class="lineno">260</span>                 <span class="c">#since temp solution score is &lt; current solution score</span>
-<span class="lineno">261</span>                 <span class="c">#this probability will be near one at the beginning where T is high </span>
-<span class="lineno">262</span>                 <span class="c">#but will get lower and lower as T cool down </span>
+<span class="lineno">261</span>                 <span class="c">#this probability will be near one at the beginning where T is high</span>
+<span class="lineno">262</span>                 <span class="c">#but will get lower and lower as T cool down</span>
 <span class="lineno">263</span>                 <span class="c">#hence will accept less and less bad solution</span>
-<span class="lineno">264</span>                 <span class="n">p</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">e</span><span class="p">,</span><span class="nb">float</span><span class="p">(</span><span class="n">temp_solution</span><span class="o">.</span><span class="n">_score</span> <span class="o">-</span> <span class="n">current_solution</span><span class="o">.</span><span class="n">_score</span><span class="p">)</span><span class="o">/</span><span class="n">T</span><span class="p">)</span>                
+<span class="lineno">264</span>                 <span class="n">p</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">e</span><span class="p">,</span><span class="nb">float</span><span class="p">(</span><span class="n">temp_solution</span><span class="o">.</span><span class="n">_score</span> <span class="o">-</span> <span class="n">current_solution</span><span class="o">.</span><span class="n">_score</span><span class="p">)</span><span class="o">/</span><span class="n">T</span><span class="p">)</span>
 <span class="lineno">265</span>                 <span class="k">if</span> <span class="n">p</span> <span class="o">&gt;</span> <span class="n">random</span><span class="p">():</span>
 <span class="lineno">266</span>                     <span class="n">current_solution</span> <span class="o">=</span> <span class="n">temp_solution</span>
-<span class="lineno">267</span>                     <span class="n">stories_in_current</span> <span class="o">=</span> <span class="n">stories_in_temp</span> 
+<span class="lineno">267</span>                     <span class="n">stories_in_current</span> <span class="o">=</span> <span class="n">stories_in_temp</span>
 <span class="lineno">268</span>             <span class="c">#decrease the temperature</span>
 <span class="lineno">269</span>             <span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="o">*</span><span class="n">cool</span>
 <span class="lineno">270</span>         <span class="k">return</span> <span class="n">best_solution</span>
-<span class="lineno">271</span>                 
+<span class="lineno">271</span> 
 <span class="lineno">272</span>     <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">story</span><span class="p">):</span>
 <span class="lineno">273</span>         <span class="c">#check if the story&#39;s height is within the browser&#39;s height</span>
 <span class="lineno">274</span>         <span class="k">if</span> <span class="n">story</span><span class="o">.</span><span class="n">_height</span> <span class="o">&lt;=</span> <span class="n">Optimizer</span><span class="o">.</span><span class="n">__height</span><span class="p">:</span>
 <span class="lineno">275</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_stories</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">story</span><span class="p">)</span>  
-<span class="lineno">276</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_len_stories</span> <span class="o">+=</span> <span class="mi">1</span>   
+<span class="lineno">276</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_len_stories</span> <span class="o">+=</span> <span class="mi">1</span>
 <span class="lineno">277</span>             <span class="k">if</span> <span class="p">(</span><span class="n">story</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_best_story</span><span class="p">):</span>
-<span class="lineno">278</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">_best_story</span> <span class="o">=</span> <span class="n">story</span>   
-<span class="lineno">279</span>                     
+<span class="lineno">278</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">_best_story</span> <span class="o">=</span> <span class="n">story</span>
+<span class="lineno">279</span> 
 <span class="lineno">280</span>     <span class="k">def</span> <span class="nf">produce_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current_time</span><span class="p">,</span> <span class="n">solution</span><span class="o">=</span><span class="n">BRUTE_FORCE</span><span class="p">):</span>
 <span class="lineno">281</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_purge_old_stories</span><span class="p">(</span><span class="n">current_time</span><span class="p">)</span>
 <span class="lineno">282</span>         <span class="k">if</span> <span class="n">solution</span> <span class="o">==</span> <span class="n">BRUTE_FORCE</span><span class="p">:</span>
 <span class="lineno">283</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_brute_force</span><span class="p">()</span>
 <span class="lineno">284</span>         <span class="k">elif</span> <span class="n">solution</span> <span class="o">==</span> <span class="n">ANNEALING_SIMULATED</span><span class="p">:</span>
 <span class="lineno">285</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_annealing_simulated</span><span class="p">()</span>
-<span class="lineno">286</span>     
+<span class="lineno">286</span> 
 <span class="lineno">287</span>     <span class="nd">@classmethod</span>
 <span class="lineno">288</span>     <span class="k">def</span> <span class="nf">addable</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">tuple_stories</span><span class="p">,</span> <span class="n">solution</span><span class="o">=</span><span class="n">Solution</span><span class="p">()):</span>
 <span class="lineno">289</span>         <span class="n">total_height</span> <span class="o">=</span> <span class="n">solution</span><span class="o">.</span><span class="n">_height</span>
@@ -718,8 +718,8 @@ to avoid local minimum until the temperature is totally down)</li>
 <span class="lineno">291</span>             <span class="n">total_height</span> <span class="o">+=</span> <span class="n">story</span><span class="o">.</span><span class="n">_height</span>
 <span class="lineno">292</span>         <span class="k">if</span> <span class="n">total_height</span> <span class="o">&lt;=</span> <span class="n">cls</span><span class="o">.</span><span class="n">__height</span><span class="p">:</span>
 <span class="lineno">293</span>             <span class="k">return</span> <span class="bp">True</span>
-<span class="lineno">294</span>         <span class="k">return</span> <span class="bp">False</span>     
-<span class="lineno">295</span>     
+<span class="lineno">294</span>         <span class="k">return</span> <span class="bp">False</span>
+<span class="lineno">295</span> 
 <span class="lineno">296</span>     <span class="nd">@classmethod</span>
 <span class="lineno">297</span>     <span class="k">def</span> <span class="nf">random_solution</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">list_stories</span><span class="p">,</span> <span class="n">length_stories</span><span class="p">):</span>
 <span class="lineno">298</span>         <span class="sd">&quot;&quot;&quot;</span>
@@ -735,8 +735,8 @@ to avoid local minimum until the temperature is totally down)</li>
 <span class="lineno">308</span>             <span class="k">elif</span> <span class="n">solution</span><span class="o">.</span><span class="n">_height</span> <span class="o">==</span> <span class="n">cls</span><span class="o">.</span><span class="n">__height</span><span class="p">:</span>
 <span class="lineno">309</span>                 <span class="k">break</span>
 <span class="lineno">310</span>         <span class="k">return</span> <span class="n">solution</span><span class="p">,</span> <span class="n">stories_in</span>
-<span class="lineno">311</span>             
-<span class="lineno">312</span>  
+<span class="lineno">311</span> 
+<span class="lineno">312</span> 
 <span class="lineno">313</span> <span class="n">N</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">H</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">raw_input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span>
 <span class="lineno">314</span> <span class="n">p</span> <span class="o">=</span> <span class="n">Optimizer</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span>
 <span class="lineno">315</span> <span class="k">while</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
@@ -746,8 +746,9 @@ to avoid local minimum until the temperature is totally down)</li>
 <span class="lineno">319</span>         <span class="n">p</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Story</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
 <span class="lineno">320</span>     <span class="k">elif</span> <span class="n">command</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s">&quot;R&quot;</span><span class="p">:</span>  <span class="c">#Reload</span>
 <span class="lineno">321</span>         <span class="n">tr</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">command</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="lineno">322</span>         <span class="k">print</span> <span class="n">p</span><span class="o">.</span><span class="n">produce_solution</span><span class="p">(</span><span class="n">tr</span><span class="p">,</span> <span class="n">solution</span><span class="o">=</span><span class="n">ANNEALING_SIMULATED</span><span class="p">)</span> 
+<span class="lineno">322</span>         <span class="k">print</span> <span class="n">p</span><span class="o">.</span><span class="n">produce_solution</span><span class="p">(</span><span class="n">tr</span><span class="p">,</span> <span class="n">solution</span><span class="o">=</span><span class="n">ANNEALING_SIMULATED</span><span class="p">)</span>
 <span class="lineno">323</span>     <span class="n">N</span> <span class="o">-=</span> <span class="mi">1</span></code></pre></div>
+
 
             
 <div class="social">
@@ -789,7 +790,7 @@ to avoid local minimum until the temperature is totally down)</li>
                 <img src="/images/logo.png">
                 <p>
                 Written by <strong><a rel="author" href="https://twitter.com/mmourafiq." title="Mourad Mourafiq." target="_blank">Mourad Mourafiq.</a></strong><br>
-                    <span class="muted">Maths, Technologie, Philosophie, Startups, ...</span>
+                    <span class="muted">Maths, Technology, Philosophy, Startups, ...</span>
                 </p>
             </address>
             

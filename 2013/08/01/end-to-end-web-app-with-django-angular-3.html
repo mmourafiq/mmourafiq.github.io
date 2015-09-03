@@ -153,17 +153,17 @@
 
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">serializers</span>
 <span class="lineno"> 2</span> <span class="kn">from</span> <span class="nn">posts.models</span> <span class="kn">import</span> <span class="n">Post</span>
-<span class="lineno"> 3</span>  
-<span class="lineno"> 4</span>  
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span> 
 <span class="lineno"> 5</span> <span class="k">class</span> <span class="nc">PostSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">HyperlinkedModelSerializer</span><span class="p">):</span>
 <span class="lineno"> 6</span>     <span class="n">author</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s">&#39;author.username&#39;</span><span class="p">)</span>
 <span class="lineno"> 7</span>     <span class="n">api_url</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">SerializerMethodField</span><span class="p">(</span><span class="s">&#39;get_api_url&#39;</span><span class="p">)</span>
-<span class="lineno"> 8</span>  
+<span class="lineno"> 8</span> 
 <span class="lineno"> 9</span>     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
 <span class="lineno">10</span>         <span class="n">model</span> <span class="o">=</span> <span class="n">Post</span>
 <span class="lineno">11</span>         <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;id&#39;</span><span class="p">,</span> <span class="s">&#39;title&#39;</span><span class="p">,</span> <span class="s">&#39;description&#39;</span><span class="p">,</span> <span class="s">&#39;created_on&#39;</span><span class="p">,</span> <span class="s">&#39;author&#39;</span><span class="p">,</span> <span class="s">&#39;url&#39;</span><span class="p">,</span> <span class="s">&#39;api_url&#39;</span><span class="p">)</span>
 <span class="lineno">12</span>         <span class="n">read_only_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;id&#39;</span><span class="p">,</span> <span class="s">&#39;created_on&#39;</span><span class="p">)</span>
-<span class="lineno">13</span>  
+<span class="lineno">13</span> 
 <span class="lineno">14</span>     <span class="k">def</span> <span class="nf">get_api_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
 <span class="lineno">15</span>         <span class="k">return</span> <span class="s">&quot;#/post/</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">obj</span><span class="o">.</span><span class="n">id</span></code></pre></div>
 
@@ -180,17 +180,17 @@
 <p>In the posts app, create a new file, <code>permissions.py</code></p>
 
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">permissions</span>
-<span class="lineno"> 2</span>  
+<span class="lineno"> 2</span> 
 <span class="lineno"> 3</span> <span class="k">class</span> <span class="nc">IsOwnerOrReadOnly</span><span class="p">(</span><span class="n">permissions</span><span class="o">.</span><span class="n">BasePermission</span><span class="p">):</span>
 <span class="lineno"> 4</span>     <span class="sd">&quot;&quot;&quot;</span>
 <span class="lineno"> 5</span> <span class="sd">    Custom permission to only allow owners of an object to edit it.</span>
 <span class="lineno"> 6</span> <span class="sd">    &quot;&quot;&quot;</span>
-<span class="lineno"> 7</span>  
-<span class="lineno"> 8</span>     <span class="k">def</span> <span class="nf">has_object_permission</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">view</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>        
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span>     <span class="k">def</span> <span class="nf">has_object_permission</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">view</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
 <span class="lineno"> 9</span>         <span class="c"># Read permissions are allowed to any request</span>
-<span class="lineno">10</span>         <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="ow">in</span> <span class="n">permissions</span><span class="o">.</span><span class="n">SAFE_METHODS</span><span class="p">:</span>            
+<span class="lineno">10</span>         <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="ow">in</span> <span class="n">permissions</span><span class="o">.</span><span class="n">SAFE_METHODS</span><span class="p">:</span>
 <span class="lineno">11</span>             <span class="k">return</span> <span class="bp">True</span>
-<span class="lineno">12</span>  
+<span class="lineno">12</span> 
 <span class="lineno">13</span>         <span class="c"># Write permissions are only allowed to the owner of the tip</span>
 <span class="lineno">14</span>         <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">author</span> <span class="o">==</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span></code></pre></div>
 
@@ -222,6 +222,7 @@
 <p>Also we update our templates to include the author informations</p>
 
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="lineno">1</span> <span class="nt">&lt;small&gt;&lt;b&gt;</span>by<span class="nt">&lt;/b&gt;</span> {[{post.author}]}<span class="nt">&lt;/small&gt;</span></code></pre></div>
+
 
             
 <div class="social">
@@ -263,7 +264,7 @@
                 <img src="/images/logo.png">
                 <p>
                 Written by <strong><a rel="author" href="https://twitter.com/mmourafiq." title="Mourad Mourafiq." target="_blank">Mourad Mourafiq.</a></strong><br>
-                    <span class="muted">Maths, Technologie, Philosophie, Startups, ...</span>
+                    <span class="muted">Maths, Technology, Philosophy, Startups, ...</span>
                 </p>
             </address>
             

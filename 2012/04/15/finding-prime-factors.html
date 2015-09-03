@@ -56,12 +56,8 @@
     <meta property="og:url" content="http://mourafiq.com/2012/04/15/finding-prime-factors.html"/>
     <meta property="og:image" content="http://mourafiq.com/images/posts/matrix-code.jpg"/>
     
-    <meta property="og:description" content="<p>In a previous post, we showed how any number can be written, in a unique way, as the product of prime numbers.</p>
-
-"/>
-    <meta name="description" content="<p>In a previous post, we showed how any number can be written, in a unique way, as the product of prime numbers.</p>
-
-"/>
+    <meta property="og:description" content=""/>
+    <meta name="description" content=""/>
     
     <meta property="og:site_name" content="Mourad Mourafiq">
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -112,7 +108,7 @@
 
 <p>In this post we will make a simple algorithm to compute this prime numbers.</p>
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="k">def</span> <span class="nf">get_primes</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>    
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="k">def</span> <span class="nf">get_primes</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
 <span class="lineno"> 2</span>     <span class="n">non_primes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 <span class="lineno"> 3</span>     <span class="n">primes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 <span class="lineno"> 4</span>     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
@@ -123,6 +119,7 @@
 <span class="lineno"> 9</span>                 <span class="n">non_primes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="p">)</span>
 <span class="lineno">10</span>                 <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
 <span class="lineno">11</span>     <span class="k">return</span> <span class="n">primes</span></code></pre></div>
+
 
             
 <div class="social">
@@ -164,7 +161,7 @@
                 <img src="/images/logo.png">
                 <p>
                 Written by <strong><a rel="author" href="https://twitter.com/mmourafiq." title="Mourad Mourafiq." target="_blank">Mourad Mourafiq.</a></strong><br>
-                    <span class="muted">Maths, Technologie, Philosophie, Startups, ...</span>
+                    <span class="muted">Maths, Technology, Philosophy, Startups, ...</span>
                 </p>
             </address>
             

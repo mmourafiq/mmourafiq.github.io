@@ -110,19 +110,19 @@
 
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="kn">import</span> <span class="nn">scipy</span>
 <span class="lineno"> 2</span> <span class="kn">from</span> <span class="nn">yahoo_finance</span> <span class="kn">import</span> <span class="n">YahooFinance</span>
-<span class="lineno"> 3</span>  
+<span class="lineno"> 3</span> 
 <span class="lineno"> 4</span> <span class="n">VALUE_TYPE</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;Date&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#39;Open&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;High&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&#39;Low&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&#39;Close&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">&#39;Volume&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s">&#39;Adj_Close&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">}</span>
 <span class="lineno"> 5</span> <span class="n">start_date</span> <span class="o">=</span> <span class="s">&quot;20121101&quot;</span>
 <span class="lineno"> 6</span> <span class="n">end_date</span> <span class="o">=</span> <span class="s">&quot;20121201&quot;</span>
 <span class="lineno"> 7</span> <span class="n">yf</span> <span class="o">=</span> <span class="n">YahooFinance</span><span class="p">(</span><span class="s">&quot;AAPL&quot;</span><span class="p">)</span>
-<span class="lineno"> 8</span>  
+<span class="lineno"> 8</span> 
 <span class="lineno"> 9</span> <span class="k">for</span> <span class="p">(</span><span class="n">symb</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span> <span class="ow">in</span> <span class="n">yf</span><span class="o">.</span><span class="n">get_historical_prices</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">):</span> <span class="c">#get historical data from yahoo finance</span>
-<span class="lineno">10</span>     
+<span class="lineno">10</span> 
 <span class="lineno">11</span>     <span class="n">data</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span> <span class="c">#reverse the time series</span>
 <span class="lineno">12</span>     <span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span> <span class="c">#get rid of the header</span>
-<span class="lineno">13</span>  
+<span class="lineno">13</span> 
 <span class="lineno">14</span> <span class="sd">&quot;&quot;&quot;</span>
-<span class="lineno">15</span> <span class="sd">our data look like this : </span>
+<span class="lineno">15</span> <span class="sd">our data look like this :</span>
 <span class="lineno">16</span> <span class="sd"> [&#39;Date&#39;       &#39;Open&#39;   &#39;High&#39;   &#39;Low&#39;    &#39;Close&#39;  &#39;Volume&#39;   &#39;Adj Clos&#39;]</span>
 <span class="lineno">17</span> <span class="sd"> [&#39;2012-11-01&#39; &#39;598.22&#39; &#39;603.00&#39; &#39;594.17&#39; &#39;596.54&#39; &#39;12903500&#39; &#39;593.8&#39;]</span>
 <span class="lineno">18</span> <span class="sd"> [&#39;2012-11-02&#39; &#39;595.89&#39; &#39;596.95&#39; &#39;574.75&#39; &#39;576.80&#39; &#39;21406200&#39; &#39;574.1&#39;]</span>
@@ -147,27 +147,27 @@
 <span class="lineno">37</span> <span class="sd"> [&#39;2012-11-30&#39; &#39;586.79&#39; &#39;588.40&#39; &#39;582.68&#39; &#39;585.28&#39; &#39;13975700&#39; &#39;585.2&#39;]</span>
 <span class="lineno">38</span> <span class="sd">&quot;&quot;&quot;</span>
 <span class="lineno">39</span>     <span class="c">#since we are only interested by the Adjusted Closing Price</span>
-<span class="lineno">40</span>     <span class="n">adj_prices</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">VALUE_TYPE</span><span class="p">[</span><span class="s">&#39;Adj_Close&#39;</span><span class="p">]]),</span> <span class="n">data</span><span class="p">))</span> 
-<span class="lineno">41</span>  
+<span class="lineno">40</span>     <span class="n">adj_prices</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">VALUE_TYPE</span><span class="p">[</span><span class="s">&#39;Adj_Close&#39;</span><span class="p">]]),</span> <span class="n">data</span><span class="p">))</span>
+<span class="lineno">41</span> 
 <span class="lineno">42</span> <span class="o">&gt;&gt;</span> <span class="p">[</span> <span class="mf">593.8</span>  <span class="mf">574.1</span>  <span class="mf">581.9</span>  <span class="mf">580.2</span>  <span class="mf">558.</span>   <span class="mf">537.7</span>  <span class="mf">547.</span>   <span class="mf">542.8</span>  <span class="mf">542.9</span>  <span class="mf">536.8</span>
 <span class="lineno">43</span>    <span class="mf">525.6</span>  <span class="mf">527.6</span>  <span class="mf">565.7</span>  <span class="mf">560.9</span>  <span class="mf">561.7</span>  <span class="mf">571.5</span>  <span class="mf">589.5</span>  <span class="mf">584.7</span>  <span class="mf">582.9</span>  <span class="mf">589.3</span>
 <span class="lineno">44</span>    <span class="mf">585.2</span><span class="p">]</span>
-<span class="lineno">45</span>  
+<span class="lineno">45</span> 
 <span class="lineno">46</span>     <span class="n">total_return</span> <span class="o">=</span> <span class="p">(</span><span class="n">adj_prices</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">adj_prices</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span> <span class="c">#calculate the total return for apple this month</span>
 <span class="lineno">47</span> <span class="o">&gt;&gt;</span> <span class="o">-</span><span class="mf">0.014482990906</span>
-<span class="lineno">48</span>  
+<span class="lineno">48</span> 
 <span class="lineno">49</span>     <span class="n">daily_return</span> <span class="o">=</span> <span class="p">(</span><span class="n">adj_prices</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">/</span><span class="n">adj_prices</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span> <span class="c">#calculate the daily_return</span>
 <span class="lineno">50</span> <span class="o">&gt;&gt;</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.03317615</span>  <span class="mf">0.01358648</span> <span class="o">-</span><span class="mf">0.00292146</span> <span class="o">-</span><span class="mf">0.03826267</span> <span class="o">-</span><span class="mf">0.03637993</span>  <span class="mf">0.01729589</span>
 <span class="lineno">51</span>    <span class="o">-</span><span class="mf">0.00767824</span>  <span class="mf">0.00018423</span> <span class="o">-</span><span class="mf">0.01123596</span> <span class="o">-</span><span class="mf">0.02086438</span>  <span class="mf">0.00380518</span>  <span class="mf">0.0722138</span>
 <span class="lineno">52</span>    <span class="o">-</span><span class="mf">0.00848506</span>  <span class="mf">0.00142628</span>  <span class="mf">0.01744704</span>  <span class="mf">0.03149606</span> <span class="o">-</span><span class="mf">0.00814249</span> <span class="o">-</span><span class="mf">0.0030785</span>
 <span class="lineno">53</span>     <span class="mf">0.01097958</span> <span class="o">-</span><span class="mf">0.00695741</span><span class="p">]</span>
-<span class="lineno">54</span>  
+<span class="lineno">54</span> 
 <span class="lineno">55</span>     <span class="n">avg_daily_return</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">daily_return</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c">#average daily retuen</span>
 <span class="lineno">56</span> <span class="o">&gt;&gt;</span> <span class="o">-</span><span class="mf">0.000437386088059</span>
-<span class="lineno">57</span>  
+<span class="lineno">57</span> 
 <span class="lineno">58</span>     <span class="n">std_daily_return</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">daily_return</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c">#deviation fo daily return</span>
 <span class="lineno">59</span> <span class="o">&gt;&gt;</span> <span class="mf">0.0243327696358</span>
-<span class="lineno">60</span>  
+<span class="lineno">60</span> 
 <span class="lineno">61</span>     <span class="n">sharp_ratio</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">250</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">avg_daily_return</span> <span class="o">/</span> <span class="n">std_daily_return</span><span class="p">)</span> <span class="c"># sharp ratio</span>
 <span class="lineno">62</span> <span class="o">&gt;&gt;</span> <span class="o">-</span><span class="mf">0.284212663794</span></code></pre></div>
 
@@ -175,49 +175,49 @@
 
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno">  1</span> <span class="kn">import</span> <span class="nn">scipy</span>
 <span class="lineno">  2</span> <span class="kn">from</span> <span class="nn">yahoo_finance</span> <span class="kn">import</span> <span class="n">YahooFinance</span>
-<span class="lineno">  3</span>  
-<span class="lineno">  4</span>  
+<span class="lineno">  3</span> 
+<span class="lineno">  4</span> 
 <span class="lineno">  5</span> <span class="n">VALUE_TYPE</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;Date&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#39;Open&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;High&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&#39;Low&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&#39;Close&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">&#39;Volume&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s">&#39;Adj_Close&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">}</span>
 <span class="lineno">  6</span> <span class="n">start_date</span> <span class="o">=</span> <span class="s">&quot;20121101&quot;</span>
 <span class="lineno">  7</span> <span class="n">end_date</span> <span class="o">=</span> <span class="s">&quot;20121201&quot;</span>
-<span class="lineno">  8</span>  
+<span class="lineno">  8</span> 
 <span class="lineno">  9</span> <span class="n">yf</span> <span class="o">=</span> <span class="n">YahooFinance</span><span class="p">(</span><span class="s">&quot;AAPL,GOOG,GLD,USO&quot;</span><span class="p">)</span>
-<span class="lineno"> 10</span> <span class="n">percent</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span> <span class="c">#investment distribution portfolio </span>
-<span class="lineno"> 11</span>  
+<span class="lineno"> 10</span> <span class="n">percent</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span> <span class="c">#investment distribution portfolio</span>
+<span class="lineno"> 11</span> 
 <span class="lineno"> 12</span> <span class="n">all_adj_prices</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="lineno"> 13</span> <span class="n">all_total_return</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="lineno"> 14</span> <span class="n">all_daily_return</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="lineno"> 15</span> <span class="n">all_avg_daily_return</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="lineno"> 16</span> <span class="n">all_std_daily_return</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="lineno"> 17</span> <span class="n">all_sharp_ratio</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="lineno"> 18</span>  
+<span class="lineno"> 18</span> 
 <span class="lineno"> 19</span> <span class="n">ticker</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="lineno"> 20</span> <span class="k">for</span> <span class="p">(</span><span class="n">symb</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span> <span class="ow">in</span> <span class="n">yf</span><span class="o">.</span><span class="n">get_historical_prices</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">):</span>    
+<span class="lineno"> 20</span> <span class="k">for</span> <span class="p">(</span><span class="n">symb</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span> <span class="ow">in</span> <span class="n">yf</span><span class="o">.</span><span class="n">get_historical_prices</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">):</span>
 <span class="lineno"> 21</span>     <span class="n">data</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span> <span class="c">#reverse the time series</span>
 <span class="lineno"> 22</span>     <span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span> <span class="c">#get rid of the header</span>
-<span class="lineno"> 23</span>     <span class="n">adj_prices</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">VALUE_TYPE</span><span class="p">[</span><span class="s">&#39;Adj_Close&#39;</span><span class="p">]]),</span> <span class="n">data</span><span class="p">))</span>    
+<span class="lineno"> 23</span>     <span class="n">adj_prices</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">VALUE_TYPE</span><span class="p">[</span><span class="s">&#39;Adj_Close&#39;</span><span class="p">]]),</span> <span class="n">data</span><span class="p">))</span>
 <span class="lineno"> 24</span>     <span class="n">all_adj_prices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">adj_prices</span><span class="p">)</span>
 <span class="lineno"> 25</span>     <span class="n">total_return</span> <span class="o">=</span> <span class="p">(</span><span class="n">adj_prices</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">adj_prices</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span> <span class="c">#calculate the total return for apple this month</span>
 <span class="lineno"> 26</span>     <span class="n">all_total_return</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">total_return</span><span class="p">)</span>
 <span class="lineno"> 27</span>     <span class="n">daily_return</span> <span class="o">=</span> <span class="p">(</span><span class="n">adj_prices</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">/</span><span class="n">adj_prices</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span> <span class="c">#calculate the daily_return</span>
-<span class="lineno"> 28</span>     <span class="n">all_daily_return</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">daily_return</span><span class="p">)</span>    
+<span class="lineno"> 28</span>     <span class="n">all_daily_return</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">daily_return</span><span class="p">)</span>
 <span class="lineno"> 29</span>     <span class="n">avg_daily_return</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">daily_return</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c">#average daily retuen</span>
 <span class="lineno"> 30</span>     <span class="n">all_avg_daily_return</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">avg_daily_return</span><span class="p">)</span>
 <span class="lineno"> 31</span>     <span class="n">std_daily_return</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">daily_return</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c">#deviation fo daily return</span>
 <span class="lineno"> 32</span>     <span class="n">all_std_daily_return</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">std_daily_return</span><span class="p">)</span>
 <span class="lineno"> 33</span>     <span class="n">sharp_ratio</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">250</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">avg_daily_return</span> <span class="o">/</span> <span class="n">std_daily_return</span><span class="p">)</span> <span class="c"># sharp ratio</span>
 <span class="lineno"> 34</span>     <span class="n">all_sharp_ratio</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sharp_ratio</span><span class="p">)</span>
-<span class="lineno"> 35</span>     
+<span class="lineno"> 35</span> 
 <span class="lineno"> 36</span>   <span class="sd">&quot;&quot;&quot;</span>
 <span class="lineno"> 37</span> <span class="sd">  our prices</span>
 <span class="lineno"> 38</span> <span class="sd">  GOOG : 687.5,  687.9,  682.9,  681.7,  667.1,  652.2,  663. ,  665.9,</span>
 <span class="lineno"> 39</span> <span class="sd">        659. ,  652.5,  647.2,  647.1,  668.2,  669.9,  665.8,  667.9,</span>
 <span class="lineno"> 40</span> <span class="sd">        661.1,  670.7,  683.6,  691.8,  698.3</span>
-<span class="lineno"> 41</span> <span class="sd">  </span>
+<span class="lineno"> 41</span> 
 <span class="lineno"> 42</span> <span class="sd">  USO : 32. ,  31.3,  31.6,  32.5,  31.2,  31.3,  31.7,  31.5,  31.4,</span>
 <span class="lineno"> 43</span> <span class="sd">        31.7,  31.4,  31.9,  32.6,  31.9,  32.1,  32.3,  32.1,  31.9,</span>
 <span class="lineno"> 44</span> <span class="sd">        31.7,  32.1,  32.5</span>
-<span class="lineno"> 45</span> <span class="sd">  </span>
+<span class="lineno"> 45</span> 
 <span class="lineno"> 46</span> <span class="sd">  AAPL : 593.8,  574.1,  581.9,  580.2,  558. ,  537.7,  547. ,  542.8,</span>
 <span class="lineno"> 47</span> <span class="sd">        542.9,  536.8,  525.6,  527.6,  565.7,  560.9,  561.7,  571.5,</span>
 <span class="lineno"> 48</span> <span class="sd">        589.5,  584.7,  582.9,  589.3,  585.2</span>
@@ -225,34 +225,34 @@
 <span class="lineno"> 50</span> <span class="sd">  GLD : 166. ,  162.6,  163.2,  166.3,  166.4,  167.9,  167.8,  167.4,</span>
 <span class="lineno"> 51</span> <span class="sd">        167.1,  167.1,  166. ,  165.8,  167.8,  167.3,  167.5,  169.6,</span>
 <span class="lineno"> 52</span> <span class="sd">        169.4,  168.7,  166.5,  167.1,  166.</span>
-<span class="lineno"> 53</span> <span class="sd">  </span>
+<span class="lineno"> 53</span> 
 <span class="lineno"> 54</span> <span class="sd">  total return for each stock : [0.015709090909090895, 0.015625, -0.014482990906028781, 0.0]</span>
 <span class="lineno"> 55</span> <span class="sd">  daily return :</span>
 <span class="lineno"> 56</span> <span class="sd">  GOOG : 0.00058182, -0.0072685 , -0.00175721, -0.02141705, -0.02233548,</span>
 <span class="lineno"> 57</span> <span class="sd">        0.01655934,  0.00437406, -0.01036192, -0.00986343, -0.00812261,</span>
 <span class="lineno"> 58</span> <span class="sd">       -0.00015451,  0.03260702,  0.00254415, -0.00612032,  0.0031541 ,</span>
 <span class="lineno"> 59</span> <span class="sd">       -0.01018116,  0.01452125,  0.01923364,  0.01199532,  0.00939578</span>
-<span class="lineno"> 60</span> <span class="sd">       </span>
+<span class="lineno"> 60</span> 
 <span class="lineno"> 61</span> <span class="sd">  USO : -0.021875  ,  0.00958466,  0.02848101, -0.04      ,  0.00320513,</span>
 <span class="lineno"> 62</span> <span class="sd">        0.01277955, -0.00630915, -0.0031746 ,  0.00955414, -0.00946372,</span>
 <span class="lineno"> 63</span> <span class="sd">        0.01592357,  0.02194357, -0.02147239,  0.00626959,  0.00623053,</span>
-<span class="lineno"> 64</span> <span class="sd">       -0.00619195, -0.00623053, -0.00626959,  0.0126183 ,  0.01246106 </span>
-<span class="lineno"> 65</span> <span class="sd">  </span>
+<span class="lineno"> 64</span> <span class="sd">       -0.00619195, -0.00623053, -0.00626959,  0.0126183 ,  0.01246106</span>
+<span class="lineno"> 65</span> 
 <span class="lineno"> 66</span> <span class="sd">  AAPL : -0.03317615,  0.01358648, -0.00292146, -0.03826267, -0.03637993,</span>
 <span class="lineno"> 67</span> <span class="sd">        0.01729589, -0.00767824,  0.00018423, -0.01123596, -0.02086438,</span>
 <span class="lineno"> 68</span> <span class="sd">        0.00380518,  0.0722138 , -0.00848506,  0.00142628,  0.01744704,</span>
-<span class="lineno"> 69</span> <span class="sd">        0.03149606, -0.00814249, -0.0030785 ,  0.01097958, -0.00695741 </span>
-<span class="lineno"> 70</span> <span class="sd">  </span>
+<span class="lineno"> 69</span> <span class="sd">        0.03149606, -0.00814249, -0.0030785 ,  0.01097958, -0.00695741</span>
+<span class="lineno"> 70</span> 
 <span class="lineno"> 71</span> <span class="sd">  GLD : -0.02048193,  0.00369004,  0.0189951 ,  0.00060132,  0.00901442,</span>
 <span class="lineno"> 72</span> <span class="sd">       -0.00059559, -0.00238379, -0.00179211,  0.        , -0.00658288,</span>
 <span class="lineno"> 73</span> <span class="sd">       -0.00120482,  0.01206273, -0.00297974,  0.00119546,  0.01253731,</span>
 <span class="lineno"> 74</span> <span class="sd">       -0.00117925, -0.00413223, -0.0130409 ,  0.0036036 , -0.00658288</span>
-<span class="lineno"> 75</span> <span class="sd">  </span>
+<span class="lineno"> 75</span> 
 <span class="lineno"> 76</span> <span class="sd">  average daily return for each stock : [0.00086921414889110646, 0.00090320887851679248, -0.00043738608805856115, 3.7192619905374034e-05]</span>
 <span class="lineno"> 77</span> <span class="sd">  std deviation for each stock : [0.01340975818314491, 0.015929201121363604, 0.024332769635802963, 0.008623865082371179]</span>
 <span class="lineno"> 78</span> <span class="sd">  sharp ratio for each stock : [1.0248866711092259, 0.8965287201907356, -0.28421266379411581, 0.068190648813791305]</span>
 <span class="lineno"> 79</span> <span class="sd">  &quot;&quot;&quot;</span>
-<span class="lineno"> 80</span>   
+<span class="lineno"> 80</span> 
 <span class="lineno"> 81</span>   <span class="n">corr</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">all_adj_prices</span><span class="p">)</span>
 <span class="lineno"> 82</span>   <span class="sd">&quot;&quot;&quot;</span>
 <span class="lineno"> 83</span> <span class="sd">  [[ GOOG        USO         AAPL        GLD]</span>
@@ -261,24 +261,24 @@
 <span class="lineno"> 86</span> <span class="sd">   [ 0.83675929  0.49457339  1.         -0.04349294]</span>
 <span class="lineno"> 87</span> <span class="sd">   [-0.38083073  0.33637871 -0.04349294  1.        ]]</span>
 <span class="lineno"> 88</span> <span class="sd">  &quot;&quot;&quot;</span>
-<span class="lineno"> 89</span>  
+<span class="lineno"> 89</span> 
 <span class="lineno"> 90</span> <span class="n">portfolio_total_return</span> <span class="o">=</span> <span class="bp">None</span>
 <span class="lineno"> 91</span> <span class="n">portfolio_daily_return</span> <span class="o">=</span> <span class="bp">None</span>
-<span class="lineno"> 92</span>  
+<span class="lineno"> 92</span> 
 <span class="lineno"> 93</span> <span class="k">for</span> <span class="n">ticker</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
 <span class="lineno"> 94</span>     <span class="k">if</span> <span class="n">ticker</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
 <span class="lineno"> 95</span>         <span class="n">portfolio_daily_return</span> <span class="o">=</span> <span class="n">all_daily_return</span><span class="p">[</span><span class="n">ticker</span><span class="p">]</span> <span class="o">*</span> <span class="n">percent</span><span class="p">[</span><span class="n">ticker</span><span class="p">]</span>
 <span class="lineno"> 96</span>         <span class="n">portfolio_total_return</span> <span class="o">=</span> <span class="n">all_total_return</span><span class="p">[</span><span class="n">ticker</span><span class="p">]</span> <span class="o">*</span> <span class="n">percent</span><span class="p">[</span><span class="n">ticker</span><span class="p">]</span>
 <span class="lineno"> 97</span>     <span class="k">else</span><span class="p">:</span>
 <span class="lineno"> 98</span>         <span class="n">portfolio_daily_return</span> <span class="o">+=</span> <span class="n">all_daily_return</span><span class="p">[</span><span class="n">ticker</span><span class="p">]</span> <span class="o">*</span> <span class="n">percent</span><span class="p">[</span><span class="n">ticker</span><span class="p">]</span>
-<span class="lineno"> 99</span>         <span class="n">portfolio_total_return</span> <span class="o">+=</span> <span class="n">all_total_return</span><span class="p">[</span><span class="n">ticker</span><span class="p">]</span> <span class="o">*</span> <span class="n">percent</span><span class="p">[</span><span class="n">ticker</span><span class="p">]</span>    
-<span class="lineno">100</span>  
+<span class="lineno"> 99</span>         <span class="n">portfolio_total_return</span> <span class="o">+=</span> <span class="n">all_total_return</span><span class="p">[</span><span class="n">ticker</span><span class="p">]</span> <span class="o">*</span> <span class="n">percent</span><span class="p">[</span><span class="n">ticker</span><span class="p">]</span>
+<span class="lineno">100</span> 
 <span class="lineno">101</span> <span class="n">portfolio_avg_daily_return</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">portfolio_daily_return</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="lineno">102</span> <span class="n">portfolio_std_daily_return</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">portfolio_daily_return</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="lineno">103</span> <span class="n">portfolio_sharp_ratio</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">250</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">portfolio_avg_daily_return</span> <span class="o">/</span> <span class="n">portfolio_std_daily_return</span><span class="p">)</span> <span class="c"># sharp ratio</span>
-<span class="lineno">104</span>  
+<span class="lineno">104</span> 
 <span class="lineno">105</span> <span class="sd">&quot;&quot;&quot;</span>
-<span class="lineno">106</span> <span class="sd">portfolio daily return : </span>
+<span class="lineno">106</span> <span class="sd">portfolio daily return :</span>
 <span class="lineno">107</span> <span class="sd">[ -2.05026424e-02   5.79317575e-03   6.46328287e-03  -2.65390640e-02</span>
 <span class="lineno">108</span> <span class="sd">  -1.78521880e-02   1.28560048e-02  -3.40091395e-03  -3.35140050e-03</span>
 <span class="lineno">109</span> <span class="sd">  -5.52711836e-03  -1.31125392e-02   3.63101326e-03   4.27413546e-02</span>
@@ -291,6 +291,7 @@
 <span class="lineno">116</span> <span class="sd">portfolio sharp ratio: 0.20463140898</span>
 <span class="lineno">117</span> 
 <span class="lineno">118</span> <span class="sd">&quot;&quot;&quot;</span></code></pre></div>
+
 
             
 <div class="social">
@@ -332,7 +333,7 @@
                 <img src="/images/logo.png">
                 <p>
                 Written by <strong><a rel="author" href="https://twitter.com/mmourafiq." title="Mourad Mourafiq." target="_blank">Mourad Mourafiq.</a></strong><br>
-                    <span class="muted">Maths, Technologie, Philosophie, Startups, ...</span>
+                    <span class="muted">Maths, Technology, Philosophy, Startups, ...</span>
                 </p>
             </address>
             

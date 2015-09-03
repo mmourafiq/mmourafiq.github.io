@@ -151,7 +151,7 @@
 
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno">1</span> <span class="c">#generate the flips</span>
 <span class="lineno">2</span> <span class="n">flip</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n_times</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_times</span><span class="p">)])</span>
-<span class="lineno">3</span> <span class="c">#flip(10) would give 1011100000 for ex </span>
+<span class="lineno">3</span> <span class="c">#flip(10) would give 1011100000 for ex</span>
 <span class="lineno">4</span> <span class="c">#calculate the payoff</span>
 <span class="lineno">5</span> <span class="n">payoff</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n_times</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="mf">1.0</span> <span class="k">if</span> <span class="s">&#39;1&#39;</span><span class="o">*</span><span class="n">k</span> <span class="ow">in</span> <span class="n">flip</span><span class="p">(</span><span class="n">n_times</span><span class="p">)</span> <span class="k">else</span> <span class="mf">0.0</span>
 <span class="lineno">6</span> <span class="c">#payoff returns 1.0 if k heads is found in n_times flips</span>
@@ -202,7 +202,7 @@
                 <img src="/images/logo.png">
                 <p>
                 Written by <strong><a rel="author" href="https://twitter.com/mmourafiq." title="Mourad Mourafiq." target="_blank">Mourad Mourafiq.</a></strong><br>
-                    <span class="muted">Maths, Technologie, Philosophie, Startups, ...</span>
+                    <span class="muted">Maths, Technology, Philosophy, Startups, ...</span>
                 </p>
             </address>
             

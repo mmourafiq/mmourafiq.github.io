@@ -197,13 +197,13 @@
 
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="kn">from</span> <span class="nn">fabric.api</span> <span class="kn">import</span> <span class="n">local</span>
 <span class="lineno"> 2</span> <span class="kn">from</span> <span class="nn">fabric.api</span> <span class="kn">import</span> <span class="n">lcd</span>
-<span class="lineno"> 3</span>  
+<span class="lineno"> 3</span> 
 <span class="lineno"> 4</span> <span class="k">def</span> <span class="nf">prepare_deployment</span><span class="p">(</span><span class="n">branch_name</span><span class="p">):</span>
 <span class="lineno"> 5</span>     <span class="n">local</span><span class="p">(</span><span class="s">&#39;python manage.py test myapp&#39;</span><span class="p">)</span>
 <span class="lineno"> 6</span>     <span class="n">local</span><span class="p">(</span><span class="s">&#39;git add -p &amp;&amp; git commit&#39;</span><span class="p">)</span>
 <span class="lineno"> 7</span>     <span class="n">local</span><span class="p">(</span><span class="s">&#39;git checkout master &amp;&amp; git merge &#39;</span> <span class="o">+</span> <span class="n">branchname</span><span class="p">)</span>
-<span class="lineno"> 8</span>  
-<span class="lineno"> 9</span>  
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> 
 <span class="lineno">10</span> <span class="k">def</span> <span class="nf">deploy</span><span class="p">():</span>
 <span class="lineno">11</span>     <span class="k">with</span> <span class="n">lcd</span><span class="p">(</span><span class="s">&#39;/path/to/my/prod/area/&#39;</span><span class="p">):</span>
 <span class="lineno">12</span>         <span class="n">local</span><span class="p">(</span><span class="s">&#39;git pull /my/path/to/dev/area/&#39;</span><span class="p">)</span>
@@ -262,7 +262,7 @@
                 <img src="/images/logo.png">
                 <p>
                 Written by <strong><a rel="author" href="https://twitter.com/mmourafiq." title="Mourad Mourafiq." target="_blank">Mourad Mourafiq.</a></strong><br>
-                    <span class="muted">Maths, Technologie, Philosophie, Startups, ...</span>
+                    <span class="muted">Maths, Technology, Philosophy, Startups, ...</span>
                 </p>
             </address>
             

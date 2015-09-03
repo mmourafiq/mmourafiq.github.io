@@ -134,7 +134,7 @@
 <span class="lineno">16</span>     <span class="n">t_mean</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t_coords</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
 <span class="lineno">17</span>     <span class="n">f_mean</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">f_coords</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
 <span class="lineno">18</span>     <span class="k">return</span> <span class="n">t_mean</span><span class="p">,</span> <span class="n">f_mean</span>
-<span class="lineno">19</span>  
+<span class="lineno">19</span> 
 <span class="lineno">20</span> <span class="k">def</span> <span class="nf">dot_product_classification</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">means</span><span class="p">,</span> <span class="n">t_value</span><span class="p">,</span> <span class="n">f_value</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
 <span class="lineno">21</span>     <span class="n">t_mean</span><span class="p">,</span> <span class="n">f_mean</span> <span class="o">=</span> <span class="n">means</span>
 <span class="lineno">22</span>     <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
@@ -153,7 +153,7 @@
 <span class="lineno"> 2</span>     <span class="n">diff_item</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">item1</span><span class="o">.</span><span class="n">coords</span><span class="p">)</span> <span class="o">-</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">item2</span><span class="o">.</span><span class="n">coords</span><span class="p">)</span>
 <span class="lineno"> 3</span>     <span class="n">dist_item</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">diff_item</span><span class="p">))</span>
 <span class="lineno"> 4</span>     <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">e</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="n">gamma</span> <span class="o">*</span> <span class="n">dist_item</span><span class="p">)</span>
-<span class="lineno"> 5</span>  
+<span class="lineno"> 5</span> 
 <span class="lineno"> 6</span> <span class="k">def</span> <span class="nf">non_linear_classification</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">t_value</span><span class="p">,</span> <span class="n">f_value</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
 <span class="lineno"> 7</span>     <span class="n">t_sum</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="lineno"> 8</span>     <span class="n">t_count</span> <span class="o">=</span> <span class="mi">0</span>
@@ -168,7 +168,7 @@
 <span class="lineno">17</span>             <span class="n">f_count</span> <span class="o">+=</span> <span class="mi">1</span>
 <span class="lineno">18</span>     <span class="n">res</span> <span class="o">=</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">t_sum</span><span class="p">)</span> <span class="o">/</span> <span class="n">t_count</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">f_sum</span><span class="p">)</span> <span class="o">/</span> <span class="n">f_count</span><span class="p">)</span> <span class="o">+</span> <span class="n">offset</span>
 <span class="lineno">19</span>     <span class="k">return</span> <span class="n">t_value</span> <span class="k">if</span> <span class="n">res</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">f_value</span>
-<span class="lineno">20</span>  
+<span class="lineno">20</span> 
 <span class="lineno">21</span> <span class="k">def</span> <span class="nf">calculate_offset</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">t_value</span><span class="p">,</span> <span class="n">f_value</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
 <span class="lineno">22</span>     <span class="n">t_data</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="lineno">23</span>     <span class="n">f_data</span> <span class="o">=</span> <span class="p">[]</span>
@@ -213,8 +213,8 @@
 <span class="lineno">28</span>     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">len_coords</span><span class="p">):</span>
 <span class="lineno">29</span>         <span class="n">factors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">corrects</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">min_corrects</span><span class="p">)</span> <span class="o">/</span> <span class="p">((</span><span class="n">max_corrects</span> <span class="o">-</span> <span class="n">min_corrects</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.000001</span><span class="p">))</span>
 <span class="lineno">30</span>     <span class="k">return</span> <span class="n">mask</span><span class="p">,</span> <span class="n">factors</span>
-<span class="lineno">31</span>  
-<span class="lineno">32</span>  
+<span class="lineno">31</span> 
+<span class="lineno">32</span> 
 <span class="lineno">33</span> <span class="n">r_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;test.txt&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span>
 <span class="lineno">34</span> <span class="n">w_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;results.txt&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span>
 <span class="lineno">35</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">r_file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span>
@@ -241,7 +241,7 @@
 <span class="lineno">56</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">Q</span><span class="p">):</span>
 <span class="lineno">57</span>     <span class="n">current_line</span> <span class="o">=</span> <span class="n">w_file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
 <span class="lineno">58</span>     <span class="n">results</span><span class="p">[</span><span class="n">current_line</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">current_line</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="lineno">59</span>  
+<span class="lineno">59</span> 
 <span class="lineno">60</span> <span class="c">#linear</span>
 <span class="lineno">61</span> <span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="lineno">62</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">training_set</span><span class="p">:</span>
@@ -252,7 +252,7 @@
 <span class="lineno">67</span>     <span class="k">if</span> <span class="n">dot_product_classification</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="n">means</span><span class="p">,</span> <span class="s">&quot;+1&quot;</span><span class="p">,</span> <span class="s">&quot;-1&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">results</span><span class="p">[</span><span class="n">obs</span><span class="o">.</span><span class="n">id</span><span class="p">]:</span>
 <span class="lineno">68</span>         <span class="n">correct</span> <span class="o">+=</span> <span class="mi">1</span>
 <span class="lineno">69</span> <span class="k">print</span> <span class="n">correct</span>
-<span class="lineno">70</span>  
+<span class="lineno">70</span> 
 <span class="lineno">71</span> <span class="c">#non linear</span>
 <span class="lineno">72</span> <span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="lineno">73</span> <span class="n">offset</span> <span class="o">=</span> <span class="n">calculate_offset</span><span class="p">(</span><span class="n">training_set</span><span class="p">,</span> <span class="s">&quot;+1&quot;</span><span class="p">,</span> <span class="s">&quot;-1&quot;</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
@@ -260,6 +260,7 @@
 <span class="lineno">75</span>     <span class="k">if</span> <span class="n">non_linear_classification</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="n">training_set</span><span class="p">,</span> <span class="s">&quot;+1&quot;</span><span class="p">,</span> <span class="s">&quot;-1&quot;</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="o">==</span> <span class="n">results</span><span class="p">[</span><span class="n">obs</span><span class="o">.</span><span class="n">id</span><span class="p">]:</span>
 <span class="lineno">76</span>         <span class="n">correct</span> <span class="o">+=</span> <span class="mi">1</span>
 <span class="lineno">77</span> <span class="k">print</span> <span class="n">correct</span></code></pre></div>
+
 
             
 <div class="social">
@@ -301,7 +302,7 @@
                 <img src="/images/logo.png">
                 <p>
                 Written by <strong><a rel="author" href="https://twitter.com/mmourafiq." title="Mourad Mourafiq." target="_blank">Mourad Mourafiq.</a></strong><br>
-                    <span class="muted">Maths, Technologie, Philosophie, Startups, ...</span>
+                    <span class="muted">Maths, Technology, Philosophy, Startups, ...</span>
                 </p>
             </address>
             

@@ -130,19 +130,19 @@
 <p><strong>Finding even and odd numbers</strong>:</p>
 
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="c">#odd or even the way most people would do</span>
-<span class="lineno"> 2</span> <span class="n">odd_or_even</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="s">&quot;Even&quot;</span> <span class="k">if</span> <span class="n">n</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">0</span> <span class="k">else</span> <span class="s">&quot;Odd&quot;</span>        
+<span class="lineno"> 2</span> <span class="n">odd_or_even</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="s">&quot;Even&quot;</span> <span class="k">if</span> <span class="n">n</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">0</span> <span class="k">else</span> <span class="s">&quot;Odd&quot;</span>
 <span class="lineno"> 3</span> <span class="c">#odd or even using bitwise operations</span>
 <span class="lineno"> 4</span> <span class="n">odd_or_even</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="s">&quot;Even&quot;</span> <span class="k">if</span> <span class="n">n</span><span class="o">&amp;</span><span class="mi">1</span><span class="o">==</span><span class="mi">0</span> <span class="k">else</span> <span class="s">&quot;Odd&quot;</span>
-<span class="lineno"> 5</span> <span class="c">#the last odd_or_even function has the virtue to only check the last digit. </span>
+<span class="lineno"> 5</span> <span class="c">#the last odd_or_even function has the virtue to only check the last digit.</span>
 <span class="lineno"> 6</span> <span class="c">#Conversely, the former deals with division, and it would be annoying to do long division.</span>
-<span class="lineno"> 7</span> <span class="c">#The &quot;&amp;&quot; operator performs a bitwise AND. </span>
+<span class="lineno"> 7</span> <span class="c">#The &quot;&amp;&quot; operator performs a bitwise AND.</span>
 <span class="lineno"> 8</span> <span class="c">#If our number was 17 then it would yield 1 because only the first binary column for both numbers contains a 1.</span>
 <span class="lineno"> 9</span> <span class="c">#Likewise if the number was 60 then we&#39;d get back 0.</span>
 <span class="lineno">10</span> <span class="nb">bin</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
 <span class="lineno">11</span> <span class="s">&#39;0b10001&#39;</span>
 <span class="lineno">12</span> <span class="n">odd_or_even</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
 <span class="lineno">13</span> <span class="s">&#39;Odd&#39;</span>
-<span class="lineno">14</span>  
+<span class="lineno">14</span> 
 <span class="lineno">15</span> <span class="nb">bin</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
 <span class="lineno">16</span> <span class="s">&#39;0b111100&#39;</span>
 <span class="lineno">17</span> <span class="n">odd_or_even</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
@@ -166,7 +166,7 @@
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="n">DEFAULT_ALPHABET</span> <span class="o">=</span> <span class="s">&#39;az7er5tyu1io0pq4sd9fg6hjk8lmw3xcv2bn&#39;</span>
 <span class="lineno"> 2</span> <span class="n">LEGTH_GENERATION</span> <span class="o">=</span> <span class="mi">32</span>
 <span class="lineno"> 3</span> <span class="n">MIN_LENGTH</span> <span class="o">=</span> <span class="mi">6</span>
-<span class="lineno"> 4</span>  
+<span class="lineno"> 4</span> 
 <span class="lineno"> 5</span> <span class="k">class</span> <span class="nc">URLEncoder</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="lineno"> 6</span>     <span class="sd">&quot;&quot;&quot;</span>
 <span class="lineno"> 7</span> <span class="sd">It generates 36**6 = 2176782336 values (6 lowercase letters) which falls between 2**31 = 2147483648 and 2**32 = 4294967296.</span>
@@ -178,38 +178,38 @@
 <span class="lineno">13</span>         <span class="bp">self</span><span class="o">.</span><span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">length_generation</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
 <span class="lineno">14</span>         <span class="bp">self</span><span class="o">.</span><span class="n">mapping</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">length_generation</span><span class="p">)</span>
 <span class="lineno">15</span>         <span class="bp">self</span><span class="o">.</span><span class="n">mapping</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
-<span class="lineno">16</span>         
+<span class="lineno">16</span> 
 <span class="lineno">17</span>     <span class="k">def</span> <span class="nf">encode_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="n">MIN_LENGTH</span><span class="p">):</span>
 <span class="lineno">18</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enbase</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__encode</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">min_length</span><span class="p">)</span>
-<span class="lineno">19</span>     
+<span class="lineno">19</span> 
 <span class="lineno">20</span>     <span class="k">def</span> <span class="nf">decode_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
 <span class="lineno">21</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__decode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__debase</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
-<span class="lineno">22</span>     
+<span class="lineno">22</span> 
 <span class="lineno">23</span>     <span class="k">def</span> <span class="nf">__encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
 <span class="lineno">24</span>         <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="lineno">25</span>         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mapping</span><span class="p">):</span>
 <span class="lineno">26</span>             <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&amp;</span> <span class="bp">self</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">i</span><span class="p">):</span>
 <span class="lineno">27</span>                 <span class="n">result</span> <span class="o">|=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">b</span><span class="p">)</span>
 <span class="lineno">28</span>         <span class="k">return</span> <span class="p">(</span><span class="n">n</span> <span class="o">&amp;</span> <span class="o">~</span><span class="bp">self</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span> <span class="o">|</span> <span class="n">result</span>
-<span class="lineno">29</span>     
+<span class="lineno">29</span> 
 <span class="lineno">30</span>     <span class="k">def</span> <span class="nf">__decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
 <span class="lineno">31</span>         <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="lineno">32</span>         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mapping</span><span class="p">):</span>
 <span class="lineno">33</span>             <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&amp;</span> <span class="bp">self</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">b</span><span class="p">):</span>
 <span class="lineno">34</span>                 <span class="n">result</span> <span class="o">|=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">i</span><span class="p">)</span>
 <span class="lineno">35</span>         <span class="k">return</span> <span class="p">(</span><span class="n">n</span> <span class="o">&amp;</span> <span class="o">~</span><span class="bp">self</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span> <span class="o">|</span> <span class="n">result</span>
-<span class="lineno">36</span>     
+<span class="lineno">36</span> 
 <span class="lineno">37</span>     <span class="k">def</span> <span class="nf">__enbase</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="n">MIN_LENGTH</span><span class="p">):</span>
 <span class="lineno">38</span>         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enbase_iter</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="lineno">39</span>         <span class="n">padding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">alphabet</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">min_length</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
 <span class="lineno">40</span>         <span class="k">return</span> <span class="s">&#39;</span><span class="si">%s%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">padding</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
-<span class="lineno">41</span>     
+<span class="lineno">41</span> 
 <span class="lineno">42</span>     <span class="k">def</span> <span class="nf">__enbase_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
 <span class="lineno">43</span>         <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alphabet</span><span class="p">)</span>
 <span class="lineno">44</span>         <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
 <span class="lineno">45</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">alphabet</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
 <span class="lineno">46</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enbase_iter</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">alphabet</span><span class="p">[</span><span class="n">x</span> <span class="o">%</span> <span class="n">n</span><span class="p">]</span>
-<span class="lineno">47</span>     
+<span class="lineno">47</span> 
 <span class="lineno">48</span>     <span class="k">def</span> <span class="nf">__debase</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
 <span class="lineno">49</span>         <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alphabet</span><span class="p">)</span>
 <span class="lineno">50</span>         <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
@@ -259,7 +259,7 @@
                 <img src="/images/logo.png">
                 <p>
                 Written by <strong><a rel="author" href="https://twitter.com/mmourafiq." title="Mourad Mourafiq." target="_blank">Mourad Mourafiq.</a></strong><br>
-                    <span class="muted">Maths, Technologie, Philosophie, Startups, ...</span>
+                    <span class="muted">Maths, Technology, Philosophy, Startups, ...</span>
                 </p>
             </address>
             

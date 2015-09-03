@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stirling approximation for factorials &mdash; Mourad Mourafiq</title>
+    <!--[if lt IE 9]><script src='https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js'></script><![endif]-->
+    
+    <link rel="stylesheet" href="/assets/app.css">
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script src="/assets/app.js"></script>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+<script>
+  var HN=[];HN.factory=function(e){return function(){HN.push([e].concat(Array.prototype.slice.call(arguments,0)))};},HN.on=HN.factory("on"),HN.once=HN.factory("once"),HN.off=HN.factory("off"),HN.emit=HN.factory("emit"),HN.load=function(){var e="hn-button.js";if(document.getElementById(e))return;var t=document.createElement("script");t.id=e,t.src="//hn-button.herokuapp.com/hn-button.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n)},HN.load();</script>
+</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-34892053-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+    <link rel="shortcut icon" href="/favicon.ico?v2" type="image/x-icon" />
+    <link rel="alternate" type="application/atom+xml" title="Mourad Mourafiq" href="/atom.xml" />
+    <meta name="title" content="Stirling approximation for factorials ">
+    <link rel="canonical" href="http://mourafiq.com/2015/08/30/extensions-of-the-factorial-testing-the-convergenge-of-series.html">
+     
+           
+    <meta property="og:title" content="Stirling approximation for factorials"/>
+    <meta property="og:url" content="http://mourafiq.com/2015/08/30/extensions-of-the-factorial-testing-the-convergenge-of-series.html"/>
+    <meta property="og:image" content="http://mourafiq.com/images/posts/math.png"/>
+    
+    <meta property="og:description" content="[Part 1] Testing the convergence of series."/>
+    <meta name="description" content="[Part 1] Testing the convergence of series."/>
+    
+    <meta property="og:site_name" content="Mourad Mourafiq">
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</head>
+<body>
+
+    <header class="site-header">
+        <nav>
+            <a class="brand" href="/">
+                <img src="/images/logo.png" alt="Inc">
+            </a>
+            <a href="/about.html">About</a>
+        </nav>
+    </header>
+
+    
+<div class="cover  article-cover " style="background-image:url(/images/posts/math.png)"></div>
+
+
+<div class='cover-caption'><a href='/about.html#pictures'></a></div>
+
+
+<article >
+    <div class="container">
+        <header>
+            
+            <div class="meta">
+                <!--
+                By
+                <address><a rel="author" href="" title="Mourad Mourafiq." target="_blank">
+                    Mourad Mourafiq.
+                </a></address> &mdash;
+                -->
+                <time pubdate datetime="2015-30-August" title="Aug 30, 2015">
+                    Aug 30, 2015
+                </time> &mdash;
+                
+10 min read
+            </div>
+            
+            <h1 class="title">Stirling approximation for factorials</h1>
+            <h2 class="subtitle">[Part 1] Testing the convergence of series.</h2>
+        </header>
+
+        <section>
+            <p>Stirling formula is an approximation for factorials that leads to a very accurate results of the factorials. In this series of posts, we will try to get a mathematical intuition of this formula.</p>
+
+<p>In this first part we will try to have a closer look at the behavior of infinite series and some of their properties. The motivation behind is to have a better intuition about some very interesting concepts and tools used in everyday mathematics, physics and computer science.</p>
+
+<h2 id="definition">Definition</h2>
+
+<p>We call a series associated with sequence <script type="math/tex">{\left(U_n\right)}_{n \in {\mathbb{N}} }</script> and noted <script type="math/tex">\sum U_n</script> or <script type="math/tex">\sum_{n \in {\mathbb{N}}} U_n</script>, the couple:</p>
+
+<script type="math/tex; mode=display">\left( \left( U_n \right)_{n \in {\mathbb{N}}} , \left( S_n \right)_{n \in {\mathbb{N}} } \right) \in  E^{\mathbb{N}} \times E^{\mathbb{N}}</script>
+
+<p>where <script type="math/tex">\forall n \in {\mathbb{N}} , S_n = \sum_{k=0}^{n} U_k</script></p>
+
+<p><script type="math/tex">S_n</script> is called the partial sum of the series <script type="math/tex">\sum U_n</script></p>
+
+<h2 id="convergence-and-divergence">Convergence and divergence</h2>
+
+<p>Let <script type="math/tex">\left( {\mathbb{E}}, \|.\| \right)</script> be normed vector space, <script type="math/tex">\sum U_n</script> a series defined in <script type="math/tex">{\mathbb{E}}</script> and <script type="math/tex">{\left( S_n \right)}_n</script> the sequence of patial sums.</p>
+
+<ul>
+  <li>
+    <p>We say that the series <script type="math/tex">\sum U_n</script> converges (respectively diverges) in <script type="math/tex">\left( {\mathbb{E}}, \|.\| \right)</script> if the sequence <script type="math/tex">{\left( S_n \right)}_n</script> converges (respectively diverges) in <script type="math/tex">\left( {\mathbb{E}}, \|.\| \right)</script>.</p>
+  </li>
+  <li>
+    <p>In this case, the limit <script type="math/tex">S</script> of the sequence <script type="math/tex">{\left( S_n \right)}_n</script> is called the sum of the series <script type="math/tex">\sum U_n</script>, and is noted: <script type="math/tex">\sum_{n=0}^{\infty} U_n = S = \lim_{n \to \infty} S_n</script></p>
+  </li>
+</ul>
+
+<h2 id="examples">Examples</h2>
+
+<ul>
+  <li>the geometric series for complex numbers.</li>
+</ul>
+
+<script type="math/tex; mode=display">\sum{q^n} , q \in {\mathbb{C}}</script>
+
+<p>We have the following, <script type="math/tex">\forall n \in {\mathbb{N}}</script></p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+S_n = \sum_{k=0}^{n} q^n =
+\begin{cases}
+n + 1,  & \text{if $q = 1$} \\
+\frac{1 - q^{n+1}}{1 - q}, & \text{if $q \neq 1$}
+\end{cases} %]]></script>
+
+<p>Meaning that the series converges iff <script type="math/tex">% <![CDATA[
+\|q\| < 1 %]]></script></p>
+
+<p>and in this case <script type="math/tex">\sum_{n = 0}^{+\infty} q^n = \frac{1}{1-q}</script></p>
+
+<p>The result is simple yet so impressive, a lot of philosophers struggled to resolve <a href="https://en.wikipedia.org/wiki/Zeno%27s_paradoxes">Zeno’s paradoxes</a> because they lacked the mathematical tools to correctly model the problem.</p>
+
+<ul>
+  <li>another example <script type="math/tex">\sum_{n > 0} \frac{1}{n(n+1)} , \forall n \in {\mathbb{ N^* }}</script></li>
+</ul>
+
+<script type="math/tex; mode=display">S_n = \sum_{k = 1}^{n} (\frac{1}{k} - \frac{1}{k+1}) = 1 - \frac{1}{n+1} \require{AMScd} \begin{CD} @>>{n \to \infty}>\end{CD}  1</script>
+
+<p>Hence the series <script type="math/tex">\sum\frac{1}{n(n+1)}</script> converges, and the infinite sum is 1.</p>
+
+<h2 id="convergence-tests">Convergence tests</h2>
+
+<h3 id="the-n-th-term-test-convergences-necessary-condition">1- The n-th term test (convergence’s necessary condition)</h3>
+
+<p>Let <script type="math/tex">\left( {\mathbb{E}}, \|.\| \right)</script> be normed vector space, <script type="math/tex">\sum U_n</script> a series defined in <script type="math/tex">{\mathbb{E}}</script></p>
+
+<script type="math/tex; mode=display">\sum U_n \text{converges} \Rightarrow \lim_{n to \infty} U_n = 0</script>
+
+<p><strong>Proof</strong></p>
+
+<p>Let <script type="math/tex">S_n = \sum_{k = 0}^{n}</script> be the partial sums of the series, we know that the series converges if the <script type="math/tex">\lim_{n \to \infty = S}</script></p>
+
+<p>Hence, we have <script type="math/tex">U_n = S_n - S_{n-1} \require{AMScd} \begin{CD} @>>{n \to \infty}>\end{CD} 0</script></p>
+
+<p><strong>N.B. 1</strong></p>
+
+<p>A direct conclusion from this test is that, if the general term <script type="math/tex">U_n</script> does not converge to 0, then the series diverges.</p>
+
+<p>Again if we look at the geometric series which converges only if <script type="math/tex">% <![CDATA[
+\|q\| < 1 %]]></script>, we can see that if <script type="math/tex">\|q\| >= 1, \lim_{n \to \infty} q^n > 0</script></p>
+
+<p><strong>N.B. 2</strong></p>
+
+<p>having the general term <script type="math/tex">U_n</script> converging to 0, does not guarantee the convergence of the series.</p>
+
+<p>Let’s study the series <script type="math/tex">\sum log \left( \frac{n+1}{n} \right)</script></p>
+
+<p>We have the following <script type="math/tex">\lim_{n \to \infty} log \left( \frac{n+1}{n} \right) = 0</script></p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{aligned}
+\sum_{k = 0}^{n} log \left( \frac{k+1}{k} \right) & = \sum_{k = 0}^{n} \left( log(k+1) - log(k) \right) \\
+ & = log(n+1) \require{AMScd} \begin{CD} @>>{n \to \infty}>\end{CD} +\infty
+\end{aligned} %]]></script>
+
+<p>Hence the series diverges.</p>
+
+<h3 id="cauchys-condition">2- Cauchy’s condition</h3>
+
+<p>Let <script type="math/tex">\left( {\mathbb{E}}, \|.\| \right)</script> be normed vector space, <script type="math/tex">\sum U_n</script> a series defined in <script type="math/tex">{\mathbb{E}}</script></p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{aligned}
+\sum U_n   \text{converges} \Rightarrow & \forall \epsilon > 0, \, \exists N \in {\mathbb{N}}, \,\, \forall n,p \in {\mathbb{N}} \\
+& n >= N \Rightarrow \| sum_{k = n + 1}^{n+p} U_k \| <= \epsilon
+\end{aligned} %]]></script>
+
+<p><strong>Proof</strong></p>
+
+<p>The proof is quite simple if we consider the sequence of partial sums <script type="math/tex">{(S_n)}_{n}</script>.
+The series converges implies that <script type="math/tex">(S_n)_{n}</script> converges, which means that it’s a Cauchy sequence.</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{aligned}
+& \forall \epsilon, \,\, \exists N \in {\mathbb{N}}, \,\, \forall n,p \in {\mathbb{N}} \\
+& n >= N \Rightarrow \| S_{n+p} - S_n \| <= \epsilon \\
+& \text{And we have} \,\, \| S_{n+p} - S_n \| = \| \sum_{k = n + 1}^{n+p} U_k \|
+\end{aligned} %]]></script>
+
+<p><strong>Example</strong></p>
+
+<p>Let’s consider the harmonic series <script type="math/tex">\sum \frac{1}{n}</script></p>
+
+<script type="math/tex; mode=display">\forall n \in {\mathbb{ N^* }} \, \sum_{k=n+1}^{2n} >= n * \frac{1}{2n} >= \frac{1}{2}</script>
+
+<p>Hence the series does not verify the Cauchy’s condition, and so it does not converge.</p>
+
+<p><strong>N.B.</strong></p>
+
+<p>This condition is important, and most of the time is used to study series in Banach spaces.</p>
+
+<p>Let <script type="math/tex">{\mathbb{E}}</script> be a Banach space:</p>
+
+<ul>
+  <li>A series converges <script type="math/tex">iff</script> it verifies the Cauchy’s condition.</li>
+  <li>A series converges absolutely <script type="math/tex">\Rightarrow</script> it converges.</li>
+</ul>
+
+<p>In the second property the convergence does not imply the absolute convergence, as an example let’s consider the following series <script type="math/tex">\sum \frac{ (-1)^{n+1} }{n}</script></p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{aligned}
+S_n & = \sum_{k=1}^{n} \frac{-1^{k+1}}{k} \\
+ & = \sum_{k=1}^{n} \left(-1\right)^{k+1} \int_{0}^{1} x^{k-1} dx \\
+ & = \int_{0}^{1} \sum_{k=1}^{n} (-x)^{k-1} dx \\
+ & = \int_{0}^{1} \frac{ 1 - (-x)^n }{ 1 + x } dx \\
+ & = \int_{0}^{1} \frac{ dx }{ 1 + x } - \frac{ \left(-x\right)^n }{ 1 + x } dx \\
+ & = ln(2) - \int_{0}^{1} \frac{ \left(-x\right)^n }{ 1 + x } dx
+\end{aligned} %]]></script>
+
+<p>And since <script type="math/tex">% <![CDATA[
+\lvert \int_{0}^{1} \frac{ (-x)^n }{ 1 + x } dx \lvert <= \int_{0}^{1} (-x)^n = \frac{ 1 }{ n + 1 } \require{AMScd} \begin{CD} @>>{n \to \infty}>\end{CD} 0 %]]></script></p>
+
+<p>It follows that <script type="math/tex">\lim_{ n \to \infty } S_n = ln(2)</script></p>
+
+<p>Hence the series converges to <script type="math/tex">ln(2)</script> but it does not converge absolutely.</p>
+
+<p><strong>N.B.</strong></p>
+
+<p>A series that converges but does not converge absolutely, is called semi-convergent or conditionally convergent.</p>
+
+<h3 id="leibnitz-rule-for-testing-the-convergence-of-alternating-series">3- Leibnitz rule for testing the convergence of alternating series</h3>
+
+<p>Let <script type="math/tex">\sum U_n</script> be a series over reals, if <script type="math/tex">\sum U_{n}</script> is an alternating series, i.e. <script type="math/tex">U_n = (-1)^{n} \lvert U_n \lvert \, \text{or} \, U_n = (-1)^{ n + 1 } \lvert U_n \lvert</script>, and <script type="math/tex">(\lvert U_n \lvert)_n</script> is decreasing and converges to 0, then the series <script type="math/tex">\sum U_n</script> converges and <script type="math/tex">% <![CDATA[
+R_n = S - S_n < \lvert U_{ n + 1} \lvert %]]></script></p>
+
+<p><strong>Proof</strong></p>
+
+<p>Let’s suppose that <script type="math/tex">\forall n \in {\mathbb{ N }} U_n = (-1)^n \lvert U_n \lvert</script> and <script type="math/tex">\forall n \in {\mathbb{ N }} S_n = \sum_{k=0}^{n} U_k</script></p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{aligned}
+\text{ We have } \,\, S_{ 2(n+1) } - S_{2n} & = U_{ 2n + 1 } + U_{ 2n + 2 } \\
+  & = -\lvert U_{ 2n + 1 } \lvert + \lvert U_{ 2n + 2 } \lvert
+\end{aligned} %]]></script>
+
+<p>Hence <script type="math/tex">{(S_{2n})}_n</script> is decreasing. The same way we can show that <script type="math/tex">{(S_{2n + 1})}_n</script> is increasing. And since <script type="math/tex">{(S_{2n + 1})}_n - {(S_{2n})}_n = U_{2n + 1} \require{AMScd} \begin{CD} @>>{n \to \infty}>\end{CD} 0</script>, both <script type="math/tex">{(S_{2n + 1})}_n</script> and <script type="math/tex">{(S_{2n})}_n</script> converge to the same limit <script type="math/tex">S</script>, then we find that <script type="math/tex">\lim_{n \to \infty} S_n = S</script>.</p>
+
+<p>Also, since</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{aligned}
+R_n & = S - S_n \\
+\lvert R_{2n} \lvert & = \lvert S - S_{2n} \lvert <= \lvert S_{2n} - S_{2n + 1} \lvert = \lvert U_{2n + 1} \lvert \\
+\lvert R_{2n + 1} \lvert & = \lvert S - S_{2n + 1} \lvert <= \lvert S_{2n + 2} - S_{2n + 1} \lvert = \lvert U_{2n + 2} \lvert \\
+\forall n \in {\mathbb{ N }} \,\, \lvert R_n \lvert & <= \lvert U_{n+1} \lvert
+\end{aligned} %]]></script>
+
+<p><strong>Examples</strong></p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{aligned}
+& \sum \frac{(-1)^n}{n}  \, \text{converges} \\
+\forall \alpha > 0 , \,\, & \sum \frac{(-1)^n}{n^\alpha} \, \text{converges}
+\end{aligned} %]]></script>
+
+<h3 id="comparison-test">4- Comparison test</h3>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\sum U_n \,\, \text{converges} \, \iff \, \exists c \, \text{constant} \forall n \, S_n <= c %]]></script>
+
+<p><strong>Proof</strong></p>
+
+<p>We know that <script type="math/tex">S_{n + 1} - S_n = U_{n + 1} >= 0</script> and that the sequence <script type="math/tex">{(S_n)}_n</script> is increasing.</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+{(S_n)}_n \, \text{converges} \, \iff \, \exists c \, \text{constant} \forall n \, S_n <= c %]]></script>
+
+<p>Based on this property we can deduce many other properties related to comparing series in different ways, i.e. using <script type="math/tex">\sim , \, o , \, O , \, ...</script></p>
+
+<p><strong>Example: Riemann series</strong>
+We cal a Riemann series, a series of the form <script type="math/tex">\sum \frac{1}{ n^\alpha } , \, \alpha \in {\mathbb{R}}</script></p>
+
+<ul>
+  <li>Case when <script type="math/tex">% <![CDATA[
+\alpha <= 0 %]]></script></li>
+</ul>
+
+<p>The series <script type="math/tex">\sum \frac{1}{ n^\alpha }</script> obviously diverges</p>
+
+<ul>
+  <li>Case when <script type="math/tex">\alpha = 1</script></li>
+</ul>
+
+<p>We saw that <script type="math/tex">\sum \frac{1}{n}</script> diverges</p>
+
+<ul>
+  <li>Case when <script type="math/tex">\alpha \in \left[ 0, 1 \right]</script></li>
+</ul>
+
+<p>The series <script type="math/tex">\sum \frac{1}{ n^\alpha }</script> diverges, because <script type="math/tex">\frac{1}{n} =o \frac{1}{ n^\alpha }</script></p>
+
+<ul>
+  <li>Case when <script type="math/tex">\alpha > 1</script></li>
+</ul>
+
+<p>Let’s consider the application <script type="math/tex">f</script></p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{aligned}
+f : [ 0, +\infty [ & \rightarrow {\mathbb{R}} \\
+x & \mapsto \frac{ x^{1 -\alpha } }{ 1 - \alpha }
+\end{aligned} %]]></script>
+
+<p>The application <script type="math/tex">f</script> is of class <script type="math/tex">C^1</script>, and by applying the Mean value theorem over <script type="math/tex">[n, n+1]</script>, we have the following result <script type="math/tex">\exists \theta_n \in [n, n+1]</script> such that <script type="math/tex">f\left( n+1 \right) - f\left( n \right) = f^{''}\left( \theta_n \right) = \frac{ 1 }{ { \theta_n }^\alpha }</script></p>
+
+<p>And since <script type="math/tex">\theta_n \sim n</script></p>
+
+<p>then <script type="math/tex">\frac{1}{ { \theta_n }^\alpha } \sim \frac{1}{ n^\alpha }</script></p>
+
+<p>Which means that <script type="math/tex">\frac{1}{ n^\alpha } \sim \left( f\left( n+1 \right) - f\left( n \right) \right)</script></p>
+
+<p>We know that the series <script type="math/tex">\sum \left( f\left( n+1 \right) - f\left( n \right) \right)</script> converges, because <script type="math/tex">\sum_{ k = 1 }^{ n } \left( f\left( n+1 \right) - f\left( n \right) \right) = f\left( n+1 \right) - f\left( 1 \right) \require{AMScd} \begin{CD} @>>{n \to \infty}>\end{CD} -f \left( 1 \right)</script></p>
+
+<p>Finally <script type="math/tex">\sum \frac{1}{n^\alpha}</script> converges.</p>
+
+            
+<div class="social">
+  
+  <div class='twitter'>
+    <a href="https://twitter.com/share" class="twitter-share-button"  data-text="Stirling approximation for factorials" data-related="mmourafiq">Tweet</a>
+  </div>
+  
+
+  
+  <div class='facebook'>
+    <div class="fb-share-button" data-layout="button_count"></div>
+  </div>
+  
+
+  
+  <div class='google'>
+    <div class="g-plusone" data-size="medium"></div>
+  </div>
+  
+    
+  
+  <div class='hn'>
+    <a href="https://news.ycombinator.com/submit" class="hn-button" data-title="Stirling approximation for factorials" data-url="http://mourafiq.com/2015/08/30/extensions-of-the-factorial-testing-the-convergenge-of-series.html" data-count="horizontal">Vote on Hacker News</a>
+  </div>
+  
+
+  
+  <div class='reddit'>
+    <a href="//www.reddit.com/submit" onclick="window.open('//www.reddit.com/submit?url=http://mourafiq.com/2015/08/30/extensions-of-the-factorial-testing-the-convergenge-of-series.html&title=Stirling+approximation+for+factorials'); return false"> <img src="//www.redditstatic.com/spreddit7.gif" alt="submit to reddit" border="0" /> </a>
+  </div>
+  
+</div>
+
+        </section>
+
+        <footer>
+            <address>
+                <img src="/images/logo.png">
+                <p>
+                Written by <strong><a rel="author" href="https://twitter.com/mmourafiq." title="Mourad Mourafiq." target="_blank">Mourad Mourafiq.</a></strong><br>
+                    <span class="muted">Maths, Technology, Philosophy, Startups, ...</span>
+                </p>
+            </address>
+             
+            
+            
+            <section class="post_summary">
+                <h3 class="title">Previous story: <a href="/2015/05/30/adding-spark-to-python-projects.html" rel="prefetch">Spark context manager</a></h3>
+                <p>a context manager to communicate with pyspark.</p>
+                <hr>
+            </section>
+             
+            
+            <section>
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'mourafiq';
+
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+            </section>
+            
+        </footer>
+    </div>
+</article>
+
+
+    <footer class="site-footer">
+        <div class="container">
+            &copy; 2015 Mourad Mourafiq
+
+            <nav>
+                <a href="/">Blog</a> &middot;
+                <a href="/about.html">About</a>
+            </nav>
+
+            <nav class="social">
+                
+<a href="https://twitter.com/mmourafiq" title="Follow on Twitter" target="_blank"><i class="icon icon-twitter"></i></a>
+
+
+<a href="https://github.com/mouradmourafiq" title="Watch on Github" target="_blank"><i class="icon icon-github"></i></a>
+
+
+<a href="/atom.xml" title="RSS Feed">
+  <i class="icon icon-rss"></i>
+</a>
+
+            </nav>
+            <div>Based on Incorporated theme by <a href="https://sendtoinc.com">Inc</a></div>
+        </div>
+    </footer>
+
+</body>
+</html>

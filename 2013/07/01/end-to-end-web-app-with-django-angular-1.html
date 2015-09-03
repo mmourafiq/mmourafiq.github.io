@@ -142,8 +142,8 @@
 
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
 <span class="lineno"> 2</span> <span class="kn">from</span> <span class="nn">django.template.defaultfilters</span> <span class="kn">import</span> <span class="n">slugify</span>
-<span class="lineno"> 3</span>  
-<span class="lineno"> 4</span>  
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span> 
 <span class="lineno"> 5</span> <span class="k">class</span> <span class="nc">Post</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
 <span class="lineno"> 6</span>     <span class="sd">&quot;&quot;&quot;</span>
 <span class="lineno"> 7</span> <span class="sd">    An item created by a user.</span>
@@ -155,13 +155,13 @@
 <span class="lineno">13</span>     <span class="n">is_active</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="lineno">14</span>     <span class="n">created_on</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="lineno">15</span>     <span class="n">updated_on</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="lineno">16</span>  
+<span class="lineno">16</span> 
 <span class="lineno">17</span>     <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="lineno">18</span>         <span class="bp">self</span><span class="o">.</span><span class="n">do_unique_slug</span><span class="p">()</span>
 <span class="lineno">19</span>         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="p">:</span>
 <span class="lineno">20</span>             <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span>
 <span class="lineno">21</span>         <span class="nb">super</span><span class="p">(</span><span class="n">Post</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="lineno">22</span>  
+<span class="lineno">22</span> 
 <span class="lineno">23</span>     <span class="k">def</span> <span class="nf">do_unique_slug</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="lineno">24</span>         <span class="sd">&quot;&quot;&quot;</span>
 <span class="lineno">25</span> <span class="sd">        Ensures that the slug is always unique for this post</span>
@@ -170,24 +170,24 @@
 <span class="lineno">28</span>             <span class="c"># make sure we have a slug first</span>
 <span class="lineno">29</span>             <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">slug</span><span class="o">.</span><span class="n">strip</span><span class="p">()):</span>
 <span class="lineno">30</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">slug</span> <span class="o">=</span> <span class="n">slugify</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
-<span class="lineno">31</span>  
+<span class="lineno">31</span> 
 <span class="lineno">32</span>             <span class="bp">self</span><span class="o">.</span><span class="n">slug</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_unique_slug</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">slug</span><span class="p">)</span>
 <span class="lineno">33</span>             <span class="k">return</span> <span class="bp">True</span>
-<span class="lineno">34</span>  
+<span class="lineno">34</span> 
 <span class="lineno">35</span>         <span class="k">return</span> <span class="bp">False</span>
-<span class="lineno">36</span>  
+<span class="lineno">36</span> 
 <span class="lineno">37</span>     <span class="k">def</span> <span class="nf">get_unique_slug</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">slug</span><span class="p">):</span>
 <span class="lineno">38</span>         <span class="sd">&quot;&quot;&quot;</span>
 <span class="lineno">39</span> <span class="sd">        Iterates until a unique slug is found</span>
 <span class="lineno">40</span> <span class="sd">        &quot;&quot;&quot;</span>
 <span class="lineno">41</span>         <span class="n">orig_slug</span> <span class="o">=</span> <span class="n">slug</span>
 <span class="lineno">42</span>         <span class="n">counter</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="lineno">43</span>  
+<span class="lineno">43</span> 
 <span class="lineno">44</span>         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
 <span class="lineno">45</span>             <span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">slug</span><span class="o">=</span><span class="n">slug</span><span class="p">)</span>
 <span class="lineno">46</span>             <span class="k">if</span> <span class="ow">not</span> <span class="n">posts</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
 <span class="lineno">47</span>                 <span class="k">return</span> <span class="n">slug</span>
-<span class="lineno">48</span>  
+<span class="lineno">48</span> 
 <span class="lineno">49</span>             <span class="n">slug</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">-</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">orig_slug</span><span class="p">,</span> <span class="n">counter</span><span class="p">)</span>
 <span class="lineno">50</span>             <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span></code></pre></div>
 
@@ -197,16 +197,16 @@
 
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">serializers</span>
 <span class="lineno"> 2</span> <span class="kn">from</span> <span class="nn">posts.models</span> <span class="kn">import</span> <span class="n">Post</span>
-<span class="lineno"> 3</span>  
-<span class="lineno"> 4</span>  
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span> 
 <span class="lineno"> 5</span> <span class="k">class</span> <span class="nc">PostSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">HyperlinkedModelSerializer</span><span class="p">):</span>
 <span class="lineno"> 6</span>     <span class="n">api_url</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">SerializerMethodField</span><span class="p">(</span><span class="s">&#39;get_api_url&#39;</span><span class="p">)</span>
-<span class="lineno"> 7</span>  
+<span class="lineno"> 7</span> 
 <span class="lineno"> 8</span>     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
 <span class="lineno"> 9</span>         <span class="n">model</span> <span class="o">=</span> <span class="n">Post</span>
 <span class="lineno">10</span>         <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;id&#39;</span><span class="p">,</span> <span class="s">&#39;title&#39;</span><span class="p">,</span> <span class="s">&#39;description&#39;</span><span class="p">,</span> <span class="s">&#39;created_on&#39;</span><span class="p">,</span> <span class="s">&#39;url&#39;</span><span class="p">,</span> <span class="s">&#39;api_url&#39;</span><span class="p">)</span>
 <span class="lineno">11</span>         <span class="n">read_only_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;id&#39;</span><span class="p">,</span> <span class="s">&#39;created_on&#39;</span><span class="p">)</span>
-<span class="lineno">12</span>  
+<span class="lineno">12</span> 
 <span class="lineno">13</span>     <span class="k">def</span> <span class="nf">get_api_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
 <span class="lineno">14</span>         <span class="k">return</span> <span class="s">&quot;#/post/</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">obj</span><span class="o">.</span><span class="n">id</span></code></pre></div>
 
@@ -215,16 +215,16 @@
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">generics</span>
 <span class="lineno"> 2</span> <span class="kn">from</span> <span class="nn">posts.models</span> <span class="kn">import</span> <span class="n">Post</span>
 <span class="lineno"> 3</span> <span class="kn">from</span> <span class="nn">posts.serializers</span> <span class="kn">import</span> <span class="n">PostSerializer</span>
-<span class="lineno"> 4</span>  
-<span class="lineno"> 5</span>  
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> 
 <span class="lineno"> 6</span> <span class="k">class</span> <span class="nc">PostList</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">ListCreateAPIView</span><span class="p">):</span>
 <span class="lineno"> 7</span>     <span class="sd">&quot;&quot;&quot;</span>
 <span class="lineno"> 8</span> <span class="sd">    List all boards, or create a new board.</span>
 <span class="lineno"> 9</span> <span class="sd">    &quot;&quot;&quot;</span>
 <span class="lineno">10</span>     <span class="n">model</span> <span class="o">=</span> <span class="n">Post</span>
 <span class="lineno">11</span>     <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">PostSerializer</span>
-<span class="lineno">12</span>  
-<span class="lineno">13</span>  
+<span class="lineno">12</span> 
+<span class="lineno">13</span> 
 <span class="lineno">14</span> <span class="k">class</span> <span class="nc">PostDetail</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">RetrieveUpdateDestroyAPIView</span><span class="p">):</span>
 <span class="lineno">15</span>     <span class="sd">&quot;&quot;&quot;</span>
 <span class="lineno">16</span> <span class="sd">    Retrieve, update or delete a board instance.</span>
@@ -235,13 +235,13 @@
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">patterns</span><span class="p">,</span> <span class="n">include</span><span class="p">,</span> <span class="n">url</span>
 <span class="lineno"> 2</span> <span class="kn">from</span> <span class="nn">rest_framework.urlpatterns</span> <span class="kn">import</span> <span class="n">format_suffix_patterns</span>
 <span class="lineno"> 3</span> <span class="kn">from</span> <span class="nn">posts</span> <span class="kn">import</span> <span class="n">views</span>
-<span class="lineno"> 4</span>  
+<span class="lineno"> 4</span> 
 <span class="lineno"> 5</span> <span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">patterns</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span>
 <span class="lineno"> 6</span>     <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^$&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">PostList</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;post-list&#39;</span><span class="p">),</span>
 <span class="lineno"> 7</span>     <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^(?P&lt;pk&gt;[0-9]+)/$&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">PostDetail</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;post-detail&#39;</span><span class="p">),</span>
 <span class="lineno"> 8</span> <span class="p">)</span>
-<span class="lineno"> 9</span>  
-<span class="lineno">10</span>  
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> 
 <span class="lineno">11</span> <span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">format_suffix_patterns</span><span class="p">(</span><span class="n">urlpatterns</span><span class="p">)</span></code></pre></div>
 
 <p>Django REST Framework supports generating human-friendly HTML output for each resource when the HTML format is requested. These pages allow for easy browsing of resources, as well as forms for submitting data to the resources using POST, PUT, and DELETE.</p>
@@ -290,7 +290,7 @@
                 <img src="/images/logo.png">
                 <p>
                 Written by <strong><a rel="author" href="https://twitter.com/mmourafiq." title="Mourad Mourafiq." target="_blank">Mourad Mourafiq.</a></strong><br>
-                    <span class="muted">Maths, Technologie, Philosophie, Startups, ...</span>
+                    <span class="muted">Maths, Technology, Philosophy, Startups, ...</span>
                 </p>
             </address>
             

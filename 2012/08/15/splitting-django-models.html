@@ -132,8 +132,8 @@
 <span class="lineno">2</span>     <span class="n">first_name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="lineno">3</span>     <span class="n">last_name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="lineno">4</span>     <span class="n">instrument</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="lineno">5</span>  
-<span class="lineno">6</span>     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>           
+<span class="lineno">5</span> 
+<span class="lineno">6</span>     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
 <span class="lineno">7</span>         <span class="n">app_label</span> <span class="o">=</span> <span class="s">&#39;myapp&#39;</span></code></pre></div>
 
 <p>The contents of <code>albums.py</code>:</p>
@@ -143,8 +143,8 @@
 <span class="lineno">3</span>     <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 <span class="lineno">4</span>     <span class="n">release_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateField</span><span class="p">()</span>
 <span class="lineno">5</span>     <span class="n">num_stars</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">()</span>
-<span class="lineno">6</span>  
-<span class="lineno">7</span>     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>       
+<span class="lineno">6</span> 
+<span class="lineno">7</span>     <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
 <span class="lineno">8</span>         <span class="n">app_label</span> <span class="o">=</span> <span class="s">&#39;myapp&#39;</span></code></pre></div>
 
 <p>Notice the definition of the app_label property in the inner Meta classes for each model. This is very important to let Django’s <code>syncdb</code> command know that these split up model classes belong to the same application.</p>
@@ -200,7 +200,7 @@
                 <img src="/images/logo.png">
                 <p>
                 Written by <strong><a rel="author" href="https://twitter.com/mmourafiq." title="Mourad Mourafiq." target="_blank">Mourad Mourafiq.</a></strong><br>
-                    <span class="muted">Maths, Technologie, Philosophie, Startups, ...</span>
+                    <span class="muted">Maths, Technology, Philosophy, Startups, ...</span>
                 </p>
             </address>
             

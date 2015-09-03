@@ -193,15 +193,15 @@
 
 <p>-&gt; What we need to do is access the models in the database using the orm. e.g:</p>
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="k">def</span> <span class="nf">forwards</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">orm</span><span class="p">):</span> 
-<span class="lineno"> 2</span>     <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">orm</span><span class="o">.</span><span class="n">Author</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">all</span><span class="p">():</span> 
-<span class="lineno"> 3</span>         <span class="k">try</span><span class="p">:</span> 
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="k">def</span> <span class="nf">forwards</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">orm</span><span class="p">):</span>
+<span class="lineno"> 2</span>     <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">orm</span><span class="o">.</span><span class="n">Author</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+<span class="lineno"> 3</span>         <span class="k">try</span><span class="p">:</span>
 <span class="lineno"> 4</span>             <span class="n">a</span><span class="o">.</span><span class="n">first_name</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">second_name</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">)</span>
 <span class="lineno"> 5</span>         <span class="k">except</span><span class="p">:</span>
-<span class="lineno"> 6</span>             <span class="n">a</span><span class="o">.</span><span class="n">first_name</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">second_name</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s">&quot;&quot;</span> 
-<span class="lineno"> 7</span>         <span class="n">c</span><span class="o">.</span><span class="n">save</span><span class="p">()</span> 
-<span class="lineno"> 8</span>  
-<span class="lineno"> 9</span>  <span class="k">def</span> <span class="nf">backwards</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">orm</span><span class="p">):</span> 
+<span class="lineno"> 6</span>             <span class="n">a</span><span class="o">.</span><span class="n">first_name</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">second_name</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s">&quot;&quot;</span>
+<span class="lineno"> 7</span>         <span class="n">c</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span>  <span class="k">def</span> <span class="nf">backwards</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">orm</span><span class="p">):</span>
 <span class="lineno">10</span>     <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">orm</span><span class="o">.</span><span class="n">Author</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
 <span class="lineno">11</span>         <span class="n">a</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
 <span class="lineno">12</span>         <span class="n">a</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></code></pre></div>
@@ -209,6 +209,7 @@
 <p>-&gt; Now we can create another migration to delete the older field. Go to your model and delete the initial field. and then run:</p>
 
 <div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span>  ./manage.py schemamigration posts --auto</code></pre></div>
+
 
             
 <div class="social">
@@ -250,7 +251,7 @@
                 <img src="/images/logo.png">
                 <p>
                 Written by <strong><a rel="author" href="https://twitter.com/mmourafiq." title="Mourad Mourafiq." target="_blank">Mourad Mourafiq.</a></strong><br>
-                    <span class="muted">Maths, Technologie, Philosophie, Startups, ...</span>
+                    <span class="muted">Maths, Technology, Philosophy, Startups, ...</span>
                 </p>
             </address>
             
