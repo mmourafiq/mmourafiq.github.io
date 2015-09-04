@@ -112,7 +112,7 @@
 
 <p>We call a series associated with sequence <script type="math/tex">{\left(U_n\right)}_{n \in {\mathbb{N}} }</script> and noted <script type="math/tex">\sum U_n</script> or <script type="math/tex">\sum_{n \in {\mathbb{N}}} U_n</script>, the couple:</p>
 
-<script type="math/tex; mode=display">\left( \left( U_n \right)_{n \in {\mathbb{N}}} , \left( S_n \right)_{n \in {\mathbb{N}} } \right) \in  E^{\mathbb{N}} \times E^{\mathbb{N}}</script>
+<script type="math/tex; mode=display">\left( \left( U_n \right)_{n \in {\mathbb{N}}} , \left( S_n \right)_{n \in {\mathbb{N}} } \right) \in  {\mathbb{E}}^{\mathbb{N}} \times {\mathbb{E}}^{\mathbb{N}}</script>
 
 <p>where <script type="math/tex">\forall n \in {\mathbb{N}} , S_n = \sum_{k=0}^{n} U_k</script></p>
 
@@ -120,11 +120,11 @@
 
 <h2 id="convergence-and-divergence">Convergence and divergence</h2>
 
-<p>Let <script type="math/tex">\left( {\mathbb{E}}, \|.\| \right</script> be normed vector space, <script type="math/tex">\sum U_n</script> a series defined in <script type="math/tex">{\mathbb{E}}</script> and <script type="math/tex">{\left( S_n \right)}_n</script> the sequence of partial sums.</p>
+<p>Let <script type="math/tex">\left( {\mathbb{E}}, \|.\| \right)</script> be normed vector space, <script type="math/tex">\sum U_n</script> a series defined in <script type="math/tex">{\mathbb{E}}</script> and <script type="math/tex">{\left( S_n \right)}_n</script> the sequence of partial sums.</p>
 
 <ul>
-  <li>We say that the series <script type="math/tex">\sum U_</script> converges (respectively diverges) in <script type="math/tex">\left( {\mathbb{E}}, \|.\| \right</script> if the sequence <script type="math/tex">{\left( S_n \right)}_n</script> converges (respectively diverges) in <script type="math/tex">\left( {\mathbb{E}}, \|.\| \right</script> if the sequence $$.</li>
-  <li>In this case, the limit <script type="math/tex">S</script> of the sequence <script type="math/tex">{\left( S_n \right)}_n</script> is called the sum of the series <script type="math/tex">\sum U_n</script>, and is noted: <script type="math/tex">\sum_{n=0}^{\infty} U_n = S = \lim_{n \to \infty} S_n</script></li>
+  <li>We say that the series <script type="math/tex">\sum U_n</script> converges (respectively diverges) in <script type="math/tex">\left( {\mathbb{E}}, \|.\| \right)</script> if the sequence <script type="math/tex">{\left( S_n \right)}_n</script> converges (respectively diverges) in <script type="math/tex">\left( {\mathbb{E}}, \|.\| \right)</script>.</li>
+  <li>In this case, the limit <script type="math/tex">S</script> of the sequence <script type="math/tex">{\left( S_n \right)}_n</script> is called the sum of the series <script type="math/tex">\sum U_n</script>, and is noted: <script type="math/tex">\sum_{n=0}^{\infty} U_n = S = \lim \limits_{n \to \infty} S_n</script></li>
 </ul>
 
 <p><strong>Examples</strong></p>
@@ -165,11 +165,11 @@ n + 1,  & \text{if $q = 1$} \\
 
 <p>Let <script type="math/tex">\left( {\mathbb{E}}, \|.\| \right)</script> be normed vector space, <script type="math/tex">\sum U_n</script> a series defined in <script type="math/tex">{\mathbb{E}}</script></p>
 
-<script type="math/tex; mode=display">\sum U_n \text{converges} \Rightarrow \lim_{n to \infty} U_n = 0</script>
+<script type="math/tex; mode=display">\sum U_n \text{converges} \Rightarrow \lim \limits_{n \to \infty} U_n = 0</script>
 
 <p><strong>Proof</strong></p>
 
-<p>Let <script type="math/tex">S_n = \sum_{k = 0}^{n}</script> be the partial sums of the series, we know that the series converges if the <script type="math/tex">\lim_{n \to \infty = S}</script></p>
+<p>Let <script type="math/tex">S_n = \sum_{k = 0}^{n}</script> be the partial sums of the series, we know that the series converges if the <script type="math/tex">\lim \limits_{n \to \infty = S}</script></p>
 
 <p>Hence, we have <script type="math/tex">U_n = S_n - S_{n-1} \require{AMScd} \begin{CD} @>>{n \to \infty}>\end{CD} 0</script></p>
 
@@ -178,7 +178,7 @@ n + 1,  & \text{if $q = 1$} \\
 <p>A direct conclusion from this test is that, if the general term <script type="math/tex">U_n</script> does not converge to 0, then the series diverges.</p>
 
 <p>Again if we look at the geometric series which converges only if <script type="math/tex">% <![CDATA[
-\|q\| < 1 %]]></script>, we can see that if <script type="math/tex">\|q\| >= 1, \lim_{n \to \infty} q^n > 0</script></p>
+\|q\| < 1 %]]></script>, we can see that if <script type="math/tex">\|q\| >= 1, \lim \limits_{n \to \infty} q^n > 0</script></p>
 
 <p><strong>N.B. 2</strong></p>
 
@@ -186,7 +186,7 @@ n + 1,  & \text{if $q = 1$} \\
 
 <p>Let’s study the series <script type="math/tex">\sum log \left( \frac{n+1}{n} \right)</script></p>
 
-<p>We have the following <script type="math/tex">\lim_{n \to \infty} log \left( \frac{n+1}{n} \right) = 0</script></p>
+<p>We have the following <script type="math/tex">\lim \limits_{n \to \infty} log \left( \frac{n+1}{n} \right) = 0</script></p>
 
 <script type="math/tex; mode=display">% <![CDATA[
 \begin{aligned}
@@ -203,7 +203,7 @@ n + 1,  & \text{if $q = 1$} \\
 <script type="math/tex; mode=display">% <![CDATA[
 \begin{aligned}
 \sum U_n   \text{converges} \Rightarrow & \forall \epsilon > 0, \, \exists N \in {\mathbb{N}}, \,\, \forall n,p \in {\mathbb{N}} \\
-& n >= N \Rightarrow \| sum_{k = n + 1}^{n+p} U_k \| <= \epsilon
+& n >= N \Rightarrow \| \sum_{k = n + 1}^{n+p} U_k \| <= \epsilon
 \end{aligned} %]]></script>
 
 <p><strong>Proof</strong></p>
@@ -252,7 +252,7 @@ The series converges implies that <script type="math/tex">(S_n)_{n}</script> con
 <p>And since <script type="math/tex">% <![CDATA[
 \lvert \int_{0}^{1} \frac{ (-x)^n }{ 1 + x } dx \lvert <= \int_{0}^{1} (-x)^n = \frac{ 1 }{ n + 1 } \require{AMScd} \begin{CD} @>>{n \to \infty}>\end{CD} 0 %]]></script></p>
 
-<p>It follows that <script type="math/tex">\lim_{ n \to \infty } S_n = ln(2)</script></p>
+<p>It follows that <script type="math/tex">\lim \limits_{ n \to \infty } S_n = ln(2)</script></p>
 
 <p>Hence the series converges to <script type="math/tex">ln(2)</script> but it does not converge absolutely.</p>
 
@@ -275,7 +275,7 @@ R_n = S - S_n < \lvert U_{ n + 1} \lvert %]]></script></p>
   & = -\lvert U_{ 2n + 1 } \lvert + \lvert U_{ 2n + 2 } \lvert
 \end{aligned} %]]></script>
 
-<p>Hence <script type="math/tex">{(S_{2n})}_n</script> is decreasing. The same way we can show that <script type="math/tex">{(S_{2n + 1})}_n</script> is increasing. And since <script type="math/tex">{(S_{2n + 1})}_n - {(S_{2n})}_n = U_{2n + 1} \require{AMScd} \begin{CD} @>>{n \to \infty}>\end{CD} 0</script>, both <script type="math/tex">{(S_{2n + 1})}_n</script> and <script type="math/tex">{(S_{2n})}_n</script> converge to the same limit <script type="math/tex">S</script>, then we find that <script type="math/tex">\lim_{n \to \infty} S_n = S</script>.</p>
+<p>Hence <script type="math/tex">{(S_{2n})}_n</script> is decreasing. The same way we can show that <script type="math/tex">{(S_{2n + 1})}_n</script> is increasing. And since <script type="math/tex">{(S_{2n + 1})}_n - {(S_{2n})}_n = U_{2n + 1} \require{AMScd} \begin{CD} @>>{n \to \infty}>\end{CD} 0</script>, both <script type="math/tex">{(S_{2n + 1})}_n</script> and <script type="math/tex">{(S_{2n})}_n</script> converge to the same limit <script type="math/tex">S</script>, then we find that <script type="math/tex">\lim \limits_{n \to \infty} S_n = S</script>.</p>
 
 <p>Also, since</p>
 
