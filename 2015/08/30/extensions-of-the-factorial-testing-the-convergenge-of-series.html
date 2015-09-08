@@ -96,7 +96,7 @@
                     Aug 30, 2015
                 </time> &mdash;
                 
-10 min read
+13 min read
             </div>
             
             <h1 class="title">Stirling approximation for factorials</h1>
@@ -256,6 +256,24 @@ The series converges implies that <script type="math/tex">(S_n)_{n}</script> con
 
 <p>Hence the series converges to <script type="math/tex">ln(2)</script> but it does not converge absolutely.</p>
 
+<p>Let’s check this result in python, we will use the symbolic library <code>sympy</code></p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">symbols</span><span class="p">,</span> <span class="nb">sum</span><span class="p">,</span> <span class="n">oo</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s">&#39;k n&#39;</span><span class="p">,</span> <span class="n">integer</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="lineno"> 4</span> <span class="n">ps</span> <span class="o">=</span> <span class="n">Sum</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">k</span><span class="p">,</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+<span class="lineno"> 5</span> 
+<span class="lineno"> 6</span> <span class="c">#  lets calculate the partial sum</span>
+<span class="lineno"> 7</span> <span class="n">ps</span><span class="o">.</span><span class="n">doit</span><span class="p">()</span>
+<span class="lineno"> 8</span> <span class="o">&gt;</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">lerchphi</span><span class="p">(</span><span class="n">exp_polar</span><span class="p">(</span><span class="n">I</span><span class="o">*</span><span class="n">pi</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> <span class="c">#  the infinite sum</span>
+<span class="lineno">11</span> <span class="n">s</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">oo</span><span class="p">)</span>
+<span class="lineno">12</span> <span class="n">s</span><span class="o">.</span><span class="n">doit</span><span class="p">()</span>
+<span class="lineno">13</span> <span class="o">&gt;</span> <span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="lineno">14</span> <span class="n">s</span><span class="o">.</span><span class="n">evalf</span><span class="p">()</span>
+<span class="lineno">15</span> <span class="o">&gt;</span> <span class="mf">0.693147180559945</span></code></pre></div>
+
 <p><strong>N.B.</strong></p>
 
 <p>A series that converges but does not converge absolutely, is called semi-convergent or conditionally convergent.</p>
@@ -287,7 +305,7 @@ R_n & = S - S_n \\
 \forall n \in {\mathbb{ N }} \,\, \lvert R_n \lvert & <= \lvert U_{n+1} \lvert
 \end{aligned} %]]></script>
 
-<p><strong>Examples</strong></p>
+<p><strong>Example</strong></p>
 
 <script type="math/tex; mode=display">% <![CDATA[
 \begin{aligned}
@@ -309,8 +327,9 @@ R_n & = S - S_n \\
 
 <p>Based on this property we can deduce many other properties related to comparing series in different ways, i.e. using <script type="math/tex">\sim , \, o , \, O , \, ...</script></p>
 
-<p><strong>Example: Riemann series</strong>
-We cal a Riemann series, a series of the form <script type="math/tex">\sum \frac{1}{ n^\alpha } , \, \alpha \in {\mathbb{R}}</script></p>
+<p><strong>Example: Riemann series</strong></p>
+
+<p>We cal a Riemann series, a series of the form <script type="math/tex">\sum \frac{1}{ n^\alpha } , \, \alpha \in {\mathbb{R}}</script></p>
 
 <ul>
   <li>Case when <script type="math/tex">% <![CDATA[
@@ -354,6 +373,35 @@ x & \mapsto \frac{ x^{1 -\alpha } }{ 1 - \alpha }
 <p>We know that the series <script type="math/tex">\sum \left( f\left( n+1 \right) - f\left( n \right) \right)</script> converges, because <script type="math/tex">\sum_{ k = 1 }^{ n } \left( f\left( n+1 \right) - f\left( n \right) \right) = f\left( n+1 \right) - f\left( 1 \right) \require{AMScd} \begin{CD} @>>{n \to \infty}>\end{CD} -f \left( 1 \right)</script></p>
 
 <p>Finally <script type="math/tex">\sum \frac{1}{n^\alpha}</script> converges if <script type="math/tex">\alpha > 1</script>.</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">symbols</span><span class="p">,</span> <span class="n">Sum</span><span class="p">,</span> <span class="n">oo</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="n">a</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">)</span>
+<span class="lineno"> 4</span> <span class="n">n</span><span class="p">,</span> <span class="n">k</span>  <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s">&#39;n k&#39;</span><span class="p">,</span> <span class="n">integer</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="lineno"> 5</span> <span class="n">ps</span> <span class="o">=</span> <span class="n">Sum</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">k</span><span class="o">**</span><span class="n">a</span><span class="p">),</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+<span class="lineno"> 6</span> <span class="n">s</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">oo</span><span class="p">)</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span> <span class="c">#  the infinite sum for a &lt; 0</span>
+<span class="lineno"> 9</span> <span class="n">s</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">doit</span><span class="p">()</span>
+<span class="lineno">10</span> <span class="o">&gt;</span> <span class="n">oo</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span> <span class="c">#  the infinite sum for a == 1</span>
+<span class="lineno">13</span> <span class="n">s</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">doit</span><span class="p">()</span>
+<span class="lineno">14</span> <span class="o">&gt;</span> <span class="n">oo</span>
+<span class="lineno">15</span> 
+<span class="lineno">16</span> <span class="c">#  the infinite sum for a &gt; 1</span>
+<span class="lineno">17</span> <span class="n">s</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">doit</span><span class="p">()</span>
+<span class="lineno">18</span> <span class="o">&gt;</span> <span class="n">pi</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">6</span>
+<span class="lineno">19</span> 
+<span class="lineno">20</span> <span class="n">s</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">doit</span><span class="p">()</span>
+<span class="lineno">21</span> <span class="o">&gt;</span> <span class="n">zeta</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="lineno">22</span> 
+<span class="lineno">23</span> <span class="n">s</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">doit</span><span class="p">()</span>
+<span class="lineno">24</span> <span class="o">&gt;</span> <span class="n">pi</span><span class="o">**</span><span class="mi">4</span><span class="o">/</span><span class="mi">90</span>
+<span class="lineno">25</span> 
+<span class="lineno">26</span> <span class="n">s</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">doit</span><span class="p">()</span>
+<span class="lineno">27</span> <span class="o">&gt;</span> <span class="n">zeta</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span></code></pre></div>
+
 
             
 <div class="social">
