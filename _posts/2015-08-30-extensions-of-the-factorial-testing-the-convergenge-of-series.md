@@ -16,7 +16,7 @@ author:
   bio: Maths, Technology, Philosophy, Startups, ...
   image: logo.png
 ---
-Stirling formula is an approximation for factorials that leads to a very accurate results of the factorials. In this series of posts, we will try to get a mathematical intuition of this formula.
+When evaluating distribution functions for statistics, it is often necessary to evaluate the factorials of sizable numbers. Stirling formula is an approximation for factorials that leads to a very accurate results of the factorials. In this series of posts, we will try to get a mathematical intuition of this formula.
 
 In this first part we will try to have a closer look at the behavior of infinite series and some of their properties. The motivation behind is to have a better intuition about some very interesting concepts and tools used in everyday mathematics, physics and computer science.
 
@@ -53,13 +53,13 @@ n + 1,  & \text{if $q = 1$} \\
 \end{cases}
 $$
 
-Meaning that the series converges iff $$ \|q\| < 1 $$
+Meaning that the series converges iff $$ \|q\| \lt 1 $$
 
 and in this case $$ \sum_{n = 0}^{+\infty} q^n = \frac{1}{1-q} $$
 
 The result is simple yet so impressive, a lot of philosophers struggled to resolve [Zeno’s paradoxes](https://en.wikipedia.org/wiki/Zeno%27s_paradoxes) because they lacked the mathematical tools to correctly model the problem.
 
- * another example $$ \sum_{n > 0} \frac{1}{n(n+1)} , \forall n \in {\mathbb{ N^* }} $$
+ * another example $$ \sum_{n \gt 0} \frac{1}{n(n+1)} , \forall n \in {\mathbb{ N^* }} $$
 
 $$ S_n = \sum_{k = 1}^{n} (\frac{1}{k} - \frac{1}{k+1}) = 1 - \frac{1}{n+1} \require{AMScd} \begin{CD} @>>{n \to \infty}>\end{CD}  1 $$
 
@@ -83,7 +83,7 @@ Hence, we have $$ U_n = S_n - S_{n-1} \require{AMScd} \begin{CD} @>>{n \to \inft
 
 A direct conclusion from this test is that, if the general term $$ U_n $$ does not converge to 0, then the series diverges.
 
-Again if we look at the geometric series which converges only if $$ \|q\| < 1 $$, we can see that if $$ \|q\| >= 1, \lim \limits_{n \to \infty} q^n > 0 $$
+Again if we look at the geometric series which converges only if $$ \|q\| \lt 1 $$, we can see that if $$ \|q\| >= 1, \lim \limits_{n \to \infty} q^n > 0 $$
 
 **N.B. 2**
 
@@ -105,8 +105,8 @@ Hence the series diverges.
 Let $$ \left( {\mathbb{E}}, \|.\| \right) $$ be normed vector space, $$ \sum U_n $$ a series defined in $$ {\mathbb{E}} $$
 
 $$ \begin{aligned}
-\sum U_n   \text{converges} \Rightarrow & \forall \epsilon > 0, \, \exists N \in {\mathbb{N}}, \,\, \forall n,p \in {\mathbb{N}} \\
-& n >= N \Rightarrow \| \sum_{k = n + 1}^{n+p} U_k \| <= \epsilon
+\sum U_n   \text{converges} \Rightarrow & \forall \epsilon \gt 0, \, \exists N \in {\mathbb{N}}, \,\, \forall n,p \in {\mathbb{N}} \\
+& n \ge N \Rightarrow \| \sum_{k = n + 1}^{n+p} U_k \| \le \epsilon
 \end{aligned} $$
 
 **Proof**
@@ -116,7 +116,7 @@ The series converges implies that $$ (S_n)_{n} $$ converges, which means that it
 
 $$ \begin{aligned}
 & \forall \epsilon, \,\, \exists N \in {\mathbb{N}}, \,\, \forall n,p \in {\mathbb{N}} \\
-& n >= N \Rightarrow \| S_{n+p} - S_n \| <= \epsilon \\
+& n \ge N \Rightarrow \| S_{n+p} - S_n \| \le \epsilon \\
 & \text{And we have} \,\, \| S_{n+p} - S_n \| = \| \sum_{k = n + 1}^{n+p} U_k \|
 \end{aligned} $$
 
@@ -124,7 +124,7 @@ $$ \begin{aligned}
 
 Let’s consider the harmonic series $$ \sum \frac{1}{n} $$
 
-$$ \forall n \in {\mathbb{ N^* }} \, \sum_{k=n+1}^{2n} >= n * \frac{1}{2n} >= \frac{1}{2} $$
+$$ \forall n \in {\mathbb{ N^* }} \, \sum_{k=n+1}^{2n} \ge n * \frac{1}{2n} \ge \frac{1}{2} $$
 
 Hence the series does not verify the Cauchy’s condition, and so it does not converge.
 
@@ -148,16 +148,16 @@ $$ \begin{aligned}
   & = ln(2) - \int_{0}^{1} \frac{ \left(-x\right)^n }{ 1 + x } dx
 \end{aligned} $$
 
-And since $$ \lvert \int_{0}^{1} \frac{ (-x)^n }{ 1 + x } dx \lvert <= \int_{0}^{1} (-x)^n = \frac{ 1 }{ n + 1 } \require{AMScd} \begin{CD} @>>{n \to \infty}>\end{CD} 0 $$
+And since $$ \lvert \int_{0}^{1} \frac{ (-x)^n }{ 1 + x } dx \lvert \le \int_{0}^{1} (-x)^n = \frac{ 1 }{ n + 1 } \require{AMScd} \begin{CD} @>>{n \to \infty}>\end{CD} 0 $$
 
 It follows that $$ \lim \limits_{ n \to \infty } S_n = ln(2) $$
 
-Hence the series converges to <script type="math/tex">ln(2)</script> but it does not converge absolutely.
+Hence the series converges to $$ ln(2) $$ but it does not converge absolutely.
 
 Let's check this result in python, we will use the symbolic library `sympy`
 
 {% highlight python linenos %}
-from sympy import symbols, sum, oo
+from sympy import symbols, Sum, oo
 
 k, n = symbols('k n', integer=True)
 ps = Sum((-1)**(k+1)/k, (k, 1, n))
@@ -180,7 +180,7 @@ A series that converges but does not converge absolutely, is called semi-converg
 
 ### 3- Leibnitz rule for testing the convergence of alternating series
 
-Let $$ \sum U_n $$ be a series over reals, if $$ \sum U_{n} $$ is an alternating series, i.e. $$ U_n = (-1)^{n} \lvert U_n \lvert $$ or $$ U_n = (-1)^{ n + 1 } \lvert U_n \lvert $$, and $$ (\lvert U_n \lvert)_n $$ is decreasing and converges to 0, then the series $$ \sum U_n $$ converges and $$ R_n = S - S_n < \lvert U_{ n + 1} \lvert $$
+Let $$ \sum U_n $$ be a series over reals, if $$ \sum U_{n} $$ is an alternating series, i.e. $$ U_n = (-1)^{n} \lvert U_n \lvert $$ or $$ U_n = (-1)^{ n + 1 } \lvert U_n \lvert $$, and $$ (\lvert U_n \lvert)_n $$ is decreasing and converges to 0, then the series $$ \sum U_n $$ converges and $$ R_n = S - S_n \lt \lvert U_{ n + 1} \lvert $$
 
 **Proof**
 
@@ -197,9 +197,9 @@ Also, since
 
 $$ \begin{aligned}
 R_n & = S - S_n \\
-\lvert R_{2n} \lvert & = \lvert S - S_{2n} \lvert <= \lvert S_{2n} - S_{2n + 1} \lvert = \lvert U_{2n + 1} \lvert \\
-\lvert R_{2n + 1} \lvert & = \lvert S - S_{2n + 1} \lvert <= \lvert S_{2n + 2} - S_{2n + 1} \lvert = \lvert U_{2n + 2} \lvert \\
-\forall n \in {\mathbb{ N }} \,\, \lvert R_n \lvert & <= \lvert U_{n+1} \lvert
+\lvert R_{2n} \lvert & = \lvert S - S_{2n} \lvert \le \lvert S_{2n} - S_{2n + 1} \lvert = \lvert U_{2n + 1} \lvert \\
+\lvert R_{2n + 1} \lvert & = \lvert S - S_{2n + 1} \lvert \le \lvert S_{2n + 2} - S_{2n + 1} \lvert = \lvert U_{2n + 2} \lvert \\
+\forall n \in {\mathbb{ N }} \,\, \lvert R_n \lvert & \le \lvert U_{n+1} \lvert
 \end{aligned} $$
 
 **Example**
@@ -211,13 +211,13 @@ $$ \begin{aligned}
 
 ### 4- Comparison test
 
-$$ \sum U_n \,\, \text{converges} \, \iff \, \exists c \, \text{constant} \forall n \, S_n <= c $$
+$$ \sum U_n \,\, \text{converges} \, \iff \, \exists c \, \text{constant} \forall n \, S_n \le c $$
 
 **Proof**
 
 We know that $$ S_{n + 1} - S_n = U_{n + 1} >= 0 $$ and that the sequence $$ {(S_n)}_n $$ is increasing.
 
-$$ {(S_n)}_n \, \text{converges} \, \iff \, \exists c \, \text{constant} \forall n \, S_n <= c $$
+$$ {(S_n)}_n \, \text{converges} \, \iff \, \exists c \, \text{constant} \forall n \, S_n \le c $$
 
 Based on this property we can deduce many other properties related to comparing series in different ways, i.e. using $$ \sim , \, o , \, O , \, ... $$
 
@@ -225,7 +225,7 @@ Based on this property we can deduce many other properties related to comparing 
 
 We cal a Riemann series, a series of the form $$ \sum \frac{1}{ n^\alpha } , \, \alpha \in {\mathbb{R}} $$
 
- * Case when $$ \alpha <= 0 $$
+ * Case when $$ \alpha \le 0 $$
 
 The series $$ \sum \frac{1}{ n^\alpha } $$ obviously diverges.
 
