@@ -4,13 +4,214 @@
  <title>Mourad Mourafiq</title>
  <link href="http://mourafiq.com/atom.xml" rel="self"/>
  <link href="http://mourafiq.com"/>
- <updated>2015-09-08T02:04:14+02:00</updated>
+ <updated>2015-10-03T16:33:35+02:00</updated>
  <id>http://mourafiq.com/atom.xml</id>
  <author>
    <name>Mourad Mourafiq</name>
    <uri>http://mourafiq.com</uri>
  </author>
  
+ 
+ <entry>
+   <title>Stirling approximation for factorials</title>
+   <link href="http://mourafiq.com/2015/09/09/extensions-of-the-factorial-stirling-approximation.html"/>
+   <published>2015-09-09T00:00:00+02:00</published>
+   <updated>2015-09-09T00:00:00+02:00</updated>
+   <id>http://mourafiq.com/2015/09/09/extensions-of-the-factorial-stirling-approximation</id>
+   <content type="html">&lt;p&gt;In the previous post, we introduced some properties of infinite series and how to test their convergence. In this post we will try to derive the Stirling formula. But before we do that, we will first introduce 2 more properties for testing series convergence, and the Wallis formula, which will be used for the proof.&lt;/p&gt;
+
+&lt;h2 id=&quot;limit-comparison-test&quot;&gt;Limit Comparison test&lt;/h2&gt;
+
+&lt;p&gt;Let &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\sum V_n&lt;/script&gt; two series, where &lt;script type=&quot;math/tex&quot;&gt;\forall n \in {\mathbb{N}}, \, \, U_n &gt; 0 \, \text{and} \, V_n &gt; 0&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;If &lt;script type=&quot;math/tex&quot;&gt;\exists N \gt 0 , \, \frac{U_{ n+1 }}{U_n} \le \frac{V_{ n+1 }}{V_n}&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Then &lt;script type=&quot;math/tex&quot;&gt;\sum V_n \, \text{converges} \Rightarrow \sum U_n \, \text{converges}&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Proof&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Let &lt;script type=&quot;math/tex&quot;&gt;N \in {\mathbb{N}}&lt;/script&gt; such that &lt;script type=&quot;math/tex&quot;&gt;\forall n \gt N , \,\,  \frac{U_{ n+1 }}{U_n} \le \frac{V_{ n+1 }}{V_n}&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;It follows then &lt;script type=&quot;math/tex&quot;&gt;\forall n \gt N&lt;/script&gt;&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{U_{ n+1 }}{V_{ n+1 }} \le \frac{U_n}{V_n} \le ... \le \frac{U_N}{V_N} = M&lt;/script&gt;
+
+&lt;p&gt;Whihch means that &lt;script type=&quot;math/tex&quot;&gt;U_{n+1} \le M V_{n+1}&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Hence &lt;script type=&quot;math/tex&quot;&gt;\sum V_n \, \text{converges} \Rightarrow \sum U_n \, \text{converges}&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;N.B&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;From this property we can derive the following, if &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt; is a series and &lt;script type=&quot;math/tex&quot;&gt;\exists k \in ]0, 1[&lt;/script&gt; such that&lt;/p&gt;
+
+&lt;p&gt;If &lt;script type=&quot;math/tex&quot;&gt;\exists N \in {\mathbb{N}}&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\forall n \ge N , \,\, \frac{U_{ n+1 }}{n} \le k&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Then &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt; converges.&lt;/p&gt;
+
+&lt;p&gt;The proof is quite simple if we consider the series &lt;script type=&quot;math/tex&quot;&gt;\sum k^n&lt;/script&gt;, we have &lt;script type=&quot;math/tex&quot;&gt;\frac{U_{ n+1 }}{U_n} \le \frac{k_{ n+1 }}{k_n}&lt;/script&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;the-ratio-rule-dalemberts-rule&quot;&gt;The ratio rule, D’Alembert’s rule&lt;/h2&gt;
+
+&lt;p&gt;Let &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt; a series with the general term strictly positive, and &lt;script type=&quot;math/tex&quot;&gt;\lim \limits_{n \to +\infty} \frac{U_{n+1}}{U_n} = l&lt;/script&gt;, with &lt;script type=&quot;math/tex&quot;&gt;l \in {\mathbb{R_+}} \cup \{ \infty \}&lt;/script&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;i) if &lt;script type=&quot;math/tex&quot;&gt;l \lt 1&lt;/script&gt; the series &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt; converges&lt;/li&gt;
+  &lt;li&gt;ii) if &lt;script type=&quot;math/tex&quot;&gt;l \gt 1&lt;/script&gt; the series &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt; diverges&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Proof&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;i) Let &lt;script type=&quot;math/tex&quot;&gt;\epsilon = \frac{1 - l}{2}&lt;/script&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We know that &lt;script type=&quot;math/tex&quot;&gt;\lim \limits_{n \to +\infty} \frac{U_{n+1}}{U_n} = l&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Then &lt;script type=&quot;math/tex&quot;&gt;\exists N \in {\mathbb{N}}, \,\, \text{such that} \,\, n \ge N \Rightarrow \vert U_{n+1} - l \vert \le \epsilon&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Which means that &lt;script type=&quot;math/tex&quot;&gt;\forall n \ge N, \,\, \frac{U_{n+1}}{U_n} \le l + \epsilon&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;And since &lt;script type=&quot;math/tex&quot;&gt;l + \epsilon \lt 1&lt;/script&gt;, we can conclude the convergence using the previous property.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ii) &lt;script type=&quot;math/tex&quot;&gt;\lim \limits_{n \to +\infty} \frac{U_{n+1}}{U_n} = l&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;l \lt 1&lt;/script&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This means that there’s a certain integer after which &lt;script type=&quot;math/tex&quot;&gt;\frac{U_{n+1}}{U_n} \lt 1&lt;/script&gt;, which means &lt;script type=&quot;math/tex&quot;&gt;U_n&lt;/script&gt; diverges.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;N.B&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;If &lt;script type=&quot;math/tex&quot;&gt;l = 1&lt;/script&gt;, we can’t say anything about the convergence of the series.&lt;/p&gt;
+
+&lt;p&gt;As an example, let’s consider &lt;script type=&quot;math/tex&quot;&gt;\sum \frac{1}{n^{\alpha}}&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;We have &lt;script type=&quot;math/tex&quot;&gt;\forall \alpha \in {\mathbb{R}}, \,\, \frac{U_{n+1}}{U_n} = \left( \frac{n}{n+1} \right)^{\alpha} \require{AMScd} \begin{CD} @&gt;&gt;{n \to \infty}&gt;\end{CD} 1&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;And we know that the series converges for &lt;script type=&quot;math/tex&quot;&gt;\alpha \gt 1&lt;/script&gt; and diverges for &lt;script type=&quot;math/tex&quot;&gt;\alpha \le 1&lt;/script&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;wallis-formula&quot;&gt;Wallis formula&lt;/h2&gt;
+
+&lt;p&gt;Let’s consider, Wallis integral, &lt;script type=&quot;math/tex&quot;&gt;\forall n \in {\mathbb{ N }} , \,\, I_n = \int_{0}^{ \pi / 2 } {\left( \sin t \right)}^n dt&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;This integral verifies the following properties:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;strictly positive and decreasing&lt;/li&gt;
+  &lt;li&gt;for &lt;script type=&quot;math/tex&quot;&gt;n \le 2, \,\, I_n = \frac{n}{n-1} I_{n-1}&lt;/script&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We will try these properties by induction&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;case &lt;script type=&quot;math/tex&quot;&gt;n = 0&lt;/script&gt; , &lt;script type=&quot;math/tex&quot;&gt;I_0 = \pi / 2 \gt 0&lt;/script&gt;&lt;/li&gt;
+  &lt;li&gt;case &lt;script type=&quot;math/tex&quot;&gt;n = 1&lt;/script&gt; , &lt;script type=&quot;math/tex&quot;&gt;I_1 = 1 \gt 0, \,\, I_1 \lt I_0&lt;/script&gt;&lt;/li&gt;
+  &lt;li&gt;case &lt;script type=&quot;math/tex&quot;&gt;n = 2&lt;/script&gt; , &lt;script type=&quot;math/tex&quot;&gt;I_2 = \frac{\pi}{4} \gt 0, \,\, I_2 \lt I_1&lt;/script&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned}
+I_2 &amp; = \int_{0}^{ \pi / 2 } \sin^2 t \, dt \\
+ &amp; = \require{cancel} \cancelto{𝟶}{-[\cos t \, \sin t]_{0}^{ \pi / 2 }} + \int_{0}^{ \pi / 2 } \cos^2 t \, dt \\
+ &amp; = \int_{0}^{ \pi / 2 } 1 - \sin^2 t \, dt \\
+ &amp; = \pi / 2 - I_2 \\
+ &amp; = \frac{\pi}{4}
+\end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;We will assume that &lt;script type=&quot;math/tex&quot;&gt;\forall k \in {\mathbb{N}}, \,\, k \le n, \,\, I_k&lt;/script&gt; is strictly positive and decreasing, and we will prove that the property holds for &lt;script type=&quot;math/tex&quot;&gt;n+1&lt;/script&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned}
+ I_{n+1} &amp; = \int_{0}^{ \pi / 2 } \sin^{n+1} t \, dt \\
+  &amp; =  \int_{0}^{ \pi / 2 } \sin t \, \sin^n t \, dt \\
+  &amp; = \require{cancel} \cancelto{𝟶}{-[\cos t \, \sin^n t]_{0}^{ \pi / 2 }} + \int_{0}^{ \pi / 2 } \cos t \, n \, \cos t \, \sin^{n-1} t \, dt \\
+  &amp; = \int_{0}^{ \pi / 2 } \cos t \, n \, \cos t \, \sin^{n-1} t \, dt \\
+  &amp; = \int_{0}^{ \pi / 2 } n \, \left( 1 - \sin^2 t \right) \, \sin^{n-1} t \, dt \\
+  &amp; = \int_{0}^{ \pi / 2 } n \, \sin^{n-1} t \, - int_{0}^{ \pi / 2 } n \, \sin^{n+1} t \, dt \\
+  &amp; = n I_{n -1} - n I_{n + 1} \\
+  &amp; = \frac{n}{n+1} I_n
+ \end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Hence &lt;script type=&quot;math/tex&quot;&gt;I_{n+1} &gt; 0&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+I_{n+1} &lt; I_n %]]&gt;&lt;/script&gt;, and &lt;script type=&quot;math/tex&quot;&gt;I_{n+1} = \frac{n}{n+1} I_n&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;By applying the result for &lt;script type=&quot;math/tex&quot;&gt;2n&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;2n + 1&lt;/script&gt;, we get&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned}
+ &amp; I_{2n} = \frac{\left( 2n - 1 \right) \left( 2n - 3 \right) ... 1}{2n \left( 2n - 2 \right) ... 2} \frac{\pi}{2} \\
+ &amp; I_{2n+1} = \frac{2n \left( 2n - 2 \right) ... 2}{\left( 2n + 1 \right) \left( 2n - 1 \right) ... 1}
+ \end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Which gives us the Wallis formula&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{2n \left( 2n - 2 \right) ... 2}{\left( 2n - 1 \right) \left( 2n - 3 \right) ... 1} \sim \sqrt{ \pi n }&lt;/script&gt;
+
+&lt;h2 id=&quot;stirling-formula&quot;&gt;Stirling formula&lt;/h2&gt;
+
+&lt;p&gt;Let’s consider the following series &lt;script type=&quot;math/tex&quot;&gt;\sum \frac{a^n n^n}{n!}, \,\, a \in {\mathbb{R}}&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;If w apply the ration test to this series&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned}
+\frac{U_{ n+1 }}{n} &amp; = \frac{ a^{n+1} \left( n+1 \right)^{n+1} }{ \left( n+1 \right)! } * \frac{ n! }{ a^n n^n } \\
+ &amp; = a \left( 1 + \frac{1}{n} \right)^n \\
+ &amp; \require{AMScd} \begin{CD} @&gt;&gt;{n \to +\infty}&gt;\end{CD} ae
+\end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;if &lt;script type=&quot;math/tex&quot;&gt;a \lt e^{-1}&lt;/script&gt;, the series converges&lt;/li&gt;
+  &lt;li&gt;if &lt;script type=&quot;math/tex&quot;&gt;a \gt e^{-1}&lt;/script&gt;, the series dieverges&lt;/li&gt;
+  &lt;li&gt;if &lt;script type=&quot;math/tex&quot;&gt;a = e^{-1}&lt;/script&gt;, we have&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned}
+ ln \left( \frac{U_{n+1}}{U_n} \right) &amp; = ln \left( e^{-1} \left( 1 + \frac{1}{n} \right)^n \right) \\
+  &amp; = -1 + nln \left( 1 + \frac{1}{n} \right) \\
+  &amp; = -1 + n \left( \frac{1}{n} - \frac{1}{2n^2} + o\left( \frac{1}{n^3} \right) \right) \\
+  &amp; = -\frac{1}{2n} + o\left( \frac{1}{n^2} \right)
+ \end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Ans since &lt;script type=&quot;math/tex&quot;&gt;ln\left( \sqrt{ \frac{n+1}{n} } \right) = \frac{1}{2n} + o\left( \frac{1}{n^2} \right)&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;It follows that &lt;script type=&quot;math/tex&quot;&gt;ln\left( \frac{ U_{n+1} }{U_n} \right) + ln\left( \sqrt{ \frac{n+1}{n} } \right) = o\left( \frac{1}{n^2} \right)&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Which means that &lt;script type=&quot;math/tex&quot;&gt;\sum ln\left( \sqrt(n+1) + U_{n+1} \right) - ln\left( \sqrt{n} \ln\left( n \right) \right)&lt;/script&gt; converges.&lt;/p&gt;
+
+&lt;p&gt;Hence &lt;script type=&quot;math/tex&quot;&gt;{\left( ln\left( \sqrt{n} U_n \right) \right)}_n&lt;/script&gt; converges.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned}
+  \exists k \lt 0, \,\, &amp; \text{such that}, \,\, lim \sqrt{n}U_n = k \\
+  &amp; \Rightarrow U_n \sim \frac{k}{\sqrt(n)} \\
+  &amp; \Rightarrow \frac{ e^{-n}n^n }{n!} \sim \frac{k}{\sqrt{n}} \\
+  &amp; \Rightarrow n! \sim \frac{1}{k} \sqrt{n} \left( \frac{n}{e} \right)^n \\
+ \end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Now we only need to determine the value of &lt;script type=&quot;math/tex&quot;&gt;k&lt;/script&gt;, and for this we will use the Wallis formula,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{ 2n \left( 2n - 2 \right) ... 2 }{ \left( 2n - 1 \right) \left( 2n - 3 \right) ... 1 } \sim \sqrt{ \pi n }&lt;/script&gt;
+
+&lt;p&gt;Also,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned}
+  \frac{ 2n \left( 2n - 2 \right) ... 2 }{ \left( 2n - 1 \right) \left( 2n - 3 \right) ... 1 } &amp; = \frac{ \left( 2n \left( 2n - 2 \right) ... 2 \right)^2 }{ \left( 2n \right)! } \\
+  &amp; = \frac{ 2^{ 2n } \left( n! \right)^2 }{ \left( 2n \right)! }  \\
+  &amp; = \frac{ \require{cancel} \cancel{ 2^{ 2n } } \left( \frac{1}{k} \sqrt{n} \require{cancel} \cancel{\left( \frac{n}{e} \right)^n } \right)^2 }{ \frac{ \sqrt{2n} }{k} \require{cancel} \cancel{\left( \frac{2n}{ e } \right)^{2n}} }  \\
+ \end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned}
+ &amp; \Rightarrow \sqrt{\pi n} \sim \frac{1}{k} \sqrt(n/2) \\
+ &amp; \Rightarrow \frac{1}{k} \sim \sqrt{2 \pi} \\
+ &amp; \Rightarrow n! \sim \sqrt{2 \pi} \left( \frac{n}{2} \right)^n
+ \end{aligned} %]]&gt;&lt;/script&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Stirling approximation for factorials</title>
@@ -58,15 +259,14 @@ n + 1,  &amp; \text{if $q = 1$} \\
 \frac{1 - q^{n+1}}{1 - q}, &amp; \text{if $q \neq 1$}
 \end{cases} %]]&gt;&lt;/script&gt;
 
-&lt;p&gt;Meaning that the series converges iff &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
-\|q\| &lt; 1 %]]&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;p&gt;Meaning that the series converges iff &lt;script type=&quot;math/tex&quot;&gt;\|q\| \lt 1&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;and in this case &lt;script type=&quot;math/tex&quot;&gt;\sum_{n = 0}^{+\infty} q^n = \frac{1}{1-q}&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;The result is simple yet so impressive, a lot of philosophers struggled to resolve &lt;a href=&quot;https://en.wikipedia.org/wiki/Zeno%27s_paradoxes&quot;&gt;Zeno’s paradoxes&lt;/a&gt; because they lacked the mathematical tools to correctly model the problem.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;another example &lt;script type=&quot;math/tex&quot;&gt;\sum_{n &gt; 0} \frac{1}{n(n+1)} , \forall n \in {\mathbb{ N^* }}&lt;/script&gt;&lt;/li&gt;
+  &lt;li&gt;another example &lt;script type=&quot;math/tex&quot;&gt;\sum_{n \gt 0} \frac{1}{n(n+1)} , \forall n \in {\mathbb{ N^* }}&lt;/script&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;S_n = \sum_{k = 1}^{n} (\frac{1}{k} - \frac{1}{k+1}) = 1 - \frac{1}{n+1} \require{AMScd} \begin{CD} @&gt;&gt;{n \to \infty}&gt;\end{CD}  1&lt;/script&gt;
@@ -91,8 +291,7 @@ n + 1,  &amp; \text{if $q = 1$} \\
 
 &lt;p&gt;A direct conclusion from this test is that, if the general term &lt;script type=&quot;math/tex&quot;&gt;U_n&lt;/script&gt; does not converge to 0, then the series diverges.&lt;/p&gt;
 
-&lt;p&gt;Again if we look at the geometric series which converges only if &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
-\|q\| &lt; 1 %]]&gt;&lt;/script&gt;, we can see that if &lt;script type=&quot;math/tex&quot;&gt;\|q\| &gt;= 1, \lim \limits_{n \to \infty} q^n &gt; 0&lt;/script&gt;&lt;/p&gt;
+&lt;p&gt;Again if we look at the geometric series which converges only if &lt;script type=&quot;math/tex&quot;&gt;\|q\| \lt 1&lt;/script&gt;, we can see that if &lt;script type=&quot;math/tex&quot;&gt;\|q\| &gt;= 1, \lim \limits_{n \to \infty} q^n &gt; 0&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;N.B. 2&lt;/strong&gt;&lt;/p&gt;
 
@@ -116,8 +315,8 @@ n + 1,  &amp; \text{if $q = 1$} \\
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
 \begin{aligned}
-\sum U_n   \text{converges} \Rightarrow &amp; \forall \epsilon &gt; 0, \, \exists N \in {\mathbb{N}}, \,\, \forall n,p \in {\mathbb{N}} \\
-&amp; n &gt;= N \Rightarrow \| \sum_{k = n + 1}^{n+p} U_k \| &lt;= \epsilon
+\sum U_n   \text{converges} \Rightarrow &amp; \forall \epsilon \gt 0, \, \exists N \in {\mathbb{N}}, \,\, \forall n,p \in {\mathbb{N}} \\
+&amp; n \ge N \Rightarrow \| \sum_{k = n + 1}^{n+p} U_k \| \le \epsilon
 \end{aligned} %]]&gt;&lt;/script&gt;
 
 &lt;p&gt;&lt;strong&gt;Proof&lt;/strong&gt;&lt;/p&gt;
@@ -128,7 +327,7 @@ The series converges implies that &lt;script type=&quot;math/tex&quot;&gt;(S_n)_
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
 \begin{aligned}
 &amp; \forall \epsilon, \,\, \exists N \in {\mathbb{N}}, \,\, \forall n,p \in {\mathbb{N}} \\
-&amp; n &gt;= N \Rightarrow \| S_{n+p} - S_n \| &lt;= \epsilon \\
+&amp; n \ge N \Rightarrow \| S_{n+p} - S_n \| \le \epsilon \\
 &amp; \text{And we have} \,\, \| S_{n+p} - S_n \| = \| \sum_{k = n + 1}^{n+p} U_k \|
 \end{aligned} %]]&gt;&lt;/script&gt;
 
@@ -136,7 +335,7 @@ The series converges implies that &lt;script type=&quot;math/tex&quot;&gt;(S_n)_
 
 &lt;p&gt;Let’s consider the harmonic series &lt;script type=&quot;math/tex&quot;&gt;\sum \frac{1}{n}&lt;/script&gt;&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\forall n \in {\mathbb{ N^* }} \, \sum_{k=n+1}^{2n} &gt;= n * \frac{1}{2n} &gt;= \frac{1}{2}&lt;/script&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\forall n \in {\mathbb{ N^* }} \, \sum_{k=n+1}^{2n} \ge n * \frac{1}{2n} \ge \frac{1}{2}&lt;/script&gt;
 
 &lt;p&gt;Hence the series does not verify the Cauchy’s condition, and so it does not converge.&lt;/p&gt;
 
@@ -163,8 +362,7 @@ The series converges implies that &lt;script type=&quot;math/tex&quot;&gt;(S_n)_
   &amp; = ln(2) - \int_{0}^{1} \frac{ \left(-x\right)^n }{ 1 + x } dx
 \end{aligned} %]]&gt;&lt;/script&gt;
 
-&lt;p&gt;And since &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
-\lvert \int_{0}^{1} \frac{ (-x)^n }{ 1 + x } dx \lvert &lt;= \int_{0}^{1} (-x)^n = \frac{ 1 }{ n + 1 } \require{AMScd} \begin{CD} @&gt;&gt;{n \to \infty}&gt;\end{CD} 0 %]]&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;p&gt;And since &lt;script type=&quot;math/tex&quot;&gt;\lvert \int_{0}^{1} \frac{ (-x)^n }{ 1 + x } dx \lvert \le \int_{0}^{1} (-x)^n = \frac{ 1 }{ n + 1 } \require{AMScd} \begin{CD} @&gt;&gt;{n \to \infty}&gt;\end{CD} 0&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;It follows that &lt;script type=&quot;math/tex&quot;&gt;\lim \limits_{ n \to \infty } S_n = ln(2)&lt;/script&gt;&lt;/p&gt;
 
@@ -194,8 +392,7 @@ The series converges implies that &lt;script type=&quot;math/tex&quot;&gt;(S_n)_
 
 &lt;h3 id=&quot;leibnitz-rule-for-testing-the-convergence-of-alternating-series&quot;&gt;3- Leibnitz rule for testing the convergence of alternating series&lt;/h3&gt;
 
-&lt;p&gt;Let &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt; be a series over reals, if &lt;script type=&quot;math/tex&quot;&gt;\sum U_{n}&lt;/script&gt; is an alternating series, i.e. &lt;script type=&quot;math/tex&quot;&gt;U_n = (-1)^{n} \lvert U_n \lvert&lt;/script&gt; or &lt;script type=&quot;math/tex&quot;&gt;U_n = (-1)^{ n + 1 } \lvert U_n \lvert&lt;/script&gt;, and &lt;script type=&quot;math/tex&quot;&gt;(\lvert U_n \lvert)_n&lt;/script&gt; is decreasing and converges to 0, then the series &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt; converges and &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
-R_n = S - S_n &lt; \lvert U_{ n + 1} \lvert %]]&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;p&gt;Let &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt; be a series over reals, if &lt;script type=&quot;math/tex&quot;&gt;\sum U_{n}&lt;/script&gt; is an alternating series, i.e. &lt;script type=&quot;math/tex&quot;&gt;U_n = (-1)^{n} \lvert U_n \lvert&lt;/script&gt; or &lt;script type=&quot;math/tex&quot;&gt;U_n = (-1)^{ n + 1 } \lvert U_n \lvert&lt;/script&gt;, and &lt;script type=&quot;math/tex&quot;&gt;(\lvert U_n \lvert)_n&lt;/script&gt; is decreasing and converges to 0, then the series &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt; converges and &lt;script type=&quot;math/tex&quot;&gt;R_n = S - S_n \lt \lvert U_{ n + 1} \lvert&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Proof&lt;/strong&gt;&lt;/p&gt;
 
@@ -214,9 +411,9 @@ R_n = S - S_n &lt; \lvert U_{ n + 1} \lvert %]]&gt;&lt;/script&gt;&lt;/p&gt;
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
 \begin{aligned}
 R_n &amp; = S - S_n \\
-\lvert R_{2n} \lvert &amp; = \lvert S - S_{2n} \lvert &lt;= \lvert S_{2n} - S_{2n + 1} \lvert = \lvert U_{2n + 1} \lvert \\
-\lvert R_{2n + 1} \lvert &amp; = \lvert S - S_{2n + 1} \lvert &lt;= \lvert S_{2n + 2} - S_{2n + 1} \lvert = \lvert U_{2n + 2} \lvert \\
-\forall n \in {\mathbb{ N }} \,\, \lvert R_n \lvert &amp; &lt;= \lvert U_{n+1} \lvert
+\lvert R_{2n} \lvert &amp; = \lvert S - S_{2n} \lvert \le \lvert S_{2n} - S_{2n + 1} \lvert = \lvert U_{2n + 1} \lvert \\
+\lvert R_{2n + 1} \lvert &amp; = \lvert S - S_{2n + 1} \lvert \le \lvert S_{2n + 2} - S_{2n + 1} \lvert = \lvert U_{2n + 2} \lvert \\
+\forall n \in {\mathbb{ N }} \,\, \lvert R_n \lvert &amp; \le \lvert U_{n+1} \lvert
 \end{aligned} %]]&gt;&lt;/script&gt;
 
 &lt;p&gt;&lt;strong&gt;Example&lt;/strong&gt;&lt;/p&gt;
@@ -229,15 +426,13 @@ R_n &amp; = S - S_n \\
 
 &lt;h3 id=&quot;comparison-test&quot;&gt;4- Comparison test&lt;/h3&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\sum U_n \,\, \text{converges} \, \iff \, \exists c \, \text{constant} \forall n \, S_n &lt;= c %]]&gt;&lt;/script&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sum U_n \,\, \text{converges} \, \iff \, \exists c \, \text{constant} \forall n \, S_n \le c&lt;/script&gt;
 
 &lt;p&gt;&lt;strong&gt;Proof&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;We know that &lt;script type=&quot;math/tex&quot;&gt;S_{n + 1} - S_n = U_{n + 1} &gt;= 0&lt;/script&gt; and that the sequence &lt;script type=&quot;math/tex&quot;&gt;{(S_n)}_n&lt;/script&gt; is increasing.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-{(S_n)}_n \, \text{converges} \, \iff \, \exists c \, \text{constant} \forall n \, S_n &lt;= c %]]&gt;&lt;/script&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;{(S_n)}_n \, \text{converges} \, \iff \, \exists c \, \text{constant} \forall n \, S_n \le c&lt;/script&gt;
 
 &lt;p&gt;Based on this property we can deduce many other properties related to comparing series in different ways, i.e. using &lt;script type=&quot;math/tex&quot;&gt;\sim , \, o , \, O , \, ...&lt;/script&gt;&lt;/p&gt;
 
@@ -246,8 +441,7 @@ R_n &amp; = S - S_n \\
 &lt;p&gt;We cal a Riemann series, a series of the form &lt;script type=&quot;math/tex&quot;&gt;\sum \frac{1}{ n^\alpha } , \, \alpha \in {\mathbb{R}}&lt;/script&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Case when &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
-\alpha &lt;= 0 %]]&gt;&lt;/script&gt;&lt;/li&gt;
+  &lt;li&gt;Case when &lt;script type=&quot;math/tex&quot;&gt;\alpha \le 0&lt;/script&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;The series &lt;script type=&quot;math/tex&quot;&gt;\sum \frac{1}{ n^\alpha }&lt;/script&gt; obviously diverges.&lt;/p&gt;
@@ -1601,82 +1795,6 @@ S_{n} &lt; \prod_{i=1}^{r} \frac{1 - \frac{1}{P_i ^{\alpha_i + 1}}}{1 - \frac{1}
 &lt;span class=&quot;lineno&quot;&gt;24&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cRho&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stats&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;norm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cdf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;lineno&quot;&gt;25&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pRho&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stats&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;norm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cdf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-</content>
- </entry>
- 
- <entry>
-   <title>Pricing options with python.</title>
-   <link href="http://mourafiq.com/2013/05/01/pricing-options-with-python.html"/>
-   <published>2013-05-01T00:00:00+02:00</published>
-   <updated>2013-05-01T00:00:00+02:00</updated>
-   <id>http://mourafiq.com/2013/05/01/pricing-options-with-python</id>
-   <content type="html">&lt;p&gt;The black-scholes formula is a must-know  differential equation in financial mathematics. It is used for various purposes to price financial derivatives. In this post we will price vanilla European puts/calls.&lt;/p&gt;
-
-&lt;p&gt;The differential equation is given by:&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{\partial V}{\partial t} + rS \frac{\partial V}{\partial S} + 1/2 \sigma^2 S^2 \frac{\partial^2 V}{\partial S^2} - rV = 0&lt;/script&gt;
-
-&lt;p&gt;where:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;V –&amp;gt; price of the derivative&lt;/li&gt;
-  &lt;li&gt;S –&amp;gt; price of the underlying asset&lt;/li&gt;
-  &lt;li&gt;r –&amp;gt; risk-free interest rate&lt;/li&gt;
-  &lt;li&gt;σ –&amp;gt; asset volatility of the underlying S&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;The pricing formula&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;p&gt;Depending on the derivative being priced, different conditions will apply, and consequently the equation will have different solutions.&lt;/p&gt;
-
-&lt;p&gt;The price of a European Vanilla Call, C(S,t) is given below:&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;C(S,t) = SN(d1) - k e^{-rT}N(d2)&lt;/script&gt;
-
-&lt;p&gt;With d1 and d2 defined as follows:&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;d1 = \frac{log(S/K) + (r + \sigma^2/2)T}{\sigma \sqrt{T}}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;d2 = d1 - \sigma \sqrt{T}&lt;/script&gt;
-
-&lt;p&gt;And thanks to put-call parity, we are able to price a European Vanilla Put P(S,T), as well, with the following formula:&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;P(S,T) = Ke^{-rT} - S + C(S,T)&lt;/script&gt;
-
-&lt;p&gt;The only thing we need to describe is N, which is the &lt;a href=&quot;http://en.wikipedia.org/wiki/Normal_distribution#Cumulative_distribution_function&quot;&gt;cumulative distribution function of the standard normal distribution&lt;/a&gt;, N is given by:&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;N(x) = 1/\sqrt{2\pi}\int_{-\inf}^x e^{-t^2/2}dt&lt;/script&gt;
-
-&lt;p&gt;Since we will like to have a closed form solutions for the “Greeks”, i.e. the option price sensitivities to the underlying variables and parameters. For this reason we also need the formula for the &lt;a href=&quot;http://en.wikipedia.org/wiki/Normal_distribution#Probability_density_function&quot;&gt;probability density function of the standard normal distribution&lt;/a&gt; which is given below:&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;f(x) = \frac{1}{\sqrt{2\pi}}e^{-x^2/2}&lt;/script&gt;
-
-&lt;p&gt;&lt;strong&gt;Python implementation&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;scipy&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;math&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;scipy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stats&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&amp;quot;&amp;quot;&amp;quot; Price an option using the Black-Scholes model.&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;s: initial stock price&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;k: strike price&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;t: expiration time&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;v: volatility&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;r: risk-free rate&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;div: dividend&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;12&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;cp: +1/-1 for call/put&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;13&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;14&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;15&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scipy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scipy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;16&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scipy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;17&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;call&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stats&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;norm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cdf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scipy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stats&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;norm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cdf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;18&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;put&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stats&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;norm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cdf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stats&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;norm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cdf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;19&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;20&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#for checking purpose this two functions will assert true if the pricing is correct in case of vanilla options&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;21&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;check_call&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;call_price&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;call_price&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;22&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;check_put&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;put_price&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;put_price&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;In a next post we will see how to calculate the sensitivity of the price to the underlying variables using the “Greecs”.&lt;/p&gt;
 </content>
  </entry>
  
