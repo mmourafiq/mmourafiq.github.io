@@ -12,7 +12,7 @@ excerpt: "Designing an algorithm to return the most relevant results that match 
 
 author:
   name: Mourad Mourafiq.
-  twitter: mmourafiq.
+  twitter: mmourafiq
   bio: Maths, Technology, Philosophy, Startups, ...
   image: logo.png
 ---

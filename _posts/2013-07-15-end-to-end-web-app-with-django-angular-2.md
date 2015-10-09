@@ -15,7 +15,7 @@ excerpt: "[Part 2]."
 
 author:
   name: Mourad Mourafiq.
-  twitter: mmourafiq.
+  twitter: mmourafiq
   bio: Maths, Technology, Philosophy, Startups, ...
   image: logo.png
 ---

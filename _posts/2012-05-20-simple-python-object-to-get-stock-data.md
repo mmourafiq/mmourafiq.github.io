@@ -12,7 +12,7 @@ excerpt: "YahooFinance is a python interface that lets you get stock related dat
 
 author:
   name: Mourad Mourafiq.
-  twitter: mmourafiq.
+  twitter: mmourafiq
   bio: Maths, Technology, Philosophy, Startups, ...
   image: logo.png
 ---

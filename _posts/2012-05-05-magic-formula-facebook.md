@@ -12,7 +12,7 @@ excerpt: "The mathematical formula by Elo, which allows to rate the relative ski
 
 author:
   name: Mourad Mourafiq.
-  twitter: mmourafiq.
+  twitter: mmourafiq
   bio: Maths, Technology, Philosophy, Startups, ...
   image: logo.png
 ---

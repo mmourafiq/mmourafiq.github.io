@@ -12,7 +12,7 @@ excerpt: "Designing an algorithm to find topics or questions that are near to a 
 
 author:
   name: Mourad Mourafiq.
-  twitter: mmourafiq.
+  twitter: mmourafiq
   bio: Maths, Technology, Philosophy, Startups, ...
   image: logo.png
 ---

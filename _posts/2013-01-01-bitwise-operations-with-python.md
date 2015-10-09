@@ -12,7 +12,7 @@ excerpt: "Bitwise operators allows us to write more efficient code due to the fa
 
 author:
   name: Mourad Mourafiq.
-  twitter: mmourafiq.
+  twitter: mmourafiq
   bio: Maths, Technology, Philosophy, Startups, ...
   image: logo.png
 ---

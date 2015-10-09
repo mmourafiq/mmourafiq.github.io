@@ -12,7 +12,7 @@ excerpt: "The black-scholes formula is a must-know  differential equation in fin
 
 author:
   name: Mourad Mourafiq.
-  twitter: mmourafiq.
+  twitter: mmourafiq
   bio: Maths, Technology, Philosophy, Startups, ...
   image: logo.png
 ---

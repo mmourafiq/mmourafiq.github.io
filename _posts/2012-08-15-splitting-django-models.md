@@ -12,7 +12,7 @@ excerpt: "Sometimes, it just makes sense to split up your models over multiple f
 
 author:
   name: Mourad Mourafiq.
-  twitter: mmourafiq.
+  twitter: mmourafiq
   bio: Maths, Technology, Philosophy, Startups, ...
   image: logo.png
 ---

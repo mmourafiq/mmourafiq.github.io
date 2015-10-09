@@ -12,7 +12,7 @@ excerpt: "Objective measures of emotion is the ability to recognize emotional st
 
 author:
   name: Mourad Mourafiq.
-  twitter: mmourafiq.
+  twitter: mmourafiq
   bio: Maths, Technology, Philosophy, Startups, ...
   image: logo.png
 ---

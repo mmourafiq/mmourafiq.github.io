@@ -12,7 +12,7 @@ excerpt: "Designing an algorithm to develop classifier that is able to tell good
 
 author:
   name: Mourad Mourafiq.
-  twitter: mmourafiq.
+  twitter: mmourafiq
   bio: Maths, Technology, Philosophy, Startups, ...
   image: logo.png
 ---

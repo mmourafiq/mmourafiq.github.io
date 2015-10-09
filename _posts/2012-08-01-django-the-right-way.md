@@ -12,7 +12,7 @@ excerpt: "One of the things I wish I had known when I begun developing in Django
 
 author:
   name: Mourad Mourafiq.
-  twitter: mmourafiq.
+  twitter: mmourafiq
   bio: Maths, Technology, Philosophy, Startups, ...
   image: logo.png
 ---

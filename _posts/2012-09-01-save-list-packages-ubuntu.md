@@ -12,7 +12,7 @@ excerpt: "Just reinstalled your ubuntu system, you must be thinking about all yo
 
 author:
   name: Mourad Mourafiq.
-  twitter: mmourafiq.
+  twitter: mmourafiq
   bio: Maths, Technology, Philosophy, Startups, ...
   image: logo.png
 ---

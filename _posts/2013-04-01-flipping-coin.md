@@ -12,7 +12,7 @@ excerpt: "How many coin flips does it take, on average, to get n consecutive hea
 
 author:
   name: Mourad Mourafiq.
-  twitter: mmourafiq.
+  twitter: mmourafiq
   bio: Maths, Technology, Philosophy, Startups, ...
   image: logo.png
 ---

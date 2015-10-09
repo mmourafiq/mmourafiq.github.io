@@ -12,7 +12,7 @@ excerpt: "Proving the infinity of prime numbers, noted as P."
 
 author:
   name: Mourad Mourafiq.
-  twitter: mmourafiq.
+  twitter: mmourafiq
   bio: Maths, Technology, Philosophy, Startups, ...
   image: logo.png
 ---

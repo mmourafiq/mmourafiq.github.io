@@ -12,7 +12,7 @@ excerpt: "A simlpe proof for the unique factorization theorem."
 
 author:
   name: Mourad Mourafiq.
-  twitter: mmourafiq.
+  twitter: mmourafiq
   bio: Maths, Technology, Philosophy, Startups, ...
   image: logo.png
 ---

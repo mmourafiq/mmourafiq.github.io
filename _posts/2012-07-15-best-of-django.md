@@ -12,7 +12,7 @@ excerpt: "My favourite Django-apps and packages that i use in almost every Djang
 
 author:
   name: Mourad Mourafiq.
-  twitter: mmourafiq.
+  twitter: mmourafiq
   bio: Maths, Technology, Philosophy, Startups, ...
   image: logo.png
 ---

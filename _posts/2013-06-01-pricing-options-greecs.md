@@ -12,7 +12,7 @@ excerpt: "Greeks show the sensitivity of an option price depending on the  chang
 
 author:
   name: Mourad Mourafiq.
-  twitter: mmourafiq.
+  twitter: mmourafiq
   bio: Maths, Technology, Philosophy, Startups, ...
   image: logo.png
 ---

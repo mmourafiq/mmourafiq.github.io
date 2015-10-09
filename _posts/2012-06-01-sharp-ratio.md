@@ -12,7 +12,7 @@ excerpt: "A basic approach to optimizing the risk and return of a portfolio is t
 
 author:
   name: Mourad Mourafiq.
-  twitter: mmourafiq.
+  twitter: mmourafiq
   bio: Maths, Technology, Philosophy, Startups, ...
   image: logo.png
 ---

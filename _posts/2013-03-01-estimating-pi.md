@@ -12,7 +12,7 @@ excerpt: "Using the Monte Carlo method to estimate the value of pi."
 
 author:
   name: Mourad Mourafiq.
-  twitter: mmourafiq.
+  twitter: mmourafiq
   bio: Maths, Technology, Philosophy, Startups, ...
   image: logo.png
 ---

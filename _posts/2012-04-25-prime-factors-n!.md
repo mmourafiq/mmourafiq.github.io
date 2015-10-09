@@ -12,7 +12,7 @@ excerpt: "The purpose of this post is to explain an algorithm for computing the 
 
 author:
   name: Mourad Mourafiq.
-  twitter: mmourafiq.
+  twitter: mmourafiq
   bio: Maths, Technology, Philosophy, Startups, ...
   image: logo.png
 ---

@@ -12,7 +12,7 @@ excerpt: "Designing an algorithm that picks the stories to display in the feed."
 
 author:
   name: Mourad Mourafiq.
-  twitter: mmourafiq.
+  twitter: mmourafiq
   bio: Maths, Technology, Philosophy, Startups, ...
   image: logo.png
 ---

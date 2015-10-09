@@ -12,7 +12,7 @@ excerpt: "Made connection with everything you have in hand and everything you ha
 
 author:
   name: Mourad Mourafiq.
-  twitter: mmourafiq.
+  twitter: mmourafiq
   bio: Maths, Technology, Philosophy, Startups, ...
   image: logo.png
 ---

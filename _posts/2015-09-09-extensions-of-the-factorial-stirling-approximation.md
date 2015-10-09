@@ -12,7 +12,7 @@ excerpt: "[Part 2] Deriving the Stirling formula."
 
 author:
   name: Mourad Mourafiq.
-  twitter: mmourafiq.
+  twitter: mmourafiq
   bio: Maths, Technology, Philosophy, Startups, ...
   image: logo.png
 ---

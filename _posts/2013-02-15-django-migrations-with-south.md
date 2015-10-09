@@ -12,7 +12,7 @@ excerpt: "Intelligent schema and data migrations for django project."
 
 author:
   name: Mourad Mourafiq.
-  twitter: mmourafiq.
+  twitter: mmourafiq
   bio: Maths, Technology, Philosophy, Startups, ...
   image: logo.png
 ---

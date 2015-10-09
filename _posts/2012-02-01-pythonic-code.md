@@ -12,7 +12,7 @@ excerpt: "How to make a python compatible code."
 
 author:
   name: Mourad Mourafiq.
-  twitter: mmourafiq.
+  twitter: mmourafiq
   bio: Maths, Technologie, Philosophie, Startups, ...
   image: logo.png
 ---
