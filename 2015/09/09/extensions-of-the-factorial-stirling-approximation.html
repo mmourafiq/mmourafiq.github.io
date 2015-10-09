@@ -294,8 +294,16 @@ I_{n+1} < I_n %]]></script>, and <script type="math/tex">I_{n+1} = \frac{n}{n+1}
 \begin{aligned}
  & \Rightarrow \sqrt{\pi n} \sim \frac{1}{k} \sqrt(n/2) \\
  & \Rightarrow \frac{1}{k} \sim \sqrt{2 \pi} \\
- & \Rightarrow n! \sim \sqrt{2 \pi} \left( \frac{n}{2} \right)^n
+ & \Rightarrow n! \sim \sqrt{2 \pi n} \left( \frac{n}{2} \right)^n
  \end{aligned} %]]></script>
+
+<p>The result is amazing, because it replaces the factorial function which is complicated with a simple expression. Also for very large numbers, the factorial is an expensive function, on the other hand the approximation is less computationally intensive.</p>
+
+<p>Also based on this formula we can find easily the following result:</p>
+
+<script type="math/tex; mode=display">\log(n!) \sim n\log(n)</script>
+
+<p>In the next post we will try to approximate the factorials using the Euler gamma function.</p>
 
             
 <div class="social">

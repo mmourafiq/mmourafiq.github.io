@@ -96,7 +96,7 @@
                     Aug 30, 2015
                 </time> &mdash;
                 
-12 min read
+13 min read
             </div>
             
             <h1 class="title">Stirling approximation for factorials</h1>
@@ -104,7 +104,7 @@
         </header>
 
         <section>
-            <p>Stirling formula is an approximation for factorials that leads to a very accurate results of the factorials. In this series of posts, we will try to get a mathematical intuition of this formula.</p>
+            <p>When evaluating distribution functions for statistics, it is often necessary to evaluate the factorials of sizable numbers. Stirling formula is an approximation for factorials that leads to a very accurate results of the factorials. In this series of posts, we will try to get a mathematical intuition of this formula.</p>
 
 <p>In this first part we will try to have a closer look at the behavior of infinite series and some of their properties. The motivation behind is to have a better intuition about some very interesting concepts and tools used in everyday mathematics, physics and computer science.</p>
 
@@ -255,7 +255,7 @@ The series converges implies that <script type="math/tex">(S_n)_{n}</script> con
 
 <p>Let’s check this result in python, we will use the symbolic library <code>sympy</code></p>
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">symbols</span><span class="p">,</span> <span class="nb">sum</span><span class="p">,</span> <span class="n">oo</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">symbols</span><span class="p">,</span> <span class="n">Sum</span><span class="p">,</span> <span class="n">oo</span>
 <span class="lineno"> 2</span> 
 <span class="lineno"> 3</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s">&#39;k n&#39;</span><span class="p">,</span> <span class="n">integer</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="lineno"> 4</span> <span class="n">ps</span> <span class="o">=</span> <span class="n">Sum</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">k</span><span class="p">,</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
