@@ -47,7 +47,7 @@ $$\delta_{\tau} = \left\{
  0 & \text{ otherwise }
 \end{array} \right.$$
 
-This function has the particularity to look more like a real function since we can calculate the integral for this function. In the same time, this can turn into the delta Dirac function when when we narrow the interval $[-\tau, \tau]$, i.e. when $$\tau \to 0$$
+This function has the particularity to look more like a real function since we can calculate the integral for this function. In the same time, this can turn into the delta Dirac function when when we narrow the interval $$[-\tau, \tau]$$, i.e. when $$\tau \to 0$$
 
 Let's calculate the integral of this new function:
 

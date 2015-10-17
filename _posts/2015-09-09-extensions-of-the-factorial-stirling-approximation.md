@@ -131,13 +131,11 @@ I_2 & = \int_{0}^{ \pi / 2 } \sin^2 t \, dt \\
  $$ \frac{2n \left( 2n - 2 \right) ... 2}{\left( 2n - 1 \right) \left( 2n - 3 \right) ... 1} \sim \sqrt{ \pi n } $$
 
 
-
-
 ## Stirling formula
 
 Let's consider the following series $$ \sum \frac{a^n n^n}{n!}, \,\, a \in {\mathbb{R}} $$
 
-If w apply the ration test to this series
+If we apply the ratio test to this series
 
 $$ \begin{aligned}
 \frac{U_{ n+1 }}{n} & = \frac{ a^{n+1} \left( n+1 \right)^{n+1} }{ \left( n+1 \right)! } * \frac{ n! }{ a^n n^n } \\
@@ -156,11 +154,17 @@ $$ \begin{aligned}
   & = -\frac{1}{2n} + o\left( \frac{1}{n^2} \right)
  \end{aligned} $$
 
- Ans since $$ ln\left( \sqrt{ \frac{n+1}{n} } \right) = \frac{1}{2n} + o\left( \frac{1}{n^2} \right) $$
+ Ans since
 
- It follows that $$ ln\left( \frac{ U_{n+1} }{U_n} \right) + ln\left( \sqrt{ \frac{n+1}{n} } \right) = o\left( \frac{1}{n^2} \right)$$
+ $$ ln\left( \sqrt{ \frac{n+1}{n} } \right) = \frac{1}{2n} + o\left( \frac{1}{n^2} \right) $$
 
- Which means that $$ \sum ln\left( \sqrt(n+1) + U_{n+1} \right) - ln\left( \sqrt{n} \ln\left( n \right) \right) $$ converges.
+ It follows that
+
+ $$ ln\left( \frac{ U_{n+1} }{U_n} \right) + ln\left( \sqrt{ \frac{n+1}{n} } \right) = o\left( \frac{1}{n^2} \right)$$
+
+ Which means that
+
+$$ \sum ln\left( \sqrt(n+1) + U_{n+1} \right) - ln\left( \sqrt{n} \ln\left( n \right) \right) \,\,\, \text{converges}$$
 
  Hence $$ {\left( ln\left( \sqrt{n} U_n \right) \right)}_n $$ converges.
 
@@ -192,25 +196,32 @@ $$ \begin{aligned}
 The result is amazing, because it replaces the factorial function which is complicated with a simple expression. Also for very large numbers, the factorial is an expensive function, on the other hand the approximation is less computationally intensive.
 
 {% highlight python linenos %}
-import math
+from sympy.mpmath import e, sqrt, pi
 
 def stirling(n):
-    return math.sqrt(2 * math.pi * n) * (n / math.e) ** n
+    return sqrt(2 * pi * n) * (n / e) ** n
 
 
 for n in xrange(1, 10):
     print 'n:{} \t factorial: {} \t stirling: {}'.format(n, math.factorial(n), stirling(n))
 
 
-# n:1 	 factorial: 1 	 stirling: 0.922137008896
-# n:2 	 factorial: 2 	 stirling: 1.91900435149
-# n:3 	 factorial: 6 	 stirling: 5.83620959135
-# n:4 	 factorial: 24 	 stirling: 23.5061751329
-# n:5 	 factorial: 120 	 stirling: 118.019167958
-# n:6 	 factorial: 720 	 stirling: 710.078184642
-# n:7 	 factorial: 5040 	 stirling: 4980.39583161
-# n:8 	 factorial: 40320 	 stirling: 39902.3954527
-# n:9 	 factorial: 362880 	 stirling: 359536.872842
+# n:1 	 factorial: 1 	 stirling: 0.922137008895789
+# n:2 	 factorial: 2 	 stirling: 1.91900435148898
+# n:3 	 factorial: 6 	 stirling: 5.83620959134586
+# n:4 	 factorial: 24 	 stirling: 23.5061751328933
+# n:5 	 factorial: 120 	 stirling: 118.01916795759
+# n:6 	 factorial: 720 	 stirling: 710.078184642185
+# n:7 	 factorial: 5040 	 stirling: 4980.39583161246
+# n:8 	 factorial: 40320 	 stirling: 39902.3954526567
+# n:9 	 factorial: 362880 	 stirling: 359536.872841948
+
+
+# approximation for a large value
+
+stirling(10**10)
+# 2.3257959759770513e+95657055186
+
 {% endhighlight %}
 
 Also based on this formula we can find easily the following result:
