@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Euler Gamma function approximation for factorials &mdash; Mourad Mourafiq</title>
+    <!--[if lt IE 9]><script src='https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js'></script><![endif]-->
+    
+    <link rel="stylesheet" href="/assets/app.css">
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script src="/assets/app.js"></script>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+<script>
+  var HN=[];HN.factory=function(e){return function(){HN.push([e].concat(Array.prototype.slice.call(arguments,0)))};},HN.on=HN.factory("on"),HN.once=HN.factory("once"),HN.off=HN.factory("off"),HN.emit=HN.factory("emit"),HN.load=function(){var e="hn-button.js";if(document.getElementById(e))return;var t=document.createElement("script");t.id=e,t.src="//hn-button.herokuapp.com/hn-button.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n)},HN.load();</script>
+</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-34892053-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+    <link rel="shortcut icon" href="/favicon.ico?v2" type="image/x-icon" />
+    <link rel="alternate" type="application/atom+xml" title="Mourad Mourafiq" href="/atom.xml" />
+    <meta name="title" content="Euler Gamma function approximation for factorials ">
+    <link rel="canonical" href="http://mourafiq.com/2015/10/09/extensions-of-the-factorial-euler-gamma-function.html">
+     
+           
+    <meta property="og:title" content="Euler Gamma function approximation for factorials"/>
+    <meta property="og:url" content="http://mourafiq.com/2015/10/09/extensions-of-the-factorial-euler-gamma-function.html"/>
+    <meta property="og:image" content="http://mourafiq.com/images/posts/math.png"/>
+    
+    <meta property="og:description" content="Euler Gamma function."/>
+    <meta name="description" content="Euler Gamma function."/>
+    
+    <meta property="og:site_name" content="Mourad Mourafiq">
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</head>
+<body>
+
+    <header class="site-header">
+        <nav>
+            <a class="brand" href="/">
+                <img src="/images/logo.png" alt="Inc">
+            </a>
+            <a href="/about.html">About</a>
+        </nav>
+    </header>
+
+    
+<div class="cover  article-cover " style="background-image:url(/images/posts/math.png)"></div>
+
+
+<div class='cover-caption'><a href='/about.html#pictures'></a></div>
+
+
+<article >
+    <div class="container">
+        <header>
+            
+            <div class="meta">
+                <!--
+                By
+                <address><a rel="author" href="" title="Mourad Mourafiq." target="_blank">
+                    Mourad Mourafiq.
+                </a></address> &mdash;
+                -->
+                <time pubdate datetime="2015-09-October" title="Oct 09, 2015">
+                    Oct 09, 2015
+                </time> &mdash;
+                
+5 min read
+            </div>
+            
+            <h1 class="title">Euler Gamma function approximation for factorials</h1>
+            <h2 class="subtitle">Euler Gamma function.</h2>
+        </header>
+
+        <section>
+            <p>In the previous post we introduced the Stirling formula, which is an accurate approximation for factorials even for small numbers. In this post we will look closely at an other extension of the concept of factorials, The gamma function. But unlike the factorial, the gamma function is more broadly defined for all complex numbers other than non-positive integers. In this post we will only study the behavior of this faction over <script type="math/tex">]0, +\infty[</script>.</p>
+
+<p>The gamma function is defined as follows</p>
+
+<script type="math/tex; mode=display">\Gamma (x) = \int_{0}^{+\infty} t^{x-1} e^{-t} \, dt</script>
+
+<h3 id="domain-of-definition">1- Domain of definition</h3>
+
+<p>The Gamma function is defined over <script type="math/tex">]0, +\infty[</script></p>
+
+<p>Indeed, we have <script type="math/tex">\forall x \in {\mathbb{R}}</script> the function is continuous and positive over <script type="math/tex">]0, +\infty[</script>.</p>
+
+<script type="math/tex; mode=display">\Gamma (x) \,\, \text{exists} \iff t \mapsto t^{x-1} e^{-t} \,\, \text{is integrable over} \,\, ]0, +\infty[</script>
+
+<ul>
+  <li>near 0</li>
+</ul>
+
+<script type="math/tex; mode=display">t^{x-1} e^{-t} \sim t^{x-1}</script>
+
+<p>Therefore <script type="math/tex">t \mapsto t^{x-1} e^{-t} \,\, \text{is integrable over} \,\, ]0, 1[ \iff x-1 \gt 1 \,\, (x \gt 0)</script></p>
+
+<ul>
+  <li>near <script type="math/tex">+ \infty</script></li>
+</ul>
+
+<script type="math/tex; mode=display">t^{x-1} e^{-t} =o \frac{1}{ t^2 }</script>
+
+<p>Therefore <script type="math/tex">t \mapsto t^{x-1} e^{-t} \,\, \text{is integrable over} \,\, [1, +\infty[ \,\, \forall x \in {\mathbb{R}}</script></p>
+
+<p>We can deduce then that <script type="math/tex">t \mapsto t^{x-1} e^{-t} \,\, \text{is integrable over} \,\, ]0, +\infty[ \iff x \gt 0</script></p>
+
+<p>In other terms <script type="math/tex">D_{\Gamma} = ]0, + \infty[</script></p>
+
+<h3 id="forall-x-in-0--infty--we-have--gammax1--x-gammax-">2- <script type="math/tex">\forall x \in ]0, + \infty[</script> we have <script type="math/tex">\Gamma(x+1) = x \Gamma(x)</script></h3>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{aligned}
+\Gamma(x+1) & = \int_{0}^{+\infty} t^{x} e^{-t} \, dt \\
+ & = {[-t^x e^{-t}]}_{0}^{ + \infty } + x \int_{0}^{+\infty} t^{x-1} e^{-t} \, dt \\
+ & = x \int_{0}^{+\infty} t^{x-1} e^{-t} \, dt \\
+ & = x \Gamma (x)
+\end{aligned} %]]></script>
+
+<p>By recursion it can be shown that</p>
+
+<script type="math/tex; mode=display">\forall n \,\, , \,\, \Gamma (n+1) = n!</script>
+
+<h3 id="gamma--is-of--c-infty--over--0-infty-">3- <script type="math/tex">\Gamma</script> is of <script type="math/tex">C^{+ \infty}</script> over <script type="math/tex">]0, +\infty[</script></h3>
+
+<p>Let’s consider the function <script type="math/tex">f</script></p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{aligned}
+f : ]0, +\infty[ \times ]0, +\infty[ & \rightarrow {\mathbb{R}} \\
+(x, t) & \mapsto t^{x-1} e^{-t}
+\end{aligned} %]]></script>
+
+<p>For all <script type="math/tex">n \in {\mathbb{N}}</script></p>
+
+<ul>
+  <li>We have <script type="math/tex">\forall (x, t) \in ]0, +\infty[ \times ]0, +\infty[ \, , \, \frac{\partial^{n} f}{\partial x^n} (x, t) = \left( ln (t) \right)^n t^{x-1} e^{-t}</script></li>
+  <li><script type="math/tex">\frac{\partial^{n} f}{\partial x^n}</script> is continuous</li>
+  <li>Let <script type="math/tex">[a, b] \subset ]0, +\infty[</script></li>
+</ul>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{aligned}
+ \forall x \in [a,b] \, & , \, \forall t \in ]0, +\infty[ \\
+ \lvert \frac{\partial^{n} f}{\partial x^n} (x, t) \rvert & = \lvert \left( ln (t) \right)^n t^{x-1} e^{-t} \rvert \\
+  & \le \lvert \left( ln (t) \right)^n \rvert \left( t^{a - 1} + t^{b - 1} \right) e^{-t}
+ \end{aligned} %]]></script>
+
+<p>And since the function <script type="math/tex">t \mapsto \lvert \left( ln (t) \right)^n \rvert \left( t^{a - 1} + t^{b - 1} \right) e^{-t}</script> is integrable over <script type="math/tex">]0, +\infty[</script>.</p>
+
+<p>Therefore <script type="math/tex">\forall n \in {\mathbb{N}} \, , \, \Gamma \,\, \text{is of class} C^{\infty} \,\, \text{over} ]0, +\infty[</script></p>
+
+<p>And <script type="math/tex">\forall n \in {\mathbb{N}} \, , \, \forall x \in ]0, +\infty[</script></p>
+
+<script type="math/tex; mode=display">\Gamma^{n} (x) = \int_{0}^{+\infty} \frac{\partial^{n} f}{\partial x^n} (x,t) \, dt = \int_{0}^{+\infty} \left( ln (t) \right)^n t^{x-1} e^{-t} \, dt</script>
+
+<h3 id="gamma--is-convex-over--0-infty-">4- <script type="math/tex">\Gamma</script> is convex over <script type="math/tex">]0, +\infty[</script></h3>
+
+<p>Indeed <script type="math/tex">\forall x \in ]0, +\infty[ \,\, , \, \, \Gamma^{''} (x) = \int_{0}^{+\infty} \left( ln(t) \right)^2 t^{x-2} e^{-t} \,dt \ge 0</script></p>
+
+<p>Therefore <script type="math/tex">\Gamma</script> is convex.</p>
+
+<h3 id="exists--x0-in-12--such-that--gamma-x0--0-">5- <script type="math/tex">\exists ! x_0 \in ]1,2]</script> such that <script type="math/tex">\Gamma^{'} (x_0) = 0</script></h3>
+
+<ul>
+  <li>existence of <script type="math/tex">x_0</script></li>
+</ul>
+
+<p>We have <script type="math/tex">\Gamma (1) = \Gamma(2) = 1</script></p>
+
+<p>By applying Rolle’s theorem, we find that <script type="math/tex">\exists x_0 \in ]1,2] \, , \, \text{such that} \,\, \Gamma^{'} (x_0) = 0</script></p>
+
+<ul>
+  <li>uniqueness of <script type="math/tex">x_0</script></li>
+</ul>
+
+<p>Since <script type="math/tex">\Gamma^{''} > 0 \,\, \text{over} \,\, ]0, +\infty[</script> then <script type="math/tex">\Gamma{'}</script> is strictly increasing. Therefore <script type="math/tex">x_0</script> is unique.</p>
+
+<p>It follows also that:</p>
+
+<script type="math/tex; mode=display">\begin{cases}
+\text{Over} \,\, ]0, x_{0}] \,\, \Gamma^{'} \le 0 \,\, \left( \Gamma \, \text{is decreasing} \right) \\
+\text{Over} \,\, [x_{0}, +\infty[ \,\, \Gamma^{'} \,\, \ge 0 \left( \Gamma \, \text{is increasing} \right)
+\end{cases}</script>
+
+<h3 id="gamma--near--0--and---infty-">6- <script type="math/tex">\Gamma</script> near <script type="math/tex">0</script> and <script type="math/tex">+ \infty</script></h3>
+
+<ul>
+  <li>near <script type="math/tex">0</script></li>
+</ul>
+
+<p>We have <script type="math/tex">\forall x \gt 0 \, , \, \Gamma (x+1) = x \Gamma(x)</script></p>
+
+<p>Therefore <script type="math/tex">\lim \limits_{x \to 0} x \Gamma(x) = \lim \limits_{x \to 0} \Gamma(x+1) = \Gamma(1) = 1</script></p>
+
+<p>Finally <script type="math/tex">\Gamma(x) \sim \frac{1}{x}</script></p>
+
+<ul>
+  <li>near <script type="math/tex">\infty</script></li>
+</ul>
+
+<p>We have</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{aligned}
+\frac{ \Gamma(x) }{x} & \ge \frac{ \Gamma ([x]) }{x} \,\, \left( \Gamma \,\, \text{is increasing} \right) \\
+ & \ge \frac{ ([x] - 1)! }{x} = \require{cancel} \cancelto{ + \infty }{ \frac{ ([x] - 1)! }{ ([x] - 1) } } . \require{cancel} \cancelto{1}{ \frac{ ([x] - 1) }{x} }
+\end{aligned} %]]></script>
+
+<p>Finally <script type="math/tex">\lim \limits_{x \to +\infty} \frac{ \Gamma(x) }{x} = +\infty</script></p>
+
+<p>We can verify our results with some python code:</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno">1</span> <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">gamma</span>
+<span class="lineno">2</span> 
+<span class="lineno">3</span> <span class="n">gamma</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="lineno">4</span> <span class="c"># inf</span>
+<span class="lineno">5</span> 
+<span class="lineno">6</span> <span class="n">gamma</span><span class="p">(</span><span class="n">inf</span><span class="p">)</span>
+<span class="lineno">7</span> <span class="c"># inf</span></code></pre></div>
+
+<p><img src="/images/posts/gamma.png" alt="euler-gamma-function" /></p>
+
+            
+<div class="social">
+  
+  <div class='twitter'>
+    <a href="https://twitter.com/share" class="twitter-share-button"  data-text="Euler Gamma function approximation for factorials" data-related="mmourafiq">Tweet</a>
+  </div>
+  
+
+  
+  <div class='facebook'>
+    <div class="fb-share-button" data-layout="button_count"></div>
+  </div>
+  
+
+  
+  <div class='google'>
+    <div class="g-plusone" data-size="medium"></div>
+  </div>
+  
+    
+  
+  <div class='hn'>
+    <a href="https://news.ycombinator.com/submit" class="hn-button" data-title="Euler Gamma function approximation for factorials" data-url="http://mourafiq.com/2015/10/09/extensions-of-the-factorial-euler-gamma-function.html" data-count="horizontal">Vote on Hacker News</a>
+  </div>
+  
+
+  
+  <div class='reddit'>
+    <a href="//www.reddit.com/submit" onclick="window.open('//www.reddit.com/submit?url=http://mourafiq.com/2015/10/09/extensions-of-the-factorial-euler-gamma-function.html&title=Euler+Gamma+function+approximation+for+factorials'); return false"> <img src="//www.redditstatic.com/spreddit7.gif" alt="submit to reddit" border="0" /> </a>
+  </div>
+  
+</div>
+
+        </section>
+
+        <footer>
+            <address>
+                <img src="/images/logo.png">
+                <p>
+                Written by <strong><a rel="author" href="https://twitter.com/mmourafiq" title="Mourad Mourafiq." target="_blank">Mourad Mourafiq.</a></strong><br>
+                    <span class="muted">Maths, Technology, Philosophy, Startups, ...</span>
+                </p>
+            </address>
+             
+            
+            
+            <section class="post_summary">
+                <h3 class="title">Previous story: <a href="/2015/09/09/extensions-of-the-factorial-stirling-approximation.html" rel="prefetch">Stirling approximation for factorials</a></h3>
+                <p>[Part 2] Deriving the Stirling formula.</p>
+                <hr>
+            </section>
+             
+            
+            <section>
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'mourafiq';
+
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+            </section>
+            
+        </footer>
+    </div>
+</article>
+
+
+    <footer class="site-footer">
+        <div class="container">
+            &copy; 2015 Mourad Mourafiq
+
+            <nav>
+                <a href="/">Blog</a> &middot;
+                <a href="/about.html">About</a>
+            </nav>
+
+            <nav class="social">
+                
+<a href="https://twitter.com/mmourafiq" title="Follow on Twitter" target="_blank"><i class="icon icon-twitter"></i></a>
+
+
+<a href="https://github.com/mouradmourafiq" title="Watch on Github" target="_blank"><i class="icon icon-github"></i></a>
+
+
+<a href="/atom.xml" title="RSS Feed">
+  <i class="icon icon-rss"></i>
+</a>
+
+            </nav>
+            <div>Based on Incorporated theme by <a href="https://sendtoinc.com">Inc</a></div>
+        </div>
+    </footer>
+
+</body>
+</html>

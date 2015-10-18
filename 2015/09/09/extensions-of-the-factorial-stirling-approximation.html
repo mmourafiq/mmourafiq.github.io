@@ -299,25 +299,31 @@ I_{n+1} < I_n %]]></script>, and <script type="math/tex">I_{n+1} = \frac{n}{n+1}
 
 <p>The result is amazing, because it replaces the factorial function which is complicated with a simple expression. Also for very large numbers, the factorial is an expensive function, on the other hand the approximation is less computationally intensive.</p>
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="kn">import</span> <span class="nn">math</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="kn">from</span> <span class="nn">sympy.mpmath</span> <span class="kn">import</span> <span class="n">e</span><span class="p">,</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">pi</span>
 <span class="lineno"> 2</span> 
 <span class="lineno"> 3</span> <span class="k">def</span> <span class="nf">stirling</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-<span class="lineno"> 4</span>     <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">e</span><span class="p">)</span> <span class="o">**</span> <span class="n">n</span>
+<span class="lineno"> 4</span>     <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">/</span> <span class="n">e</span><span class="p">)</span> <span class="o">**</span> <span class="n">n</span>
 <span class="lineno"> 5</span> 
 <span class="lineno"> 6</span> 
 <span class="lineno"> 7</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
 <span class="lineno"> 8</span>     <span class="k">print</span> <span class="s">&#39;n:{} </span><span class="se">\t</span><span class="s"> factorial: {} </span><span class="se">\t</span><span class="s"> stirling: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">stirling</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
 <span class="lineno"> 9</span> 
 <span class="lineno">10</span> 
-<span class="lineno">11</span> <span class="c"># n:1 	 factorial: 1 	 stirling: 0.922137008896</span>
-<span class="lineno">12</span> <span class="c"># n:2 	 factorial: 2 	 stirling: 1.91900435149</span>
-<span class="lineno">13</span> <span class="c"># n:3 	 factorial: 6 	 stirling: 5.83620959135</span>
-<span class="lineno">14</span> <span class="c"># n:4 	 factorial: 24 	 stirling: 23.5061751329</span>
-<span class="lineno">15</span> <span class="c"># n:5 	 factorial: 120 	 stirling: 118.019167958</span>
-<span class="lineno">16</span> <span class="c"># n:6 	 factorial: 720 	 stirling: 710.078184642</span>
-<span class="lineno">17</span> <span class="c"># n:7 	 factorial: 5040 	 stirling: 4980.39583161</span>
-<span class="lineno">18</span> <span class="c"># n:8 	 factorial: 40320 	 stirling: 39902.3954527</span>
-<span class="lineno">19</span> <span class="c"># n:9 	 factorial: 362880 	 stirling: 359536.872842</span></code></pre></div>
+<span class="lineno">11</span> <span class="c"># n:1 	 factorial: 1 	 stirling: 0.922137008895789</span>
+<span class="lineno">12</span> <span class="c"># n:2 	 factorial: 2 	 stirling: 1.91900435148898</span>
+<span class="lineno">13</span> <span class="c"># n:3 	 factorial: 6 	 stirling: 5.83620959134586</span>
+<span class="lineno">14</span> <span class="c"># n:4 	 factorial: 24 	 stirling: 23.5061751328933</span>
+<span class="lineno">15</span> <span class="c"># n:5 	 factorial: 120 	 stirling: 118.01916795759</span>
+<span class="lineno">16</span> <span class="c"># n:6 	 factorial: 720 	 stirling: 710.078184642185</span>
+<span class="lineno">17</span> <span class="c"># n:7 	 factorial: 5040 	 stirling: 4980.39583161246</span>
+<span class="lineno">18</span> <span class="c"># n:8 	 factorial: 40320 	 stirling: 39902.3954526567</span>
+<span class="lineno">19</span> <span class="c"># n:9 	 factorial: 362880 	 stirling: 359536.872841948</span>
+<span class="lineno">20</span> 
+<span class="lineno">21</span> 
+<span class="lineno">22</span> <span class="c"># approximation for a large value</span>
+<span class="lineno">23</span> 
+<span class="lineno">24</span> <span class="n">stirling</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">10</span><span class="p">)</span>
+<span class="lineno">25</span> <span class="c"># 2.3257959759770513e+95657055186</span></code></pre></div>
 
 <p>Also based on this formula we can find easily the following result:</p>
 
@@ -368,6 +374,13 @@ I_{n+1} < I_n %]]></script>, and <script type="math/tex">I_{n+1} = \frac{n}{n+1}
                     <span class="muted">Maths, Technology, Philosophy, Startups, ...</span>
                 </p>
             </address>
+            
+            
+            <section class="post_summary">
+                <h3 class="title">Next up: <a href="/2015/10/09/extensions-of-the-factorial-euler-gamma-function.html" rel="prefetch">Euler Gamma function approximation for factorials</a></h3>
+                <p>Euler Gamma function.</p>
+                <hr>
+            </section>
              
             
             
