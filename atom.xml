@@ -4,7 +4,7 @@
  <title>Mourad Mourafiq</title>
  <link href="http://mourafiq.com/atom.xml" rel="self"/>
  <link href="http://mourafiq.com"/>
- <updated>2015-10-18T13:55:32+02:00</updated>
+ <updated>2015-10-20T23:23:54+02:00</updated>
  <id>http://mourafiq.com/atom.xml</id>
  <author>
    <name>Mourad Mourafiq</name>
@@ -163,6 +163,8 @@ f : ]0, +\infty[ \times ]0, +\infty[ &amp; \rightarrow {\mathbb{R}} \\
 &lt;span class=&quot;lineno&quot;&gt;5&lt;/span&gt; 
 &lt;span class=&quot;lineno&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gamma&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;lineno&quot;&gt;7&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# inf&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Gamma function is considered as the “correct” substitute for the factorial in various integrals, which seems to come more or less from its integral definition.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/posts/gamma.png&quot; alt=&quot;euler-gamma-function&quot; /&gt;&lt;/p&gt;
 </content>
