@@ -4,7 +4,7 @@
  <title>Mourad Mourafiq</title>
  <link href="http://mourafiq.com/atom.xml" rel="self"/>
  <link href="http://mourafiq.com"/>
- <updated>2015-10-20T23:30:02+02:00</updated>
+ <updated>2015-10-21T00:51:28+02:00</updated>
  <id>http://mourafiq.com/atom.xml</id>
  <author>
    <name>Mourad Mourafiq</name>
@@ -310,7 +310,7 @@ I_{n+1} &lt; I_n %]]&gt;&lt;/script&gt;, and &lt;script type=&quot;math/tex&quot
 
 &lt;p&gt;Let’s consider the following series &lt;script type=&quot;math/tex&quot;&gt;\sum \frac{a^n n^n}{n!}, \,\, a \in {\mathbb{R}}&lt;/script&gt;&lt;/p&gt;
 
-&lt;p&gt;If w apply the ration test to this series&lt;/p&gt;
+&lt;p&gt;If we apply the ratio test to this series&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
 \begin{aligned}
@@ -333,11 +333,17 @@ I_{n+1} &lt; I_n %]]&gt;&lt;/script&gt;, and &lt;script type=&quot;math/tex&quot
   &amp; = -\frac{1}{2n} + o\left( \frac{1}{n^2} \right)
  \end{aligned} %]]&gt;&lt;/script&gt;
 
-&lt;p&gt;Ans since &lt;script type=&quot;math/tex&quot;&gt;ln\left( \sqrt{ \frac{n+1}{n} } \right) = \frac{1}{2n} + o\left( \frac{1}{n^2} \right)&lt;/script&gt;&lt;/p&gt;
+&lt;p&gt;Ans since&lt;/p&gt;
 
-&lt;p&gt;It follows that &lt;script type=&quot;math/tex&quot;&gt;ln\left( \frac{ U_{n+1} }{U_n} \right) + ln\left( \sqrt{ \frac{n+1}{n} } \right) = o\left( \frac{1}{n^2} \right)&lt;/script&gt;&lt;/p&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;ln\left( \sqrt{ \frac{n+1}{n} } \right) = \frac{1}{2n} + o\left( \frac{1}{n^2} \right)&lt;/script&gt;
 
-&lt;p&gt;Which means that &lt;script type=&quot;math/tex&quot;&gt;\sum ln\left( \sqrt(n+1) + U_{n+1} \right) - ln\left( \sqrt{n} \ln\left( n \right) \right)&lt;/script&gt; converges.&lt;/p&gt;
+&lt;p&gt;It follows that&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;ln\left( \frac{ U_{n+1} }{U_n} \right) + ln\left( \sqrt{ \frac{n+1}{n} } \right) = o\left( \frac{1}{n^2} \right)&lt;/script&gt;
+
+&lt;p&gt;Which means that&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sum ln\left( \sqrt(n+1) + U_{n+1} \right) - ln\left( \sqrt{n} \ln\left( n \right) \right) \,\,\, \text{converges}&lt;/script&gt;
 
 &lt;p&gt;Hence &lt;script type=&quot;math/tex&quot;&gt;{\left( ln\left( \sqrt{n} U_n \right) \right)}_n&lt;/script&gt; converges.&lt;/p&gt;
 

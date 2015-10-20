@@ -238,7 +238,7 @@ I_{n+1} < I_n %]]></script>, and <script type="math/tex">I_{n+1} = \frac{n}{n+1}
 
 <p>Let’s consider the following series <script type="math/tex">\sum \frac{a^n n^n}{n!}, \,\, a \in {\mathbb{R}}</script></p>
 
-<p>If w apply the ration test to this series</p>
+<p>If we apply the ratio test to this series</p>
 
 <script type="math/tex; mode=display">% <![CDATA[
 \begin{aligned}
@@ -261,11 +261,17 @@ I_{n+1} < I_n %]]></script>, and <script type="math/tex">I_{n+1} = \frac{n}{n+1}
   & = -\frac{1}{2n} + o\left( \frac{1}{n^2} \right)
  \end{aligned} %]]></script>
 
-<p>Ans since <script type="math/tex">ln\left( \sqrt{ \frac{n+1}{n} } \right) = \frac{1}{2n} + o\left( \frac{1}{n^2} \right)</script></p>
+<p>Ans since</p>
 
-<p>It follows that <script type="math/tex">ln\left( \frac{ U_{n+1} }{U_n} \right) + ln\left( \sqrt{ \frac{n+1}{n} } \right) = o\left( \frac{1}{n^2} \right)</script></p>
+<script type="math/tex; mode=display">ln\left( \sqrt{ \frac{n+1}{n} } \right) = \frac{1}{2n} + o\left( \frac{1}{n^2} \right)</script>
 
-<p>Which means that <script type="math/tex">\sum ln\left( \sqrt(n+1) + U_{n+1} \right) - ln\left( \sqrt{n} \ln\left( n \right) \right)</script> converges.</p>
+<p>It follows that</p>
+
+<script type="math/tex; mode=display">ln\left( \frac{ U_{n+1} }{U_n} \right) + ln\left( \sqrt{ \frac{n+1}{n} } \right) = o\left( \frac{1}{n^2} \right)</script>
+
+<p>Which means that</p>
+
+<script type="math/tex; mode=display">\sum ln\left( \sqrt(n+1) + U_{n+1} \right) - ln\left( \sqrt{n} \ln\left( n \right) \right) \,\,\, \text{converges}</script>
 
 <p>Hence <script type="math/tex">{\left( ln\left( \sqrt{n} U_n \right) \right)}_n</script> converges.</p>
 
