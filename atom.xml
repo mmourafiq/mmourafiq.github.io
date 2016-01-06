@@ -4,7 +4,7 @@
  <title>Mourad Mourafiq</title>
  <link href="http://mourafiq.com/atom.xml" rel="self"/>
  <link href="http://mourafiq.com"/>
- <updated>2015-10-21T00:51:28+02:00</updated>
+ <updated>2016-01-06T18:58:25+00:00</updated>
  <id>http://mourafiq.com/atom.xml</id>
  <author>
    <name>Mourad Mourafiq</name>
@@ -15,8 +15,8 @@
  <entry>
    <title>Euler Gamma function approximation for factorials</title>
    <link href="http://mourafiq.com/2015/10/09/extensions-of-the-factorial-euler-gamma-function.html"/>
-   <published>2015-10-09T00:00:00+02:00</published>
-   <updated>2015-10-09T00:00:00+02:00</updated>
+   <published>2015-10-09T00:00:00+01:00</published>
+   <updated>2015-10-09T00:00:00+01:00</updated>
    <id>http://mourafiq.com/2015/10/09/extensions-of-the-factorial-euler-gamma-function</id>
    <content type="html">&lt;p&gt;In the previous post we introduced the Stirling formula, which is an accurate approximation for factorials even for small numbers. In this post we will look closely at an other extension of the concept of factorials, The gamma function. But unlike the factorial, the gamma function is more broadly defined for all complex numbers other than non-positive integers. In this post we will only study the behavior of this faction over &lt;script type=&quot;math/tex&quot;&gt;]0, +\infty[&lt;/script&gt;.&lt;/p&gt;
 
@@ -173,8 +173,8 @@ f : ]0, +\infty[ \times ]0, +\infty[ &amp; \rightarrow {\mathbb{R}} \\
  <entry>
    <title>Stirling approximation for factorials</title>
    <link href="http://mourafiq.com/2015/09/09/extensions-of-the-factorial-stirling-approximation.html"/>
-   <published>2015-09-09T00:00:00+02:00</published>
-   <updated>2015-09-09T00:00:00+02:00</updated>
+   <published>2015-09-09T00:00:00+01:00</published>
+   <updated>2015-09-09T00:00:00+01:00</updated>
    <id>http://mourafiq.com/2015/09/09/extensions-of-the-factorial-stirling-approximation</id>
    <content type="html">&lt;p&gt;In the previous post, we introduced some properties of infinite series and how to test their convergence. In this post we will try to derive the Stirling formula. But before we do that, we will first introduce 2 more properties for testing series convergence, and the Wallis formula, which will be used for the proof.&lt;/p&gt;
 
@@ -414,8 +414,8 @@ I_{n+1} &lt; I_n %]]&gt;&lt;/script&gt;, and &lt;script type=&quot;math/tex&quot
  <entry>
    <title>Stirling approximation for factorials</title>
    <link href="http://mourafiq.com/2015/08/30/extensions-of-the-factorial-testing-the-convergenge-of-series.html"/>
-   <published>2015-08-30T00:00:00+02:00</published>
-   <updated>2015-08-30T00:00:00+02:00</updated>
+   <published>2015-08-30T00:00:00+01:00</published>
+   <updated>2015-08-30T00:00:00+01:00</updated>
    <id>http://mourafiq.com/2015/08/30/extensions-of-the-factorial-testing-the-convergenge-of-series</id>
    <content type="html">&lt;p&gt;When evaluating distribution functions for statistics, it is often necessary to evaluate the factorials of sizable numbers. Stirling formula is an approximation for factorials that leads to a very accurate results of the factorials. In this series of posts, we will try to get a mathematical intuition of this formula.&lt;/p&gt;
 
@@ -714,8 +714,8 @@ x &amp; \mapsto \frac{ x^{1 -\alpha } }{ 1 - \alpha }
  <entry>
    <title>Spark context manager</title>
    <link href="http://mourafiq.com/2015/05/30/adding-spark-to-python-projects.html"/>
-   <published>2015-05-30T00:00:00+02:00</published>
-   <updated>2015-05-30T00:00:00+02:00</updated>
+   <published>2015-05-30T00:00:00+01:00</published>
+   <updated>2015-05-30T00:00:00+01:00</updated>
    <id>http://mourafiq.com/2015/05/30/adding-spark-to-python-projects</id>
    <content type="html">&lt;p&gt;Spark is data processing and clustering framework that allows developers to create parallel apps in Scala, Java, and Python.&lt;/p&gt;
 
@@ -770,8 +770,8 @@ x &amp; \mapsto \frac{ x^{1 -\alpha } }{ 1 - \alpha }
  <entry>
    <title>Infinity of prime numbers.</title>
    <link href="http://mourafiq.com/2013/10/01/infinity-of-prime-numbers.html"/>
-   <published>2013-10-01T00:00:00+02:00</published>
-   <updated>2013-10-01T00:00:00+02:00</updated>
+   <published>2013-10-01T00:00:00+01:00</published>
+   <updated>2013-10-01T00:00:00+01:00</updated>
    <id>http://mourafiq.com/2013/10/01/infinity-of-prime-numbers</id>
    <content type="html">&lt;p&gt;In this post we will prove the infinity of prime numbers, noted as &lt;script type=&quot;math/tex&quot;&gt;P&lt;/script&gt;.&lt;/p&gt;
 
@@ -830,8 +830,8 @@ S_{n} &lt; \prod_{i=1}^{r} \frac{1 - \frac{1}{P_i ^{\alpha_i + 1}}}{1 - \frac{1}
  <entry>
    <title>Intuition behind the Delta Dirac function.</title>
    <link href="http://mourafiq.com/2013/09/01/intuition-behind-the-delta-dirac-function.html"/>
-   <published>2013-09-01T00:00:00+02:00</published>
-   <updated>2013-09-01T00:00:00+02:00</updated>
+   <published>2013-09-01T00:00:00+01:00</published>
+   <updated>2013-09-01T00:00:00+01:00</updated>
    <id>http://mourafiq.com/2013/09/01/intuition-behind-the-delta-dirac-function</id>
    <content type="html">&lt;p&gt;Today we are going to look closely at a very interesting function, called the &lt;a href=&quot;http://en.wikipedia.org/wiki/Dirac_delta_function&quot;&gt;delta Dirac function&lt;/a&gt;. This function has a particularity that is zero everywhere except at zero where it approaches infinity. This function was introduced by the theoretical physicist &lt;a href=&quot;http://en.wikipedia.org/wiki/Paul_Dirac&quot;&gt;Paul Dirac&lt;/a&gt;. In the context of &lt;a href=&quot;http://en.wikipedia.org/wiki/Signal_processing&quot;&gt;signal processing&lt;/a&gt; it is often referred to as the unit impulse symbol. Its discrete analog is the &lt;a href=&quot;http://en.wikipedia.org/wiki/Kronecker_delta&quot;&gt;Kronecker delta&lt;/a&gt; function which is usually defined on a finite domain and takes values 0 and 1.&lt;/p&gt;
 
@@ -888,8 +888,8 @@ S_{n} &lt; \prod_{i=1}^{r} \frac{1 - \frac{1}{P_i ^{\alpha_i + 1}}}{1 - \frac{1}
  <entry>
    <title>End to end web app with Django-Rest-Framework & AngularJS.</title>
    <link href="http://mourafiq.com/2013/08/15/end-to-end-web-app-with-django-angular-4.html"/>
-   <published>2013-08-15T00:00:00+02:00</published>
-   <updated>2013-08-15T00:00:00+02:00</updated>
+   <published>2013-08-15T00:00:00+01:00</published>
+   <updated>2013-08-15T00:00:00+01:00</updated>
    <id>http://mourafiq.com/2013/08/15/end-to-end-web-app-with-django-angular-4</id>
    <content type="html">&lt;p&gt;In this part we will create a tags app for our project.&lt;/p&gt;
 
@@ -1137,8 +1137,8 @@ S_{n} &lt; \prod_{i=1}^{r} \frac{1 - \frac{1}{P_i ^{\alpha_i + 1}}}{1 - \frac{1}
  <entry>
    <title>End to end web app with Django-Rest-Framework & AngularJS.</title>
    <link href="http://mourafiq.com/2013/08/01/end-to-end-web-app-with-django-angular-3.html"/>
-   <published>2013-08-01T00:00:00+02:00</published>
-   <updated>2013-08-01T00:00:00+02:00</updated>
+   <published>2013-08-01T00:00:00+00:00</published>
+   <updated>2013-08-01T00:00:00+00:00</updated>
    <id>http://mourafiq.com/2013/08/01/end-to-end-web-app-with-django-angular-3</id>
    <content type="html">&lt;p&gt;In the 2 previous posts we built a backend API with DRF and a client with AngularJs.&lt;/p&gt;
 
@@ -1265,8 +1265,8 @@ S_{n} &lt; \prod_{i=1}^{r} \frac{1 - \frac{1}{P_i ^{\alpha_i + 1}}}{1 - \frac{1}
  <entry>
    <title>End to end web app with Django-Rest-Framework & AngularJS.</title>
    <link href="http://mourafiq.com/2013/07/15/end-to-end-web-app-with-django-angular-2.html"/>
-   <published>2013-07-15T00:00:00+02:00</published>
-   <updated>2013-07-15T00:00:00+02:00</updated>
+   <published>2013-07-15T00:00:00+00:00</published>
+   <updated>2013-07-15T00:00:00+00:00</updated>
    <id>http://mourafiq.com/2013/07/15/end-to-end-web-app-with-django-angular-2</id>
    <content type="html">&lt;p&gt;Let’s pick up where we left off. If you haven’t already, make sure you go through part1 to create your base Django app with the Django REST Framework API setup.&lt;/p&gt;
 
@@ -1772,8 +1772,8 @@ S_{n} &lt; \prod_{i=1}^{r} \frac{1 - \frac{1}{P_i ^{\alpha_i + 1}}}{1 - \frac{1}
  <entry>
    <title>End to end web app with Django-Rest-Framework & AngularJS.</title>
    <link href="http://mourafiq.com/2013/07/01/end-to-end-web-app-with-django-angular-1.html"/>
-   <published>2013-07-01T00:00:00+02:00</published>
-   <updated>2013-07-01T00:00:00+02:00</updated>
+   <published>2013-07-01T00:00:00+01:00</published>
+   <updated>2013-07-01T00:00:00+01:00</updated>
    <id>http://mourafiq.com/2013/07/01/end-to-end-web-app-with-django-angular-1</id>
    <content type="html">&lt;p&gt;A REST API allows your users to interact with your website from anything that can send an HTTP request. In this post we will create a RESTful api in Django using the Django-Rest-Framework. And we will access this api using a client developed under AngularJS.&lt;/p&gt;
 
