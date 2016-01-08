@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generating an excel report with python &mdash; Mourad Mourafiq</title>
+    <!--[if lt IE 9]><script src='https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js'></script><![endif]-->
+    
+    <link rel="stylesheet" href="/assets/normalize.css">
+<link rel="stylesheet" href="/assets/core.css">
+<link rel="stylesheet" href="/assets/buttons.css">
+<link rel="stylesheet" href="/assets/icons.css">
+<link rel="stylesheet" href="/assets/article.css">
+<link rel="stylesheet" href="/assets/contact_form.css">
+<link rel="stylesheet" href="/assets/syntax.css">
+<link rel="stylesheet" href="/assets/google_map_container.css">
+<link rel="stylesheet" href="/assets/cover.css">
+<link rel="stylesheet" href="/assets/pagination.css">
+<link rel="stylesheet" href="/assets/site_header.css">
+<link rel="stylesheet" href="/assets/site_footer.css">
+<link rel="stylesheet" href="/assets/responsive.css">
+<link rel="stylesheet" href="/assets/app.css">
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script src="/assets/google_map_fix.js"></script>
+<script src="/assets/zoomable_image.js"></script>
+<script src="/assets/app.js"></script>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+<script>
+  var HN=[];HN.factory=function(e){return function(){HN.push([e].concat(Array.prototype.slice.call(arguments,0)))};},HN.on=HN.factory("on"),HN.once=HN.factory("once"),HN.off=HN.factory("off"),HN.emit=HN.factory("emit"),HN.load=function(){var e="hn-button.js";if(document.getElementById(e))return;var t=document.createElement("script");t.id=e,t.src="//hn-button.herokuapp.com/hn-button.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n)},HN.load();</script>
+</script>
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico?v2" type="image/x-icon" />
+    <link rel="alternate" type="application/atom+xml" title="Mourad Mourafiq" href="/atom.xml" />
+    <meta name="title" content="Generating an excel report with python ">
+    <link rel="canonical" href="http://mourafiq.com/2016/01/01/generating-excel-report-with-python.html">
+     
+           
+    <meta property="og:title" content="Generating an excel report with python"/>
+    <meta property="og:url" content="http://mourafiq.com/2016/01/01/generating-excel-report-with-python.html"/>
+    <meta property="og:image" content="http://mourafiq.com/images/posts/excel-python.png"/>
+    
+    <meta property="og:description" content="Creating pivot table with python/pandas and outputting the result to excel."/>
+    <meta name="description" content="Creating pivot table with python/pandas and outputting the result to excel."/>
+    
+    <meta property="og:site_name" content="Mourad Mourafiq">
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</head>
+<body>
+
+    <header class="site-header">
+        <nav>
+            <a class="brand" href="/">
+                <img src="/images/logo.png" alt="Inc">
+            </a>
+            <a href="/about.html">About</a>
+        </nav>
+    </header>
+
+    
+<div class="cover  article-cover " style="background-image:url(/images/posts/excel-python.png)"></div>
+
+
+<div class='cover-caption'><a href='/about.html#pictures'></a></div>
+
+
+<article >
+    <div class="container">
+        <header>
+            
+            <div class="meta">
+                <!--
+                By
+                <address><a rel="author" href="" title="Mourad Mourafiq." target="_blank">
+                    Mourad Mourafiq.
+                </a></address> &mdash;
+                -->
+                <time pubdate datetime="2016-01-January" title="Jan 01, 2016">
+                    Jan 01, 2016
+                </time> &mdash;
+                
+13 min read
+            </div>
+            
+            <h1 class="title">Generating an excel report with python</h1>
+            <h2 class="subtitle">Pandas pivot tables to an excel sheet.</h2>
+        </header>
+
+        <section>
+            <p>For many data analysts and business people excel is a powerful tool for reporting. But very often excel reports become cumbersome and difficult to extend, especially when it comes to gathering data from several sources. In this post we will generate an excel report using python (pandas and openpyxl). We will also look briefly at a way to create an excel template and then generate an excel report with several sheets based on this template.</p>
+
+<p>We will be looking at some startups investments data.</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="lineno">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="lineno">3</span> 
+<span class="lineno">4</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">&#39;investments.csv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">&#39;;&#39;</span><span class="p">)</span></code></pre></div>
+
+<p>To make the report simple, we will be using only a subset of the columns in the csv file, and we will look at the data from 2007 for funding rounds of type: angel, seed, venture, private equity, and undisclosed.</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno">1</span> <span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s">&#39;funded_year&#39;</span><span class="p">,</span> <span class="s">&#39;funded_quarter&#39;</span><span class="p">,</span> <span class="s">&#39;funding_round_type&#39;</span><span class="p">,</span> <span class="s">&#39;raised_amount_usd&#39;</span><span class="p">]]</span>
+<span class="lineno">2</span> <span class="n">df1</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">funded_year</span> <span class="o">&gt;=</span> <span class="mi">2007</span><span class="p">]</span>
+<span class="lineno">3</span> <span class="n">df1</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="n">df1</span><span class="o">.</span><span class="n">funding_round_type</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s">&#39;angel&#39;</span><span class="p">,</span> <span class="s">&#39;private_equity&#39;</span><span class="p">,</span> <span class="s">&#39;seed&#39;</span><span class="p">,</span> <span class="s">&#39;venture&#39;</span><span class="p">,</span> <span class="s">&#39;undisclosed&#39;</span><span class="p">])]</span></code></pre></div>
+
+<p>The data look like this:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>funded_year</th>
+      <th>funded_quarter</th>
+      <th>funding_round_type</th>
+      <th>raised_amount_usd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2014</td>
+      <td>2014-Q3</td>
+      <td>venture</td>
+      <td>5 956 174</td>
+    </tr>
+    <tr>
+      <td>2014</td>
+      <td>2014-Q3</td>
+      <td>private_equity</td>
+      <td>81 216 295</td>
+    </tr>
+    <tr>
+      <td>2014</td>
+      <td>2014-Q3</td>
+      <td>seed</td>
+      <td>1 300 000</td>
+    </tr>
+    <tr>
+      <td>2014</td>
+      <td>2014-Q3</td>
+      <td>seed</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>2014</td>
+      <td>2014-Q2</td>
+      <td>seed</td>
+      <td>500 000</td>
+    </tr>
+    <tr>
+      <td>2014</td>
+      <td>2014-Q3</td>
+      <td>venture</td>
+      <td>2 500 000</td>
+    </tr>
+    <tr>
+      <td>2014</td>
+      <td>2014-Q3</td>
+      <td>venture</td>
+      <td>7 000 000</td>
+    </tr>
+    <tr>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+      <td>…</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>We notice that the data contains some undefined values, so we have to do some cleaning</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno">1</span> <span class="n">df1</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="lineno">2</span> <span class="k">def</span> <span class="nf">to_int</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="lineno">3</span>     <span class="k">try</span><span class="p">:</span>
+<span class="lineno">4</span>         <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">))</span>
+<span class="lineno">5</span>     <span class="k">except</span> <span class="p">(</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+<span class="lineno">6</span>         <span class="k">return</span> <span class="mi">0</span>
+<span class="lineno">7</span> 
+<span class="lineno">8</span> <span class="n">df1</span><span class="o">.</span><span class="n">raised_amount_usd</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">raised_amount_usd</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">to_int</span><span class="p">)</span>
+<span class="lineno">9</span> <span class="n">df1</span><span class="o">.</span><span class="n">raised_amount_usd</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">raised_amount_usd</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span></code></pre></div>
+
+<p>Now let’s create out pivot tables</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno">1</span> <span class="n">table1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;funding_round_type&#39;</span><span class="p">],</span>
+<span class="lineno">2</span>                <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;funded_year&#39;</span><span class="p">,</span> <span class="s">&#39;funded_quarter&#39;</span><span class="p">],</span>
+<span class="lineno">3</span>                <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;raised_amount_usd&#39;</span><span class="p">],</span>
+<span class="lineno">4</span>                <span class="n">aggfunc</span><span class="o">=</span><span class="p">[</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)],</span><span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="lineno">5</span> 
+<span class="lineno">6</span> <span class="n">table2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;funding_round_type&#39;</span><span class="p">],</span>
+<span class="lineno">7</span>                <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;funded_year&#39;</span><span class="p">,</span> <span class="s">&#39;funded_quarter&#39;</span><span class="p">],</span>
+<span class="lineno">8</span>                <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;raised_amount_usd&#39;</span><span class="p">],</span>
+<span class="lineno">9</span>                <span class="n">aggfunc</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">],</span><span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></div>
+
+<p>This will generate a 2 pivot tables similar to this:</p>
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="15" halign="left">&lt;count&gt;</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th colspan="15" halign="left">raised_amount_usd</th>
+    </tr>
+    <tr>
+      <th>funded_year</th>
+      <th colspan="4" halign="left">2007</th>
+      <th colspan="3" halign="left">2008</th>
+      <th>...</th>
+      <th colspan="3" halign="left">2013</th>
+      <th colspan="4" halign="left">2014</th>
+    </tr>
+    <tr>
+      <th>funded_quarter</th>
+      <th>2007-Q1</th>
+      <th>2007-Q2</th>
+      <th>2007-Q3</th>
+      <th>2007-Q4</th>
+      <th>2008-Q1</th>
+      <th>2008-Q2</th>
+      <th>...</th>
+      <th>2013-Q2</th>
+      <th>2013-Q3</th>
+      <th>2013-Q4</th>
+      <th>2014-Q1</th>
+      <th>2014-Q2</th>
+      <th>2014-Q3</th>
+    </tr>
+    <tr>
+      <th>funding_round_type</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>angel</th>
+      <td>97</td>
+      <td>67</td>
+      <td>50</td>
+      <td>71</td>
+      <td>122</td>
+      <td>69</td>
+      <td>...</td>
+      <td>161</td>
+      <td>226</td>
+      <td>141</td>
+      <td>211</td>
+      <td>123</td>
+      <td>77</td>
+    </tr>
+    <tr>
+      <th>private_equity</th>
+      <td>16</td>
+      <td>14</td>
+      <td>22</td>
+      <td>10</td>
+      <td>13</td>
+      <td>13</td>
+      <td>...</td>
+      <td>244</td>
+      <td>187</td>
+      <td>132</td>
+      <td>101</td>
+      <td>131</td>
+      <td>68</td>
+    </tr>
+    <tr>
+      <th>seed</th>
+      <td>110</td>
+      <td>88</td>
+      <td>92</td>
+      <td>111</td>
+      <td>219</td>
+      <td>143</td>
+      <td>...</td>
+      <td>1870</td>
+      <td>2368</td>
+      <td>2097</td>
+      <td>1922</td>
+      <td>1686</td>
+      <td>1763</td>
+    </tr>
+    <tr>
+      <th>undisclosed</th>
+      <td>395</td>
+      <td>268</td>
+      <td>255</td>
+      <td>243</td>
+      <td>362</td>
+      <td>354</td>
+      <td>...</td>
+      <td>710</td>
+      <td>454</td>
+      <td>647</td>
+      <td>830</td>
+      <td>304</td>
+      <td>98</td>
+    </tr>
+    <tr>
+      <th>venture</th>
+      <td>1294</td>
+      <td>1207</td>
+      <td>1297</td>
+      <td>1144</td>
+      <td>1440</td>
+      <td>1434</td>
+      <td>...</td>
+      <td>1856</td>
+      <td>2065</td>
+      <td>2147</td>
+      <td>2263</td>
+      <td>3019</td>
+      <td>2905</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 32 columns</p>
+</div>
+
+<p>Now let’s generate an excel report with 2 sheets containing the results of the pivot tables</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno">1</span> <span class="n">writer</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="s">&#39;report.xlsx&#39;</span><span class="p">)</span>
+<span class="lineno">2</span> <span class="n">table1</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="s">&#39;Sheet1&#39;</span><span class="p">)</span>
+<span class="lineno">3</span> <span class="n">table2</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="s">&#39;Sheet2&#39;</span><span class="p">)</span>
+<span class="lineno">4</span> <span class="n">writer</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></code></pre></div>
+
+<p>The result output</p>
+
+<p><img src="/images/posts/report.png" alt="excel_report" /></p>
+
+<p>To go a bit further and let’s imagine that we want to generate the report from a template. For this we will need the python module openpyxl, because it’s the only python module that allows to modify an excel file.</p>
+
+<p>The first step is to create a template for our report.</p>
+
+<p><img src="/images/posts/report-template.png" alt="excel_report" /></p>
+
+<p>You can notice that we named an excel range <code>values</code> to be able to update the values in that range easily from the python side. Here’s an utility function to update an excel sheet from python given a named range or cell range.</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="kn">import</span> <span class="nn">openpyxl</span>
+<span class="lineno"> 2</span> <span class="kn">from</span> <span class="nn">openpyxl</span> <span class="kn">import</span> <span class="n">load_workbook</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span> <span class="k">def</span> <span class="nf">update_range</span><span class="p">(</span><span class="n">worksheet</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">cell_range</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">named_range</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<span class="lineno"> 5</span>     <span class="sd">&quot;&quot;&quot;</span>
+<span class="lineno"> 6</span> <span class="sd">    Updates an excel worksheet with the given data.</span>
+<span class="lineno"> 7</span> <span class="sd">    :param worksheet: an excel worksheet</span>
+<span class="lineno"> 8</span> <span class="sd">    :param data: data used to update the worksheet cell range (list, tuple, np.ndarray, pd.Dataframe)</span>
+<span class="lineno"> 9</span> <span class="sd">    :param cell_range: a string representing the cell range, e.g. &#39;AB12:XX23&#39;</span>
+<span class="lineno">10</span> <span class="sd">    :param named_range: a string representing an excel named range</span>
+<span class="lineno">11</span> <span class="sd">    &quot;&quot;&quot;</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span>     <span class="k">def</span> <span class="nf">clean_data</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="lineno">14</span>         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)):</span>
+<span class="lineno">15</span>             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s">&#39;Invalid data, data should be an array type iterable.&#39;</span><span class="p">)</span>
+<span class="lineno">16</span> 
+<span class="lineno">17</span>         <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="lineno">18</span>             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;You need to provide data to update the cells&#39;</span><span class="p">)</span>
+<span class="lineno">19</span> 
+<span class="lineno">20</span>         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+<span class="lineno">21</span>             <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">values</span>
+<span class="lineno">22</span> 
+<span class="lineno">23</span>         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+<span class="lineno">24</span>             <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="lineno">25</span> 
+<span class="lineno">26</span>         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="lineno">27</span> 
+<span class="lineno">28</span>     <span class="k">def</span> <span class="nf">clean_cells</span><span class="p">(</span><span class="n">worksheet</span><span class="p">,</span> <span class="n">cell_range</span><span class="p">,</span> <span class="n">named_range</span><span class="p">):</span>
+<span class="lineno">29</span>         <span class="c"># check that we can access a cell range</span>
+<span class="lineno">30</span>         <span class="k">if</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">((</span><span class="n">cell_range</span><span class="p">,</span> <span class="n">named_range</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">all</span><span class="p">((</span><span class="n">cell_range</span><span class="p">,</span> <span class="n">named_range</span><span class="p">))):</span>
+<span class="lineno">31</span>             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;`cell_range` or `named_range` should be provided.&#39;</span><span class="p">)</span>
+<span class="lineno">32</span> 
+<span class="lineno">33</span>         <span class="c"># get the cell range</span>
+<span class="lineno">34</span>         <span class="k">if</span> <span class="n">cell_range</span><span class="p">:</span>
+<span class="lineno">35</span>             <span class="k">try</span><span class="p">:</span>
+<span class="lineno">36</span>                 <span class="n">cells</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span><span class="n">worksheet</span><span class="p">[</span><span class="n">cell_range</span><span class="p">])</span>
+<span class="lineno">37</span>             <span class="k">except</span> <span class="p">(</span><span class="n">CellCoordinatesException</span><span class="p">,</span> <span class="ne">AttributeError</span><span class="p">):</span>
+<span class="lineno">38</span>                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;The cell range provided is invalid, cell range must be in the form XX--[:YY--]&#39;</span><span class="p">)</span>
+<span class="lineno">39</span> 
+<span class="lineno">40</span>         <span class="k">else</span><span class="p">:</span>
+<span class="lineno">41</span>             <span class="k">try</span><span class="p">:</span>
+<span class="lineno">42</span>                 <span class="n">cells</span> <span class="o">=</span> <span class="n">worksheet</span><span class="o">.</span><span class="n">get_named_range</span><span class="p">(</span><span class="n">named_range</span><span class="p">)</span>
+<span class="lineno">43</span>             <span class="k">except</span> <span class="p">(</span><span class="n">NamedRangeException</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
+<span class="lineno">44</span>                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;The current worksheet {} does not contain any named range {}.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<span class="lineno">45</span>                     <span class="n">worksheet</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
+<span class="lineno">46</span>                     <span class="n">named_range</span><span class="p">))</span>
+<span class="lineno">47</span> 
+<span class="lineno">48</span>         <span class="c"># checking that we have cells to update, and data</span>
+<span class="lineno">49</span>         <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">cells</span><span class="p">):</span>
+<span class="lineno">50</span>             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;You need to provide cells to update.&#39;</span><span class="p">)</span>
+<span class="lineno">51</span> 
+<span class="lineno">52</span>         <span class="k">return</span> <span class="n">cells</span>
+<span class="lineno">53</span> 
+<span class="lineno">54</span>     <span class="n">cells</span> <span class="o">=</span> <span class="n">clean_cells</span><span class="p">(</span><span class="n">worksheet</span><span class="p">,</span> <span class="n">cell_range</span><span class="p">,</span> <span class="n">named_range</span><span class="p">)</span>
+<span class="lineno">55</span>     <span class="n">data</span> <span class="o">=</span> <span class="n">clean_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="lineno">56</span> 
+<span class="lineno">57</span>     <span class="c"># check that the data has the same dimension as cells</span>
+<span class="lineno">58</span>     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cells</span><span class="p">)</span> <span class="o">!=</span> <span class="n">data</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
+<span class="lineno">59</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;Cells({}) should have the same dimension as the data({}).&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cells</span><span class="p">),</span> <span class="n">data</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+<span class="lineno">60</span> 
+<span class="lineno">61</span>     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">cell</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cells</span><span class="p">):</span>
+<span class="lineno">62</span>         <span class="n">cell</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span></code></pre></div>
+
+<p>Now we are ready to generate our first report from the template</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="kn">import</span> <span class="nn">openpyxl</span>
+<span class="lineno"> 2</span> <span class="kn">from</span> <span class="nn">openpyxl</span> <span class="kn">import</span> <span class="n">load_workbook</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span> <span class="c"># load the excel template</span>
+<span class="lineno"> 5</span> <span class="n">workbook</span> <span class="o">=</span> <span class="n">load_workbook</span><span class="p">(</span><span class="s">&#39;template.xlsx&#39;</span><span class="p">)</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="c"># number of funding rounds by year</span>
+<span class="lineno"> 8</span> <span class="n">table1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;funding_round_type&#39;</span><span class="p">],</span>
+<span class="lineno"> 9</span>                <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;funded_year&#39;</span><span class="p">],</span>
+<span class="lineno">10</span>                <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;raised_amount_usd&#39;</span><span class="p">],</span>
+<span class="lineno">11</span>                <span class="n">aggfunc</span><span class="o">=</span><span class="p">[</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)],</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span> <span class="n">worksheet</span> <span class="o">=</span> <span class="n">workbook</span><span class="o">.</span><span class="n">active</span>
+<span class="lineno">14</span> <span class="n">worksheet</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s">&#39;count_by_year&#39;</span>
+<span class="lineno">15</span> <span class="n">update_range</span><span class="p">(</span><span class="n">workbook</span><span class="o">.</span><span class="n">active</span><span class="p">,</span> <span class="n">table1</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">named_range</span><span class="o">=</span><span class="s">&#39;values&#39;</span><span class="p">)</span>
+<span class="lineno">16</span> <span class="c"># create a new excel report</span>
+<span class="lineno">17</span> <span class="n">workbook</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">&#39;report1.xlsx&#39;</span><span class="p">)</span></code></pre></div>
+
+<p>This will keep our template unmodified and generate a report with one excel sheet <code>count_by_year</code> containing the values from the pivot table.</p>
+
+<p><img src="/images/posts/excel-report-count.png" alt="excel_report" /></p>
+
+<p>The last part of this part is to show a work around when we need to generate a report with multiple sheets based on the same template. Things get a bit complicated, because no python module allow to copy/clone a sheet and update it, I managed to find a way to do this by reloading the workbook each time we copy the template sheet, but I hope that this option will be supported by the openpyxl module in the future, for further reference there’s a <a href="https://bitbucket.org/openpyxl/openpyxl/issues/171/copy-worksheet-function">ticket</a> for this.</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="kn">import</span> <span class="nn">openpyxl</span>
+<span class="lineno"> 2</span> <span class="kn">from</span> <span class="nn">openpyxl</span> <span class="kn">import</span> <span class="n">load_workbook</span>
+<span class="lineno"> 3</span> <span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">copy</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="c"># load the excel template</span>
+<span class="lineno"> 6</span> <span class="n">workbook</span> <span class="o">=</span> <span class="n">load_workbook</span><span class="p">(</span><span class="s">&#39;template.xlsx&#39;</span><span class="p">)</span>
+<span class="lineno"> 7</span> <span class="c"># create a new excel report</span>
+<span class="lineno"> 8</span> <span class="n">workbook</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">&#39;report2.xlsx&#39;</span><span class="p">)</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="c"># number of funding rounds by year</span>
+<span class="lineno">12</span> <span class="n">table1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;funding_round_type&#39;</span><span class="p">],</span>
+<span class="lineno">13</span>                <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;funded_year&#39;</span><span class="p">],</span>
+<span class="lineno">14</span>                <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;raised_amount_usd&#39;</span><span class="p">],</span>
+<span class="lineno">15</span>                <span class="n">aggfunc</span><span class="o">=</span><span class="p">[</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)],</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="lineno">16</span> 
+<span class="lineno">17</span> <span class="c"># sum of funding rounds by year</span>
+<span class="lineno">18</span> <span class="n">table2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;funding_round_type&#39;</span><span class="p">],</span>
+<span class="lineno">19</span>               <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;funded_year&#39;</span><span class="p">],</span>
+<span class="lineno">20</span>               <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;raised_amount_usd&#39;</span><span class="p">],</span>
+<span class="lineno">21</span>               <span class="n">aggfunc</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">],</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="lineno">22</span> 
+<span class="lineno">23</span> <span class="k">def</span> <span class="nf">create_sheet</span><span class="p">(</span><span class="n">wb_name</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+<span class="lineno">24</span>     <span class="n">workbook</span> <span class="o">=</span> <span class="n">load_workbook</span><span class="p">(</span><span class="n">wb_name</span><span class="p">)</span>
+<span class="lineno">25</span>     <span class="n">worksheet</span> <span class="o">=</span> <span class="n">workbook</span><span class="o">.</span><span class="n">active</span>
+<span class="lineno">26</span>     <span class="c"># clone the template worksheet</span>
+<span class="lineno">27</span>     <span class="n">update_range</span><span class="p">(</span><span class="n">workbook</span><span class="o">.</span><span class="n">active</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">named_range</span><span class="o">=</span><span class="s">&#39;values&#39;</span><span class="p">)</span>
+<span class="lineno">28</span>     <span class="c"># add worksheet to the workbook</span>
+<span class="lineno">29</span>     <span class="n">worksheet</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">sheet_name</span>
+<span class="lineno">30</span>     <span class="n">workbook</span><span class="o">.</span><span class="n">_add_sheet</span><span class="p">(</span><span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">worksheet</span><span class="p">))</span>
+<span class="lineno">31</span>     <span class="c"># since we can&#39;t use deepcopy, we need to save the workbook and reload it</span>
+<span class="lineno">32</span>     <span class="c"># otherwise we will be updating the same references of all copied sheets</span>
+<span class="lineno">33</span>     <span class="n">workbook</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">wb_name</span><span class="p">)</span>
+<span class="lineno">34</span> 
+<span class="lineno">35</span> <span class="n">create_sheet</span><span class="p">(</span><span class="s">&#39;report2.xlsx&#39;</span><span class="p">,</span> <span class="s">&#39;count_by_year&#39;</span><span class="p">,</span> <span class="n">table1</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="lineno">36</span> <span class="n">create_sheet</span><span class="p">(</span><span class="s">&#39;report2.xlsx&#39;</span><span class="p">,</span> <span class="s">&#39;sum_by_year&#39;</span><span class="p">,</span> <span class="n">table2</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="lineno">37</span> <span class="c"># we need to remove the current template sheet</span>
+<span class="lineno">38</span> <span class="n">workbook</span> <span class="o">=</span> <span class="n">load_workbook</span><span class="p">(</span><span class="s">&#39;report2.xlsx&#39;</span><span class="p">)</span>
+<span class="lineno">39</span> <span class="n">workbook</span><span class="o">.</span><span class="n">remove_sheet</span><span class="p">(</span><span class="n">workbook</span><span class="o">.</span><span class="n">active</span><span class="p">)</span>
+<span class="lineno">40</span> <span class="n">workbook</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">&#39;report2.xlsx&#39;</span><span class="p">)</span></code></pre></div>
+
+<p>The output result</p>
+
+<p><img src="/images/posts/excel-report-count-sum.png" alt="excel_report" /></p>
+
+            
+<div class="social">
+  
+  <div class='twitter'>
+    <a href="https://twitter.com/share" class="twitter-share-button"  data-text="Generating an excel report with python" data-related="mmourafiq">Tweet</a>
+  </div>
+  
+
+  
+  <div class='facebook'>
+    <div class="fb-share-button" data-layout="button_count"></div>
+  </div>
+  
+
+  
+  <div class='google'>
+    <div class="g-plusone" data-size="medium"></div>
+  </div>
+  
+    
+  
+  <div class='hn'>
+    <a href="https://news.ycombinator.com/submit" class="hn-button" data-title="Generating an excel report with python" data-url="http://mourafiq.com/2016/01/01/generating-excel-report-with-python.html" data-count="horizontal">Vote on Hacker News</a>
+  </div>
+  
+
+  
+  <div class='reddit'>
+    <a href="//www.reddit.com/submit" onclick="window.open('//www.reddit.com/submit?url=http://mourafiq.com/2016/01/01/generating-excel-report-with-python.html&title=Generating+an+excel+report+with+python'); return false"> <img src="//www.redditstatic.com/spreddit7.gif" alt="submit to reddit" border="0" /> </a>
+  </div>
+  
+</div>
+
+        </section>
+
+        <footer>
+            <address>
+                <img src="/images/logo.png">
+                <p>
+                Written by <strong><a rel="author" href="https://twitter.com/mmourafiq" title="Mourad Mourafiq." target="_blank">Mourad Mourafiq.</a></strong><br>
+                    <span class="muted">Maths, Technology, Philosophy, Startups, ...</span>
+                </p>
+            </address>
+             
+            
+            
+            <section class="post_summary">
+                <h3 class="title">Previous story: <a href="/2015/10/09/extensions-of-the-factorial-euler-gamma-function.html" rel="prefetch">Euler Gamma function approximation for factorials</a></h3>
+                <p>Euler Gamma function.</p>
+                <hr>
+            </section>
+             
+            
+            <section>
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'mourafiq';
+
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+            </section>
+            
+        </footer>
+    </div>
+</article>
+
+
+    <footer class="site-footer">
+        <div class="container">
+            &copy; 2016 Mourad Mourafiq
+
+            <nav>
+                <a href="/">Blog</a> &middot;
+                <a href="/about.html">About</a>
+            </nav>
+
+            <nav class="social">
+                
+<a href="https://twitter.com/mmourafiq" title="Follow on Twitter" target="_blank"><i class="icon icon-twitter"></i></a>
+
+
+<a href="https://github.com/mouradmourafiq" title="Watch on Github" target="_blank"><i class="icon icon-github"></i></a>
+
+
+<a href="/atom.xml" title="RSS Feed">
+  <i class="icon icon-rss"></i>
+</a>
+
+            </nav>
+            <div>Based on Incorporated theme by <a href="https://sendtoinc.com">Inc</a></div>
+        </div>
+    </footer>
+
+</body>
+</html>
