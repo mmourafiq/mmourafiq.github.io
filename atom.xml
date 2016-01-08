@@ -4,7 +4,7 @@
  <title>Mourad Mourafiq</title>
  <link href="http://mourafiq.com/atom.xml" rel="self"/>
  <link href="http://mourafiq.com"/>
- <updated>2016-01-08T21:41:36+00:00</updated>
+ <updated>2016-01-08T22:16:21+00:00</updated>
  <id>http://mourafiq.com/atom.xml</id>
  <author>
    <name>Mourad Mourafiq</name>
@@ -14,10 +14,10 @@
  
  <entry>
    <title>Generating an excel report with python</title>
-   <link href="http://mourafiq.com/2016/01/01/generating-excel-report-with-python.html"/>
-   <published>2016-01-01T00:00:00+00:00</published>
-   <updated>2016-01-01T00:00:00+00:00</updated>
-   <id>http://mourafiq.com/2016/01/01/generating-excel-report-with-python</id>
+   <link href="http://mourafiq.com/2016/01/05/generating-excel-report-with-python.html"/>
+   <published>2016-01-05T00:00:00+00:00</published>
+   <updated>2016-01-05T00:00:00+00:00</updated>
+   <id>http://mourafiq.com/2016/01/05/generating-excel-report-with-python</id>
    <content type="html">&lt;p&gt;For many data analysts and business people excel is a powerful tool for reporting. But very often excel reports become cumbersome and difficult to extend, especially when it comes to gathering data from several sources. In this post we will generate an excel report using python (pandas and openpyxl). We will also look briefly at a way to create an excel template and then generate an excel report with several sheets based on this template.&lt;/p&gt;
 
 &lt;p&gt;We will be looking at some startups investments data.&lt;/p&gt;
