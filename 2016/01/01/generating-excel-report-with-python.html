@@ -54,11 +54,11 @@
     <link rel="shortcut icon" href="/favicon.ico?v2" type="image/x-icon" />
     <link rel="alternate" type="application/atom+xml" title="Mourad Mourafiq" href="/atom.xml" />
     <meta name="title" content="Generating an excel report with python ">
-    <link rel="canonical" href="http://mourafiq.com/2016/01/05/generating-excel-report-with-python.html">
+    <link rel="canonical" href="http://mourafiq.com/2016/01/01/generating-excel-report-with-python.html">
      
            
     <meta property="og:title" content="Generating an excel report with python"/>
-    <meta property="og:url" content="http://mourafiq.com/2016/01/05/generating-excel-report-with-python.html"/>
+    <meta property="og:url" content="http://mourafiq.com/2016/01/01/generating-excel-report-with-python.html"/>
     <meta property="og:image" content="http://mourafiq.com/images/posts/excel-python.png"/>
     
     <meta property="og:description" content="Creating pivot table with python/pandas and outputting the result to excel."/>
@@ -97,8 +97,8 @@
                     Mourad Mourafiq.
                 </a></address> &mdash;
                 -->
-                <time pubdate datetime="2016-05-January" title="Jan 05, 2016">
-                    Jan 05, 2016
+                <time pubdate datetime="2016-01-January" title="Jan 01, 2016">
+                    Jan 01, 2016
                 </time> &mdash;
                 
 13 min read
@@ -199,7 +199,7 @@
 <span class="lineno">8</span> <span class="n">df1</span><span class="o">.</span><span class="n">raised_amount_usd</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">raised_amount_usd</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">to_int</span><span class="p">)</span>
 <span class="lineno">9</span> <span class="n">df1</span><span class="o">.</span><span class="n">raised_amount_usd</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">raised_amount_usd</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span></code></pre></div>
 
-<p>Now let’s create out pivot tables</p>
+<p>Now let’s create our pivot tables</p>
 
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno">1</span> <span class="n">table1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;funding_round_type&#39;</span><span class="p">],</span>
 <span class="lineno">2</span>                <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;funded_year&#39;</span><span class="p">,</span> <span class="s">&#39;funded_quarter&#39;</span><span class="p">],</span>
@@ -362,7 +362,7 @@
 
 <p><img src="/images/posts/report.png" alt="excel_report" /></p>
 
-<p>To go a bit further and let’s imagine that we want to generate the report from a template. For this we will need the python module openpyxl, because it’s the only python module that allows to modify an excel file.</p>
+<p>To go a bit further, let’s imagine that we want to generate the report from a template. For this we will need the python module openpyxl, because it’s the only python module that allows to modify an excel file.</p>
 
 <p>The first step is to create a template for our report.</p>
 
@@ -526,13 +526,13 @@
     
   
   <div class='hn'>
-    <a href="https://news.ycombinator.com/submit" class="hn-button" data-title="Generating an excel report with python" data-url="http://mourafiq.com/2016/01/05/generating-excel-report-with-python.html" data-count="horizontal">Vote on Hacker News</a>
+    <a href="https://news.ycombinator.com/submit" class="hn-button" data-title="Generating an excel report with python" data-url="http://mourafiq.com/2016/01/01/generating-excel-report-with-python.html" data-count="horizontal">Vote on Hacker News</a>
   </div>
   
 
   
   <div class='reddit'>
-    <a href="//www.reddit.com/submit" onclick="window.open('//www.reddit.com/submit?url=http://mourafiq.com/2016/01/05/generating-excel-report-with-python.html&title=Generating+an+excel+report+with+python'); return false"> <img src="//www.redditstatic.com/spreddit7.gif" alt="submit to reddit" border="0" /> </a>
+    <a href="//www.reddit.com/submit" onclick="window.open('//www.reddit.com/submit?url=http://mourafiq.com/2016/01/01/generating-excel-report-with-python.html&title=Generating+an+excel+report+with+python'); return false"> <img src="//www.redditstatic.com/spreddit7.gif" alt="submit to reddit" border="0" /> </a>
   </div>
   
 </div>
