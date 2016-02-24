@@ -6,7 +6,7 @@ type: "article"
 title: "Flipping coin."
 subtitle: "How many coin flips does it take, on average, to get n consecutive heads?"
 cover_image: posts/random.jpg
-cover_image_caption: "Random"
+cover_image_caption: ""
 
 excerpt: "How many coin flips does it take, on average, to get n consecutive heads?"
 
