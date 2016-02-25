@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intuition behind the Binomial distribution &mdash; Mourad Mourafiq</title>
+    <title>Intuition behind Poisson distribution &mdash; Mourad Mourafiq</title>
     <!--[if lt IE 9]><script src='https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js'></script><![endif]-->
     
     <link rel="stylesheet" href="/assets/normalize.css">
@@ -53,16 +53,16 @@
 
     <link rel="shortcut icon" href="/favicon.ico?v2" type="image/x-icon" />
     <link rel="alternate" type="application/atom+xml" title="Mourad Mourafiq" href="/atom.xml" />
-    <meta name="title" content="Intuition behind the Binomial distribution ">
-    <link rel="canonical" href="http://mourafiq.com/2016/02/01/intuition-behind-binomial-distribution.html">
+    <meta name="title" content="Intuition behind Poisson distribution ">
+    <link rel="canonical" href="http://mourafiq.com/2016/02/05/on-infinity.html">
      
            
-    <meta property="og:title" content="Intuition behind the Binomial distribution"/>
-    <meta property="og:url" content="http://mourafiq.com/2016/02/01/intuition-behind-binomial-distribution.html"/>
+    <meta property="og:title" content="Intuition behind Poisson distribution"/>
+    <meta property="og:url" content="http://mourafiq.com/2016/02/05/on-infinity.html"/>
     <meta property="og:image" content="http://mourafiq.com/images/posts/random.jpg"/>
     
-    <meta property="og:description" content="Calculating the sum of outcomes of things that follow a Bernoulli distribution."/>
-    <meta name="description" content="Calculating the sum of outcomes of things that follow a Bernoulli distribution."/>
+    <meta property="og:description" content="The Poisson distribution could be thought as an experience with an outcome whose distribution sounds binomial, if you think of each second as a Bernoulli trial."/>
+    <meta name="description" content="The Poisson distribution could be thought as an experience with an outcome whose distribution sounds binomial, if you think of each second as a Bernoulli trial."/>
     
     <meta property="og:site_name" content="Mourad Mourafiq">
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -97,76 +97,57 @@
                     Mourad Mourafiq.
                 </a></address> &mdash;
                 -->
-                <time pubdate datetime="2016-01-February" title="Feb 01, 2016">
-                    Feb 01, 2016
+                <time pubdate datetime="2016-05-February" title="Feb 05, 2016">
+                    Feb 05, 2016
                 </time> &mdash;
                 
-3 min read
+2 min read
             </div>
             
-            <h1 class="title">Intuition behind the Binomial distribution</h1>
-            <h2 class="subtitle">Intuitive deduction of the Binomial distribution.</h2>
+            <h1 class="title">Intuition behind Poisson distribution</h1>
+            <h2 class="subtitle">Intuitive deduction of the Poisson distribution.</h2>
         </header>
 
         <section>
-            <p>Let’s consider a small experiment where we place an ad on a webpage and we want to calculate how many users would click this ad after visiting the page given that the probability of user clicking the ad is « p ».</p>
+            <p>Let’s consider again our experiment where we place an ad on a webpage. In the previous post we wanted to calculate the number of users clicking the ad after visiting our web page. In this post we would like to estimate the number of users visiting our web page per hour.</p>
 
-<p>For each visit we have two outcomes, user clicks the ad and user does’t click the ad, in other terms we have two outcomes that we will denote success and failure. So basically what we want to do is to compute the probability of observing a specific number of « successes »  when the process is repeated a specific number of times (i.e. users visiting a webpage) and the outcome for a given user is either a success or a failure.</p>
+<p>Let consider the random variable: <script type="math/tex">X = \text{number of views per hour}</script>.</p>
 
-<p>First, let <script type="math/tex">n</script> be the number of observations or the number of times the process is repeated (users coming to the webpage), and <script type="math/tex">k</script> the number of “successes” or events of interest occurring during the <script type="math/tex">n</script> observations. The probability of “success” or occurrence of the outcome of interest is indicated by <script type="math/tex">p</script>.</p>
+<p>Let <script type="math/tex">\lambda</script> be the expected value of <script type="math/tex">X</script>, <script type="math/tex">E(X) = \lambda</script>. If we had a binomial distribution we would have <script type="math/tex">E(X) = n * p</script></p>
 
-<p>To make an example, if we had 10 users visiting our webpage, we would want to know how many of these 10 users would click our ad, knowing that the probability of clicking an ad is p.</p>
+<p>in other words, we can write <script type="math/tex">E(X) = \lambda = 60 * \frac{ \lambda }{ 60 } = 60 * \lambda_m</script>, with <script type="math/tex">\lambda_m = \frac{ \lambda }{60}</script> is the probability for views per minute if it was a binomial distribution.</p>
 
-<p>Let’s calculate different probabilities getting different numbers of outcome:</p>
+<p>So the probability that we get <script type="math/tex">k</script> views in a hour would be (if we consider the binomial distribution):</p>
 
-<ul>
-  <li>the probability of getting no clicks</li>
-</ul>
+<script type="math/tex; mode=display">P(X = k) = \binom{60}{k} * \left( \frac{ \lambda }{ 60 } \right) ^ k * \left( 1 - \frac{\lambda }{ 60 } \right) ^ {(60 - k)}</script>
 
-<p>This is the same as getting 10 failures <script type="math/tex">P(X=FFFFFFFFFF) = (1-p)^{10}</script></p>
+<p>The issue here is that we assume we can only get one click per minute, meaning that if we get more views per minute we would still count them as 1.</p>
 
-<ul>
-  <li>The probability of getting 1 click</li>
-</ul>
+<p>An easy way to remediate to this problem is to make it more granular, let’s say per second</p>
 
-<p>This could be the first user clicking (SFFFFFFFFF), or the second one (FSFFFFFFFF), or the third (FFSFFFFFFF), or any other position.</p>
+<script type="math/tex; mode=display">P(X = k) = \binom{3600}{k} * \left( \frac{ \lambda }{ 3600 } \right) ^ k *  \left( 1 - \frac{\lambda }{ 3600 } \right) ^ {(3600 - k)}</script>
 
-<p>The probability of each one of these experiences is</p>
+<p>Again we would get the same problem if we get more than one click per second. And so we need to make our estimation more granular.</p>
+
+<p>We know that</p>
+
+<script type="math/tex; mode=display">\lim \limits_{x \to +\infty} (1 + \frac{a}{x})^x = \mathrm{e}^a</script>
+
+<p>If we take the granularity to the infinite numbers we find the Poisson distribution:</p>
 
 <script type="math/tex; mode=display">% <![CDATA[
 \begin{aligned}
-P(X = SFFFFFFFFF) & = p * (1 - p)^9 \\
-P(X = FSFFFFFFFF) & = (1 - p) * p * (1 - p)^8 = p * (1 - p)^9 \\
-P(X = FFSFFFFFFF) & = (1 - p)^2 * p * (1 - p)^7 = p * (1 - p)^9 \\
-\end{aligned} %]]></script>
-
-<p>And hence the probability of getting one success is : <script type="math/tex">10 * p * (1 - p)^9</script></p>
-
-<ul>
-  <li>the probability of getting 2 clicks</li>
-</ul>
-
-<p>Again this could be the the first 2 users (SSFFFFFFFF), or the first and the fourth (SFFSFFFFFF), and you can see that it’s getting a bit complicated to go through all combinations. But what we can realize is that each scenario has a probability <script type="math/tex">P = p^2 * (1 - p)^8</script>, and what we should do is choose 2 users out of 10 users to make a click without caring about the order of the users.</p>
-
-<p>You might start getting an intuition why we would need the binomial coefficient, for the first user we can choose from 10 users and for the second we can choose from 9 users and since this could happen in two different ways (first user could be the second one) we would get <script type="math/tex">\frac{10 * 9}{2} = \binom{10}{2}</script></p>
-
-<ul>
-  <li>the probability of getting 3 clicks</li>
-</ul>
-
-<p>again this is similar to the case of 2 users, we can define the probability of one scenario <script type="math/tex">P(SSSFFFFFFF)  = p^3 * (1 - p)^7</script></p>
-
-<p>and again since the order does not matter we get <script type="math/tex">\frac{10 * 9 * 8}{3} * p^3 * (1 - p)^7 = \frac{10!}{3! * 7!} * p^3 * (1 - p)^7 = \binom{10}{3} * p^3 * (1 - p)^7</script></p>
-
-<p>Finally we can generalize for any <script type="math/tex">n</script> and <script type="math/tex">k</script></p>
-
-<script type="math/tex; mode=display">P(\text{k successes}) = \binom{n}{k} * p^k * (1 - p)^{n - k}</script>
+P(X = k) & = \lim \limits_{n \to +\infty} \binom{n}{k} * \left( \frac{ \lambda }{ n } \right) ^ k * \left( 1 - \frac{\lambda }{ n } \right) ^ {(n - k)} \\
+ & = \lim \limits_{n \to +\infty} \frac{n!}{(n - k)! * k!} * \left( \frac{ \lambda }{ n } \right) ^ k *  \left( 1 - \frac{\lambda }{ n } \right) ^ n * \left( 1 - \frac{\lambda }{ n } \right) ^ {-k} \\
+ & = \lim \limits_{n \to +\infty} \frac{n!}{(n - k)!} * \frac{1}{n ^ k} * \frac{\lambda ^ k}{k!} *  \frac{1 - \lambda}{n} ^ n * \frac{1 - \lambda}{n} ^ {-k} \\
+ & = \frac{\lambda ^ k}{k!} * e^{-\lambda}
+ \end{aligned} %]]></script>
 
             
 <div class="social">
   
   <div class='twitter'>
-    <a href="https://twitter.com/share" class="twitter-share-button"  data-text="Intuition behind the Binomial distribution" data-related="mmourafiq">Tweet</a>
+    <a href="https://twitter.com/share" class="twitter-share-button"  data-text="Intuition behind Poisson distribution" data-related="mmourafiq">Tweet</a>
   </div>
   
 
@@ -184,13 +165,13 @@ P(X = FFSFFFFFFF) & = (1 - p)^2 * p * (1 - p)^7 = p * (1 - p)^9 \\
     
   
   <div class='hn'>
-    <a href="https://news.ycombinator.com/submit" class="hn-button" data-title="Intuition behind the Binomial distribution" data-url="http://mourafiq.com/2016/02/01/intuition-behind-binomial-distribution.html" data-count="horizontal">Vote on Hacker News</a>
+    <a href="https://news.ycombinator.com/submit" class="hn-button" data-title="Intuition behind Poisson distribution" data-url="http://mourafiq.com/2016/02/05/on-infinity.html" data-count="horizontal">Vote on Hacker News</a>
   </div>
   
 
   
   <div class='reddit'>
-    <a href="//www.reddit.com/submit" onclick="window.open('//www.reddit.com/submit?url=http://mourafiq.com/2016/02/01/intuition-behind-binomial-distribution.html&title=Intuition+behind+the+Binomial+distribution'); return false"> <img src="//www.redditstatic.com/spreddit7.gif" alt="submit to reddit" border="0" /> </a>
+    <a href="//www.reddit.com/submit" onclick="window.open('//www.reddit.com/submit?url=http://mourafiq.com/2016/02/05/on-infinity.html&title=Intuition+behind+Poisson+distribution'); return false"> <img src="//www.redditstatic.com/spreddit7.gif" alt="submit to reddit" border="0" /> </a>
   </div>
   
 </div>
@@ -205,19 +186,12 @@ P(X = FFSFFFFFFF) & = (1 - p)^2 * p * (1 - p)^7 = p * (1 - p)^9 \\
                     <span class="muted">Maths, Technology, Philosophy, Startups, ...</span>
                 </p>
             </address>
-            
-            
-            <section class="post_summary">
-                <h3 class="title">Next up: <a href="/2016/02/05/intuition-behind-poisson-distribution.html" rel="prefetch">Intuition behind Poisson distribution</a></h3>
-                <p>The Poisson distribution could be thought as an experience with an outcome whose distribution sounds binomial, if you think of each second as a Bernoulli trial.</p>
-                <hr>
-            </section>
              
             
             
             <section class="post_summary">
-                <h3 class="title">Previous story: <a href="/2016/01/01/generating-excel-report-with-python.html" rel="prefetch">Generating an excel report with python</a></h3>
-                <p>Creating pivot table with python/pandas and outputting the result to excel.</p>
+                <h3 class="title">Previous story: <a href="/2016/02/05/intuition-behind-poisson-distribution.html" rel="prefetch">Intuition behind Poisson distribution</a></h3>
+                <p>The Poisson distribution could be thought as an experience with an outcome whose distribution sounds binomial, if you think of each second as a Bernoulli trial.</p>
                 <hr>
             </section>
              

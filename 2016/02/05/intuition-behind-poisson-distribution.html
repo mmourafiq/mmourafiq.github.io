@@ -109,36 +109,36 @@
         </header>
 
         <section>
-            <p>Let’s consider again our experiment where we place an ad on a webpage. In the previous post we wanted to calculate the number of users clicking the ad after visiting our web page. In this post we would like to estimate the number users visiting our web page per hour.</p>
+            <p>Let’s consider again our experiment where we place an ad on a webpage. In the previous post we wanted to calculate the number of users clicking the ad after visiting our web page. In this post we would like to estimate the number of users visiting our web page per hour.</p>
 
 <p>Let consider the random variable: <script type="math/tex">X = \text{number of views per hour}</script>.</p>
 
-<p>The expected value of <script type="math/tex">X</script>, <script type="math/tex">E(X) = \lambda</script>, and if we had a binomial distribution we would have <script type="math/tex">E(X) = n * p</script></p>
+<p>Let <script type="math/tex">\lambda</script> be the expected value of <script type="math/tex">X</script>, <script type="math/tex">E(X) = \lambda</script>. If we had a binomial distribution we would have <script type="math/tex">E(X) = n * p</script></p>
 
-<p>in other words we can have <script type="math/tex">E(X) = \lambda = 60 * \frac{ \lambda }{ 60 } = 60 * \lambda_m</script>, with <script type="math/tex">\lambda_m = \frac{ \lambda }{60}</script> is the probability for views per minute if it was a binomial distribution.</p>
+<p>in other words, we can write <script type="math/tex">E(X) = \lambda = 60 * \frac{ \lambda }{ 60 } = 60 * \lambda_m</script>, with <script type="math/tex">\lambda_m = \frac{ \lambda }{60}</script> is the probability for views per minute if it was a binomial distribution.</p>
 
-<p>So the probability that we get <script type="math/tex">k</script> views in a hour would be:</p>
+<p>So the probability that we get <script type="math/tex">k</script> views in a hour would be (if we consider the binomial distribution):</p>
 
-<script type="math/tex; mode=display">P(X = k) = \binom{60}{k} \left( \frac{ \lambda }{ 60 } \right) ^ k * \left( 1 - \frac{\lambda }{ 60 } \right) ^ {(60 - k)}</script>
+<script type="math/tex; mode=display">P(X = k) = \binom{60}{k} * \left( \frac{ \lambda }{ 60 } \right) ^ k * \left( 1 - \frac{\lambda }{ 60 } \right) ^ {(60 - k)}</script>
 
-<p>The issue here is that we assume we can only get a click per minute, meaning that if we get more views per minute it would still count it as 1.</p>
+<p>The issue here is that we assume we can only get one click per minute, meaning that if we get more views per minute we would still count them as 1.</p>
 
 <p>An easy way to remediate to this problem is to make it more granular, let’s say per second</p>
 
-<script type="math/tex; mode=display">P(X = k) = \binom{3600}{k} \left( \frac{ \lambda }{ 3600 } \right) ^ k *  \left( 1 - \frac{\lambda }{ 3600 } \right) ^ {(3600 - k)}</script>
+<script type="math/tex; mode=display">P(X = k) = \binom{3600}{k} * \left( \frac{ \lambda }{ 3600 } \right) ^ k *  \left( 1 - \frac{\lambda }{ 3600 } \right) ^ {(3600 - k)}</script>
 
 <p>Again we would get the same problem if we get more than one click per second. And so we need to make our estimation more granular.</p>
 
 <p>We know that</p>
 
-<script type="math/tex; mode=display">\lim \limits_{x \to +\infty} (1 + a/x)^x = \mathrm{e}^a</script>
+<script type="math/tex; mode=display">\lim \limits_{x \to +\infty} (1 + \frac{a}{x})^x = \mathrm{e}^a</script>
 
-<p>If we take the granularity to the infinite numbers:</p>
+<p>If we take the granularity to the infinite numbers we find the Poisson distribution:</p>
 
 <script type="math/tex; mode=display">% <![CDATA[
 \begin{aligned}
 P(X = k) & = \lim \limits_{n \to +\infty} \binom{n}{k} * \left( \frac{ \lambda }{ n } \right) ^ k * \left( 1 - \frac{\lambda }{ n } \right) ^ {(n - k)} \\
- & = l\lim \limits_{n \to +\infty} \frac{n!}{(n - k)! * k!} * \left( \frac{ \lambda }{ n } \right) ^ k *  \left( 1 - \frac{\lambda }{ n } \right) ^ n * \left( 1 - \frac{\lambda }{ n } \right) ^ {-k} \\
+ & = \lim \limits_{n \to +\infty} \frac{n!}{(n - k)! * k!} * \left( \frac{ \lambda }{ n } \right) ^ k *  \left( 1 - \frac{\lambda }{ n } \right) ^ n * \left( 1 - \frac{\lambda }{ n } \right) ^ {-k} \\
  & = \lim \limits_{n \to +\infty} \frac{n!}{(n - k)!} * \frac{1}{n ^ k} * \frac{\lambda ^ k}{k!} *  \frac{1 - \lambda}{n} ^ n * \frac{1 - \lambda}{n} ^ {-k} \\
  & = \frac{\lambda ^ k}{k!} * e^{-\lambda}
  \end{aligned} %]]></script>
@@ -186,12 +186,19 @@ P(X = k) & = \lim \limits_{n \to +\infty} \binom{n}{k} * \left( \frac{ \lambda }
                     <span class="muted">Maths, Technology, Philosophy, Startups, ...</span>
                 </p>
             </address>
+            
+            
+            <section class="post_summary">
+                <h3 class="title">Next up: <a href="/2016/02/05/on-infinity.html" rel="prefetch">Intuition behind Poisson distribution</a></h3>
+                <p>The Poisson distribution could be thought as an experience with an outcome whose distribution sounds binomial, if you think of each second as a Bernoulli trial.</p>
+                <hr>
+            </section>
              
             
             
             <section class="post_summary">
-                <h3 class="title">Previous story: <a href="/2016/02/01/intuition-behind-binomial-distribution.html" rel="prefetch">Intuition behind the binomial distribution</a></h3>
-                <p>The binomial distribution is an important model used to calculate the sum of outcomes of events that follow Bernoulli distribution.</p>
+                <h3 class="title">Previous story: <a href="/2016/02/01/intuition-behind-binomial-distribution.html" rel="prefetch">Intuition behind the Binomial distribution</a></h3>
+                <p>Calculating the sum of outcomes of things that follow a Bernoulli distribution.</p>
                 <hr>
             </section>
              
