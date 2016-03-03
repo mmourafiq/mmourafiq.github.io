@@ -4,7 +4,7 @@
  <title>Mourad Mourafiq</title>
  <link href="http://mourafiq.com/atom.xml" rel="self"/>
  <link href="http://mourafiq.com"/>
- <updated>2016-02-29T00:49:20+01:00</updated>
+ <updated>2016-03-03T21:58:18+01:00</updated>
  <id>http://mourafiq.com/atom.xml</id>
  <author>
    <name>Mourad Mourafiq</name>
@@ -28,7 +28,7 @@
 \begin{aligned}
 {\mathbb{Z}} &amp; = \bigcup\limits_{n \in \mathbb{N}} [\lvert  -n , n \rvert] \\
 {\mathbb{N^2}} &amp; = \bigcup\limits_{n \in \mathbb{N}} [\lvert  -n , n \rvert]^2  \\
-  &amp; = \bigcup\limits_{n \in \mathbb{N}} T_n \,\,\,\, \text{with} \,\,\, T_n =  \{ (p,q) | p+q=n \}
+  &amp; = \bigcup\limits_{n \in \mathbb{N}} T_n \,\,\,\, \text{with} \,\,\, T_n =  \{ (p,q) \, | \, p+q=n \}
 \end{aligned} %]]&gt;&lt;/script&gt;
 
 &lt;p&gt;For &lt;script type=&quot;math/tex&quot;&gt;{\mathbb{Q}}&lt;/script&gt; we can consider the application&lt;/p&gt;
@@ -63,7 +63,7 @@ f : {\mathbb{Z}} \times {\mathbb{N}}^* &amp; \rightarrow {\mathbb{Q}} \\
 
 &lt;p&gt;Let &lt;script type=&quot;math/tex&quot;&gt;\bigcap\limits_{n \in \mathbb{N}} I_n = \{ a \}&lt;/script&gt;&lt;/p&gt;
 
-&lt;p&gt;We have the following &lt;script type=&quot;math/tex&quot;&gt;\forall n \in {\mathbb{N}}, a \in I_n, \,\, f(n) \in I_n&lt;/script&gt;&lt;/p&gt;
+&lt;p&gt;We have the following &lt;script type=&quot;math/tex&quot;&gt;\forall n \in {\mathbb{N}}, a \in I_n, \,\, f(n) \notin I_n&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;It follows then that &lt;script type=&quot;math/tex&quot;&gt;\forall n \in {\mathbb{N}}, a \neq f(n)&lt;/script&gt;&lt;/p&gt;
 
