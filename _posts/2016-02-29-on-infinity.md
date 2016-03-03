@@ -25,7 +25,7 @@ Some example of countable sets are: $$ {\mathbb{Z}}, {\mathbb{N^2}}, {\mathbb{Z^
 $$ \begin{aligned}
 {\mathbb{Z}} & = \bigcup\limits_{n \in \mathbb{N}} [\lvert  -n , n \rvert] \\
 {\mathbb{N^2}} & = \bigcup\limits_{n \in \mathbb{N}} [\lvert  -n , n \rvert]^2  \\
-  & = \bigcup\limits_{n \in \mathbb{N}} T_n \,\,\,\, \text{with} \,\,\, T_n =  \{ (p,q) | p+q=n \}
+  & = \bigcup\limits_{n \in \mathbb{N}} T_n \,\,\,\, \text{with} \,\,\, T_n =  \{ (p,q) \, | \, p+q=n \}
 \end{aligned} $$
 
 For $$ {\mathbb{Q}} $$ we can consider the application
@@ -59,7 +59,7 @@ Hence by induction, we just construct a sequence of intervals $$ {\left( I_n \ri
 
 Let $$ \bigcap\limits_{n \in \mathbb{N}} I_n = \{ a \} $$
 
-We have the following $$ \forall n \in {\mathbb{N}}, a \in I_n, \,\, f(n) \in I_n $$
+We have the following $$ \forall n \in {\mathbb{N}}, a \in I_n, \,\, f(n) \notin I_n $$
 
 It follows then that $$ \forall n \in {\mathbb{N}}, a \neq f(n) $$
 
