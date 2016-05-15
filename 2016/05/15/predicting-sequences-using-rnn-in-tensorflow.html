@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sequence prediction using recurrent neural networks(LSTM) with TensorFlow &mdash; Mourad Mourafiq</title>
+    <!--[if lt IE 9]><script src='https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js'></script><![endif]-->
+    
+    <link rel="stylesheet" href="/assets/app.css">
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script src="/assets/app.js"></script>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+<script>
+  var HN=[];HN.factory=function(e){return function(){HN.push([e].concat(Array.prototype.slice.call(arguments,0)))};},HN.on=HN.factory("on"),HN.once=HN.factory("once"),HN.off=HN.factory("off"),HN.emit=HN.factory("emit"),HN.load=function(){var e="hn-button.js";if(document.getElementById(e))return;var t=document.createElement("script");t.id=e,t.src="//hn-button.herokuapp.com/hn-button.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n)},HN.load();</script>
+</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-34892053-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico?v2" type="image/x-icon" />
+    <link rel="alternate" type="application/atom+xml" title="Mourad Mourafiq" href="/atom.xml" />
+    <meta name="title" content="Sequence prediction using recurrent neural networks(LSTM) with TensorFlow ">
+    <link rel="canonical" href="http://mourafiq.com/2016/05/15/predicting-sequences-using-rnn-in-tensorflow.html">
+     
+           
+    <meta property="og:title" content="Sequence prediction using recurrent neural networks(LSTM) with TensorFlow"/>
+    <meta property="og:url" content="http://mourafiq.com/2016/05/15/predicting-sequences-using-rnn-in-tensorflow.html"/>
+    <meta property="og:image" content="http://mourafiq.com/images/posts/tensorflow.png"/>
+    
+    <meta property="og:description" content="LSTM regression using TensorFlow."/>
+    <meta name="description" content="LSTM regression using TensorFlow."/>
+    
+    <meta property="og:site_name" content="Mourad Mourafiq">
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</head>
+<body>
+
+    <header class="site-header">
+        <nav>
+            <a class="brand" href="/">
+                <img src="/images/logo.png" alt="Inc">
+            </a>
+            <a href="/about.html">About</a>
+        </nav>
+    </header>
+
+    
+<div class="cover  article-cover " style="background-image:url(/images/posts/tensorflow.png)"></div>
+
+
+<div class='cover-caption'><a href='/about.html#pictures'></a></div>
+
+
+<article >
+    <div class="container">
+        <header>
+            
+            <div class="meta">
+                <!--
+                By
+                <address><a rel="author" href="" title="Mourad Mourafiq." target="_blank">
+                    Mourad Mourafiq.
+                </a></address> &mdash;
+                -->
+                <time pubdate datetime="2016-15-May" title="May 15, 2016">
+                    May 15, 2016
+                </time> &mdash;
+                
+14 min read
+            </div>
+            
+            <h1 class="title">Sequence prediction using recurrent neural networks(LSTM) with TensorFlow</h1>
+            <h2 class="subtitle">LSTM regression using TensorFlow.</h2>
+        </header>
+
+        <section>
+            <p>This post tries to demonstrates how to approximate a sequence of vectors using a recurrent neural networks, in particular I will be using the LSTM architecture. Most of the examples I found in the internet apply the LSTM architecture to natural language processing problems, and I couldn’t find an example where this architecture could be used to predict continuous values.</p>
+
+<p>So the task here is to predict a sequence of real numbers based on previous observations. The traditional neural networks architectures can’t do this, this is why recurrent neural networks were made to address this issue, as they allow to store previous information to predict future event.</p>
+
+<p>In this example we will try to predict a couple of functions:</p>
+
+<ul>
+  <li>sin</li>
+</ul>
+
+<p><img src="/images/posts/sin.png" alt="sin-function" /></p>
+
+<ul>
+  <li>sin and cos on the same time</li>
+</ul>
+
+<p><img src="/images/posts/sin-cos.png" alt="sin-cos-function" /></p>
+
+<ul>
+  <li>x*sin(x)</li>
+</ul>
+
+<p><img src="/images/posts/xsin.png" alt="x*sin-function" /></p>
+
+<p>First of all let’s build our model, <code>lstm_model</code>, the model is a list of stacked lstm cells of different time steps followed by a dense layers.</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="k">def</span> <span class="nf">lstm_model</span><span class="p">(</span><span class="n">time_steps</span><span class="p">,</span> <span class="n">rnn_layers</span><span class="p">,</span> <span class="n">dense_layers</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<span class="lineno"> 2</span>     <span class="k">def</span> <span class="nf">lstm_cells</span><span class="p">(</span><span class="n">layers</span><span class="p">):</span>
+<span class="lineno"> 3</span>         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
+<span class="lineno"> 4</span>             <span class="k">return</span> <span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn_cell</span><span class="o">.</span><span class="n">DropoutWrapper</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn_cell</span><span class="o">.</span><span class="n">BasicLSTMCell</span><span class="p">(</span><span class="n">layer</span><span class="p">[</span><span class="s">&#39;steps&#39;</span><span class="p">]),</span> <span class="n">layer</span><span class="p">[</span><span class="s">&#39;keep_prob&#39;</span><span class="p">])</span>
+<span class="lineno"> 5</span>                     <span class="k">if</span> <span class="n">layer</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;keep_prob&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn_cell</span><span class="o">.</span><span class="n">BasicLSTMCell</span><span class="p">(</span><span class="n">layer</span><span class="p">[</span><span class="s">&#39;steps&#39;</span><span class="p">])</span>
+<span class="lineno"> 6</span>                     <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">layers</span><span class="p">]</span>
+<span class="lineno"> 7</span>         <span class="k">return</span> <span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn_cell</span><span class="o">.</span><span class="n">BasicLSTMCell</span><span class="p">(</span><span class="n">steps</span><span class="p">)</span> <span class="k">for</span> <span class="n">steps</span> <span class="ow">in</span> <span class="n">layers</span><span class="p">]</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span>     <span class="k">def</span> <span class="nf">dnn_layers</span><span class="p">(</span><span class="n">input_layers</span><span class="p">,</span> <span class="n">layers</span><span class="p">):</span>
+<span class="lineno">10</span>         <span class="k">if</span> <span class="n">layers</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+<span class="lineno">11</span>             <span class="k">return</span> <span class="n">skflow</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">dnn</span><span class="p">(</span><span class="n">input_layers</span><span class="p">,</span>
+<span class="lineno">12</span>                                   <span class="n">layers</span><span class="p">[</span><span class="s">&#39;layers&#39;</span><span class="p">],</span>
+<span class="lineno">13</span>                                   <span class="n">activation</span><span class="o">=</span><span class="n">layers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;activation&#39;</span><span class="p">),</span>
+<span class="lineno">14</span>                                   <span class="n">dropout</span><span class="o">=</span><span class="n">layers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;dropout&#39;</span><span class="p">))</span>
+<span class="lineno">15</span>         <span class="k">elif</span> <span class="n">layers</span><span class="p">:</span>
+<span class="lineno">16</span>             <span class="k">return</span> <span class="n">skflow</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">dnn</span><span class="p">(</span><span class="n">input_layers</span><span class="p">,</span> <span class="n">layers</span><span class="p">)</span>
+<span class="lineno">17</span>         <span class="k">else</span><span class="p">:</span>
+<span class="lineno">18</span>             <span class="k">return</span> <span class="n">input_layers</span>
+<span class="lineno">19</span> 
+<span class="lineno">20</span>     <span class="k">def</span> <span class="nf">_lstm_model</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="lineno">21</span>         <span class="n">stacked_lstm</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn_cell</span><span class="o">.</span><span class="n">MultiRNNCell</span><span class="p">(</span><span class="n">lstm_cells</span><span class="p">(</span><span class="n">rnn_layers</span><span class="p">))</span>
+<span class="lineno">22</span>         <span class="n">x_</span> <span class="o">=</span> <span class="n">skflow</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">split_squeeze</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">time_steps</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+<span class="lineno">23</span>         <span class="n">output</span><span class="p">,</span> <span class="n">layers</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn</span><span class="p">(</span><span class="n">stacked_lstm</span><span class="p">,</span> <span class="n">x_</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="lineno">24</span>         <span class="n">output</span> <span class="o">=</span> <span class="n">dnn_layers</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">dense_layers</span><span class="p">)</span>
+<span class="lineno">25</span>         <span class="k">return</span> <span class="n">skflow</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">linear_regression</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="lineno">26</span> 
+<span class="lineno">27</span>     <span class="k">return</span> <span class="n">_lstm_model</span></code></pre></div>
+
+<p>So our model expects a data with dimension corresponding to <code>(batch size, time_steps of the first lstm cell, num_features in our data)</code>.</p>
+
+<p>Next we need to prepare the data in a way that could be accepted by our model.</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="k">def</span> <span class="nf">rnn_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">time_steps</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+<span class="lineno"> 2</span>     <span class="sd">&quot;&quot;&quot;</span>
+<span class="lineno"> 3</span> <span class="sd">    creates new data frame based on previous observation</span>
+<span class="lineno"> 4</span> <span class="sd">      * example:</span>
+<span class="lineno"> 5</span> <span class="sd">        l = [1, 2, 3, 4, 5]</span>
+<span class="lineno"> 6</span> <span class="sd">        time_steps = 2</span>
+<span class="lineno"> 7</span> <span class="sd">        -&gt; labels == False [[1, 2], [2, 3], [3, 4]]</span>
+<span class="lineno"> 8</span> <span class="sd">        -&gt; labels == True [2, 3, 4, 5]</span>
+<span class="lineno"> 9</span> <span class="sd">    &quot;&quot;&quot;</span>
+<span class="lineno">10</span>     <span class="n">rnn_df</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="lineno">11</span>     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="n">time_steps</span><span class="p">):</span>
+<span class="lineno">12</span>         <span class="k">if</span> <span class="n">labels</span><span class="p">:</span>
+<span class="lineno">13</span>             <span class="k">try</span><span class="p">:</span>
+<span class="lineno">14</span>                 <span class="n">rnn_df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">time_steps</span><span class="p">]</span><span class="o">.</span><span class="n">as_matrix</span><span class="p">())</span>
+<span class="lineno">15</span>             <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+<span class="lineno">16</span>                 <span class="n">rnn_df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">time_steps</span><span class="p">])</span>
+<span class="lineno">17</span>         <span class="k">else</span><span class="p">:</span>
+<span class="lineno">18</span>             <span class="n">data_</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="n">time_steps</span><span class="p">]</span><span class="o">.</span><span class="n">as_matrix</span><span class="p">()</span>
+<span class="lineno">19</span>             <span class="n">rnn_df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data_</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="p">[[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">data_</span><span class="p">])</span>
+<span class="lineno">20</span>     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">rnn_df</span><span class="p">)</span>
+<span class="lineno">21</span> 
+<span class="lineno">22</span> 
+<span class="lineno">23</span> <span class="k">def</span> <span class="nf">split_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">val_size</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+<span class="lineno">24</span>     <span class="sd">&quot;&quot;&quot;</span>
+<span class="lineno">25</span> <span class="sd">    splits data to training, validation and testing parts</span>
+<span class="lineno">26</span> <span class="sd">    &quot;&quot;&quot;</span>
+<span class="lineno">27</span>     <span class="n">ntest</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">test_size</span><span class="p">)))</span>
+<span class="lineno">28</span>     <span class="n">nval</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">ntest</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">val_size</span><span class="p">)))</span>
+<span class="lineno">29</span> 
+<span class="lineno">30</span>     <span class="n">df_train</span><span class="p">,</span> <span class="n">df_val</span><span class="p">,</span> <span class="n">df_test</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">nval</span><span class="p">],</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">nval</span><span class="p">:</span><span class="n">ntest</span><span class="p">],</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ntest</span><span class="p">:]</span>
+<span class="lineno">31</span> 
+<span class="lineno">32</span>     <span class="k">return</span> <span class="n">df_train</span><span class="p">,</span> <span class="n">df_val</span><span class="p">,</span> <span class="n">df_test</span>
+<span class="lineno">33</span> 
+<span class="lineno">34</span> 
+<span class="lineno">35</span> <span class="k">def</span> <span class="nf">prepare_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">time_steps</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">val_size</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+<span class="lineno">36</span>     <span class="sd">&quot;&quot;&quot;</span>
+<span class="lineno">37</span> <span class="sd">    Given the number of `time_steps` and some data.</span>
+<span class="lineno">38</span> <span class="sd">    prepares training, validation and test data for an lstm cell.</span>
+<span class="lineno">39</span> <span class="sd">    &quot;&quot;&quot;</span>
+<span class="lineno">40</span>     <span class="n">df_train</span><span class="p">,</span> <span class="n">df_val</span><span class="p">,</span> <span class="n">df_test</span> <span class="o">=</span> <span class="n">split_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">val_size</span><span class="p">,</span> <span class="n">test_size</span><span class="p">)</span>
+<span class="lineno">41</span>     <span class="k">return</span> <span class="p">(</span><span class="n">rnn_data</span><span class="p">(</span><span class="n">df_train</span><span class="p">,</span> <span class="n">time_steps</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">),</span>
+<span class="lineno">42</span>             <span class="n">rnn_data</span><span class="p">(</span><span class="n">df_val</span><span class="p">,</span> <span class="n">time_steps</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">),</span>
+<span class="lineno">43</span>             <span class="n">rnn_data</span><span class="p">(</span><span class="n">df_test</span><span class="p">,</span> <span class="n">time_steps</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">))</span>
+<span class="lineno">44</span> 
+<span class="lineno">45</span> 
+<span class="lineno">46</span> <span class="k">def</span> <span class="nf">generate_data</span><span class="p">(</span><span class="n">fct</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">time_steps</span><span class="p">,</span> <span class="n">seperate</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+<span class="lineno">47</span>     <span class="sd">&quot;&quot;&quot;generate data with based on a function fct&quot;&quot;&quot;</span>
+<span class="lineno">48</span>     <span class="n">data</span> <span class="o">=</span> <span class="n">fct</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="lineno">49</span>     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+<span class="lineno">50</span>         <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="lineno">51</span>     <span class="n">train_x</span><span class="p">,</span> <span class="n">val_x</span><span class="p">,</span> <span class="n">test_x</span> <span class="o">=</span> <span class="n">prepare_data</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">seperate</span> <span class="k">else</span> <span class="n">data</span><span class="p">,</span> <span class="n">time_steps</span><span class="p">)</span>
+<span class="lineno">52</span>     <span class="n">train_y</span><span class="p">,</span> <span class="n">val_y</span><span class="p">,</span> <span class="n">test_y</span> <span class="o">=</span> <span class="n">prepare_data</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;b&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">seperate</span> <span class="k">else</span> <span class="n">data</span><span class="p">,</span> <span class="n">time_steps</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="lineno">53</span>     <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">train</span><span class="o">=</span><span class="n">train_x</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="n">val_x</span><span class="p">,</span> <span class="n">test</span><span class="o">=</span><span class="n">test_x</span><span class="p">),</span> <span class="nb">dict</span><span class="p">(</span><span class="n">train</span><span class="o">=</span><span class="n">train_y</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="n">val_y</span><span class="p">,</span> <span class="n">test</span><span class="o">=</span><span class="n">test_y</span><span class="p">)</span></code></pre></div>
+
+<p>this will create a data that will allow our model to look <code>time_steps</code> number of times back in the past in order to make a prediction. So if for example our first cell is a 10 <code>time_steps</code> cell, then for each prediction we want to make, we need to feed the cell 10 historical data points. The <code>y</code> values should correspond to the tenth value of the data we want to predict.</p>
+
+<p>Now we can create a regressor based on our our model</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno">1</span> <span class="n">regressor</span> <span class="o">=</span> <span class="n">skflow</span><span class="o">.</span><span class="n">TensorFlowEstimator</span><span class="p">(</span><span class="n">model_fn</span><span class="o">=</span><span class="n">lstm_model</span><span class="p">(</span><span class="n">TIMESTEPS</span><span class="p">,</span> <span class="n">RNN_LAYERS</span><span class="p">,</span> <span class="n">DENSE_LAYERS</span><span class="p">),</span>
+<span class="lineno">2</span>                                        <span class="n">n_classes</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="lineno">3</span>                                        <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  
+<span class="lineno">4</span>                                        <span class="n">steps</span><span class="o">=</span><span class="n">TRAINING_STEPS</span><span class="p">,</span>
+<span class="lineno">5</span>                                        <span class="n">optimizer</span><span class="o">=</span><span class="s">&#39;Adagrad&#39;</span><span class="p">,</span>
+<span class="lineno">6</span>                                        <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span>
+<span class="lineno">7</span>                                        <span class="n">batch_size</span><span class="o">=</span><span class="n">BATCH_SIZE</span><span class="p">)</span></code></pre></div>
+
+<h3 id="predicting-the-sin-function">Predicting the <code>sin</code> function</h3>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">generate_data</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10000</span><span class="p">),</span> <span class="n">TIMESTEPS</span><span class="p">,</span> <span class="n">seperate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="lineno"> 2</span> <span class="c"># create a lstm instance and validation monitor</span>
+<span class="lineno"> 3</span> <span class="n">validation_monitor</span> <span class="o">=</span> <span class="n">skflow</span><span class="o">.</span><span class="n">monitors</span><span class="o">.</span><span class="n">ValidationMonitor</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s">&#39;val&#39;</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="s">&#39;val&#39;</span><span class="p">],</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="lineno"> 4</span>                                                        <span class="n">print_steps</span><span class="o">=</span><span class="n">PRINT_STEPS</span><span class="p">,</span>
+<span class="lineno"> 5</span>                                                        <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+<span class="lineno"> 6</span>                                                        <span class="n">logdir</span><span class="o">=</span><span class="n">LOG_DIR</span><span class="p">)</span>
+<span class="lineno"> 7</span> <span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s">&#39;train&#39;</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="s">&#39;train&#39;</span><span class="p">],</span> <span class="n">validation_monitor</span><span class="p">,</span> <span class="n">logdir</span><span class="o">=</span><span class="n">LOG_DIR</span><span class="p">)</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="c"># &gt; last training steps</span>
+<span class="lineno">10</span> <span class="c"># Step #9700, epoch #119, avg. train loss: 0.00082, avg. val loss: 0.00084</span>
+<span class="lineno">11</span> <span class="c"># Step #9800, epoch #120, avg. train loss: 0.00083, avg. val loss: 0.00082</span>
+<span class="lineno">12</span> <span class="c"># Step #9900, epoch #122, avg. train loss: 0.00082, avg. val loss: 0.00082</span>
+<span class="lineno">13</span> <span class="c"># Step #10000, epoch #123, avg. train loss: 0.00081, avg. val loss: 0.00081</span></code></pre></div>
+
+<p>predicting the test data</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno">1</span> <span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s">&#39;test&#39;</span><span class="p">]),</span> <span class="n">y</span><span class="p">[</span><span class="s">&#39;test&#39;</span><span class="p">])</span>
+<span class="lineno">2</span> <span class="k">print</span> <span class="p">(</span><span class="s">&quot;Error: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mse</span><span class="p">))</span>
+<span class="lineno">3</span> <span class="c"># 0.000776</span></code></pre></div>
+
+<ul>
+  <li>real sin function</li>
+</ul>
+
+<p><img src="/images/posts/sin.png" alt="sin-function" /></p>
+
+<ul>
+  <li>predicted sin function</li>
+</ul>
+
+<p><img src="/images/posts/predicted-sin.png" alt="sin-function" /></p>
+
+<h3 id="predicting-the-sin-and-cos-functions-together">Predicting the <code>sin and cos</code> functions together</h3>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="k">def</span> <span class="nf">sin_cos</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="lineno"> 2</span>     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">b</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="n">index</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">generate_data</span><span class="p">(</span><span class="n">sin_cos</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10000</span><span class="p">),</span> <span class="n">TIMESTEPS</span><span class="p">,</span> <span class="n">seperate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="lineno"> 5</span> <span class="c"># create a lstm instance and validation monitor</span>
+<span class="lineno"> 6</span> <span class="n">validation_monitor</span> <span class="o">=</span> <span class="n">skflow</span><span class="o">.</span><span class="n">monitors</span><span class="o">.</span><span class="n">ValidationMonitor</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s">&#39;val&#39;</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="s">&#39;val&#39;</span><span class="p">],</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="lineno"> 7</span>                                                        <span class="n">print_steps</span><span class="o">=</span><span class="n">PRINT_STEPS</span><span class="p">,</span>
+<span class="lineno"> 8</span>                                                        <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+<span class="lineno"> 9</span>                                                        <span class="n">logdir</span><span class="o">=</span><span class="n">LOG_DIR</span><span class="p">)</span>
+<span class="lineno">10</span> <span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s">&#39;train&#39;</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="s">&#39;train&#39;</span><span class="p">],</span> <span class="n">validation_monitor</span><span class="p">,</span> <span class="n">logdir</span><span class="o">=</span><span class="n">LOG_DIR</span><span class="p">)</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span> <span class="c"># &gt; last training steps</span>
+<span class="lineno">13</span> <span class="c"># Step #9500, epoch #117, avg. train loss: 0.00120, avg. val loss: 0.00118</span>
+<span class="lineno">14</span> <span class="c"># Step #9600, epoch #118, avg. train loss: 0.00121, avg. val loss: 0.00118</span>
+<span class="lineno">15</span> <span class="c"># Step #9700, epoch #119, avg. train loss: 0.00118, avg. val loss: 0.00118</span>
+<span class="lineno">16</span> <span class="c"># Step #9800, epoch #120, avg. train loss: 0.00118, avg. val loss: 0.00116</span>
+<span class="lineno">17</span> <span class="c"># Step #9900, epoch #122, avg. train loss: 0.00118, avg. val loss: 0.00115</span>
+<span class="lineno">18</span> <span class="c"># Step #10000, epoch #123, avg. train loss: 0.00117, avg. val loss: 0.00115</span></code></pre></div>
+
+<p>predicting the test data</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno">1</span> <span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s">&#39;test&#39;</span><span class="p">]),</span> <span class="n">y</span><span class="p">[</span><span class="s">&#39;test&#39;</span><span class="p">])</span>
+<span class="lineno">2</span> <span class="k">print</span> <span class="p">(</span><span class="s">&quot;Error: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mse</span><span class="p">))</span>
+<span class="lineno">3</span> <span class="c"># 0.001144</span></code></pre></div>
+
+<ul>
+  <li>real sin-cos function</li>
+</ul>
+
+<p><img src="/images/posts/sin-cos.png" alt="sin-function" /></p>
+
+<ul>
+  <li>predicted sin-cos function</li>
+</ul>
+
+<p><img src="/images/posts/predicted-sin-cos.png" alt="sin-function" /></p>
+
+<p>Predicting the <code>x*sin</code> function</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="k">def</span> <span class="nf">x_sin</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="lineno"> 2</span>     <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">generate_data</span><span class="p">(</span><span class="n">x_sin</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10000</span><span class="p">),</span> <span class="n">TIMESTEPS</span><span class="p">,</span> <span class="n">seperate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="lineno"> 5</span> <span class="c"># create a lstm instance and validation monitor</span>
+<span class="lineno"> 6</span> <span class="n">validation_monitor</span> <span class="o">=</span> <span class="n">skflow</span><span class="o">.</span><span class="n">monitors</span><span class="o">.</span><span class="n">ValidationMonitor</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s">&#39;val&#39;</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="s">&#39;val&#39;</span><span class="p">],</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="lineno"> 7</span>                                                        <span class="n">print_steps</span><span class="o">=</span><span class="n">PRINT_STEPS</span><span class="p">,</span>
+<span class="lineno"> 8</span>                                                        <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+<span class="lineno"> 9</span>                                                        <span class="n">logdir</span><span class="o">=</span><span class="n">LOG_DIR</span><span class="p">)</span>
+<span class="lineno">10</span> <span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s">&#39;train&#39;</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="s">&#39;train&#39;</span><span class="p">],</span> <span class="n">validation_monitor</span><span class="p">,</span> <span class="n">logdir</span><span class="o">=</span><span class="n">LOG_DIR</span><span class="p">)</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span> <span class="c"># &gt; last training steps</span>
+<span class="lineno">13</span> <span class="c"># Step #32500, epoch #401, avg. train loss: 0.48248, avg. val loss: 15.98678</span>
+<span class="lineno">14</span> <span class="c"># Step #33800, epoch #417, avg. train loss: 0.47391, avg. val loss: 15.92590</span>
+<span class="lineno">15</span> <span class="c"># Step #35100, epoch #433, avg. train loss: 0.45570, avg. val loss: 15.77346</span>
+<span class="lineno">16</span> <span class="c"># Step #36400, epoch #449, avg. train loss: 0.45853, avg. val loss: 15.61680</span>
+<span class="lineno">17</span> <span class="c"># Step #37700, epoch #465, avg. train loss: 0.44212, avg. val loss: 15.48604</span>
+<span class="lineno">18</span> <span class="c"># Step #39000, epoch #481, avg. train loss: 0.43224, avg. val loss: 15.43947</span></code></pre></div>
+
+<p>predicting the test data</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno">1</span> <span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s">&#39;test&#39;</span><span class="p">]),</span> <span class="n">y</span><span class="p">[</span><span class="s">&#39;test&#39;</span><span class="p">])</span>
+<span class="lineno">2</span> <span class="k">print</span> <span class="p">(</span><span class="s">&quot;Error: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mse</span><span class="p">))</span>
+<span class="lineno">3</span> <span class="c"># 61.024454351</span></code></pre></div>
+
+<ul>
+  <li>real x*sin function</li>
+</ul>
+
+<p><img src="/images/posts/xsin.png" alt="sin-function" /></p>
+
+<ul>
+  <li>predicted x*sin function</li>
+</ul>
+
+<p><img src="/images/posts/predicted-xsin.png" alt="sin-function" /></p>
+
+<p><strong>N.B.1</strong> The complete code could be found <a href="https://github.com/mouradmourafiq/tensorflow-lstm-regression">here</a>.</p>
+
+<p><strong>N.B.2</strong> I am not completely sure if this is the right way to train lstm on regression problems, I am still experimenting with the <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/ops/seq2seq.py#L151">RNN sequence-to-sequence model</a>, I will update this post or write a new one to use the sequence-to-sequence model.</p>
+
+            
+<div class="social">
+  
+  <div class='twitter'>
+    <a href="https://twitter.com/share" class="twitter-share-button"  data-text="Sequence prediction using recurrent neural networks(LSTM) with TensorFlow" data-related="mmourafiq">Tweet</a>
+  </div>
+  
+
+  
+  <div class='facebook'>
+    <div class="fb-share-button" data-layout="button_count"></div>
+  </div>
+  
+
+  
+  <div class='google'>
+    <div class="g-plusone" data-size="medium"></div>
+  </div>
+  
+    
+  
+  <div class='hn'>
+    <a href="https://news.ycombinator.com/submit" class="hn-button" data-title="Sequence prediction using recurrent neural networks(LSTM) with TensorFlow" data-url="http://mourafiq.com/2016/05/15/predicting-sequences-using-rnn-in-tensorflow.html" data-count="horizontal">Vote on Hacker News</a>
+  </div>
+  
+
+  
+  <div class='reddit'>
+    <a href="//www.reddit.com/submit" onclick="window.open('//www.reddit.com/submit?url=http://mourafiq.com/2016/05/15/predicting-sequences-using-rnn-in-tensorflow.html&title=Sequence+prediction+using+recurrent+neural+networks%28LSTM%29+with+TensorFlow'); return false"> <img src="//www.redditstatic.com/spreddit7.gif" alt="submit to reddit" border="0" /> </a>
+  </div>
+  
+</div>
+
+        </section>
+
+        <footer>
+            <address>
+                <img src="/images/logo.png">
+                <p>
+                Written by <strong><a rel="author" href="https://twitter.com/mmourafiq" title="Mourad Mourafiq." target="_blank">Mourad Mourafiq.</a></strong><br>
+                    <span class="muted">Maths, Technology, Philosophy, Startups, ...</span>
+                </p>
+            </address>
+             
+            
+            
+            <section class="post_summary">
+                <h3 class="title">Previous story: <a href="/2016/02/29/on-infinity.html" rel="prefetch">On infinity</a></h3>
+                <p>A closer look at the notion of infinity and countable infinity.</p>
+                <hr>
+            </section>
+             
+            
+            <section>
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'mourafiq';
+
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+            </section>
+            
+        </footer>
+    </div>
+</article>
+
+
+    <footer class="site-footer">
+        <div class="container">
+            &copy; 2016 Mourad Mourafiq
+
+            <nav>
+                <a href="/">Blog</a> &middot;
+                <a href="/about.html">About</a>
+            </nav>
+
+            <nav class="social">
+                
+<a href="https://twitter.com/mmourafiq" title="Follow on Twitter" target="_blank"><i class="icon icon-twitter"></i></a>
+
+
+<a href="https://github.com/mouradmourafiq" title="Watch on Github" target="_blank"><i class="icon icon-github"></i></a>
+
+
+<a href="/atom.xml" title="RSS Feed">
+  <i class="icon icon-rss"></i>
+</a>
+
+            </nav>
+            <div>Based on Incorporated theme by <a href="https://sendtoinc.com">Inc</a></div>
+        </div>
+    </footer>
+
+</body>
+</html>
