@@ -4,7 +4,7 @@
  <title>Mourad Mourafiq</title>
  <link href="http://mourafiq.com/atom.xml" rel="self"/>
  <link href="http://mourafiq.com"/>
- <updated>2016-05-15T22:46:35+02:00</updated>
+ <updated>2016-05-18T19:20:05+02:00</updated>
  <id>http://mourafiq.com/atom.xml</id>
  <author>
    <name>Mourad Mourafiq</name>
@@ -18,7 +18,7 @@
    <published>2016-05-15T00:00:00+02:00</published>
    <updated>2016-05-15T00:00:00+02:00</updated>
    <id>http://mourafiq.com/2016/05/15/predicting-sequences-using-rnn-in-tensorflow</id>
-   <content type="html">&lt;p&gt;This post tries to demonstrates how to approximate a sequence of vectors using a recurrent neural networks, in particular I will be using the LSTM architecture. Most of the examples I found in the internet apply the LSTM architecture to natural language processing problems, and I couldn’t find an example where this architecture could be used to predict continuous values.&lt;/p&gt;
+   <content type="html">&lt;p&gt;This post tries to demonstrates how to approximate a sequence of vectors using a recurrent neural networks, in particular I will be using the LSTM architecture, The complete code used for this post could be found &lt;a href=&quot;https://github.com/mouradmourafiq/tensorflow-lstm-regression&quot;&gt;here&lt;/a&gt;. Most of the examples I found in the internet apply the LSTM architecture to natural language processing problems, and I couldn’t find an example where this architecture could be used to predict continuous values.&lt;/p&gt;
 
 &lt;p&gt;So the task here is to predict a sequence of real numbers based on previous observations. The traditional neural networks architectures can’t do this, this is why recurrent neural networks were made to address this issue, as they allow to store previous information to predict future event.&lt;/p&gt;
 
@@ -254,9 +254,7 @@
 
 &lt;p&gt;&lt;img src=&quot;/images/posts/predicted-xsin.png&quot; alt=&quot;sin-function&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;N.B.1&lt;/strong&gt; The complete code could be found &lt;a href=&quot;https://github.com/mouradmourafiq/tensorflow-lstm-regression&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;N.B.2&lt;/strong&gt; I am not completely sure if this is the right way to train lstm on regression problems, I am still experimenting with the &lt;a href=&quot;https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/ops/seq2seq.py#L151&quot;&gt;RNN sequence-to-sequence model&lt;/a&gt;, I will update this post or write a new one to use the sequence-to-sequence model.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;N.B&lt;/strong&gt; I am not completely sure if this is the right way to train lstm on regression problems, I am still experimenting with the &lt;a href=&quot;https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/ops/seq2seq.py#L151&quot;&gt;RNN sequence-to-sequence model&lt;/a&gt;, I will update this post or write a new one to use the sequence-to-sequence model.&lt;/p&gt;
 </content>
  </entry>
  
