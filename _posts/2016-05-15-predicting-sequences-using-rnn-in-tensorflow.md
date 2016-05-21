@@ -38,30 +38,45 @@ First of all let’s build our model, `lstm_model`, the model is a list of stack
 
 {% highlight python linenos %}
 def lstm_model(time_steps, rnn_layers, dense_layers=None):
+    """
+    Creates a deep model based on:
+        * stacked lstm cells
+        * an optional dense layers
+    :param time_steps: the number of time steps the model will be looking at.
+    :param rnn_layers: list of int or dict
+                         * list of int: the steps used to instantiate the `BasicLSTMCell` cell
+                         * list of dict: [{steps: int, keep_prob: int}, ...]
+    :param dense_layers: list of nodes for each layer
+    :return: the model definition
+    """
+
     def lstm_cells(layers):
         if isinstance(layers[0], dict):
-            return [tf.nn.rnn_cell.DropoutWrapper(tf.nn.rnn_cell.BasicLSTMCell(layer['steps']), layer['keep_prob'])
-                    if layer.get('keep_prob') else tf.nn.rnn_cell.BasicLSTMCell(layer['steps'])
+            return [tf.nn.rnn_cell.DropoutWrapper(tf.nn.rnn_cell.BasicLSTMCell(layer['steps'],
+                                                                               state_is_tuple=True),
+                                                  layer['keep_prob'])
+                    if layer.get('keep_prob') else tf.nn.rnn_cell.BasicLSTMCell(layer['steps'],
+                                                                                state_is_tuple=True)
                     for layer in layers]
-        return [tf.nn.rnn_cell.BasicLSTMCell(steps) for steps in layers]
+        return [tf.nn.rnn_cell.BasicLSTMCell(steps, state_is_tuple=True) for steps in layers]
 
     def dnn_layers(input_layers, layers):
         if layers and isinstance(layers, dict):
-            return skflow.ops.dnn(input_layers,
-                                  layers['layers'],
-                                  activation=layers.get('activation'),
-                                  dropout=layers.get('dropout'))
+            return learn.ops.dnn(input_layers,
+                                 layers['layers'],
+                                 activation=layers.get('activation'),
+                                 dropout=layers.get('dropout'))
         elif layers:
-            return skflow.ops.dnn(input_layers, layers)
+            return learn.ops.dnn(input_layers, layers)
         else:
             return input_layers
 
     def _lstm_model(X, y):
-        stacked_lstm = tf.nn.rnn_cell.MultiRNNCell(lstm_cells(rnn_layers))
-        x_ = skflow.ops.split_squeeze(1, time_steps, X)
+        stacked_lstm = tf.nn.rnn_cell.MultiRNNCell(lstm_cells(rnn_layers), state_is_tuple=True)
+        x_ = learn.ops.split_squeeze(1, time_steps, X)
         output, layers = tf.nn.rnn(stacked_lstm, x_, dtype=dtypes.float32)
         output = dnn_layers(output[-1], dense_layers)
-        return skflow.models.linear_regression(output, y)
+        return learn.models.linear_regression(output, y)
 
     return _lstm_model
 {% endhighlight %}
@@ -109,7 +124,7 @@ def split_data(data, val_size=0.1, test_size=0.1):
 
 def prepare_data(data, time_steps, labels=False, val_size=0.1, test_size=0.1):
     """
-    Given the number of `time_steps` and some data.
+    Given the number of `time_steps` and some data,
     prepares training, validation and test data for an lstm cell.
     """
     df_train, df_val, df_test = split_data(data, val_size, test_size)
@@ -119,7 +134,7 @@ def prepare_data(data, time_steps, labels=False, val_size=0.1, test_size=0.1):
 
 
 def generate_data(fct, x, time_steps, seperate=False):
-    """generate data with based on a function fct"""
+    """generates data with based on a function fct"""
     data = fct(x)
     if not isinstance(data, pd.DataFrame):
         data = pd.DataFrame(data)
@@ -131,16 +146,28 @@ def generate_data(fct, x, time_steps, seperate=False):
 
 this will create a data that will allow our model to look `time_steps` number of times back in the past in order to make a prediction. So if for example our first cell is a 10 `time_steps` cell, then for each prediction we want to make, we need to feed the cell 10 historical data points. The `y` values should correspond to the tenth value of the data we want to predict.
 
+Let's first define the hyperparameters
+
+{% highlight python linenos %}
+LOG_DIR = './ops_logs'
+TIMESTEPS = 5
+RNN_LAYERS = [{'steps': TIMESTEPS}, {'steps': TIMESTEPS, 'keep_prob': 0.5}]
+DENSE_LAYERS = [2]
+TRAINING_STEPS = 130000
+BATCH_SIZE = 100
+PRINT_STEPS = TRAINING_STEPS / 100
+{% endhighlight %}
+
 Now we can create a regressor based on our our model
 
 {% highlight python linenos %}
-regressor = skflow.TensorFlowEstimator(model_fn=lstm_model(TIMESTEPS, RNN_LAYERS, DENSE_LAYERS),
-                                       n_classes=0,
-                                       verbose=1,  
-                                       steps=TRAINING_STEPS,
-                                       optimizer='Adagrad',
-                                       learning_rate=0.03,
-                                       batch_size=BATCH_SIZE)
+regressor = learn.TensorFlowEstimator(model_fn=lstm_model(TIMESTEPS, RNN_LAYERS, DENSE_LAYERS),
+                                      n_classes=0,
+                                      verbose=1,  
+                                      steps=TRAINING_STEPS,
+                                      optimizer='Adagrad',
+                                      learning_rate=0.03,
+                                      batch_size=BATCH_SIZE)
 
 {% endhighlight %}
 
@@ -149,10 +176,9 @@ regressor = skflow.TensorFlowEstimator(model_fn=lstm_model(TIMESTEPS, RNN_LAYERS
 {% highlight python linenos %}
 X, y = generate_data(np.sin, np.linspace(0, 100, 10000), TIMESTEPS, seperate=False)
 # create a lstm instance and validation monitor
-validation_monitor = skflow.monitors.ValidationMonitor(X['val'], y['val'], n_classes=0,
-                                                       print_steps=PRINT_STEPS,
-                                                       early_stopping_rounds=1000,
-                                                       logdir=LOG_DIR)
+validation_monitor = learn.monitors.ValidationMonitor(X['val'], y['val'],
+                                                      every_n_steps=PRINT_STEPS,
+                                                      early_stopping_rounds=1000)
 regressor.fit(X['train'], y['train'], validation_monitor, logdir=LOG_DIR)
 
 # > last training steps
@@ -172,10 +198,6 @@ print ("Error: {}".format(mse))
 
  * real sin function
 
-![sin-function](/images/posts/sin.png)
-
- * predicted sin function
-
 ![sin-function](/images/posts/predicted-sin.png)
 
 ### Predicting the `sin and cos` functions together
@@ -186,10 +208,9 @@ def sin_cos(x):
 
 X, y = generate_data(sin_cos, np.linspace(0, 100, 10000), TIMESTEPS, seperate=False)
 # create a lstm instance and validation monitor
-validation_monitor = skflow.monitors.ValidationMonitor(X['val'], y['val'], n_classes=0,
-                                                       print_steps=PRINT_STEPS,
-                                                       early_stopping_rounds=1000,
-                                                       logdir=LOG_DIR)
+validation_monitor = learn.monitors.ValidationMonitor(X['val'], y['val'],
+                                                      every_n_steps=PRINT_STEPS,
+                                                      early_stopping_rounds=1000)
 regressor.fit(X['train'], y['train'], validation_monitor, logdir=LOG_DIR)
 
 # > last training steps
@@ -209,10 +230,6 @@ print ("Error: {}".format(mse))
 # 0.001144
 {% endhighlight %}
 
- * real sin-cos function
-
-![sin-function](/images/posts/sin-cos.png)
-
  * predicted sin-cos function
 
 ![sin-function](/images/posts/predicted-sin-cos.png)
@@ -226,10 +243,9 @@ def x_sin(x):
 
 X, y = generate_data(x_sin, np.linspace(0, 100, 10000), TIMESTEPS, seperate=False)
 # create a lstm instance and validation monitor
-validation_monitor = skflow.monitors.ValidationMonitor(X['val'], y['val'], n_classes=0,
-                                                       print_steps=PRINT_STEPS,
-                                                       early_stopping_rounds=1000,
-                                                       logdir=LOG_DIR)
+validation_monitor = learn.monitors.ValidationMonitor(X['val'], y['val'],
+                                                      every_n_steps=PRINT_STEPS,
+                                                      early_stopping_rounds=1000)
 regressor.fit(X['train'], y['train'], validation_monitor, logdir=LOG_DIR)
 
 # > last training steps
@@ -256,5 +272,12 @@ print ("Error: {}".format(mse))
  * predicted x*sin function
 
 ![sin-function](/images/posts/predicted-xsin.png)  
+
+### model loss
+
+![sin-loss](/images/posts/sin-loss.png)
+
+![sin-loss-mean](/images/posts/sin-loss-mean.png)
+
 
 **N.B** I am not completely sure if this is the right way to train lstm on regression problems, I am still experimenting with the [RNN sequence-to-sequence model](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/ops/seq2seq.py#L151), I will update this post or write a new one to use the sequence-to-sequence model.
