@@ -97,7 +97,7 @@
                     May 15, 2016
                 </time> &mdash;
                 
-14 min read
+15 min read
             </div>
             
             <h1 class="title">Sequence prediction using recurrent neural networks(LSTM) with TensorFlow</h1>
@@ -132,32 +132,45 @@
 <p>First of all let’s build our model, <code>lstm_model</code>, the model is a list of stacked lstm cells of different time steps followed by a dense layers.</p>
 
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="k">def</span> <span class="nf">lstm_model</span><span class="p">(</span><span class="n">time_steps</span><span class="p">,</span> <span class="n">rnn_layers</span><span class="p">,</span> <span class="n">dense_layers</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-<span class="lineno"> 2</span>     <span class="k">def</span> <span class="nf">lstm_cells</span><span class="p">(</span><span class="n">layers</span><span class="p">):</span>
-<span class="lineno"> 3</span>         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
-<span class="lineno"> 4</span>             <span class="k">return</span> <span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn_cell</span><span class="o">.</span><span class="n">DropoutWrapper</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn_cell</span><span class="o">.</span><span class="n">BasicLSTMCell</span><span class="p">(</span><span class="n">layer</span><span class="p">[</span><span class="s">&#39;steps&#39;</span><span class="p">]),</span> <span class="n">layer</span><span class="p">[</span><span class="s">&#39;keep_prob&#39;</span><span class="p">])</span>
-<span class="lineno"> 5</span>                     <span class="k">if</span> <span class="n">layer</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;keep_prob&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn_cell</span><span class="o">.</span><span class="n">BasicLSTMCell</span><span class="p">(</span><span class="n">layer</span><span class="p">[</span><span class="s">&#39;steps&#39;</span><span class="p">])</span>
-<span class="lineno"> 6</span>                     <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">layers</span><span class="p">]</span>
-<span class="lineno"> 7</span>         <span class="k">return</span> <span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn_cell</span><span class="o">.</span><span class="n">BasicLSTMCell</span><span class="p">(</span><span class="n">steps</span><span class="p">)</span> <span class="k">for</span> <span class="n">steps</span> <span class="ow">in</span> <span class="n">layers</span><span class="p">]</span>
-<span class="lineno"> 8</span> 
-<span class="lineno"> 9</span>     <span class="k">def</span> <span class="nf">dnn_layers</span><span class="p">(</span><span class="n">input_layers</span><span class="p">,</span> <span class="n">layers</span><span class="p">):</span>
-<span class="lineno">10</span>         <span class="k">if</span> <span class="n">layers</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-<span class="lineno">11</span>             <span class="k">return</span> <span class="n">skflow</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">dnn</span><span class="p">(</span><span class="n">input_layers</span><span class="p">,</span>
-<span class="lineno">12</span>                                   <span class="n">layers</span><span class="p">[</span><span class="s">&#39;layers&#39;</span><span class="p">],</span>
-<span class="lineno">13</span>                                   <span class="n">activation</span><span class="o">=</span><span class="n">layers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;activation&#39;</span><span class="p">),</span>
-<span class="lineno">14</span>                                   <span class="n">dropout</span><span class="o">=</span><span class="n">layers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;dropout&#39;</span><span class="p">))</span>
-<span class="lineno">15</span>         <span class="k">elif</span> <span class="n">layers</span><span class="p">:</span>
-<span class="lineno">16</span>             <span class="k">return</span> <span class="n">skflow</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">dnn</span><span class="p">(</span><span class="n">input_layers</span><span class="p">,</span> <span class="n">layers</span><span class="p">)</span>
-<span class="lineno">17</span>         <span class="k">else</span><span class="p">:</span>
-<span class="lineno">18</span>             <span class="k">return</span> <span class="n">input_layers</span>
-<span class="lineno">19</span> 
-<span class="lineno">20</span>     <span class="k">def</span> <span class="nf">_lstm_model</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-<span class="lineno">21</span>         <span class="n">stacked_lstm</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn_cell</span><span class="o">.</span><span class="n">MultiRNNCell</span><span class="p">(</span><span class="n">lstm_cells</span><span class="p">(</span><span class="n">rnn_layers</span><span class="p">))</span>
-<span class="lineno">22</span>         <span class="n">x_</span> <span class="o">=</span> <span class="n">skflow</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">split_squeeze</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">time_steps</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
-<span class="lineno">23</span>         <span class="n">output</span><span class="p">,</span> <span class="n">layers</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn</span><span class="p">(</span><span class="n">stacked_lstm</span><span class="p">,</span> <span class="n">x_</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-<span class="lineno">24</span>         <span class="n">output</span> <span class="o">=</span> <span class="n">dnn_layers</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">dense_layers</span><span class="p">)</span>
-<span class="lineno">25</span>         <span class="k">return</span> <span class="n">skflow</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">linear_regression</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="lineno">26</span> 
-<span class="lineno">27</span>     <span class="k">return</span> <span class="n">_lstm_model</span></code></pre></div>
+<span class="lineno"> 2</span>     <span class="sd">&quot;&quot;&quot;</span>
+<span class="lineno"> 3</span> <span class="sd">    Creates a deep model based on:</span>
+<span class="lineno"> 4</span> <span class="sd">        * stacked lstm cells</span>
+<span class="lineno"> 5</span> <span class="sd">        * an optional dense layers</span>
+<span class="lineno"> 6</span> <span class="sd">    :param time_steps: the number of time steps the model will be looking at.</span>
+<span class="lineno"> 7</span> <span class="sd">    :param rnn_layers: list of int or dict</span>
+<span class="lineno"> 8</span> <span class="sd">                         * list of int: the steps used to instantiate the `BasicLSTMCell` cell</span>
+<span class="lineno"> 9</span> <span class="sd">                         * list of dict: [{steps: int, keep_prob: int}, ...]</span>
+<span class="lineno">10</span> <span class="sd">    :param dense_layers: list of nodes for each layer</span>
+<span class="lineno">11</span> <span class="sd">    :return: the model definition</span>
+<span class="lineno">12</span> <span class="sd">    &quot;&quot;&quot;</span>
+<span class="lineno">13</span> 
+<span class="lineno">14</span>     <span class="k">def</span> <span class="nf">lstm_cells</span><span class="p">(</span><span class="n">layers</span><span class="p">):</span>
+<span class="lineno">15</span>         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
+<span class="lineno">16</span>             <span class="k">return</span> <span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn_cell</span><span class="o">.</span><span class="n">DropoutWrapper</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn_cell</span><span class="o">.</span><span class="n">BasicLSTMCell</span><span class="p">(</span><span class="n">layer</span><span class="p">[</span><span class="s">&#39;steps&#39;</span><span class="p">]),</span>
+<span class="lineno">17</span>                                                   <span class="n">layer</span><span class="p">[</span><span class="s">&#39;keep_prob&#39;</span><span class="p">])</span>
+<span class="lineno">18</span>                     <span class="k">if</span> <span class="n">layer</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;keep_prob&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn_cell</span><span class="o">.</span><span class="n">BasicLSTMCell</span><span class="p">(</span><span class="n">layer</span><span class="p">[</span><span class="s">&#39;steps&#39;</span><span class="p">])</span>
+<span class="lineno">19</span>                     <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">layers</span><span class="p">]</span>
+<span class="lineno">20</span>         <span class="k">return</span> <span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn_cell</span><span class="o">.</span><span class="n">BasicLSTMCell</span><span class="p">(</span><span class="n">steps</span><span class="p">)</span> <span class="k">for</span> <span class="n">steps</span> <span class="ow">in</span> <span class="n">layers</span><span class="p">]</span>
+<span class="lineno">21</span> 
+<span class="lineno">22</span>     <span class="k">def</span> <span class="nf">dnn_layers</span><span class="p">(</span><span class="n">input_layers</span><span class="p">,</span> <span class="n">layers</span><span class="p">):</span>
+<span class="lineno">23</span>         <span class="k">if</span> <span class="n">layers</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+<span class="lineno">24</span>             <span class="k">return</span> <span class="n">learn</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">dnn</span><span class="p">(</span><span class="n">input_layers</span><span class="p">,</span>
+<span class="lineno">25</span>                                  <span class="n">layers</span><span class="p">[</span><span class="s">&#39;layers&#39;</span><span class="p">],</span>
+<span class="lineno">26</span>                                  <span class="n">activation</span><span class="o">=</span><span class="n">layers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;activation&#39;</span><span class="p">),</span>
+<span class="lineno">27</span>                                  <span class="n">dropout</span><span class="o">=</span><span class="n">layers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;dropout&#39;</span><span class="p">))</span>
+<span class="lineno">28</span>         <span class="k">elif</span> <span class="n">layers</span><span class="p">:</span>
+<span class="lineno">29</span>             <span class="k">return</span> <span class="n">learn</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">dnn</span><span class="p">(</span><span class="n">input_layers</span><span class="p">,</span> <span class="n">layers</span><span class="p">)</span>
+<span class="lineno">30</span>         <span class="k">else</span><span class="p">:</span>
+<span class="lineno">31</span>             <span class="k">return</span> <span class="n">input_layers</span>
+<span class="lineno">32</span> 
+<span class="lineno">33</span>     <span class="k">def</span> <span class="nf">_lstm_model</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="lineno">34</span>         <span class="n">stacked_lstm</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn_cell</span><span class="o">.</span><span class="n">MultiRNNCell</span><span class="p">(</span><span class="n">lstm_cells</span><span class="p">(</span><span class="n">rnn_layers</span><span class="p">))</span>
+<span class="lineno">35</span>         <span class="n">x_</span> <span class="o">=</span> <span class="n">learn</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">split_squeeze</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">time_steps</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+<span class="lineno">36</span>         <span class="n">output</span><span class="p">,</span> <span class="n">layers</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn</span><span class="p">(</span><span class="n">stacked_lstm</span><span class="p">,</span> <span class="n">x_</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="lineno">37</span>         <span class="n">output</span> <span class="o">=</span> <span class="n">dnn_layers</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">dense_layers</span><span class="p">)</span>
+<span class="lineno">38</span>         <span class="k">return</span> <span class="n">learn</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">linear_regression</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="lineno">39</span> 
+<span class="lineno">40</span>     <span class="k">return</span> <span class="n">_lstm_model</span></code></pre></div>
 
 <p>So our model expects a data with dimension corresponding to <code>(batch size, time_steps of the first lstm cell, num_features in our data)</code>.</p>
 
@@ -199,7 +212,7 @@
 <span class="lineno">34</span> 
 <span class="lineno">35</span> <span class="k">def</span> <span class="nf">prepare_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">time_steps</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">val_size</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
 <span class="lineno">36</span>     <span class="sd">&quot;&quot;&quot;</span>
-<span class="lineno">37</span> <span class="sd">    Given the number of `time_steps` and some data.</span>
+<span class="lineno">37</span> <span class="sd">    Given the number of `time_steps` and some data,</span>
 <span class="lineno">38</span> <span class="sd">    prepares training, validation and test data for an lstm cell.</span>
 <span class="lineno">39</span> <span class="sd">    &quot;&quot;&quot;</span>
 <span class="lineno">40</span>     <span class="n">df_train</span><span class="p">,</span> <span class="n">df_val</span><span class="p">,</span> <span class="n">df_test</span> <span class="o">=</span> <span class="n">split_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">val_size</span><span class="p">,</span> <span class="n">test_size</span><span class="p">)</span>
@@ -209,7 +222,7 @@
 <span class="lineno">44</span> 
 <span class="lineno">45</span> 
 <span class="lineno">46</span> <span class="k">def</span> <span class="nf">generate_data</span><span class="p">(</span><span class="n">fct</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">time_steps</span><span class="p">,</span> <span class="n">seperate</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-<span class="lineno">47</span>     <span class="sd">&quot;&quot;&quot;generate data with based on a function fct&quot;&quot;&quot;</span>
+<span class="lineno">47</span>     <span class="sd">&quot;&quot;&quot;generates data with based on a function fct&quot;&quot;&quot;</span>
 <span class="lineno">48</span>     <span class="n">data</span> <span class="o">=</span> <span class="n">fct</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="lineno">49</span>     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
 <span class="lineno">50</span>         <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -219,31 +232,40 @@
 
 <p>this will create a data that will allow our model to look <code>time_steps</code> number of times back in the past in order to make a prediction. So if for example our first cell is a 10 <code>time_steps</code> cell, then for each prediction we want to make, we need to feed the cell 10 historical data points. The <code>y</code> values should correspond to the tenth value of the data we want to predict.</p>
 
+<p>Let’s first define the hyperparameters</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno">1</span> <span class="n">LOG_DIR</span> <span class="o">=</span> <span class="s">&#39;./ops_logs&#39;</span>
+<span class="lineno">2</span> <span class="n">TIMESTEPS</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="lineno">3</span> <span class="n">RNN_LAYERS</span> <span class="o">=</span> <span class="p">[{</span><span class="s">&#39;steps&#39;</span><span class="p">:</span> <span class="n">TIMESTEPS</span><span class="p">},</span> <span class="p">{</span><span class="s">&#39;steps&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s">&#39;keep_prob&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">}]</span>
+<span class="lineno">4</span> <span class="n">DENSE_LAYERS</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="lineno">5</span> <span class="n">TRAINING_STEPS</span> <span class="o">=</span> <span class="mi">130000</span>
+<span class="lineno">6</span> <span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="lineno">7</span> <span class="n">PRINT_STEPS</span> <span class="o">=</span> <span class="n">TRAINING_STEPS</span> <span class="o">/</span> <span class="mi">100</span></code></pre></div>
+
 <p>Now we can create a regressor based on our our model</p>
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno">1</span> <span class="n">regressor</span> <span class="o">=</span> <span class="n">skflow</span><span class="o">.</span><span class="n">TensorFlowEstimator</span><span class="p">(</span><span class="n">model_fn</span><span class="o">=</span><span class="n">lstm_model</span><span class="p">(</span><span class="n">TIMESTEPS</span><span class="p">,</span> <span class="n">RNN_LAYERS</span><span class="p">,</span> <span class="n">DENSE_LAYERS</span><span class="p">),</span>
-<span class="lineno">2</span>                                        <span class="n">n_classes</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-<span class="lineno">3</span>                                        <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  
-<span class="lineno">4</span>                                        <span class="n">steps</span><span class="o">=</span><span class="n">TRAINING_STEPS</span><span class="p">,</span>
-<span class="lineno">5</span>                                        <span class="n">optimizer</span><span class="o">=</span><span class="s">&#39;Adagrad&#39;</span><span class="p">,</span>
-<span class="lineno">6</span>                                        <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span>
-<span class="lineno">7</span>                                        <span class="n">batch_size</span><span class="o">=</span><span class="n">BATCH_SIZE</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno">1</span> <span class="n">regressor</span> <span class="o">=</span> <span class="n">learn</span><span class="o">.</span><span class="n">TensorFlowEstimator</span><span class="p">(</span><span class="n">model_fn</span><span class="o">=</span><span class="n">lstm_model</span><span class="p">(</span><span class="n">TIMESTEPS</span><span class="p">,</span> <span class="n">RNN_LAYERS</span><span class="p">,</span> <span class="n">DENSE_LAYERS</span><span class="p">),</span>
+<span class="lineno">2</span>                                       <span class="n">n_classes</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="lineno">3</span>                                       <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  
+<span class="lineno">4</span>                                       <span class="n">steps</span><span class="o">=</span><span class="n">TRAINING_STEPS</span><span class="p">,</span>
+<span class="lineno">5</span>                                       <span class="n">optimizer</span><span class="o">=</span><span class="s">&#39;Adagrad&#39;</span><span class="p">,</span>
+<span class="lineno">6</span>                                       <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span>
+<span class="lineno">7</span>                                       <span class="n">batch_size</span><span class="o">=</span><span class="n">BATCH_SIZE</span><span class="p">)</span></code></pre></div>
 
 <h3 id="predicting-the-sin-function">Predicting the <code>sin</code> function</h3>
 
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">generate_data</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10000</span><span class="p">),</span> <span class="n">TIMESTEPS</span><span class="p">,</span> <span class="n">seperate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 <span class="lineno"> 2</span> <span class="c"># create a lstm instance and validation monitor</span>
-<span class="lineno"> 3</span> <span class="n">validation_monitor</span> <span class="o">=</span> <span class="n">skflow</span><span class="o">.</span><span class="n">monitors</span><span class="o">.</span><span class="n">ValidationMonitor</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s">&#39;val&#39;</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="s">&#39;val&#39;</span><span class="p">],</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-<span class="lineno"> 4</span>                                                        <span class="n">print_steps</span><span class="o">=</span><span class="n">PRINT_STEPS</span><span class="p">,</span>
-<span class="lineno"> 5</span>                                                        <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
-<span class="lineno"> 6</span>                                                        <span class="n">logdir</span><span class="o">=</span><span class="n">LOG_DIR</span><span class="p">)</span>
-<span class="lineno"> 7</span> <span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s">&#39;train&#39;</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="s">&#39;train&#39;</span><span class="p">],</span> <span class="n">validation_monitor</span><span class="p">,</span> <span class="n">logdir</span><span class="o">=</span><span class="n">LOG_DIR</span><span class="p">)</span>
-<span class="lineno"> 8</span> 
-<span class="lineno"> 9</span> <span class="c"># &gt; last training steps</span>
-<span class="lineno">10</span> <span class="c"># Step #9700, epoch #119, avg. train loss: 0.00082, avg. val loss: 0.00084</span>
-<span class="lineno">11</span> <span class="c"># Step #9800, epoch #120, avg. train loss: 0.00083, avg. val loss: 0.00082</span>
-<span class="lineno">12</span> <span class="c"># Step #9900, epoch #122, avg. train loss: 0.00082, avg. val loss: 0.00082</span>
-<span class="lineno">13</span> <span class="c"># Step #10000, epoch #123, avg. train loss: 0.00081, avg. val loss: 0.00081</span></code></pre></div>
+<span class="lineno"> 3</span> <span class="n">validation_monitor</span> <span class="o">=</span> <span class="n">learn</span><span class="o">.</span><span class="n">monitors</span><span class="o">.</span><span class="n">ValidationMonitor</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s">&#39;val&#39;</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="s">&#39;val&#39;</span><span class="p">],</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="lineno"> 4</span>                                                       <span class="n">print_steps</span><span class="o">=</span><span class="n">PRINT_STEPS</span><span class="p">,</span>
+<span class="lineno"> 5</span>                                                       <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="lineno"> 6</span> <span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s">&#39;train&#39;</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="s">&#39;train&#39;</span><span class="p">],</span> <span class="n">validation_monitor</span><span class="p">,</span> <span class="n">logdir</span><span class="o">=</span><span class="n">LOG_DIR</span><span class="p">)</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span> <span class="c"># &gt; last training steps</span>
+<span class="lineno"> 9</span> <span class="c"># Step #9700, epoch #119, avg. train loss: 0.00082, avg. val loss: 0.00084</span>
+<span class="lineno">10</span> <span class="c"># Step #9800, epoch #120, avg. train loss: 0.00083, avg. val loss: 0.00082</span>
+<span class="lineno">11</span> <span class="c"># Step #9900, epoch #122, avg. train loss: 0.00082, avg. val loss: 0.00082</span>
+<span class="lineno">12</span> <span class="c"># Step #10000, epoch #123, avg. train loss: 0.00081, avg. val loss: 0.00081</span></code></pre></div>
 
 <p>predicting the test data</p>
 
@@ -270,19 +292,18 @@
 <span class="lineno"> 3</span> 
 <span class="lineno"> 4</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">generate_data</span><span class="p">(</span><span class="n">sin_cos</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10000</span><span class="p">),</span> <span class="n">TIMESTEPS</span><span class="p">,</span> <span class="n">seperate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 <span class="lineno"> 5</span> <span class="c"># create a lstm instance and validation monitor</span>
-<span class="lineno"> 6</span> <span class="n">validation_monitor</span> <span class="o">=</span> <span class="n">skflow</span><span class="o">.</span><span class="n">monitors</span><span class="o">.</span><span class="n">ValidationMonitor</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s">&#39;val&#39;</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="s">&#39;val&#39;</span><span class="p">],</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-<span class="lineno"> 7</span>                                                        <span class="n">print_steps</span><span class="o">=</span><span class="n">PRINT_STEPS</span><span class="p">,</span>
-<span class="lineno"> 8</span>                                                        <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
-<span class="lineno"> 9</span>                                                        <span class="n">logdir</span><span class="o">=</span><span class="n">LOG_DIR</span><span class="p">)</span>
-<span class="lineno">10</span> <span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s">&#39;train&#39;</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="s">&#39;train&#39;</span><span class="p">],</span> <span class="n">validation_monitor</span><span class="p">,</span> <span class="n">logdir</span><span class="o">=</span><span class="n">LOG_DIR</span><span class="p">)</span>
-<span class="lineno">11</span> 
-<span class="lineno">12</span> <span class="c"># &gt; last training steps</span>
-<span class="lineno">13</span> <span class="c"># Step #9500, epoch #117, avg. train loss: 0.00120, avg. val loss: 0.00118</span>
-<span class="lineno">14</span> <span class="c"># Step #9600, epoch #118, avg. train loss: 0.00121, avg. val loss: 0.00118</span>
-<span class="lineno">15</span> <span class="c"># Step #9700, epoch #119, avg. train loss: 0.00118, avg. val loss: 0.00118</span>
-<span class="lineno">16</span> <span class="c"># Step #9800, epoch #120, avg. train loss: 0.00118, avg. val loss: 0.00116</span>
-<span class="lineno">17</span> <span class="c"># Step #9900, epoch #122, avg. train loss: 0.00118, avg. val loss: 0.00115</span>
-<span class="lineno">18</span> <span class="c"># Step #10000, epoch #123, avg. train loss: 0.00117, avg. val loss: 0.00115</span></code></pre></div>
+<span class="lineno"> 6</span> <span class="n">validation_monitor</span> <span class="o">=</span> <span class="n">learn</span><span class="o">.</span><span class="n">monitors</span><span class="o">.</span><span class="n">ValidationMonitor</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s">&#39;val&#39;</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="s">&#39;val&#39;</span><span class="p">],</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="lineno"> 7</span>                                                       <span class="n">print_steps</span><span class="o">=</span><span class="n">PRINT_STEPS</span><span class="p">,</span>
+<span class="lineno"> 8</span>                                                       <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="lineno"> 9</span> <span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s">&#39;train&#39;</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="s">&#39;train&#39;</span><span class="p">],</span> <span class="n">validation_monitor</span><span class="p">,</span> <span class="n">logdir</span><span class="o">=</span><span class="n">LOG_DIR</span><span class="p">)</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="c"># &gt; last training steps</span>
+<span class="lineno">12</span> <span class="c"># Step #9500, epoch #117, avg. train loss: 0.00120, avg. val loss: 0.00118</span>
+<span class="lineno">13</span> <span class="c"># Step #9600, epoch #118, avg. train loss: 0.00121, avg. val loss: 0.00118</span>
+<span class="lineno">14</span> <span class="c"># Step #9700, epoch #119, avg. train loss: 0.00118, avg. val loss: 0.00118</span>
+<span class="lineno">15</span> <span class="c"># Step #9800, epoch #120, avg. train loss: 0.00118, avg. val loss: 0.00116</span>
+<span class="lineno">16</span> <span class="c"># Step #9900, epoch #122, avg. train loss: 0.00118, avg. val loss: 0.00115</span>
+<span class="lineno">17</span> <span class="c"># Step #10000, epoch #123, avg. train loss: 0.00117, avg. val loss: 0.00115</span></code></pre></div>
 
 <p>predicting the test data</p>
 
@@ -309,19 +330,18 @@
 <span class="lineno"> 3</span> 
 <span class="lineno"> 4</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">generate_data</span><span class="p">(</span><span class="n">x_sin</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10000</span><span class="p">),</span> <span class="n">TIMESTEPS</span><span class="p">,</span> <span class="n">seperate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 <span class="lineno"> 5</span> <span class="c"># create a lstm instance and validation monitor</span>
-<span class="lineno"> 6</span> <span class="n">validation_monitor</span> <span class="o">=</span> <span class="n">skflow</span><span class="o">.</span><span class="n">monitors</span><span class="o">.</span><span class="n">ValidationMonitor</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s">&#39;val&#39;</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="s">&#39;val&#39;</span><span class="p">],</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-<span class="lineno"> 7</span>                                                        <span class="n">print_steps</span><span class="o">=</span><span class="n">PRINT_STEPS</span><span class="p">,</span>
-<span class="lineno"> 8</span>                                                        <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
-<span class="lineno"> 9</span>                                                        <span class="n">logdir</span><span class="o">=</span><span class="n">LOG_DIR</span><span class="p">)</span>
-<span class="lineno">10</span> <span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s">&#39;train&#39;</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="s">&#39;train&#39;</span><span class="p">],</span> <span class="n">validation_monitor</span><span class="p">,</span> <span class="n">logdir</span><span class="o">=</span><span class="n">LOG_DIR</span><span class="p">)</span>
-<span class="lineno">11</span> 
-<span class="lineno">12</span> <span class="c"># &gt; last training steps</span>
-<span class="lineno">13</span> <span class="c"># Step #32500, epoch #401, avg. train loss: 0.48248, avg. val loss: 15.98678</span>
-<span class="lineno">14</span> <span class="c"># Step #33800, epoch #417, avg. train loss: 0.47391, avg. val loss: 15.92590</span>
-<span class="lineno">15</span> <span class="c"># Step #35100, epoch #433, avg. train loss: 0.45570, avg. val loss: 15.77346</span>
-<span class="lineno">16</span> <span class="c"># Step #36400, epoch #449, avg. train loss: 0.45853, avg. val loss: 15.61680</span>
-<span class="lineno">17</span> <span class="c"># Step #37700, epoch #465, avg. train loss: 0.44212, avg. val loss: 15.48604</span>
-<span class="lineno">18</span> <span class="c"># Step #39000, epoch #481, avg. train loss: 0.43224, avg. val loss: 15.43947</span></code></pre></div>
+<span class="lineno"> 6</span> <span class="n">validation_monitor</span> <span class="o">=</span> <span class="n">learn</span><span class="o">.</span><span class="n">monitors</span><span class="o">.</span><span class="n">ValidationMonitor</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s">&#39;val&#39;</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="s">&#39;val&#39;</span><span class="p">],</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="lineno"> 7</span>                                                       <span class="n">print_steps</span><span class="o">=</span><span class="n">PRINT_STEPS</span><span class="p">,</span>
+<span class="lineno"> 8</span>                                                       <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="lineno"> 9</span> <span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s">&#39;train&#39;</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="s">&#39;train&#39;</span><span class="p">],</span> <span class="n">validation_monitor</span><span class="p">,</span> <span class="n">logdir</span><span class="o">=</span><span class="n">LOG_DIR</span><span class="p">)</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="c"># &gt; last training steps</span>
+<span class="lineno">12</span> <span class="c"># Step #32500, epoch #401, avg. train loss: 0.48248, avg. val loss: 15.98678</span>
+<span class="lineno">13</span> <span class="c"># Step #33800, epoch #417, avg. train loss: 0.47391, avg. val loss: 15.92590</span>
+<span class="lineno">14</span> <span class="c"># Step #35100, epoch #433, avg. train loss: 0.45570, avg. val loss: 15.77346</span>
+<span class="lineno">15</span> <span class="c"># Step #36400, epoch #449, avg. train loss: 0.45853, avg. val loss: 15.61680</span>
+<span class="lineno">16</span> <span class="c"># Step #37700, epoch #465, avg. train loss: 0.44212, avg. val loss: 15.48604</span>
+<span class="lineno">17</span> <span class="c"># Step #39000, epoch #481, avg. train loss: 0.43224, avg. val loss: 15.43947</span></code></pre></div>
 
 <p>predicting the test data</p>
 
