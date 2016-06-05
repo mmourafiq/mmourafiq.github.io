@@ -146,31 +146,33 @@
 <span class="lineno">13</span> 
 <span class="lineno">14</span>     <span class="k">def</span> <span class="nf">lstm_cells</span><span class="p">(</span><span class="n">layers</span><span class="p">):</span>
 <span class="lineno">15</span>         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
-<span class="lineno">16</span>             <span class="k">return</span> <span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn_cell</span><span class="o">.</span><span class="n">DropoutWrapper</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn_cell</span><span class="o">.</span><span class="n">BasicLSTMCell</span><span class="p">(</span><span class="n">layer</span><span class="p">[</span><span class="s">&#39;steps&#39;</span><span class="p">]),</span>
-<span class="lineno">17</span>                                                   <span class="n">layer</span><span class="p">[</span><span class="s">&#39;keep_prob&#39;</span><span class="p">])</span>
-<span class="lineno">18</span>                     <span class="k">if</span> <span class="n">layer</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;keep_prob&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn_cell</span><span class="o">.</span><span class="n">BasicLSTMCell</span><span class="p">(</span><span class="n">layer</span><span class="p">[</span><span class="s">&#39;steps&#39;</span><span class="p">])</span>
-<span class="lineno">19</span>                     <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">layers</span><span class="p">]</span>
-<span class="lineno">20</span>         <span class="k">return</span> <span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn_cell</span><span class="o">.</span><span class="n">BasicLSTMCell</span><span class="p">(</span><span class="n">steps</span><span class="p">)</span> <span class="k">for</span> <span class="n">steps</span> <span class="ow">in</span> <span class="n">layers</span><span class="p">]</span>
-<span class="lineno">21</span> 
-<span class="lineno">22</span>     <span class="k">def</span> <span class="nf">dnn_layers</span><span class="p">(</span><span class="n">input_layers</span><span class="p">,</span> <span class="n">layers</span><span class="p">):</span>
-<span class="lineno">23</span>         <span class="k">if</span> <span class="n">layers</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-<span class="lineno">24</span>             <span class="k">return</span> <span class="n">learn</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">dnn</span><span class="p">(</span><span class="n">input_layers</span><span class="p">,</span>
-<span class="lineno">25</span>                                  <span class="n">layers</span><span class="p">[</span><span class="s">&#39;layers&#39;</span><span class="p">],</span>
-<span class="lineno">26</span>                                  <span class="n">activation</span><span class="o">=</span><span class="n">layers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;activation&#39;</span><span class="p">),</span>
-<span class="lineno">27</span>                                  <span class="n">dropout</span><span class="o">=</span><span class="n">layers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;dropout&#39;</span><span class="p">))</span>
-<span class="lineno">28</span>         <span class="k">elif</span> <span class="n">layers</span><span class="p">:</span>
-<span class="lineno">29</span>             <span class="k">return</span> <span class="n">learn</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">dnn</span><span class="p">(</span><span class="n">input_layers</span><span class="p">,</span> <span class="n">layers</span><span class="p">)</span>
-<span class="lineno">30</span>         <span class="k">else</span><span class="p">:</span>
-<span class="lineno">31</span>             <span class="k">return</span> <span class="n">input_layers</span>
-<span class="lineno">32</span> 
-<span class="lineno">33</span>     <span class="k">def</span> <span class="nf">_lstm_model</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-<span class="lineno">34</span>         <span class="n">stacked_lstm</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn_cell</span><span class="o">.</span><span class="n">MultiRNNCell</span><span class="p">(</span><span class="n">lstm_cells</span><span class="p">(</span><span class="n">rnn_layers</span><span class="p">))</span>
-<span class="lineno">35</span>         <span class="n">x_</span> <span class="o">=</span> <span class="n">learn</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">split_squeeze</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">time_steps</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
-<span class="lineno">36</span>         <span class="n">output</span><span class="p">,</span> <span class="n">layers</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn</span><span class="p">(</span><span class="n">stacked_lstm</span><span class="p">,</span> <span class="n">x_</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-<span class="lineno">37</span>         <span class="n">output</span> <span class="o">=</span> <span class="n">dnn_layers</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">dense_layers</span><span class="p">)</span>
-<span class="lineno">38</span>         <span class="k">return</span> <span class="n">learn</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">linear_regression</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="lineno">39</span> 
-<span class="lineno">40</span>     <span class="k">return</span> <span class="n">_lstm_model</span></code></pre></div>
+<span class="lineno">16</span>             <span class="k">return</span> <span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn_cell</span><span class="o">.</span><span class="n">DropoutWrapper</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn_cell</span><span class="o">.</span><span class="n">BasicLSTMCell</span><span class="p">(</span><span class="n">layer</span><span class="p">[</span><span class="s">&#39;steps&#39;</span><span class="p">],</span>
+<span class="lineno">17</span>                                                                                <span class="n">state_is_tuple</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+<span class="lineno">18</span>                                                   <span class="n">layer</span><span class="p">[</span><span class="s">&#39;keep_prob&#39;</span><span class="p">])</span>
+<span class="lineno">19</span>                     <span class="k">if</span> <span class="n">layer</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;keep_prob&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn_cell</span><span class="o">.</span><span class="n">BasicLSTMCell</span><span class="p">(</span><span class="n">layer</span><span class="p">[</span><span class="s">&#39;steps&#39;</span><span class="p">],</span>
+<span class="lineno">20</span>                                                                                 <span class="n">state_is_tuple</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="lineno">21</span>                     <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">layers</span><span class="p">]</span>
+<span class="lineno">22</span>         <span class="k">return</span> <span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn_cell</span><span class="o">.</span><span class="n">BasicLSTMCell</span><span class="p">(</span><span class="n">steps</span><span class="p">,</span> <span class="n">state_is_tuple</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="k">for</span> <span class="n">steps</span> <span class="ow">in</span> <span class="n">layers</span><span class="p">]</span>
+<span class="lineno">23</span> 
+<span class="lineno">24</span>     <span class="k">def</span> <span class="nf">dnn_layers</span><span class="p">(</span><span class="n">input_layers</span><span class="p">,</span> <span class="n">layers</span><span class="p">):</span>
+<span class="lineno">25</span>         <span class="k">if</span> <span class="n">layers</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+<span class="lineno">26</span>             <span class="k">return</span> <span class="n">learn</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">dnn</span><span class="p">(</span><span class="n">input_layers</span><span class="p">,</span>
+<span class="lineno">27</span>                                  <span class="n">layers</span><span class="p">[</span><span class="s">&#39;layers&#39;</span><span class="p">],</span>
+<span class="lineno">28</span>                                  <span class="n">activation</span><span class="o">=</span><span class="n">layers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;activation&#39;</span><span class="p">),</span>
+<span class="lineno">29</span>                                  <span class="n">dropout</span><span class="o">=</span><span class="n">layers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;dropout&#39;</span><span class="p">))</span>
+<span class="lineno">30</span>         <span class="k">elif</span> <span class="n">layers</span><span class="p">:</span>
+<span class="lineno">31</span>             <span class="k">return</span> <span class="n">learn</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">dnn</span><span class="p">(</span><span class="n">input_layers</span><span class="p">,</span> <span class="n">layers</span><span class="p">)</span>
+<span class="lineno">32</span>         <span class="k">else</span><span class="p">:</span>
+<span class="lineno">33</span>             <span class="k">return</span> <span class="n">input_layers</span>
+<span class="lineno">34</span> 
+<span class="lineno">35</span>     <span class="k">def</span> <span class="nf">_lstm_model</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="lineno">36</span>         <span class="n">stacked_lstm</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn_cell</span><span class="o">.</span><span class="n">MultiRNNCell</span><span class="p">(</span><span class="n">lstm_cells</span><span class="p">(</span><span class="n">rnn_layers</span><span class="p">),</span> <span class="n">state_is_tuple</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="lineno">37</span>         <span class="n">x_</span> <span class="o">=</span> <span class="n">learn</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">split_squeeze</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">time_steps</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+<span class="lineno">38</span>         <span class="n">output</span><span class="p">,</span> <span class="n">layers</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn</span><span class="p">(</span><span class="n">stacked_lstm</span><span class="p">,</span> <span class="n">x_</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="lineno">39</span>         <span class="n">output</span> <span class="o">=</span> <span class="n">dnn_layers</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">dense_layers</span><span class="p">)</span>
+<span class="lineno">40</span>         <span class="k">return</span> <span class="n">learn</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">linear_regression</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="lineno">41</span> 
+<span class="lineno">42</span>     <span class="k">return</span> <span class="n">_lstm_model</span></code></pre></div>
 
 <p>So our model expects a data with dimension corresponding to <code>(batch size, time_steps of the first lstm cell, num_features in our data)</code>.</p>
 
@@ -235,8 +237,8 @@
 <p>Let’s first define the hyperparameters</p>
 
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno">1</span> <span class="n">LOG_DIR</span> <span class="o">=</span> <span class="s">&#39;./ops_logs&#39;</span>
-<span class="lineno">2</span> <span class="n">TIMESTEPS</span> <span class="o">=</span> <span class="mi">40</span>
-<span class="lineno">3</span> <span class="n">RNN_LAYERS</span> <span class="o">=</span> <span class="p">[{</span><span class="s">&#39;steps&#39;</span><span class="p">:</span> <span class="n">TIMESTEPS</span><span class="p">},</span> <span class="p">{</span><span class="s">&#39;steps&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s">&#39;keep_prob&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">}]</span>
+<span class="lineno">2</span> <span class="n">TIMESTEPS</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="lineno">3</span> <span class="n">RNN_LAYERS</span> <span class="o">=</span> <span class="p">[{</span><span class="s">&#39;steps&#39;</span><span class="p">:</span> <span class="n">TIMESTEPS</span><span class="p">},</span> <span class="p">{</span><span class="s">&#39;steps&#39;</span><span class="p">:</span> <span class="n">TIMESTEPS</span><span class="p">,</span> <span class="s">&#39;keep_prob&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">}]</span>
 <span class="lineno">4</span> <span class="n">DENSE_LAYERS</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 <span class="lineno">5</span> <span class="n">TRAINING_STEPS</span> <span class="o">=</span> <span class="mi">130000</span>
 <span class="lineno">6</span> <span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">100</span>
@@ -256,8 +258,8 @@
 
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">generate_data</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10000</span><span class="p">),</span> <span class="n">TIMESTEPS</span><span class="p">,</span> <span class="n">seperate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 <span class="lineno"> 2</span> <span class="c"># create a lstm instance and validation monitor</span>
-<span class="lineno"> 3</span> <span class="n">validation_monitor</span> <span class="o">=</span> <span class="n">learn</span><span class="o">.</span><span class="n">monitors</span><span class="o">.</span><span class="n">ValidationMonitor</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s">&#39;val&#39;</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="s">&#39;val&#39;</span><span class="p">],</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-<span class="lineno"> 4</span>                                                       <span class="n">print_steps</span><span class="o">=</span><span class="n">PRINT_STEPS</span><span class="p">,</span>
+<span class="lineno"> 3</span> <span class="n">validation_monitor</span> <span class="o">=</span> <span class="n">learn</span><span class="o">.</span><span class="n">monitors</span><span class="o">.</span><span class="n">ValidationMonitor</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s">&#39;val&#39;</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="s">&#39;val&#39;</span><span class="p">],</span>
+<span class="lineno"> 4</span>                                                       <span class="n">every_n_steps</span><span class="o">=</span><span class="n">PRINT_STEPS</span><span class="p">,</span>
 <span class="lineno"> 5</span>                                                       <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 <span class="lineno"> 6</span> <span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s">&#39;train&#39;</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="s">&#39;train&#39;</span><span class="p">],</span> <span class="n">validation_monitor</span><span class="p">,</span> <span class="n">logdir</span><span class="o">=</span><span class="n">LOG_DIR</span><span class="p">)</span>
 <span class="lineno"> 7</span> 
@@ -277,12 +279,6 @@
   <li>real sin function</li>
 </ul>
 
-<p><img src="/images/posts/sin.png" alt="sin-function" /></p>
-
-<ul>
-  <li>predicted sin function</li>
-</ul>
-
 <p><img src="/images/posts/predicted-sin.png" alt="sin-function" /></p>
 
 <h3 id="predicting-the-sin-and-cos-functions-together">Predicting the <code>sin and cos</code> functions together</h3>
@@ -292,8 +288,8 @@
 <span class="lineno"> 3</span> 
 <span class="lineno"> 4</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">generate_data</span><span class="p">(</span><span class="n">sin_cos</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10000</span><span class="p">),</span> <span class="n">TIMESTEPS</span><span class="p">,</span> <span class="n">seperate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 <span class="lineno"> 5</span> <span class="c"># create a lstm instance and validation monitor</span>
-<span class="lineno"> 6</span> <span class="n">validation_monitor</span> <span class="o">=</span> <span class="n">learn</span><span class="o">.</span><span class="n">monitors</span><span class="o">.</span><span class="n">ValidationMonitor</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s">&#39;val&#39;</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="s">&#39;val&#39;</span><span class="p">],</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-<span class="lineno"> 7</span>                                                       <span class="n">print_steps</span><span class="o">=</span><span class="n">PRINT_STEPS</span><span class="p">,</span>
+<span class="lineno"> 6</span> <span class="n">validation_monitor</span> <span class="o">=</span> <span class="n">learn</span><span class="o">.</span><span class="n">monitors</span><span class="o">.</span><span class="n">ValidationMonitor</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s">&#39;val&#39;</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="s">&#39;val&#39;</span><span class="p">],</span>
+<span class="lineno"> 7</span>                                                       <span class="n">every_n_steps</span><span class="o">=</span><span class="n">PRINT_STEPS</span><span class="p">,</span>
 <span class="lineno"> 8</span>                                                       <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 <span class="lineno"> 9</span> <span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s">&#39;train&#39;</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="s">&#39;train&#39;</span><span class="p">],</span> <span class="n">validation_monitor</span><span class="p">,</span> <span class="n">logdir</span><span class="o">=</span><span class="n">LOG_DIR</span><span class="p">)</span>
 <span class="lineno">10</span> 
@@ -312,12 +308,6 @@
 <span class="lineno">3</span> <span class="c"># 0.001144</span></code></pre></div>
 
 <ul>
-  <li>real sin-cos function</li>
-</ul>
-
-<p><img src="/images/posts/sin-cos.png" alt="sin-function" /></p>
-
-<ul>
   <li>predicted sin-cos function</li>
 </ul>
 
@@ -330,8 +320,8 @@
 <span class="lineno"> 3</span> 
 <span class="lineno"> 4</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">generate_data</span><span class="p">(</span><span class="n">x_sin</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10000</span><span class="p">),</span> <span class="n">TIMESTEPS</span><span class="p">,</span> <span class="n">seperate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 <span class="lineno"> 5</span> <span class="c"># create a lstm instance and validation monitor</span>
-<span class="lineno"> 6</span> <span class="n">validation_monitor</span> <span class="o">=</span> <span class="n">learn</span><span class="o">.</span><span class="n">monitors</span><span class="o">.</span><span class="n">ValidationMonitor</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s">&#39;val&#39;</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="s">&#39;val&#39;</span><span class="p">],</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-<span class="lineno"> 7</span>                                                       <span class="n">print_steps</span><span class="o">=</span><span class="n">PRINT_STEPS</span><span class="p">,</span>
+<span class="lineno"> 6</span> <span class="n">validation_monitor</span> <span class="o">=</span> <span class="n">learn</span><span class="o">.</span><span class="n">monitors</span><span class="o">.</span><span class="n">ValidationMonitor</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s">&#39;val&#39;</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="s">&#39;val&#39;</span><span class="p">],</span>
+<span class="lineno"> 7</span>                                                       <span class="n">every_n_steps</span><span class="o">=</span><span class="n">PRINT_STEPS</span><span class="p">,</span>
 <span class="lineno"> 8</span>                                                       <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 <span class="lineno"> 9</span> <span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s">&#39;train&#39;</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="s">&#39;train&#39;</span><span class="p">],</span> <span class="n">validation_monitor</span><span class="p">,</span> <span class="n">logdir</span><span class="o">=</span><span class="n">LOG_DIR</span><span class="p">)</span>
 <span class="lineno">10</span> 
@@ -360,6 +350,12 @@
 </ul>
 
 <p><img src="/images/posts/predicted-xsin.png" alt="sin-function" /></p>
+
+<h3 id="model-loss">model loss</h3>
+
+<p><img src="/images/posts/sin-loss.png" alt="sin-loss" /></p>
+
+<p><img src="/images/posts/sin-loss-mean.png" alt="sin-loss-mean" /></p>
 
 <p><strong>N.B</strong> I am not completely sure if this is the right way to train lstm on regression problems, I am still experimenting with the <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/ops/seq2seq.py#L151">RNN sequence-to-sequence model</a>, I will update this post or write a new one to use the sequence-to-sequence model.</p>
 
