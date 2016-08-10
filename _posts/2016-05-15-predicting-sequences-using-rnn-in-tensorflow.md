@@ -5,7 +5,7 @@ type: "article"
 
 title: "Sequence prediction using recurrent neural networks(LSTM) with TensorFlow"
 subtitle: "LSTM regression using TensorFlow."
-cover_image: posts/tensorflow.png
+cover_image: posts/tensorflow.jpg
 cover_image_caption: ""
 
 excerpt: "LSTM regression using TensorFlow."
