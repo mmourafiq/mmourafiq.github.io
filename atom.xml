@@ -4,7 +4,7 @@
  <title>Mourad Mourafiq</title>
  <link href="http://mourafiq.com/atom.xml" rel="self"/>
  <link href="http://mourafiq.com"/>
- <updated>2016-08-11T11:15:58+02:00</updated>
+ <updated>2016-08-11T11:33:14+02:00</updated>
  <id>http://mourafiq.com/atom.xml</id>
  <author>
    <name>Mourad Mourafiq</name>
@@ -76,10 +76,9 @@ Source: http://deeplearning.stanford.edu/wiki/index.php/File:Pooling_schematic.g
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;np&lt;/span&gt;
 &lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;plt&lt;/span&gt;
 &lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.gridspec&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;gridspec&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;4&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;tensorflow&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;tf&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;PIL&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Image&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;7&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;lineno&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;tensorflow&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;tf&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;PIL&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Image&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;We need also a picture to play with&lt;/p&gt;
 
@@ -155,7 +154,7 @@ Source: http://deeplearning.stanford.edu/wiki/index.php/File:Pooling_schematic.g
 &lt;span class=&quot;lineno&quot;&gt;32&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
 &lt;span class=&quot;lineno&quot;&gt;33&lt;/span&gt;             &lt;span class=&quot;n&quot;&gt;show_image_ops_gray&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conv_op&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sigmoid_op&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;avg_pool_op&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;max_pool_op&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;The convolve function that we have will allow us to try any filter from the &lt;a href=&quot;https://docs.gimp.org/en/plug-in-convmatrix.html&quot;&gt;gimp’s documentation&lt;/a&gt;, we will try some of them here, but you can modify the kernels to see how image changes.&lt;/p&gt;
+&lt;p&gt;The convolve function that we just built, will allow us to try any filter from this list of filters in the &lt;a href=&quot;https://docs.gimp.org/en/plug-in-convmatrix.html&quot;&gt;gimp’s documentation&lt;/a&gt;. We will try some of them here, but you can modify the kernels or other kernels from the list to see how image changes.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;sharpen filter&lt;/li&gt;
@@ -209,9 +208,9 @@ Source: http://deeplearning.stanford.edu/wiki/index.php/File:Pooling_schematic.g
   &lt;li&gt;Convolutional model&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;After trying the filters in the example and changing the values to see how they change the original image, we not only start to  develop an intuition about how these operations work, but we can also used them to create a convolutional neural network.&lt;/p&gt;
+&lt;p&gt;After trying the filters in the example to see how they change the original image, we not only started to develop an intuition about how these operations work, but also we prepared the practical tools to build a convolutional neural network.&lt;/p&gt;
 
-&lt;p&gt;CNNs are basically just multiple layers of convolutions with nonlinear activation functions, e.g sigmoid, relu or tanh applied to the results, Followed with either other convolutions layers or pooling layers and finally fully connected layers. In this section we will be using the high-level machine learning API &lt;code&gt;tf.contrib.learn&lt;/code&gt;, &lt;code&gt;tf.contrib.layers&lt;/code&gt; and &lt;code&gt;tf.contrib.layers&lt;/code&gt; to create, train and configure our models.&lt;/p&gt;
+&lt;p&gt;CNNs are a family of neural network architecture built essentially based on multiple layers of convolutions with nonlinear activation functions, e.g sigmoid, relu or tanh applied to the results, followed with either other convolutions layers or pooling layers and finally fully connected layers. In this section we will be using the high-level machine learning API &lt;code&gt;tf.contrib.learn&lt;/code&gt;, &lt;code&gt;tf.contrib.layers&lt;/code&gt; and &lt;code&gt;tf.contrib.layers&lt;/code&gt; to create, train and configure our models.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;LeNet model&lt;/li&gt;

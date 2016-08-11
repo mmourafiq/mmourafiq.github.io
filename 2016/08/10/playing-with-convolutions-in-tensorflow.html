@@ -163,10 +163,9 @@ Source: http://deeplearning.stanford.edu/wiki/index.php/File:Pooling_schematic.g
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="lineno">2</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="lineno">3</span> <span class="kn">import</span> <span class="nn">matplotlib.gridspec</span> <span class="kn">as</span> <span class="nn">gridspec</span>
-<span class="lineno">4</span> 
-<span class="lineno">5</span> <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
-<span class="lineno">6</span> <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="lineno">7</span> <span class="kn">import</span> <span class="nn">numpy</span></code></pre></div>
+<span class="lineno">4</span> <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
+<span class="lineno">5</span> <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="lineno">6</span> <span class="kn">import</span> <span class="nn">numpy</span></code></pre></div>
 
 <p>We need also a picture to play with</p>
 
@@ -242,7 +241,7 @@ Source: http://deeplearning.stanford.edu/wiki/index.php/File:Pooling_schematic.g
 <span class="lineno">32</span>         <span class="k">else</span><span class="p">:</span>
 <span class="lineno">33</span>             <span class="n">show_image_ops_gray</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">conv_op</span><span class="p">,</span> <span class="n">sigmoid_op</span><span class="p">,</span> <span class="n">avg_pool_op</span><span class="p">,</span> <span class="n">max_pool_op</span><span class="p">)</span></code></pre></div>
 
-<p>The convolve function that we have will allow us to try any filter from the <a href="https://docs.gimp.org/en/plug-in-convmatrix.html">gimp’s documentation</a>, we will try some of them here, but you can modify the kernels to see how image changes.</p>
+<p>The convolve function that we just built, will allow us to try any filter from this list of filters in the <a href="https://docs.gimp.org/en/plug-in-convmatrix.html">gimp’s documentation</a>. We will try some of them here, but you can modify the kernels or other kernels from the list to see how image changes.</p>
 
 <ul>
   <li>sharpen filter</li>
@@ -296,9 +295,9 @@ Source: http://deeplearning.stanford.edu/wiki/index.php/File:Pooling_schematic.g
   <li>Convolutional model</li>
 </ul>
 
-<p>After trying the filters in the example and changing the values to see how they change the original image, we not only start to  develop an intuition about how these operations work, but we can also used them to create a convolutional neural network.</p>
+<p>After trying the filters in the example to see how they change the original image, we not only started to develop an intuition about how these operations work, but also we prepared the practical tools to build a convolutional neural network.</p>
 
-<p>CNNs are basically just multiple layers of convolutions with nonlinear activation functions, e.g sigmoid, relu or tanh applied to the results, Followed with either other convolutions layers or pooling layers and finally fully connected layers. In this section we will be using the high-level machine learning API <code>tf.contrib.learn</code>, <code>tf.contrib.layers</code> and <code>tf.contrib.layers</code> to create, train and configure our models.</p>
+<p>CNNs are a family of neural network architecture built essentially based on multiple layers of convolutions with nonlinear activation functions, e.g sigmoid, relu or tanh applied to the results, followed with either other convolutions layers or pooling layers and finally fully connected layers. In this section we will be using the high-level machine learning API <code>tf.contrib.learn</code>, <code>tf.contrib.layers</code> and <code>tf.contrib.layers</code> to create, train and configure our models.</p>
 
 <ul>
   <li>LeNet model</li>
