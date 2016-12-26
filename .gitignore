@@ -4,4 +4,5 @@
 .bundle/
 
 # Ignore OSX files like:
+.idea/
 .DS_Store
