@@ -4,7 +4,7 @@
  <title>Mourad Mourafiq</title>
  <link href="http://mourafiq.com/atom.xml" rel="self"/>
  <link href="http://mourafiq.com"/>
- <updated>2017-06-13T11:04:20+02:00</updated>
+ <updated>2017-06-13T11:05:19+02:00</updated>
  <id>http://mourafiq.com/atom.xml</id>
  <author>
    <name>Mourad Mourafiq</name>
@@ -318,7 +318,9 @@ Source: http://deeplearning.stanford.edu/wiki/index.php/File:Pooling_schematic.g
    <id>http://mourafiq.com/2016/05/15/predicting-sequences-using-rnn-in-tensorflow</id>
    <content type="html">&lt;p&gt;This post tries to demonstrates how to approximate a sequence of vectors using a recurrent neural networks, in particular I will be using the LSTM architecture, The complete code used for this post could be found &lt;a href=&quot;https://github.com/mouradmourafiq/tensorflow-lstm-regression&quot;&gt;here&lt;/a&gt;. Most of the examples I found in the internet apply the LSTM architecture to natural language processing problems, and I couldn’t find an example where this architecture could be used to predict continuous values.&lt;/p&gt;
 
-&lt;h2 id=&quot;updated-code-compatible-with-tensorflow-110&quot;&gt;Updated: code compatible with tensorflow 1.1.0&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;update-code-compatible-with-tensorflow-110&quot;&gt;Update: code compatible with tensorflow 1.1.0&lt;/h2&gt;
 
 &lt;p&gt;The same model can be achieved by using the LSTM layer from &lt;a href=&quot;https://github.com/polyaxon/polyaxon/&quot;&gt;polyaxon&lt;/a&gt;, here’s a an experiment configuration to achieve the same results from this post:&lt;/p&gt;
 
