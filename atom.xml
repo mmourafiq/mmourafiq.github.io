@@ -4,13 +4,325 @@
  <title>Mourad Mourafiq</title>
  <link href="http://mourafiq.com/atom.xml" rel="self"/>
  <link href="http://mourafiq.com"/>
- <updated>2017-09-29T11:36:27+02:00</updated>
+ <updated>2018-07-19T01:08:22+02:00</updated>
  <id>http://mourafiq.com/atom.xml</id>
  <author>
    <name>Mourad Mourafiq</name>
    <uri>http://mourafiq.com</uri>
  </author>
  
+ 
+ <entry>
+   <title>Mounting multiple data and outputs volumes</title>
+   <link href="http://mourafiq.com/2018/07/16/mounting-multiple-data-and-outputs-volumes.html"/>
+   <published>2018-07-16T00:00:00+02:00</published>
+   <updated>2018-07-16T00:00:00+02:00</updated>
+   <id>http://mourafiq.com/2018/07/16/mounting-multiple-data-and-outputs-volumes</id>
+   <content type="html">&lt;p&gt;For some advanced uses cases, users might need to mount more than one data and/or outputs volumes.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/polyaxon/polyaxon&quot;&gt;Polyaxon&lt;/a&gt; provides a way to mount multiple volumes so that user can choose which volume(s) to mount for a specific job or experiment.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://medium.com/polyaxon/mounting-multiple-data-and-outputs-volumes-41f2d912f2f8&quot;&gt;Read more&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Advanced scheduling of experiments and jobs on Polyaxon</title>
+   <link href="http://mourafiq.com/2018/05/16/advanced-scheduling-of-experiments-and-jobs-on-polyaxon.html"/>
+   <published>2018-05-16T00:00:00+02:00</published>
+   <updated>2018-05-16T00:00:00+02:00</updated>
+   <id>http://mourafiq.com/2018/05/16/advanced-scheduling-of-experiments-and-jobs-on-polyaxon</id>
+   <content type="html">&lt;p&gt;For some advanced use cases, users might need to have more control over where specific &lt;a href=&quot;https://github.com/polyaxon/polyaxon&quot;&gt;Polyaxon&lt;/a&gt; jobs should be deployed on their clusters.&lt;/p&gt;
+
+&lt;p&gt;Polyaxon provides a list of options to select which nodes should be used for the core platform, for the dependencies, and for the experiments. These options are &lt;a href=&quot;https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector&quot;&gt;Node selectors&lt;/a&gt;, &lt;a href=&quot;https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/&quot;&gt;Tolerations&lt;/a&gt;, and &lt;a href=&quot;https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity&quot;&gt;Affinity&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://medium.com/polyaxon/advanced-scheduling-of-experiments-and-jobs-on-polyaxon-c0fa071e2ae2&quot;&gt;Read more&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Saving, resuming, and restarting experiments with Polyaxon</title>
+   <link href="http://mourafiq.com/2018/05/04/saving-resuming-and-restarting-experiments-with-polyaxon.html"/>
+   <published>2018-05-04T00:00:00+02:00</published>
+   <updated>2018-05-04T00:00:00+02:00</updated>
+   <id>http://mourafiq.com/2018/05/04/saving-resuming-and-restarting-experiments-with-polyaxon</id>
+   <content type="html">&lt;p&gt;This post introduces a new feature on &lt;a href=&quot;https://github.com/polyaxon/polyaxon&quot;&gt;Polyaxon&lt;/a&gt; for checkpointing, resuming, and restarting experiments.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://medium.com/polyaxon/saving-resuming-and-restarting-experiments-with-polyaxon-7812b0450358&quot;&gt;Read more&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Hyperparameters tuning with Polyaxon</title>
+   <link href="http://mourafiq.com/2018/04/25/hyperparameters-tuning-with-polyaxon.html"/>
+   <published>2018-04-25T00:00:00+02:00</published>
+   <updated>2018-04-25T00:00:00+02:00</updated>
+   <id>http://mourafiq.com/2018/04/25/hyperparameters-tuning-with-polyaxon</id>
+   <content type="html">&lt;p&gt;hyperparameters tuning is very important concept in order to choose the optimal hyperparameters for a given algorithm, it is crucial for the success of a machine learning model or a deep learning architecture, since they heavily influence the behavior of the model learning. Often the search space of hyperparameters is fairly large for most machine learning and deep learning algorithms, that manually tuning is impossible.&lt;/p&gt;
+
+&lt;p&gt;This post Explains how you can create experiment groups for creating hyperparameters suggestions and managing their results very similar to &lt;a href=&quot;https://ai.google/research/pubs/pub46180&quot;&gt;Google Vizier&lt;/a&gt; on &lt;a href=&quot;https://github.com/polyaxon/polyaxon&quot;&gt;Polyaxon&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://medium.com/polyaxon/hyperparameters-tuning-with-polyaxon-9403f8ea85be&quot;&gt;Read more&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Distributed Deep Learning with Polyaxon</title>
+   <link href="http://mourafiq.com/2018/03/19/distributed-deep-learning-on-polyaxon.html"/>
+   <published>2018-03-19T00:00:00+01:00</published>
+   <updated>2018-03-19T00:00:00+01:00</updated>
+   <id>http://mourafiq.com/2018/03/19/distributed-deep-learning-on-polyaxon</id>
+   <content type="html">&lt;p&gt;A short tutorial that shows how you can train deep learning models in a distributed way with Tensorflow, MXNet, and Pytorch in &lt;a href=&quot;https://github.com/polyaxon/polyaxon&quot;&gt;Polyaxon&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://medium.com/polyaxon/distributed-deep-learning-with-polyaxon-6d9f1288e4b8&quot;&gt;Read more&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Jupyter notebooks and tensorboard on Polyaxon</title>
+   <link href="http://mourafiq.com/2018/03/05/jupyter-notebooks-and-tensorboards-on-polyaxon.html"/>
+   <published>2018-03-05T00:00:00+01:00</published>
+   <updated>2018-03-05T00:00:00+01:00</updated>
+   <id>http://mourafiq.com/2018/03/05/jupyter-notebooks-and-tensorboards-on-polyaxon</id>
+   <content type="html">&lt;p&gt;&lt;a href=&quot;https://github.com/polyaxon/polyaxon&quot;&gt;Polyaxon&lt;/a&gt;’s mission is to make deep learning simple and accessible to enterprises.&lt;/p&gt;
+
+&lt;p&gt;This post introduces a new feature at Polyaxon to help you iterate on your projects and share your work; &lt;a href=&quot;https://jupyter.org/&quot;&gt;Jupyter Notebook&lt;/a&gt; and &lt;a href=&quot;https://medium.com/r/?url=https%3A%2F%2Fwww.tensorflow.org%2Fprogrammers_guide%2Fsummaries_and_tensorboard&quot;&gt;Tensorboard&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://medium.com/polyaxon/jupyter-notebooks-and-tensorboard-on-polyaxon-f4b9ce973575&quot;&gt;Read more&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Introducing Polyaxon: A Deep Learning stack on Kubernetes</title>
+   <link href="http://mourafiq.com/2018/01/17/intoroducing-polyaxon.html"/>
+   <published>2018-01-17T00:00:00+01:00</published>
+   <updated>2018-01-17T00:00:00+01:00</updated>
+   <id>http://mourafiq.com/2018/01/17/intoroducing-polyaxon</id>
+   <content type="html">&lt;p&gt;&lt;a href=&quot;https://github.com/polyaxon/polyaxon&quot;&gt;Polyaxon&lt;/a&gt;’s mission is to make deep learning simple and accessible to enterprises.&lt;/p&gt;
+
+&lt;p&gt;Polyaxon, a platform for building, training, and monitoring large scale deep learning applications.&lt;/p&gt;
+
+&lt;p&gt;Polyaxon deploys into any data center, cloud provider, or can be hosted and managed by Polyaxon, and it supports all the major deep learning frameworks such as Tensorflow, MXNet, Caffe, Torch, etc.&lt;/p&gt;
+
+&lt;p&gt;Polyaxon makes it faster, easier, and more efficient to develop deep learning applications by managing workloads with smart container and node management. And it turns GPU servers into shared, self-service resources for your team or organization.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://medium.com/polyaxon/polyaxon-0-0-2-23964df6ef7e&quot;&gt;Read more&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Introducing a tensorflow library for deep learning and reinforcement learning</title>
+   <link href="http://mourafiq.com/2017/07/18/intoroducing-library-for-dl-and-rl.html"/>
+   <published>2017-07-18T00:00:00+02:00</published>
+   <updated>2017-07-18T00:00:00+02:00</updated>
+   <id>http://mourafiq.com/2017/07/18/intoroducing-library-for-dl-and-rl</id>
+   <content type="html">&lt;p&gt;This post tries to answer a couple of practical questions about the project and the intent behind it’s creation.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-polyaxon-lib&quot;&gt;What is polyaxon-lib&lt;/h2&gt;
+
+&lt;p&gt;polyaxon-lib is a library and built on top of TensorFlow for building deep learning and reinforcement learning experiments. It provides popular DL and RL modules that can be easily customized and assembled for creating real-world machine learning models.&lt;/p&gt;
+
+&lt;h2 id=&quot;why-another-tensorflow-library&quot;&gt;Why another TensorFlow library&lt;/h2&gt;
+
+&lt;p&gt;Since the intention of creating library is to have an end to end system and a platform for managing experiments, the choice of creating a new library was very important, we wanted to to have complete control over the apis and future design decisions. We tried before to base the platform on Keras and/or tf.contrib.learn, but it was not easy, we were brought to tweak many parts which ended by creating a new library. In fact, if you have a chance to read the code, you will find that many programming decisions were completely inspired by these libraries, and sometimes only patching/mirroring the code of these libraries.&lt;/p&gt;
+
+&lt;p&gt;Having said that, the use of polyaxon-lib does not exclude using other libraries. So every module created by polyaxon-lib could be mixed and extended by other libraries.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-can-i-start-using-polyaxon-lib&quot;&gt;How can I start using polyaxon-lib&lt;/h2&gt;
+
+&lt;p&gt;polyaxon-lib is very modular and provides a simple interface to creating deep learning algorithms.&lt;/p&gt;
+
+&lt;p&gt;There are 2 ways you can follow to use polyaxon-lib:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;By creating Python objects in a programatic way. polyaxon-lib provides high level Layers and Models based on GraphModules, a high level object that easily share variables.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;By creating configuration files (Json or YAML). In this case, the library is meant to be used in applications that want to utilize an intelligent system to achieve some task. This configurations would then be customized through an interface, web/cli, and would enable the user to easily tweak the parameters without caring about all the underlying implementation.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;an-example-of-graph-defined-in-a-json-file&quot;&gt;An example of graph defined in a Json file:&lt;/h3&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;  1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;  2&lt;/span&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;MyModel&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;  3&lt;/span&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;quot;output_dir&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;/tmp/polyaxon-log/mymodel&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;  4&lt;/span&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;quot;eval_every_n_steps&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;  5&lt;/span&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;quot;train_steps_per_iteration&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;  6&lt;/span&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;quot;run_config&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;  7&lt;/span&gt;       &lt;span class=&quot;nt&quot;&gt;&amp;quot;save_checkpoints_steps&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;  8&lt;/span&gt;    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;  9&lt;/span&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;quot;train_input_data_config&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 10&lt;/span&gt;       &lt;span class=&quot;nt&quot;&gt;&amp;quot;pipeline_config&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 11&lt;/span&gt;          &lt;span class=&quot;nt&quot;&gt;&amp;quot;module&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;TFRecordImagePipeline&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 12&lt;/span&gt;          &lt;span class=&quot;nt&quot;&gt;&amp;quot;batch_size&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 13&lt;/span&gt;          &lt;span class=&quot;nt&quot;&gt;&amp;quot;num_epochs&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 14&lt;/span&gt;          &lt;span class=&quot;nt&quot;&gt;&amp;quot;shuffle&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 15&lt;/span&gt;          &lt;span class=&quot;nt&quot;&gt;&amp;quot;dynamic_pad&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 16&lt;/span&gt;          &lt;span class=&quot;nt&quot;&gt;&amp;quot;params&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 17&lt;/span&gt;             &lt;span class=&quot;nt&quot;&gt;&amp;quot;data_files&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;/path-to-my-data/mnist_train.tfrecord&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 18&lt;/span&gt;             &lt;span class=&quot;nt&quot;&gt;&amp;quot;meta_data_file&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;/path-to-my-data/meta_data.json&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 19&lt;/span&gt;          &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 20&lt;/span&gt;       &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 21&lt;/span&gt;    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 22&lt;/span&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;quot;eval_input_data_config&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 23&lt;/span&gt;       &lt;span class=&quot;nt&quot;&gt;&amp;quot;pipeline_config&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 24&lt;/span&gt;          &lt;span class=&quot;nt&quot;&gt;&amp;quot;module&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;TFRecordImagePipeline&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 25&lt;/span&gt;          &lt;span class=&quot;nt&quot;&gt;&amp;quot;batch_size&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 26&lt;/span&gt;          &lt;span class=&quot;nt&quot;&gt;&amp;quot;num_epochs&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 27&lt;/span&gt;          &lt;span class=&quot;nt&quot;&gt;&amp;quot;shuffle&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 28&lt;/span&gt;          &lt;span class=&quot;nt&quot;&gt;&amp;quot;dynamic_pad&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 29&lt;/span&gt;          &lt;span class=&quot;nt&quot;&gt;&amp;quot;params&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 30&lt;/span&gt;             &lt;span class=&quot;nt&quot;&gt;&amp;quot;data_files&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;/path-to-my-data/mnist_eval.tfrecord&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 31&lt;/span&gt;             &lt;span class=&quot;nt&quot;&gt;&amp;quot;meta_data_file&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;/path-to-my-data/meta_data.json&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 32&lt;/span&gt;          &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 33&lt;/span&gt;       &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 34&lt;/span&gt;    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 35&lt;/span&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;quot;estimator_config&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 36&lt;/span&gt;       &lt;span class=&quot;nt&quot;&gt;&amp;quot;output_dir&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;/tmp/polyaxon-log/mymodel&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 37&lt;/span&gt;    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 38&lt;/span&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;quot;model_config&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 39&lt;/span&gt;       &lt;span class=&quot;nt&quot;&gt;&amp;quot;summaries&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 40&lt;/span&gt;          &lt;span class=&quot;s2&quot;&gt;&amp;quot;loss&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 41&lt;/span&gt;          &lt;span class=&quot;s2&quot;&gt;&amp;quot;gradients&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 42&lt;/span&gt;          &lt;span class=&quot;s2&quot;&gt;&amp;quot;activations&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 43&lt;/span&gt;       &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 44&lt;/span&gt;       &lt;span class=&quot;nt&quot;&gt;&amp;quot;module&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Classifier&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 45&lt;/span&gt;       &lt;span class=&quot;nt&quot;&gt;&amp;quot;loss_config&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 46&lt;/span&gt;          &lt;span class=&quot;nt&quot;&gt;&amp;quot;module&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;softmax_cross_entropy&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 47&lt;/span&gt;       &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 48&lt;/span&gt;       &lt;span class=&quot;nt&quot;&gt;&amp;quot;eval_metrics_config&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 49&lt;/span&gt;          &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 50&lt;/span&gt;             &lt;span class=&quot;nt&quot;&gt;&amp;quot;module&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;streaming_true_positives&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 51&lt;/span&gt;          &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 52&lt;/span&gt;          &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 53&lt;/span&gt;             &lt;span class=&quot;nt&quot;&gt;&amp;quot;module&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;streaming_true_negatives&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 54&lt;/span&gt;          &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 55&lt;/span&gt;          &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 56&lt;/span&gt;             &lt;span class=&quot;nt&quot;&gt;&amp;quot;module&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;streaming_false_positives&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 57&lt;/span&gt;          &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 58&lt;/span&gt;          &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 59&lt;/span&gt;             &lt;span class=&quot;nt&quot;&gt;&amp;quot;module&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;streaming_false_negatives&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 60&lt;/span&gt;          &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 61&lt;/span&gt;          &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 62&lt;/span&gt;             &lt;span class=&quot;nt&quot;&gt;&amp;quot;module&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;streaming_recall&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 63&lt;/span&gt;          &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 64&lt;/span&gt;          &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 65&lt;/span&gt;             &lt;span class=&quot;nt&quot;&gt;&amp;quot;module&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;streaming_auc&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 66&lt;/span&gt;          &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 67&lt;/span&gt;          &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 68&lt;/span&gt;             &lt;span class=&quot;nt&quot;&gt;&amp;quot;module&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;streaming_accuracy&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 69&lt;/span&gt;          &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 70&lt;/span&gt;          &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 71&lt;/span&gt;             &lt;span class=&quot;nt&quot;&gt;&amp;quot;module&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;streaming_precision&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 72&lt;/span&gt;          &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 73&lt;/span&gt;       &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 74&lt;/span&gt;       &lt;span class=&quot;nt&quot;&gt;&amp;quot;optimizer_config&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 75&lt;/span&gt;          &lt;span class=&quot;nt&quot;&gt;&amp;quot;module&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;adam&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 76&lt;/span&gt;          &lt;span class=&quot;nt&quot;&gt;&amp;quot;learning_rate&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.007&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 77&lt;/span&gt;          &lt;span class=&quot;nt&quot;&gt;&amp;quot;decay_type&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;exponential_decay&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 78&lt;/span&gt;          &lt;span class=&quot;nt&quot;&gt;&amp;quot;decay_rate&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.2&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 79&lt;/span&gt;       &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 80&lt;/span&gt;       &lt;span class=&quot;nt&quot;&gt;&amp;quot;one_hot_encode&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 81&lt;/span&gt;       &lt;span class=&quot;nt&quot;&gt;&amp;quot;n_classes&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 82&lt;/span&gt;       &lt;span class=&quot;nt&quot;&gt;&amp;quot;graph_config&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 83&lt;/span&gt;          &lt;span class=&quot;nt&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;lenet&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 84&lt;/span&gt;          &lt;span class=&quot;nt&quot;&gt;&amp;quot;features&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 85&lt;/span&gt;             &lt;span class=&quot;s2&quot;&gt;&amp;quot;image&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 86&lt;/span&gt;          &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 87&lt;/span&gt;          &lt;span class=&quot;nt&quot;&gt;&amp;quot;definition&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 88&lt;/span&gt;             &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 89&lt;/span&gt;                &lt;span class=&quot;s2&quot;&gt;&amp;quot;Conv2d&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 90&lt;/span&gt;                &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 91&lt;/span&gt;                   &lt;span class=&quot;nt&quot;&gt;&amp;quot;regularizer&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;l2_regularizer&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 92&lt;/span&gt;                   &lt;span class=&quot;nt&quot;&gt;&amp;quot;num_filter&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 93&lt;/span&gt;                   &lt;span class=&quot;nt&quot;&gt;&amp;quot;filter_size&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 94&lt;/span&gt;                   &lt;span class=&quot;nt&quot;&gt;&amp;quot;strides&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 95&lt;/span&gt;                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 96&lt;/span&gt;             &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 97&lt;/span&gt;             &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 98&lt;/span&gt;                &lt;span class=&quot;s2&quot;&gt;&amp;quot;MaxPool2d&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 99&lt;/span&gt;                &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;100&lt;/span&gt;                   &lt;span class=&quot;nt&quot;&gt;&amp;quot;kernel_size&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;101&lt;/span&gt;                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;102&lt;/span&gt;             &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;103&lt;/span&gt;             &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;104&lt;/span&gt;                &lt;span class=&quot;s2&quot;&gt;&amp;quot;Conv2d&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;105&lt;/span&gt;                &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;106&lt;/span&gt;                   &lt;span class=&quot;nt&quot;&gt;&amp;quot;num_filter&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;107&lt;/span&gt;                   &lt;span class=&quot;nt&quot;&gt;&amp;quot;filter_size&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;108&lt;/span&gt;                   &lt;span class=&quot;nt&quot;&gt;&amp;quot;regularizer&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;l2_regularizer&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;109&lt;/span&gt;                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;110&lt;/span&gt;             &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;111&lt;/span&gt;             &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;112&lt;/span&gt;                &lt;span class=&quot;s2&quot;&gt;&amp;quot;MaxPool2d&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;113&lt;/span&gt;                &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;114&lt;/span&gt;                   &lt;span class=&quot;nt&quot;&gt;&amp;quot;kernel_size&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;115&lt;/span&gt;                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;116&lt;/span&gt;             &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;117&lt;/span&gt;             &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;118&lt;/span&gt;                &lt;span class=&quot;s2&quot;&gt;&amp;quot;FullyConnected&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;119&lt;/span&gt;                &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;120&lt;/span&gt;                   &lt;span class=&quot;nt&quot;&gt;&amp;quot;num_units&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1024&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;121&lt;/span&gt;                   &lt;span class=&quot;nt&quot;&gt;&amp;quot;activation&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;tanh&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;122&lt;/span&gt;                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;123&lt;/span&gt;             &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;124&lt;/span&gt;             &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;125&lt;/span&gt;                &lt;span class=&quot;s2&quot;&gt;&amp;quot;FullyConnected&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;126&lt;/span&gt;                &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;127&lt;/span&gt;                   &lt;span class=&quot;nt&quot;&gt;&amp;quot;num_units&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;128&lt;/span&gt;                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;129&lt;/span&gt;             &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;130&lt;/span&gt;          &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;131&lt;/span&gt;       &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;132&lt;/span&gt;    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;133&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;an-example-of-graph-defined-in-a-python-file&quot;&gt;An example of graph defined in a Python file:&lt;/h3&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;polyaxon_lib&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;plx&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;tensorflow&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;tf&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;envs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GymEnvironment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;CartPole-v0&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;graph_fn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inputs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;layers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FullyConnected&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num_units&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;512&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inputs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;state&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;model_fn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;features&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DDQNModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;mode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;12&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;graph_fn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;graph_fn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;13&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;loss_config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;configs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LossConfig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;huber_loss&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;14&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;num_states&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num_states&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;15&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;num_actions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num_actions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;16&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;optimizer_config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;configs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OptimizerConfig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;sgd&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;learning_rate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.01&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;17&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;exploration_config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;configs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ExplorationConfig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;decay&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;18&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;target_update_frequency&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;19&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;summaries&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;all&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;20&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;features&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;21&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;22&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;memory&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;memories&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Memory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;23&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;estimator&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;estimators&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Agent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;24&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;model_fn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model_fn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;memory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;memory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model_dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;/tmp/polyaxon_logs/ddqn_cartpole&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;25&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;26&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;estimator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;what-do-you-support-currently-in-polyaxon&quot;&gt;What do you support currently in Polyaxon&lt;/h2&gt;
+
+&lt;p&gt;The current polyaxon-lib version offers a very rich set of modular &lt;a href=&quot;/docs/layers/introduction/&quot;&gt;layers&lt;/a&gt;, deep learning &lt;a href=&quot;/docs/models/models/&quot;&gt;models&lt;/a&gt; and reinforcement learning models, &lt;a href=&quot;/docs/models/rl_q_models/&quot;&gt;here&lt;/a&gt; and &lt;a href=&quot;/docs/models/rl_pg_models/&quot;&gt;here&lt;/a&gt;, &lt;a href=&quot;/docs/estimators/estimator/&quot;&gt;estimators&lt;/a&gt;/&lt;a href=&quot;/docs/agents/agent/&quot;&gt;agents&lt;/a&gt; to construct your algorithms with.&lt;/p&gt;
+
+&lt;p&gt;For training and evaluating an algorithm, you can use Polyaxon built-in &lt;a href=&quot;/docs/experiments/introduction/&quot;&gt;experiments&lt;/a&gt; or use custom scripts with training loops and evaluation.&lt;/p&gt;
+
+&lt;h2 id=&quot;can-i-train-my-models-in-a-distributed-way&quot;&gt;Can I train my models in a distributed way&lt;/h2&gt;
+
+&lt;p&gt;Yes, as it was mentioned before, the project was initialy built on top of tf.learn, but the API was constantly changing and breaking, and this is why we decided to roll our own estimator and experiemnt modules, with the idea that in the future we can interchangeably use tensorflow built in estimators/experiments when they become stable.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-can-deploy-and-monitor-my-algorithms&quot;&gt;How can deploy and monitor my algorithms&lt;/h2&gt;
+
+&lt;p&gt;First we hope that you might find a useful use-case of Polyaxon for your projects. We are currently working on getting an architecture which will allow to easily manage, monitor, and compare experiments. And finally deploy an API to the cloud. We are also trying different approaches and concepts in an internal version to have a consistent, simple and stable way to create useful application of deep learning to real world problems.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Playing with convolutions in TensorFlow</title>
@@ -628,1330 +940,6 @@ Source: http://deeplearning.stanford.edu/wiki/index.php/File:Pooling_schematic.g
 &lt;p&gt;&lt;img src=&quot;/images/posts/sin-loss-mean.png&quot; alt=&quot;sin-loss-mean&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;N.B&lt;/strong&gt; I am not completely sure if this is the right way to train lstm on regression problems, I am still experimenting with the &lt;a href=&quot;https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/ops/seq2seq.py#L151&quot;&gt;RNN sequence-to-sequence model&lt;/a&gt;, I will update this post or write a new one to use the sequence-to-sequence model.&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>On infinity</title>
-   <link href="http://mourafiq.com/2016/02/29/on-infinity.html"/>
-   <published>2016-02-29T00:00:00+01:00</published>
-   <updated>2016-02-29T00:00:00+01:00</updated>
-   <id>http://mourafiq.com/2016/02/29/on-infinity</id>
-   <content type="html">&lt;p&gt;In this post we will look closely at the notion of infinity. Particularly we will try proof that infinity comes in different sizes.&lt;/p&gt;
-
-&lt;p&gt;First of all we need to define a couple of notions, and we start we the notion of countable. Any set that is equipotent to &lt;script type=&quot;math/tex&quot;&gt;{\mathbb{N}}&lt;/script&gt;, i.e. there’s a one-to-one correspondence with &lt;script type=&quot;math/tex&quot;&gt;{\mathbb{N}}&lt;/script&gt; is called countable, personally I find this term a bit extreme, they probably should have called it listable. In other terms, given such set, one can count the elements of the set and eventually can reach any element.&lt;/p&gt;
-
-&lt;p&gt;Some example of countable sets are: &lt;script type=&quot;math/tex&quot;&gt;{\mathbb{Z}}, {\mathbb{N^2}}, {\mathbb{Z^2}}, {\mathbb{Q}}&lt;/script&gt;&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned}
-{\mathbb{Z}} &amp; = \bigcup\limits_{n \in \mathbb{N}} [\lvert  -n , n \rvert] \\
-{\mathbb{N^2}} &amp; = \bigcup\limits_{n \in \mathbb{N}} [\lvert  -n , n \rvert]^2  \\
-  &amp; = \bigcup\limits_{n \in \mathbb{N}} T_n \,\,\,\, \text{with} \,\,\, T_n =  \{ (p,q) \, | \, p+q=n \}
-\end{aligned} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;For &lt;script type=&quot;math/tex&quot;&gt;{\mathbb{Q}}&lt;/script&gt; we can consider the application&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned}
-f : {\mathbb{Z}} \times {\mathbb{N}}^* &amp; \rightarrow {\mathbb{Q}} \\
-(p, q) &amp; \mapsto \frac{p}{q}
-\end{aligned} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;Which makes &lt;script type=&quot;math/tex&quot;&gt;{\mathbb{Q}}&lt;/script&gt; equipotent to a subset of &lt;script type=&quot;math/tex&quot;&gt;{\mathbb{Z}} \times {\mathbb{N}}^*&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;Now we shall prove that &lt;script type=&quot;math/tex&quot;&gt;{\mathbb{R}}&lt;/script&gt; is not countable, for that reason we will show that the set of reals in interval &lt;script type=&quot;math/tex&quot;&gt;[0, 1]&lt;/script&gt;  is not countable.&lt;/p&gt;
-
-&lt;p&gt;Let’s consider a function &lt;script type=&quot;math/tex&quot;&gt;f : {\mathbb{N}} \rightarrow [0, 1]&lt;/script&gt;, and let &lt;script type=&quot;math/tex&quot;&gt;\left( I_n \right)&lt;/script&gt; be a sequence of closed real intervals such that &lt;script type=&quot;math/tex&quot;&gt;I_{n+1} \subset I_n&lt;/script&gt;.&lt;/p&gt;
-
-&lt;p&gt;We know that one of these intervals &lt;script type=&quot;math/tex&quot;&gt;[0, \frac{1}{3}], [\frac{1}{3}, \frac{2}{3}], [\frac{2}{3}, 1]&lt;/script&gt; does not contain &lt;script type=&quot;math/tex&quot;&gt;f(0)&lt;/script&gt;.&lt;/p&gt;
-
-&lt;p&gt;Let &lt;script type=&quot;math/tex&quot;&gt;I_0 = [a_0, b_0]&lt;/script&gt; be such interval.&lt;/p&gt;
-
-&lt;p&gt;Again one of these intervals &lt;script type=&quot;math/tex&quot;&gt;[a_0, a_0 + \frac{b_0 - a_0}{3}], [a_0 + \frac{b_0 - a_0}{3}, a_0 + \frac{2 * \left( b_0 - a_0 \right)}{3}], [a_0 + \frac{2 * \left( b_0 - a_0 \right)}{3}, b_0]&lt;/script&gt; does not contain &lt;script type=&quot;math/tex&quot;&gt;f(1)&lt;/script&gt;.&lt;/p&gt;
-
-&lt;p&gt;Let &lt;script type=&quot;math/tex&quot;&gt;I_1 = [a_1, b_1]&lt;/script&gt; be such interval.&lt;/p&gt;
-
-&lt;p&gt;We suppose that we construct &lt;script type=&quot;math/tex&quot;&gt;I_0, I_1, ..., I_n&lt;/script&gt; for a certain &lt;script type=&quot;math/tex&quot;&gt;n &gt;= 1&lt;/script&gt; such that &lt;script type=&quot;math/tex&quot;&gt;\forall k \in [\lvert 1, n-1 \rvert], \,\, I_{k+1} \subset I_k&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;We will denote &lt;script type=&quot;math/tex&quot;&gt;I_n = [a_n, b_n]&lt;/script&gt; and again one of these intervals &lt;script type=&quot;math/tex&quot;&gt;[a_n, a_n + \frac{b_n - a_n}{3}], [a_n + \frac{b_n - a_n}{3}, a_n + \frac{2 * \left( b_n - a_n \right)}{3}], [a_n + \frac{2 * \left( b_n - a_n \right)}{3}, b_n]&lt;/script&gt; does not contain &lt;script type=&quot;math/tex&quot;&gt;f(n+1)&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;Let  &lt;script type=&quot;math/tex&quot;&gt;I_{n+1} = [a_{n+1}, b_{n+1}]&lt;/script&gt; be such interval.&lt;/p&gt;
-
-&lt;p&gt;Hence by induction, we just construct a sequence of intervals &lt;script type=&quot;math/tex&quot;&gt;{\left( I_n \right)}_n&lt;/script&gt;.&lt;/p&gt;
-
-&lt;p&gt;Let &lt;script type=&quot;math/tex&quot;&gt;\bigcap\limits_{n \in \mathbb{N}} I_n = \{ a \}&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;We have the following &lt;script type=&quot;math/tex&quot;&gt;\forall n \in {\mathbb{N}}, a \in I_n, \,\, f(n) \notin I_n&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;It follows then that &lt;script type=&quot;math/tex&quot;&gt;\forall n \in {\mathbb{N}}, a \neq f(n)&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;Hence &lt;script type=&quot;math/tex&quot;&gt;f&lt;/script&gt; is not surjective, and so it’s not bijective.&lt;/p&gt;
-
-&lt;p&gt;In other terms we proved that there’s no bijection from &lt;script type=&quot;math/tex&quot;&gt;{\mathbb{N}}&lt;/script&gt; to &lt;script type=&quot;math/tex&quot;&gt;[0, 1]&lt;/script&gt;.&lt;/p&gt;
-
-&lt;p&gt;Therefor &lt;script type=&quot;math/tex&quot;&gt;[0, 1]&lt;/script&gt; is not countable and so is &lt;script type=&quot;math/tex&quot;&gt;{\mathbb{R}}&lt;/script&gt;.&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>Intuition behind Poisson distribution</title>
-   <link href="http://mourafiq.com/2016/02/05/intuition-behind-poisson-distribution.html"/>
-   <published>2016-02-05T00:00:00+01:00</published>
-   <updated>2016-02-05T00:00:00+01:00</updated>
-   <id>http://mourafiq.com/2016/02/05/intuition-behind-poisson-distribution</id>
-   <content type="html">&lt;p&gt;Let’s consider again our experiment where we place an ad on a webpage. In the previous post we wanted to calculate the number of users clicking the ad after visiting our web page. In this post we would like to estimate the number of users visiting our web page per hour.&lt;/p&gt;
-
-&lt;p&gt;Let consider the random variable: &lt;script type=&quot;math/tex&quot;&gt;X = \text{number of views per hour}&lt;/script&gt;.&lt;/p&gt;
-
-&lt;p&gt;Let &lt;script type=&quot;math/tex&quot;&gt;\lambda&lt;/script&gt; be the expected value of &lt;script type=&quot;math/tex&quot;&gt;X&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;E(X) = \lambda&lt;/script&gt;. If we had a binomial distribution we would have &lt;script type=&quot;math/tex&quot;&gt;E(X) = n * p&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;in other words, we can write &lt;script type=&quot;math/tex&quot;&gt;E(X) = \lambda = 60 * \frac{ \lambda }{ 60 } = 60 * \lambda_m&lt;/script&gt;, with &lt;script type=&quot;math/tex&quot;&gt;\lambda_m = \frac{ \lambda }{60}&lt;/script&gt; is the probability for views per minute if it was a binomial distribution.&lt;/p&gt;
-
-&lt;p&gt;So the probability that we get &lt;script type=&quot;math/tex&quot;&gt;k&lt;/script&gt; views in a hour would be (if we consider the binomial distribution):&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;P(X = k) = \binom{60}{k} * \left( \frac{ \lambda }{ 60 } \right) ^ k * \left( 1 - \frac{\lambda }{ 60 } \right) ^ {(60 - k)}&lt;/script&gt;
-
-&lt;p&gt;The issue here is that we assume we can only get one click per minute, meaning that if we get more views per minute we would still count them as 1.&lt;/p&gt;
-
-&lt;p&gt;An easy way to remediate to this problem is to make it more granular, let’s say per second&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;P(X = k) = \binom{3600}{k} * \left( \frac{ \lambda }{ 3600 } \right) ^ k *  \left( 1 - \frac{\lambda }{ 3600 } \right) ^ {(3600 - k)}&lt;/script&gt;
-
-&lt;p&gt;Again we would get the same problem if we get more than one click per second. And so we need to make our estimation more granular.&lt;/p&gt;
-
-&lt;p&gt;We know that&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\lim \limits_{x \to +\infty} (1 + \frac{a}{x})^x = \mathrm{e}^a&lt;/script&gt;
-
-&lt;p&gt;If we take the granularity to the infinite numbers we find the Poisson distribution:&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned}
-P(X = k) &amp; = \lim \limits_{n \to +\infty} \binom{n}{k} * \left( \frac{ \lambda }{ n } \right) ^ k * \left( 1 - \frac{\lambda }{ n } \right) ^ {(n - k)} \\
- &amp; = \lim \limits_{n \to +\infty} \frac{n!}{(n - k)! * k!} * \left( \frac{ \lambda }{ n } \right) ^ k *  \left( 1 - \frac{\lambda }{ n } \right) ^ n * \left( 1 - \frac{\lambda }{ n } \right) ^ {-k} \\
- &amp; = \lim \limits_{n \to +\infty} \frac{n!}{(n - k)!} * \frac{1}{n ^ k} * \frac{\lambda ^ k}{k!} *  \frac{1 - \lambda}{n} ^ n * \frac{1 - \lambda}{n} ^ {-k} \\
- &amp; = \frac{\lambda ^ k}{k!} * e^{-\lambda}
- \end{aligned} %]]&gt;&lt;/script&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>Intuition behind the Binomial distribution</title>
-   <link href="http://mourafiq.com/2016/02/01/intuition-behind-binomial-distribution.html"/>
-   <published>2016-02-01T00:00:00+01:00</published>
-   <updated>2016-02-01T00:00:00+01:00</updated>
-   <id>http://mourafiq.com/2016/02/01/intuition-behind-binomial-distribution</id>
-   <content type="html">&lt;p&gt;Let’s consider a small experiment where we place an ad on a webpage and we want to calculate how many users would click this ad after visiting the page given that the probability of user clicking the ad is « p ».&lt;/p&gt;
-
-&lt;p&gt;For each visit we have two outcomes, user clicks the ad and user does’t click the ad, in other terms we have two outcomes that we will denote success and failure. So basically what we want to do is to compute the probability of observing a specific number of « successes »  when the process is repeated a specific number of times (i.e. users visiting a webpage) and the outcome for a given user is either a success or a failure.&lt;/p&gt;
-
-&lt;p&gt;First, let &lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt; be the number of observations or the number of times the process is repeated (users coming to the webpage), and &lt;script type=&quot;math/tex&quot;&gt;k&lt;/script&gt; the number of “successes” or events of interest occurring during the &lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt; observations. The probability of “success” or occurrence of the outcome of interest is indicated by &lt;script type=&quot;math/tex&quot;&gt;p&lt;/script&gt;.&lt;/p&gt;
-
-&lt;p&gt;To make an example, if we had 10 users visiting our webpage, we would want to know how many of these 10 users would click our ad, knowing that the probability of clicking an ad is p.&lt;/p&gt;
-
-&lt;p&gt;Let’s calculate different probabilities getting different numbers of outcome:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;the probability of getting no clicks&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;This is the same as getting 10 failures &lt;script type=&quot;math/tex&quot;&gt;P(X=FFFFFFFFFF) = (1-p)^{10}&lt;/script&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;The probability of getting 1 click&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;This could be the first user clicking (SFFFFFFFFF), or the second one (FSFFFFFFFF), or the third (FFSFFFFFFF), or any other position.&lt;/p&gt;
-
-&lt;p&gt;The probability of each one of these experiences is&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned}
-P(X = SFFFFFFFFF) &amp; = p * (1 - p)^9 \\
-P(X = FSFFFFFFFF) &amp; = (1 - p) * p * (1 - p)^8 = p * (1 - p)^9 \\
-P(X = FFSFFFFFFF) &amp; = (1 - p)^2 * p * (1 - p)^7 = p * (1 - p)^9 \\
-\end{aligned} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;And hence the probability of getting one success is : &lt;script type=&quot;math/tex&quot;&gt;10 * p * (1 - p)^9&lt;/script&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;the probability of getting 2 clicks&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Again this could be the the first 2 users (SSFFFFFFFF), or the first and the fourth (SFFSFFFFFF), and you can see that it’s getting a bit complicated to go through all combinations. But what we can realize is that each scenario has a probability &lt;script type=&quot;math/tex&quot;&gt;P = p^2 * (1 - p)^8&lt;/script&gt;, and what we should do is choose 2 users out of 10 users to make a click without caring about the order of the users.&lt;/p&gt;
-
-&lt;p&gt;You might start getting an intuition why we would need the binomial coefficient, for the first user we can choose from 10 users and for the second we can choose from 9 users and since this could happen in two different ways (first user could be the second one) we would get &lt;script type=&quot;math/tex&quot;&gt;\frac{10 * 9}{2} = \binom{10}{2}&lt;/script&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;the probability of getting 3 clicks&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;again this is similar to the case of 2 users, we can define the probability of one scenario &lt;script type=&quot;math/tex&quot;&gt;P(SSSFFFFFFF)  = p^3 * (1 - p)^7&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;and again since the order does not matter we get &lt;script type=&quot;math/tex&quot;&gt;\frac{10 * 9 * 8}{3} * p^3 * (1 - p)^7 = \frac{10!}{3! * 7!} * p^3 * (1 - p)^7 = \binom{10}{3} * p^3 * (1 - p)^7&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;Finally we can generalize for any &lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;k&lt;/script&gt;&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;P(\text{k successes}) = \binom{n}{k} * p^k * (1 - p)^{n - k}&lt;/script&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>Generating an excel report with python</title>
-   <link href="http://mourafiq.com/2016/01/01/generating-excel-report-with-python.html"/>
-   <published>2016-01-01T00:00:00+01:00</published>
-   <updated>2016-01-01T00:00:00+01:00</updated>
-   <id>http://mourafiq.com/2016/01/01/generating-excel-report-with-python</id>
-   <content type="html">&lt;p&gt;For many data analysts and business people excel is a powerful tool for reporting. But very often excel reports become cumbersome and difficult to extend, especially when it comes to gathering data from several sources. In this post we will generate an excel report using python (pandas and openpyxl). We will also look briefly at a way to create an excel template and then generate an excel report with several sheets based on this template.&lt;/p&gt;
-
-&lt;p&gt;We will be looking at some startups investments data.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pandas&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pd&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;np&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read_csv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;investments.csv&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sep&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;To make the report simple, we will be using only a subset of the columns in the csv file, and we will look at the data from 2007 for funding rounds of type: angel, seed, venture, private equity, and undisclosed.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;funded_year&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;funded_quarter&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;funding_round_type&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;raised_amount_usd&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;funded_year&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2007&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;funding_round_type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;angel&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;private_equity&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;seed&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;venture&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;undisclosed&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;The data look like this:&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;funded_year&lt;/th&gt;
-      &lt;th&gt;funded_quarter&lt;/th&gt;
-      &lt;th&gt;funding_round_type&lt;/th&gt;
-      &lt;th&gt;raised_amount_usd&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2014&lt;/td&gt;
-      &lt;td&gt;2014-Q3&lt;/td&gt;
-      &lt;td&gt;venture&lt;/td&gt;
-      &lt;td&gt;5 956 174&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2014&lt;/td&gt;
-      &lt;td&gt;2014-Q3&lt;/td&gt;
-      &lt;td&gt;private_equity&lt;/td&gt;
-      &lt;td&gt;81 216 295&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2014&lt;/td&gt;
-      &lt;td&gt;2014-Q3&lt;/td&gt;
-      &lt;td&gt;seed&lt;/td&gt;
-      &lt;td&gt;1 300 000&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2014&lt;/td&gt;
-      &lt;td&gt;2014-Q3&lt;/td&gt;
-      &lt;td&gt;seed&lt;/td&gt;
-      &lt;td&gt;NaN&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2014&lt;/td&gt;
-      &lt;td&gt;2014-Q2&lt;/td&gt;
-      &lt;td&gt;seed&lt;/td&gt;
-      &lt;td&gt;500 000&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2014&lt;/td&gt;
-      &lt;td&gt;2014-Q3&lt;/td&gt;
-      &lt;td&gt;venture&lt;/td&gt;
-      &lt;td&gt;2 500 000&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2014&lt;/td&gt;
-      &lt;td&gt;2014-Q3&lt;/td&gt;
-      &lt;td&gt;venture&lt;/td&gt;
-      &lt;td&gt;7 000 000&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;…&lt;/td&gt;
-      &lt;td&gt;…&lt;/td&gt;
-      &lt;td&gt;…&lt;/td&gt;
-      &lt;td&gt;…&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;We notice that the data contains some undefined values, so we have to do some cleaning&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fillna&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;to_int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;4&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;5&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;except&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ne&quot;&gt;AttributeError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ne&quot;&gt;ValueError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;6&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;7&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;raised_amount_usd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;raised_amount_usd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;9&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;raised_amount_usd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;raised_amount_usd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;astype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Now let’s create our pivot tables&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;table1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pivot_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;funding_round_type&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt;                &lt;span class=&quot;n&quot;&gt;columns&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;funded_year&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;funded_quarter&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt;                &lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;raised_amount_usd&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;4&lt;/span&gt;                &lt;span class=&quot;n&quot;&gt;aggfunc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)],&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fill_value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;5&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;table2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pivot_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;funding_round_type&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;7&lt;/span&gt;                &lt;span class=&quot;n&quot;&gt;columns&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;funded_year&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;funded_quarter&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;8&lt;/span&gt;                &lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;raised_amount_usd&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;9&lt;/span&gt;                &lt;span class=&quot;n&quot;&gt;aggfunc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fill_value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;This will generate a 2 pivot tables similar to this:&lt;/p&gt;
-
-&lt;div&gt;
-&lt;table border=&quot;1&quot; class=&quot;dataframe&quot;&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;&lt;/th&gt;
-      &lt;th colspan=&quot;15&quot; halign=&quot;left&quot;&gt;&amp;lt;count&amp;gt;&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;&lt;/th&gt;
-      &lt;th colspan=&quot;15&quot; halign=&quot;left&quot;&gt;raised_amount_usd&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;funded_year&lt;/th&gt;
-      &lt;th colspan=&quot;4&quot; halign=&quot;left&quot;&gt;2007&lt;/th&gt;
-      &lt;th colspan=&quot;3&quot; halign=&quot;left&quot;&gt;2008&lt;/th&gt;
-      &lt;th&gt;...&lt;/th&gt;
-      &lt;th colspan=&quot;3&quot; halign=&quot;left&quot;&gt;2013&lt;/th&gt;
-      &lt;th colspan=&quot;4&quot; halign=&quot;left&quot;&gt;2014&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;funded_quarter&lt;/th&gt;
-      &lt;th&gt;2007-Q1&lt;/th&gt;
-      &lt;th&gt;2007-Q2&lt;/th&gt;
-      &lt;th&gt;2007-Q3&lt;/th&gt;
-      &lt;th&gt;2007-Q4&lt;/th&gt;
-      &lt;th&gt;2008-Q1&lt;/th&gt;
-      &lt;th&gt;2008-Q2&lt;/th&gt;
-      &lt;th&gt;...&lt;/th&gt;
-      &lt;th&gt;2013-Q2&lt;/th&gt;
-      &lt;th&gt;2013-Q3&lt;/th&gt;
-      &lt;th&gt;2013-Q4&lt;/th&gt;
-      &lt;th&gt;2014-Q1&lt;/th&gt;
-      &lt;th&gt;2014-Q2&lt;/th&gt;
-      &lt;th&gt;2014-Q3&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;funding_round_type&lt;/th&gt;
-      &lt;th&gt;&lt;/th&gt;
-      &lt;th&gt;&lt;/th&gt;
-      &lt;th&gt;&lt;/th&gt;
-      &lt;th&gt;&lt;/th&gt;
-      &lt;th&gt;&lt;/th&gt;
-      &lt;th&gt;&lt;/th&gt;
-      &lt;th&gt;&lt;/th&gt;
-      &lt;th&gt;&lt;/th&gt;
-      &lt;th&gt;&lt;/th&gt;
-      &lt;th&gt;&lt;/th&gt;
-      &lt;th&gt;&lt;/th&gt;
-      &lt;th&gt;&lt;/th&gt;
-      &lt;th&gt;&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;th&gt;angel&lt;/th&gt;
-      &lt;td&gt;97&lt;/td&gt;
-      &lt;td&gt;67&lt;/td&gt;
-      &lt;td&gt;50&lt;/td&gt;
-      &lt;td&gt;71&lt;/td&gt;
-      &lt;td&gt;122&lt;/td&gt;
-      &lt;td&gt;69&lt;/td&gt;
-      &lt;td&gt;...&lt;/td&gt;
-      &lt;td&gt;161&lt;/td&gt;
-      &lt;td&gt;226&lt;/td&gt;
-      &lt;td&gt;141&lt;/td&gt;
-      &lt;td&gt;211&lt;/td&gt;
-      &lt;td&gt;123&lt;/td&gt;
-      &lt;td&gt;77&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;private_equity&lt;/th&gt;
-      &lt;td&gt;16&lt;/td&gt;
-      &lt;td&gt;14&lt;/td&gt;
-      &lt;td&gt;22&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;13&lt;/td&gt;
-      &lt;td&gt;13&lt;/td&gt;
-      &lt;td&gt;...&lt;/td&gt;
-      &lt;td&gt;244&lt;/td&gt;
-      &lt;td&gt;187&lt;/td&gt;
-      &lt;td&gt;132&lt;/td&gt;
-      &lt;td&gt;101&lt;/td&gt;
-      &lt;td&gt;131&lt;/td&gt;
-      &lt;td&gt;68&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;seed&lt;/th&gt;
-      &lt;td&gt;110&lt;/td&gt;
-      &lt;td&gt;88&lt;/td&gt;
-      &lt;td&gt;92&lt;/td&gt;
-      &lt;td&gt;111&lt;/td&gt;
-      &lt;td&gt;219&lt;/td&gt;
-      &lt;td&gt;143&lt;/td&gt;
-      &lt;td&gt;...&lt;/td&gt;
-      &lt;td&gt;1870&lt;/td&gt;
-      &lt;td&gt;2368&lt;/td&gt;
-      &lt;td&gt;2097&lt;/td&gt;
-      &lt;td&gt;1922&lt;/td&gt;
-      &lt;td&gt;1686&lt;/td&gt;
-      &lt;td&gt;1763&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;undisclosed&lt;/th&gt;
-      &lt;td&gt;395&lt;/td&gt;
-      &lt;td&gt;268&lt;/td&gt;
-      &lt;td&gt;255&lt;/td&gt;
-      &lt;td&gt;243&lt;/td&gt;
-      &lt;td&gt;362&lt;/td&gt;
-      &lt;td&gt;354&lt;/td&gt;
-      &lt;td&gt;...&lt;/td&gt;
-      &lt;td&gt;710&lt;/td&gt;
-      &lt;td&gt;454&lt;/td&gt;
-      &lt;td&gt;647&lt;/td&gt;
-      &lt;td&gt;830&lt;/td&gt;
-      &lt;td&gt;304&lt;/td&gt;
-      &lt;td&gt;98&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;venture&lt;/th&gt;
-      &lt;td&gt;1294&lt;/td&gt;
-      &lt;td&gt;1207&lt;/td&gt;
-      &lt;td&gt;1297&lt;/td&gt;
-      &lt;td&gt;1144&lt;/td&gt;
-      &lt;td&gt;1440&lt;/td&gt;
-      &lt;td&gt;1434&lt;/td&gt;
-      &lt;td&gt;...&lt;/td&gt;
-      &lt;td&gt;1856&lt;/td&gt;
-      &lt;td&gt;2065&lt;/td&gt;
-      &lt;td&gt;2147&lt;/td&gt;
-      &lt;td&gt;2263&lt;/td&gt;
-      &lt;td&gt;3019&lt;/td&gt;
-      &lt;td&gt;2905&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;5 rows × 32 columns&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Now let’s generate an excel report with 2 sheets containing the results of the pivot tables&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;writer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ExcelWriter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;report.xlsx&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;table1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_excel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;writer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;Sheet1&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;table2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_excel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;writer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;Sheet2&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;writer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;The result output&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/posts/report.png&quot; alt=&quot;excel_report&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;To go a bit further, let’s imagine that we want to generate the report from a template. For this we will need the python module openpyxl, because it’s the only python module that allows to modify an excel file.&lt;/p&gt;
-
-&lt;p&gt;The first step is to create a template for our report.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/posts/report-template.png&quot; alt=&quot;excel_report&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;You can notice that we named an excel range &lt;code&gt;values&lt;/code&gt; to be able to update the values in that range easily from the python side. Here’s an utility function to update an excel sheet from python given a named range or cell range.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;openpyxl&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;openpyxl&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;load_workbook&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;update_range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;worksheet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cell_range&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;named_range&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt;     &lt;span class=&quot;sd&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;    Updates an excel worksheet with the given data.&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;    :param worksheet: an excel worksheet&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;    :param data: data used to update the worksheet cell range (list, tuple, np.ndarray, pd.Dataframe)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;    :param cell_range: a string representing the cell range, e.g. &amp;#39;AB12:XX23&amp;#39;&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;    :param named_range: a string representing an excel named range&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;12&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;13&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;clean_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;14&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;isinstance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;tuple&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ndarray&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;15&lt;/span&gt;             &lt;span class=&quot;k&quot;&gt;raise&lt;/span&gt; &lt;span class=&quot;ne&quot;&gt;TypeError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;Invalid data, data should be an array type iterable.&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;16&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;17&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;18&lt;/span&gt;             &lt;span class=&quot;k&quot;&gt;raise&lt;/span&gt; &lt;span class=&quot;ne&quot;&gt;ValueError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;You need to provide data to update the cells&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;19&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;20&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;isinstance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;21&lt;/span&gt;             &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;22&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;23&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;isinstance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;tuple&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;24&lt;/span&gt;             &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;25&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;26&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hstack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;27&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;28&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;clean_cells&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;worksheet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cell_range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;named_range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;29&lt;/span&gt;         &lt;span class=&quot;c&quot;&gt;# check that we can access a cell range&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;30&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cell_range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;named_range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cell_range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;named_range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))):&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;31&lt;/span&gt;             &lt;span class=&quot;k&quot;&gt;raise&lt;/span&gt; &lt;span class=&quot;ne&quot;&gt;ValueError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;`cell_range` or `named_range` should be provided.&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;32&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;33&lt;/span&gt;         &lt;span class=&quot;c&quot;&gt;# get the cell range&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;34&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cell_range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;35&lt;/span&gt;             &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;36&lt;/span&gt;                 &lt;span class=&quot;n&quot;&gt;cells&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hstack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;worksheet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cell_range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;37&lt;/span&gt;             &lt;span class=&quot;k&quot;&gt;except&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CellCoordinatesException&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ne&quot;&gt;AttributeError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;38&lt;/span&gt;                 &lt;span class=&quot;k&quot;&gt;raise&lt;/span&gt; &lt;span class=&quot;ne&quot;&gt;ValueError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;The cell range provided is invalid, cell range must be in the form XX--[:YY--]&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;39&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;40&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;41&lt;/span&gt;             &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;42&lt;/span&gt;                 &lt;span class=&quot;n&quot;&gt;cells&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;worksheet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_named_range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;named_range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;43&lt;/span&gt;             &lt;span class=&quot;k&quot;&gt;except&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NamedRangeException&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ne&quot;&gt;TypeError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;44&lt;/span&gt;                 &lt;span class=&quot;k&quot;&gt;raise&lt;/span&gt; &lt;span class=&quot;ne&quot;&gt;ValueError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;The current worksheet {} does not contain any named range {}.&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;45&lt;/span&gt;                     &lt;span class=&quot;n&quot;&gt;worksheet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;46&lt;/span&gt;                     &lt;span class=&quot;n&quot;&gt;named_range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;47&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;48&lt;/span&gt;         &lt;span class=&quot;c&quot;&gt;# checking that we have cells to update, and data&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;49&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cells&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;50&lt;/span&gt;             &lt;span class=&quot;k&quot;&gt;raise&lt;/span&gt; &lt;span class=&quot;ne&quot;&gt;ValueError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;You need to provide cells to update.&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;51&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;52&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cells&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;53&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;54&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;cells&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clean_cells&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;worksheet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cell_range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;named_range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;55&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clean_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;56&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;57&lt;/span&gt;     &lt;span class=&quot;c&quot;&gt;# check that the data has the same dimension as cells&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;58&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cells&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;59&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;raise&lt;/span&gt; &lt;span class=&quot;ne&quot;&gt;ValueError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;Cells({}) should have the same dimension as the data({}).&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cells&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;60&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;61&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cell&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cells&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;62&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;cell&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Now we are ready to generate our first report from the template&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;openpyxl&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;openpyxl&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;load_workbook&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# load the excel template&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;workbook&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;load_workbook&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;template.xlsx&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# number of funding rounds by year&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;table1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pivot_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;funding_round_type&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt;                &lt;span class=&quot;n&quot;&gt;columns&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;funded_year&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt;                &lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;raised_amount_usd&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt;                &lt;span class=&quot;n&quot;&gt;aggfunc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fill_value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;12&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;13&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;worksheet&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;workbook&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;active&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;14&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;worksheet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;count_by_year&amp;#39;&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;15&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;update_range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;workbook&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;active&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;table1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;named_range&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;values&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;16&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# create a new excel report&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;17&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;workbook&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;report1.xlsx&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;This will keep our template unmodified and generate a report with one excel sheet &lt;code&gt;count_by_year&lt;/code&gt; containing the values from the pivot table.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/posts/excel-report-count.png&quot; alt=&quot;excel_report&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The last part of this part is to show a work around when we need to generate a report with multiple sheets based on the same template. Things get a bit complicated, because no python module allow to copy/clone a sheet and update it, I managed to find a way to do this by reloading the workbook each time we copy the template sheet, but I hope that this option will be supported by the openpyxl module in the future, for further reference there’s a &lt;a href=&quot;https://bitbucket.org/openpyxl/openpyxl/issues/171/copy-worksheet-function&quot;&gt;ticket&lt;/a&gt; for this.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;openpyxl&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;openpyxl&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;load_workbook&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;copy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;copy&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# load the excel template&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;workbook&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;load_workbook&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;template.xlsx&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# create a new excel report&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;workbook&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;report2.xlsx&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# number of funding rounds by year&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;12&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;table1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pivot_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;funding_round_type&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;13&lt;/span&gt;                &lt;span class=&quot;n&quot;&gt;columns&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;funded_year&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;14&lt;/span&gt;                &lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;raised_amount_usd&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;15&lt;/span&gt;                &lt;span class=&quot;n&quot;&gt;aggfunc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fill_value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;16&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;17&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# sum of funding rounds by year&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;18&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;table2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pivot_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;funding_round_type&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;19&lt;/span&gt;               &lt;span class=&quot;n&quot;&gt;columns&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;funded_year&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;20&lt;/span&gt;               &lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;raised_amount_usd&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;21&lt;/span&gt;               &lt;span class=&quot;n&quot;&gt;aggfunc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fill_value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;22&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;23&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;create_sheet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wb_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sheet_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;24&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;workbook&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;load_workbook&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wb_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;25&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;worksheet&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;workbook&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;active&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;26&lt;/span&gt;     &lt;span class=&quot;c&quot;&gt;# clone the template worksheet&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;27&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;update_range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;workbook&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;active&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;named_range&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;values&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;28&lt;/span&gt;     &lt;span class=&quot;c&quot;&gt;# add worksheet to the workbook&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;29&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;worksheet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sheet_name&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;30&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;workbook&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_add_sheet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;worksheet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;31&lt;/span&gt;     &lt;span class=&quot;c&quot;&gt;# since we can&amp;#39;t use deepcopy, we need to save the workbook and reload it&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;32&lt;/span&gt;     &lt;span class=&quot;c&quot;&gt;# otherwise we will be updating the same references of all copied sheets&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;33&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;workbook&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wb_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;34&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;35&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;create_sheet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;report2.xlsx&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;count_by_year&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;table1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;36&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;create_sheet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;report2.xlsx&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;sum_by_year&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;table2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;37&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# we need to remove the current template sheet&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;38&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;workbook&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;load_workbook&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;report2.xlsx&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;39&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;workbook&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;remove_sheet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;workbook&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;active&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;40&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;workbook&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;report2.xlsx&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;The output result&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/posts/excel-report-count-sum.png&quot; alt=&quot;excel_report&quot; /&gt;&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>Euler Gamma function approximation for factorials</title>
-   <link href="http://mourafiq.com/2015/10/09/extensions-of-the-factorial-euler-gamma-function.html"/>
-   <published>2015-10-09T00:00:00+02:00</published>
-   <updated>2015-10-09T00:00:00+02:00</updated>
-   <id>http://mourafiq.com/2015/10/09/extensions-of-the-factorial-euler-gamma-function</id>
-   <content type="html">&lt;p&gt;In the previous post we introduced the Stirling formula, which is an accurate approximation for factorials even for small numbers. In this post we will look closely at an other extension of the concept of factorials, The gamma function. But unlike the factorial, the gamma function is more broadly defined for all complex numbers other than non-positive integers. In this post we will only study the behavior of this faction over &lt;script type=&quot;math/tex&quot;&gt;]0, +\infty[&lt;/script&gt;.&lt;/p&gt;
-
-&lt;p&gt;The gamma function is defined as follows&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Gamma (x) = \int_{0}^{+\infty} t^{x-1} e^{-t} \, dt&lt;/script&gt;
-
-&lt;h3 id=&quot;domain-of-definition&quot;&gt;1- Domain of definition&lt;/h3&gt;
-
-&lt;p&gt;The Gamma function is defined over &lt;script type=&quot;math/tex&quot;&gt;]0, +\infty[&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;Indeed, we have &lt;script type=&quot;math/tex&quot;&gt;\forall x \in {\mathbb{R}}&lt;/script&gt; the function is continuous and positive over &lt;script type=&quot;math/tex&quot;&gt;]0, +\infty[&lt;/script&gt;.&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Gamma (x) \,\, \text{exists} \iff t \mapsto t^{x-1} e^{-t} \,\, \text{is integrable over} \,\, ]0, +\infty[&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;near 0&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;t^{x-1} e^{-t} \sim t^{x-1}&lt;/script&gt;
-
-&lt;p&gt;Therefore &lt;script type=&quot;math/tex&quot;&gt;t \mapsto t^{x-1} e^{-t} \,\, \text{is integrable over} \,\, ]0, 1[ \iff x-1 \gt 1 \,\, (x \gt 0)&lt;/script&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;near &lt;script type=&quot;math/tex&quot;&gt;+ \infty&lt;/script&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;t^{x-1} e^{-t} =o \frac{1}{ t^2 }&lt;/script&gt;
-
-&lt;p&gt;Therefore &lt;script type=&quot;math/tex&quot;&gt;t \mapsto t^{x-1} e^{-t} \,\, \text{is integrable over} \,\, [1, +\infty[ \,\, \forall x \in {\mathbb{R}}&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;We can deduce then that &lt;script type=&quot;math/tex&quot;&gt;t \mapsto t^{x-1} e^{-t} \,\, \text{is integrable over} \,\, ]0, +\infty[ \iff x \gt 0&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;In other terms &lt;script type=&quot;math/tex&quot;&gt;D_{\Gamma} = ]0, + \infty[&lt;/script&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;forall-x-in-0--infty--we-have--gammax1--x-gammax-&quot;&gt;2- &lt;script type=&quot;math/tex&quot;&gt;\forall x \in ]0, + \infty[&lt;/script&gt; we have &lt;script type=&quot;math/tex&quot;&gt;\Gamma(x+1) = x \Gamma(x)&lt;/script&gt;&lt;/h3&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned}
-\Gamma(x+1) &amp; = \int_{0}^{+\infty} t^{x} e^{-t} \, dt \\
- &amp; = {[-t^x e^{-t}]}_{0}^{ + \infty } + x \int_{0}^{+\infty} t^{x-1} e^{-t} \, dt \\
- &amp; = x \int_{0}^{+\infty} t^{x-1} e^{-t} \, dt \\
- &amp; = x \Gamma (x)
-\end{aligned} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;By recursion it can be shown that&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\forall n \,\, , \,\, \Gamma (n+1) = n!&lt;/script&gt;
-
-&lt;h3 id=&quot;gamma--is-of--c-infty--over--0-infty-&quot;&gt;3- &lt;script type=&quot;math/tex&quot;&gt;\Gamma&lt;/script&gt; is of &lt;script type=&quot;math/tex&quot;&gt;C^{+ \infty}&lt;/script&gt; over &lt;script type=&quot;math/tex&quot;&gt;]0, +\infty[&lt;/script&gt;&lt;/h3&gt;
-
-&lt;p&gt;Let’s consider the function &lt;script type=&quot;math/tex&quot;&gt;f&lt;/script&gt;&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned}
-f : ]0, +\infty[ \times ]0, +\infty[ &amp; \rightarrow {\mathbb{R}} \\
-(x, t) &amp; \mapsto t^{x-1} e^{-t}
-\end{aligned} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;For all &lt;script type=&quot;math/tex&quot;&gt;n \in {\mathbb{N}}&lt;/script&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;We have &lt;script type=&quot;math/tex&quot;&gt;\forall (x, t) \in ]0, +\infty[ \times ]0, +\infty[ \, , \, \frac{\partial^{n} f}{\partial x^n} (x, t) = \left( ln (t) \right)^n t^{x-1} e^{-t}&lt;/script&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;\frac{\partial^{n} f}{\partial x^n}&lt;/script&gt; is continuous&lt;/li&gt;
-  &lt;li&gt;Let &lt;script type=&quot;math/tex&quot;&gt;[a, b] \subset ]0, +\infty[&lt;/script&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned}
- \forall x \in [a,b] \, &amp; , \, \forall t \in ]0, +\infty[ \\
- \lvert \frac{\partial^{n} f}{\partial x^n} (x, t) \rvert &amp; = \lvert \left( ln (t) \right)^n t^{x-1} e^{-t} \rvert \\
-  &amp; \le \lvert \left( ln (t) \right)^n \rvert \left( t^{a - 1} + t^{b - 1} \right) e^{-t}
- \end{aligned} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;And since the function &lt;script type=&quot;math/tex&quot;&gt;t \mapsto \lvert \left( ln (t) \right)^n \rvert \left( t^{a - 1} + t^{b - 1} \right) e^{-t}&lt;/script&gt; is integrable over &lt;script type=&quot;math/tex&quot;&gt;]0, +\infty[&lt;/script&gt;.&lt;/p&gt;
-
-&lt;p&gt;Therefore &lt;script type=&quot;math/tex&quot;&gt;\forall n \in {\mathbb{N}} \, , \, \Gamma \,\, \text{is of class} C^{\infty} \,\, \text{over} ]0, +\infty[&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;And &lt;script type=&quot;math/tex&quot;&gt;\forall n \in {\mathbb{N}} \, , \, \forall x \in ]0, +\infty[&lt;/script&gt;&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Gamma^{n} (x) = \int_{0}^{+\infty} \frac{\partial^{n} f}{\partial x^n} (x,t) \, dt = \int_{0}^{+\infty} \left( ln (t) \right)^n t^{x-1} e^{-t} \, dt&lt;/script&gt;
-
-&lt;h3 id=&quot;gamma--is-convex-over--0-infty-&quot;&gt;4- &lt;script type=&quot;math/tex&quot;&gt;\Gamma&lt;/script&gt; is convex over &lt;script type=&quot;math/tex&quot;&gt;]0, +\infty[&lt;/script&gt;&lt;/h3&gt;
-
-&lt;p&gt;Indeed &lt;script type=&quot;math/tex&quot;&gt;\forall x \in ]0, +\infty[ \,\, , \, \, \Gamma^{&#39;&#39;} (x) = \int_{0}^{+\infty} \left( ln(t) \right)^2 t^{x-2} e^{-t} \,dt \ge 0&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;Therefore &lt;script type=&quot;math/tex&quot;&gt;\Gamma&lt;/script&gt; is convex.&lt;/p&gt;
-
-&lt;h3 id=&quot;exists--x0-in-12--such-that--gamma-x0--0-&quot;&gt;5- &lt;script type=&quot;math/tex&quot;&gt;\exists ! x_0 \in ]1,2]&lt;/script&gt; such that &lt;script type=&quot;math/tex&quot;&gt;\Gamma^{&#39;} (x_0) = 0&lt;/script&gt;&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;existence of &lt;script type=&quot;math/tex&quot;&gt;x_0&lt;/script&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We have &lt;script type=&quot;math/tex&quot;&gt;\Gamma (1) = \Gamma(2) = 1&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;By applying Rolle’s theorem, we find that &lt;script type=&quot;math/tex&quot;&gt;\exists x_0 \in ]1,2] \, , \, \text{such that} \,\, \Gamma^{&#39;} (x_0) = 0&lt;/script&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;uniqueness of &lt;script type=&quot;math/tex&quot;&gt;x_0&lt;/script&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Since &lt;script type=&quot;math/tex&quot;&gt;\Gamma^{&#39;&#39;} &gt; 0 \,\, \text{over} \,\, ]0, +\infty[&lt;/script&gt; then &lt;script type=&quot;math/tex&quot;&gt;\Gamma{&#39;}&lt;/script&gt; is strictly increasing. Therefore &lt;script type=&quot;math/tex&quot;&gt;x_0&lt;/script&gt; is unique.&lt;/p&gt;
-
-&lt;p&gt;It follows also that:&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{cases}
-\text{Over} \,\, ]0, x_{0}] \,\, \Gamma^{&#39;} \le 0 \,\, \left( \Gamma \, \text{is decreasing} \right) \\
-\text{Over} \,\, [x_{0}, +\infty[ \,\, \Gamma^{&#39;} \,\, \ge 0 \left( \Gamma \, \text{is increasing} \right)
-\end{cases}&lt;/script&gt;
-
-&lt;h3 id=&quot;gamma--near--0--and---infty-&quot;&gt;6- &lt;script type=&quot;math/tex&quot;&gt;\Gamma&lt;/script&gt; near &lt;script type=&quot;math/tex&quot;&gt;0&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;+ \infty&lt;/script&gt;&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;near &lt;script type=&quot;math/tex&quot;&gt;0&lt;/script&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We have &lt;script type=&quot;math/tex&quot;&gt;\forall x \gt 0 \, , \, \Gamma (x+1) = x \Gamma(x)&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;Therefore &lt;script type=&quot;math/tex&quot;&gt;\lim \limits_{x \to 0} x \Gamma(x) = \lim \limits_{x \to 0} \Gamma(x+1) = \Gamma(1) = 1&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;Finally &lt;script type=&quot;math/tex&quot;&gt;\Gamma(x) \sim \frac{1}{x}&lt;/script&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;near &lt;script type=&quot;math/tex&quot;&gt;\infty&lt;/script&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We have&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned}
-\frac{ \Gamma(x) }{x} &amp; \ge \frac{ \Gamma ([x]) }{x} \,\, \left( \Gamma \,\, \text{is increasing} \right) \\
- &amp; \ge \frac{ ([x] - 1)! }{x} = \require{cancel} \cancelto{ + \infty }{ \frac{ ([x] - 1)! }{ ([x] - 1) } } . \require{cancel} \cancelto{1}{ \frac{ ([x] - 1) }{x} }
-\end{aligned} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;Finally &lt;script type=&quot;math/tex&quot;&gt;\lim \limits_{x \to +\infty} \frac{ \Gamma(x) }{x} = +\infty&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;We can verify our results with some python code:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;scipy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gamma&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gamma&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# inf&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;5&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gamma&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;7&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# inf&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Gamma function is considered as the “correct” substitute for the factorial in various integrals, which seems to come more or less from its integral definition.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/posts/gamma.png&quot; alt=&quot;euler-gamma-function&quot; /&gt;&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>Stirling approximation for factorials</title>
-   <link href="http://mourafiq.com/2015/09/09/extensions-of-the-factorial-stirling-approximation.html"/>
-   <published>2015-09-09T00:00:00+02:00</published>
-   <updated>2015-09-09T00:00:00+02:00</updated>
-   <id>http://mourafiq.com/2015/09/09/extensions-of-the-factorial-stirling-approximation</id>
-   <content type="html">&lt;p&gt;In the previous post, we introduced some properties of infinite series and how to test their convergence. In this post we will try to derive the Stirling formula. But before we do that, we will first introduce 2 more properties for testing series convergence, and the Wallis formula, which will be used for the proof.&lt;/p&gt;
-
-&lt;h2 id=&quot;limit-comparison-test&quot;&gt;Limit Comparison test&lt;/h2&gt;
-
-&lt;p&gt;Let &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\sum V_n&lt;/script&gt; two series, where &lt;script type=&quot;math/tex&quot;&gt;\forall n \in {\mathbb{N}}, \, \, U_n &gt; 0 \, \text{and} \, V_n &gt; 0&lt;/script&gt;.&lt;/p&gt;
-
-&lt;p&gt;If &lt;script type=&quot;math/tex&quot;&gt;\exists N \gt 0 , \, \frac{U_{ n+1 }}{U_n} \le \frac{V_{ n+1 }}{V_n}&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;Then &lt;script type=&quot;math/tex&quot;&gt;\sum V_n \, \text{converges} \Rightarrow \sum U_n \, \text{converges}&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Proof&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Let &lt;script type=&quot;math/tex&quot;&gt;N \in {\mathbb{N}}&lt;/script&gt; such that &lt;script type=&quot;math/tex&quot;&gt;\forall n \gt N , \,\,  \frac{U_{ n+1 }}{U_n} \le \frac{V_{ n+1 }}{V_n}&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;It follows then &lt;script type=&quot;math/tex&quot;&gt;\forall n \gt N&lt;/script&gt;&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{U_{ n+1 }}{V_{ n+1 }} \le \frac{U_n}{V_n} \le ... \le \frac{U_N}{V_N} = M&lt;/script&gt;
-
-&lt;p&gt;Whihch means that &lt;script type=&quot;math/tex&quot;&gt;U_{n+1} \le M V_{n+1}&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;Hence &lt;script type=&quot;math/tex&quot;&gt;\sum V_n \, \text{converges} \Rightarrow \sum U_n \, \text{converges}&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;N.B&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;From this property we can derive the following, if &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt; is a series and &lt;script type=&quot;math/tex&quot;&gt;\exists k \in ]0, 1[&lt;/script&gt; such that&lt;/p&gt;
-
-&lt;p&gt;If &lt;script type=&quot;math/tex&quot;&gt;\exists N \in {\mathbb{N}}&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\forall n \ge N , \,\, \frac{U_{ n+1 }}{n} \le k&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;Then &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt; converges.&lt;/p&gt;
-
-&lt;p&gt;The proof is quite simple if we consider the series &lt;script type=&quot;math/tex&quot;&gt;\sum k^n&lt;/script&gt;, we have &lt;script type=&quot;math/tex&quot;&gt;\frac{U_{ n+1 }}{U_n} \le \frac{k_{ n+1 }}{k_n}&lt;/script&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;the-ratio-rule-dalemberts-rule&quot;&gt;The ratio rule, D’Alembert’s rule&lt;/h2&gt;
-
-&lt;p&gt;Let &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt; a series with the general term strictly positive, and &lt;script type=&quot;math/tex&quot;&gt;\lim \limits_{n \to +\infty} \frac{U_{n+1}}{U_n} = l&lt;/script&gt;, with &lt;script type=&quot;math/tex&quot;&gt;l \in {\mathbb{R_+}} \cup \{ \infty \}&lt;/script&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;i) if &lt;script type=&quot;math/tex&quot;&gt;l \lt 1&lt;/script&gt; the series &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt; converges&lt;/li&gt;
-  &lt;li&gt;ii) if &lt;script type=&quot;math/tex&quot;&gt;l \gt 1&lt;/script&gt; the series &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt; diverges&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Proof&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;i) Let &lt;script type=&quot;math/tex&quot;&gt;\epsilon = \frac{1 - l}{2}&lt;/script&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We know that &lt;script type=&quot;math/tex&quot;&gt;\lim \limits_{n \to +\infty} \frac{U_{n+1}}{U_n} = l&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;Then &lt;script type=&quot;math/tex&quot;&gt;\exists N \in {\mathbb{N}}, \,\, \text{such that} \,\, n \ge N \Rightarrow \vert U_{n+1} - l \vert \le \epsilon&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;Which means that &lt;script type=&quot;math/tex&quot;&gt;\forall n \ge N, \,\, \frac{U_{n+1}}{U_n} \le l + \epsilon&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;And since &lt;script type=&quot;math/tex&quot;&gt;l + \epsilon \lt 1&lt;/script&gt;, we can conclude the convergence using the previous property.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;ii) &lt;script type=&quot;math/tex&quot;&gt;\lim \limits_{n \to +\infty} \frac{U_{n+1}}{U_n} = l&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;l \lt 1&lt;/script&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;This means that there’s a certain integer after which &lt;script type=&quot;math/tex&quot;&gt;\frac{U_{n+1}}{U_n} \lt 1&lt;/script&gt;, which means &lt;script type=&quot;math/tex&quot;&gt;U_n&lt;/script&gt; diverges.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;N.B&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;If &lt;script type=&quot;math/tex&quot;&gt;l = 1&lt;/script&gt;, we can’t say anything about the convergence of the series.&lt;/p&gt;
-
-&lt;p&gt;As an example, let’s consider &lt;script type=&quot;math/tex&quot;&gt;\sum \frac{1}{n^{\alpha}}&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;We have &lt;script type=&quot;math/tex&quot;&gt;\forall \alpha \in {\mathbb{R}}, \,\, \frac{U_{n+1}}{U_n} = \left( \frac{n}{n+1} \right)^{\alpha} \require{AMScd} \begin{CD} @&gt;&gt;{n \to \infty}&gt;\end{CD} 1&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;And we know that the series converges for &lt;script type=&quot;math/tex&quot;&gt;\alpha \gt 1&lt;/script&gt; and diverges for &lt;script type=&quot;math/tex&quot;&gt;\alpha \le 1&lt;/script&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;wallis-formula&quot;&gt;Wallis formula&lt;/h2&gt;
-
-&lt;p&gt;Let’s consider, Wallis integral, &lt;script type=&quot;math/tex&quot;&gt;\forall n \in {\mathbb{ N }} , \,\, I_n = \int_{0}^{ \pi / 2 } {\left( \sin t \right)}^n dt&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;This integral verifies the following properties:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;strictly positive and decreasing&lt;/li&gt;
-  &lt;li&gt;for &lt;script type=&quot;math/tex&quot;&gt;n \le 2, \,\, I_n = \frac{n}{n-1} I_{n-1}&lt;/script&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We will try these properties by induction&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;case &lt;script type=&quot;math/tex&quot;&gt;n = 0&lt;/script&gt; , &lt;script type=&quot;math/tex&quot;&gt;I_0 = \pi / 2 \gt 0&lt;/script&gt;&lt;/li&gt;
-  &lt;li&gt;case &lt;script type=&quot;math/tex&quot;&gt;n = 1&lt;/script&gt; , &lt;script type=&quot;math/tex&quot;&gt;I_1 = 1 \gt 0, \,\, I_1 \lt I_0&lt;/script&gt;&lt;/li&gt;
-  &lt;li&gt;case &lt;script type=&quot;math/tex&quot;&gt;n = 2&lt;/script&gt; , &lt;script type=&quot;math/tex&quot;&gt;I_2 = \frac{\pi}{4} \gt 0, \,\, I_2 \lt I_1&lt;/script&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned}
-I_2 &amp; = \int_{0}^{ \pi / 2 } \sin^2 t \, dt \\
- &amp; = \require{cancel} \cancelto{𝟶}{-[\cos t \, \sin t]_{0}^{ \pi / 2 }} + \int_{0}^{ \pi / 2 } \cos^2 t \, dt \\
- &amp; = \int_{0}^{ \pi / 2 } 1 - \sin^2 t \, dt \\
- &amp; = \pi / 2 - I_2 \\
- &amp; = \frac{\pi}{4}
-\end{aligned} %]]&gt;&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;We will assume that &lt;script type=&quot;math/tex&quot;&gt;\forall k \in {\mathbb{N}}, \,\, k \le n, \,\, I_k&lt;/script&gt; is strictly positive and decreasing, and we will prove that the property holds for &lt;script type=&quot;math/tex&quot;&gt;n+1&lt;/script&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned}
- I_{n+1} &amp; = \int_{0}^{ \pi / 2 } \sin^{n+1} t \, dt \\
-  &amp; =  \int_{0}^{ \pi / 2 } \sin t \, \sin^n t \, dt \\
-  &amp; = \require{cancel} \cancelto{𝟶}{-[\cos t \, \sin^n t]_{0}^{ \pi / 2 }} + \int_{0}^{ \pi / 2 } \cos t \, n \, \cos t \, \sin^{n-1} t \, dt \\
-  &amp; = \int_{0}^{ \pi / 2 } \cos t \, n \, \cos t \, \sin^{n-1} t \, dt \\
-  &amp; = \int_{0}^{ \pi / 2 } n \, \left( 1 - \sin^2 t \right) \, \sin^{n-1} t \, dt \\
-  &amp; = \int_{0}^{ \pi / 2 } n \, \sin^{n-1} t \, - int_{0}^{ \pi / 2 } n \, \sin^{n+1} t \, dt \\
-  &amp; = n I_{n -1} - n I_{n + 1} \\
-  &amp; = \frac{n}{n+1} I_n
- \end{aligned} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;Hence &lt;script type=&quot;math/tex&quot;&gt;I_{n+1} &gt; 0&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
-I_{n+1} &lt; I_n %]]&gt;&lt;/script&gt;, and &lt;script type=&quot;math/tex&quot;&gt;I_{n+1} = \frac{n}{n+1} I_n&lt;/script&gt;.&lt;/p&gt;
-
-&lt;p&gt;By applying the result for &lt;script type=&quot;math/tex&quot;&gt;2n&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;2n + 1&lt;/script&gt;, we get&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned}
- &amp; I_{2n} = \frac{\left( 2n - 1 \right) \left( 2n - 3 \right) ... 1}{2n \left( 2n - 2 \right) ... 2} \frac{\pi}{2} \\
- &amp; I_{2n+1} = \frac{2n \left( 2n - 2 \right) ... 2}{\left( 2n + 1 \right) \left( 2n - 1 \right) ... 1}
- \end{aligned} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;Which gives us the Wallis formula&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{2n \left( 2n - 2 \right) ... 2}{\left( 2n - 1 \right) \left( 2n - 3 \right) ... 1} \sim \sqrt{ \pi n }&lt;/script&gt;
-
-&lt;h2 id=&quot;stirling-formula&quot;&gt;Stirling formula&lt;/h2&gt;
-
-&lt;p&gt;Let’s consider the following series &lt;script type=&quot;math/tex&quot;&gt;\sum \frac{a^n n^n}{n!}, \,\, a \in {\mathbb{R}}&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;If we apply the ratio test to this series&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned}
-\frac{U_{ n+1 }}{n} &amp; = \frac{ a^{n+1} \left( n+1 \right)^{n+1} }{ \left( n+1 \right)! } * \frac{ n! }{ a^n n^n } \\
- &amp; = a \left( 1 + \frac{1}{n} \right)^n \\
- &amp; \require{AMScd} \begin{CD} @&gt;&gt;{n \to +\infty}&gt;\end{CD} ae
-\end{aligned} %]]&gt;&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;if &lt;script type=&quot;math/tex&quot;&gt;a \lt e^{-1}&lt;/script&gt;, the series converges&lt;/li&gt;
-  &lt;li&gt;if &lt;script type=&quot;math/tex&quot;&gt;a \gt e^{-1}&lt;/script&gt;, the series dieverges&lt;/li&gt;
-  &lt;li&gt;if &lt;script type=&quot;math/tex&quot;&gt;a = e^{-1}&lt;/script&gt;, we have&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned}
- ln \left( \frac{U_{n+1}}{U_n} \right) &amp; = ln \left( e^{-1} \left( 1 + \frac{1}{n} \right)^n \right) \\
-  &amp; = -1 + nln \left( 1 + \frac{1}{n} \right) \\
-  &amp; = -1 + n \left( \frac{1}{n} - \frac{1}{2n^2} + o\left( \frac{1}{n^3} \right) \right) \\
-  &amp; = -\frac{1}{2n} + o\left( \frac{1}{n^2} \right)
- \end{aligned} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;Ans since&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;ln\left( \sqrt{ \frac{n+1}{n} } \right) = \frac{1}{2n} + o\left( \frac{1}{n^2} \right)&lt;/script&gt;
-
-&lt;p&gt;It follows that&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;ln\left( \frac{ U_{n+1} }{U_n} \right) + ln\left( \sqrt{ \frac{n+1}{n} } \right) = o\left( \frac{1}{n^2} \right)&lt;/script&gt;
-
-&lt;p&gt;Which means that&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sum ln\left( \sqrt(n+1) + U_{n+1} \right) - ln\left( \sqrt{n} \ln\left( n \right) \right) \,\,\, \text{converges}&lt;/script&gt;
-
-&lt;p&gt;Hence &lt;script type=&quot;math/tex&quot;&gt;{\left( ln\left( \sqrt{n} U_n \right) \right)}_n&lt;/script&gt; converges.&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned}
-  \exists k \lt 0, \,\, &amp; \text{such that}, \,\, lim \sqrt{n}U_n = k \\
-  &amp; \Rightarrow U_n \sim \frac{k}{\sqrt(n)} \\
-  &amp; \Rightarrow \frac{ e^{-n}n^n }{n!} \sim \frac{k}{\sqrt{n}} \\
-  &amp; \Rightarrow n! \sim \frac{1}{k} \sqrt{n} \left( \frac{n}{e} \right)^n \\
- \end{aligned} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;Now we only need to determine the value of &lt;script type=&quot;math/tex&quot;&gt;k&lt;/script&gt;, and for this we will use the Wallis formula,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{ 2n \left( 2n - 2 \right) ... 2 }{ \left( 2n - 1 \right) \left( 2n - 3 \right) ... 1 } \sim \sqrt{ \pi n }&lt;/script&gt;
-
-&lt;p&gt;Also,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned}
-  \frac{ 2n \left( 2n - 2 \right) ... 2 }{ \left( 2n - 1 \right) \left( 2n - 3 \right) ... 1 } &amp; = \frac{ \left( 2n \left( 2n - 2 \right) ... 2 \right)^2 }{ \left( 2n \right)! } \\
-  &amp; = \frac{ 2^{ 2n } \left( n! \right)^2 }{ \left( 2n \right)! }  \\
-  &amp; = \frac{ \require{cancel} \cancel{ 2^{ 2n } } \left( \frac{1}{k} \sqrt{n} \require{cancel} \cancel{\left( \frac{n}{e} \right)^n } \right)^2 }{ \frac{ \sqrt{2n} }{k} \require{cancel} \cancel{\left( \frac{2n}{ e } \right)^{2n}} }  \\
- \end{aligned} %]]&gt;&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned}
- &amp; \Rightarrow \sqrt{\pi n} \sim \frac{1}{k} \sqrt(n/2) \\
- &amp; \Rightarrow \frac{1}{k} \sim \sqrt{2 \pi} \\
- &amp; \Rightarrow n! \sim \sqrt{2 \pi n} \left( \frac{n}{e} \right)^n
- \end{aligned} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;The result is amazing, because it replaces the factorial function which is complicated with a simple expression. Also for very large numbers, the factorial is an expensive function, on the other hand the approximation is less computationally intensive.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sympy.mpmath&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pi&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;stirling&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pi&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;xrange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;n:{} &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\t&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; factorial: {} &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\t&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; stirling: {}&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;factorial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stirling&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# n:1 	 factorial: 1 	 stirling: 0.922137008895789&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;12&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# n:2 	 factorial: 2 	 stirling: 1.91900435148898&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;13&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# n:3 	 factorial: 6 	 stirling: 5.83620959134586&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;14&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# n:4 	 factorial: 24 	 stirling: 23.5061751328933&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;15&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# n:5 	 factorial: 120 	 stirling: 118.01916795759&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;16&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# n:6 	 factorial: 720 	 stirling: 710.078184642185&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;17&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# n:7 	 factorial: 5040 	 stirling: 4980.39583161246&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;18&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# n:8 	 factorial: 40320 	 stirling: 39902.3954526567&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;19&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# n:9 	 factorial: 362880 	 stirling: 359536.872841948&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;20&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;21&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;22&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# approximation for a large value&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;23&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;24&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stirling&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;25&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 2.3257959759770513e+95657055186&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Also based on this formula we can find easily the following result:&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\log(n!) \sim n\log(n)&lt;/script&gt;
-
-&lt;p&gt;In the next post we will try to approximate the factorials using the Euler gamma function.&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>Stirling approximation for factorials</title>
-   <link href="http://mourafiq.com/2015/08/30/extensions-of-the-factorial-testing-the-convergenge-of-series.html"/>
-   <published>2015-08-30T00:00:00+02:00</published>
-   <updated>2015-08-30T00:00:00+02:00</updated>
-   <id>http://mourafiq.com/2015/08/30/extensions-of-the-factorial-testing-the-convergenge-of-series</id>
-   <content type="html">&lt;p&gt;When evaluating distribution functions for statistics, it is often necessary to evaluate the factorials of sizable numbers. Stirling formula is an approximation for factorials that leads to a very accurate results of the factorials. In this series of posts, we will try to get a mathematical intuition of this formula.&lt;/p&gt;
-
-&lt;p&gt;In this first part we will try to have a closer look at the behavior of infinite series and some of their properties. The motivation behind is to have a better intuition about some very interesting concepts and tools used in everyday mathematics, physics and computer science.&lt;/p&gt;
-
-&lt;h2 id=&quot;definition&quot;&gt;Definition&lt;/h2&gt;
-
-&lt;p&gt;We call a series associated with sequence &lt;script type=&quot;math/tex&quot;&gt;{\left(U_n\right)}_{n \in {\mathbb{N}} }&lt;/script&gt; and noted &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt; or &lt;script type=&quot;math/tex&quot;&gt;\sum_{n \in {\mathbb{N}}} U_n&lt;/script&gt;, the couple:&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\left( \left( U_n \right)_{n \in {\mathbb{N}}} , \left( S_n \right)_{n \in {\mathbb{N}} } \right) \in  {\mathbb{E}}^{\mathbb{N}} \times {\mathbb{E}}^{\mathbb{N}}&lt;/script&gt;
-
-&lt;p&gt;where &lt;script type=&quot;math/tex&quot;&gt;\forall n \in {\mathbb{N}} , S_n = \sum_{k=0}^{n} U_k&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;S_n&lt;/script&gt; is called the partial sum of the series &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;convergence-and-divergence&quot;&gt;Convergence and divergence&lt;/h2&gt;
-
-&lt;p&gt;Let &lt;script type=&quot;math/tex&quot;&gt;\left( {\mathbb{E}}, \|.\| \right)&lt;/script&gt; be normed vector space, &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt; a series defined in &lt;script type=&quot;math/tex&quot;&gt;{\mathbb{E}}&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;{\left( S_n \right)}_n&lt;/script&gt; the sequence of partial sums.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;We say that the series &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt; converges (respectively diverges) in &lt;script type=&quot;math/tex&quot;&gt;\left( {\mathbb{E}}, \|.\| \right)&lt;/script&gt; if the sequence &lt;script type=&quot;math/tex&quot;&gt;{\left( S_n \right)}_n&lt;/script&gt; converges (respectively diverges) in &lt;script type=&quot;math/tex&quot;&gt;\left( {\mathbb{E}}, \|.\| \right)&lt;/script&gt;.&lt;/li&gt;
-  &lt;li&gt;In this case, the limit &lt;script type=&quot;math/tex&quot;&gt;S&lt;/script&gt; of the sequence &lt;script type=&quot;math/tex&quot;&gt;{\left( S_n \right)}_n&lt;/script&gt; is called the sum of the series &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt;, and is noted: &lt;script type=&quot;math/tex&quot;&gt;\sum_{n=0}^{\infty} U_n = S = \lim \limits_{n \to \infty} S_n&lt;/script&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Examples&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;the geometric series for complex numbers.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sum{q^n} , q \in {\mathbb{C}}&lt;/script&gt;
-
-&lt;p&gt;We have the following, &lt;script type=&quot;math/tex&quot;&gt;\forall n \in {\mathbb{N}}&lt;/script&gt;&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-S_n = \sum_{k=0}^{n} q^n =
-\begin{cases}
-n + 1,  &amp; \text{if $q = 1$} \\
-\frac{1 - q^{n+1}}{1 - q}, &amp; \text{if $q \neq 1$}
-\end{cases} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;Meaning that the series converges iff &lt;script type=&quot;math/tex&quot;&gt;\|q\| \lt 1&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;and in this case &lt;script type=&quot;math/tex&quot;&gt;\sum_{n = 0}^{+\infty} q^n = \frac{1}{1-q}&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;The result is simple yet so impressive, a lot of philosophers struggled to resolve &lt;a href=&quot;https://en.wikipedia.org/wiki/Zeno%27s_paradoxes&quot;&gt;Zeno’s paradoxes&lt;/a&gt; because they lacked the mathematical tools to correctly model the problem.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;another example &lt;script type=&quot;math/tex&quot;&gt;\sum_{n \gt 0} \frac{1}{n(n+1)} , \forall n \in {\mathbb{ N^* }}&lt;/script&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;S_n = \sum_{k = 1}^{n} (\frac{1}{k} - \frac{1}{k+1}) = 1 - \frac{1}{n+1} \require{AMScd} \begin{CD} @&gt;&gt;{n \to \infty}&gt;\end{CD}  1&lt;/script&gt;
-
-&lt;p&gt;Hence the series &lt;script type=&quot;math/tex&quot;&gt;\sum\frac{1}{n(n+1)}&lt;/script&gt; converges, and the infinite sum is 1.&lt;/p&gt;
-
-&lt;h2 id=&quot;convergence-tests&quot;&gt;Convergence tests&lt;/h2&gt;
-
-&lt;h3 id=&quot;the-n-th-term-test-convergences-necessary-condition&quot;&gt;1- The n-th term test (convergence’s necessary condition)&lt;/h3&gt;
-
-&lt;p&gt;Let &lt;script type=&quot;math/tex&quot;&gt;\left( {\mathbb{E}}, \|.\| \right)&lt;/script&gt; be normed vector space, &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt; a series defined in &lt;script type=&quot;math/tex&quot;&gt;{\mathbb{E}}&lt;/script&gt;&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sum U_n \text{converges} \Rightarrow \lim \limits_{n \to \infty} U_n = 0&lt;/script&gt;
-
-&lt;p&gt;&lt;strong&gt;Proof&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Let &lt;script type=&quot;math/tex&quot;&gt;S_n = \sum_{k = 0}^{n}&lt;/script&gt; be the partial sums of the series, we know that the series converges if the &lt;script type=&quot;math/tex&quot;&gt;\lim \limits_{n \to \infty = S}&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;Hence, we have &lt;script type=&quot;math/tex&quot;&gt;U_n = S_n - S_{n-1} \require{AMScd} \begin{CD} @&gt;&gt;{n \to \infty}&gt;\end{CD} 0&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;N.B. 1&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;A direct conclusion from this test is that, if the general term &lt;script type=&quot;math/tex&quot;&gt;U_n&lt;/script&gt; does not converge to 0, then the series diverges.&lt;/p&gt;
-
-&lt;p&gt;Again if we look at the geometric series which converges only if &lt;script type=&quot;math/tex&quot;&gt;\|q\| \lt 1&lt;/script&gt;, we can see that if &lt;script type=&quot;math/tex&quot;&gt;\|q\| &gt;= 1, \lim \limits_{n \to \infty} q^n &gt; 0&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;N.B. 2&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;having the general term &lt;script type=&quot;math/tex&quot;&gt;U_n&lt;/script&gt; converging to 0, does not guarantee the convergence of the series.&lt;/p&gt;
-
-&lt;p&gt;Let’s study the series &lt;script type=&quot;math/tex&quot;&gt;\sum log \left( \frac{n+1}{n} \right)&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;We have the following &lt;script type=&quot;math/tex&quot;&gt;\lim \limits_{n \to \infty} log \left( \frac{n+1}{n} \right) = 0&lt;/script&gt;&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned}
-\sum_{k = 0}^{n} log \left( \frac{k+1}{k} \right) &amp; = \sum_{k = 0}^{n} \left( log(k+1) - log(k) \right) \\
- &amp; = log(n+1) \require{AMScd} \begin{CD} @&gt;&gt;{n \to \infty}&gt;\end{CD} +\infty
-\end{aligned} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;Hence the series diverges.&lt;/p&gt;
-
-&lt;h3 id=&quot;cauchys-condition&quot;&gt;2- Cauchy’s condition&lt;/h3&gt;
-
-&lt;p&gt;Let &lt;script type=&quot;math/tex&quot;&gt;\left( {\mathbb{E}}, \|.\| \right)&lt;/script&gt; be normed vector space, &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt; a series defined in &lt;script type=&quot;math/tex&quot;&gt;{\mathbb{E}}&lt;/script&gt;&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned}
-\sum U_n   \text{converges} \Rightarrow &amp; \forall \epsilon \gt 0, \, \exists N \in {\mathbb{N}}, \,\, \forall n,p \in {\mathbb{N}} \\
-&amp; n \ge N \Rightarrow \| \sum_{k = n + 1}^{n+p} U_k \| \le \epsilon
-\end{aligned} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;&lt;strong&gt;Proof&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;The proof is quite simple if we consider the sequence of partial sums &lt;script type=&quot;math/tex&quot;&gt;{(S_n)}_{n}&lt;/script&gt;.
-The series converges implies that &lt;script type=&quot;math/tex&quot;&gt;(S_n)_{n}&lt;/script&gt; converges, which means that it’s a Cauchy sequence.&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned}
-&amp; \forall \epsilon, \,\, \exists N \in {\mathbb{N}}, \,\, \forall n,p \in {\mathbb{N}} \\
-&amp; n \ge N \Rightarrow \| S_{n+p} - S_n \| \le \epsilon \\
-&amp; \text{And we have} \,\, \| S_{n+p} - S_n \| = \| \sum_{k = n + 1}^{n+p} U_k \|
-\end{aligned} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;&lt;strong&gt;Example&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Let’s consider the harmonic series &lt;script type=&quot;math/tex&quot;&gt;\sum \frac{1}{n}&lt;/script&gt;&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\forall n \in {\mathbb{ N^* }} \, \sum_{k=n+1}^{2n} \ge n * \frac{1}{2n} \ge \frac{1}{2}&lt;/script&gt;
-
-&lt;p&gt;Hence the series does not verify the Cauchy’s condition, and so it does not converge.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;N.B.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;This condition is important, and most of the time is used to study series in Banach spaces.&lt;/p&gt;
-
-&lt;p&gt;Let &lt;script type=&quot;math/tex&quot;&gt;{\mathbb{E}}&lt;/script&gt; be a Banach space:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;A series converges &lt;script type=&quot;math/tex&quot;&gt;iff&lt;/script&gt; it verifies the Cauchy’s condition.&lt;/li&gt;
-  &lt;li&gt;A series converges absolutely &lt;script type=&quot;math/tex&quot;&gt;\Rightarrow&lt;/script&gt; it converges.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;In the second property the convergence does not imply the absolute convergence, as an example let’s consider the following series &lt;script type=&quot;math/tex&quot;&gt;\sum \frac{ (-1)^{n+1} }{n}&lt;/script&gt;&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned}
- S_n &amp; = \sum_{k=1}^{n} \frac{-1^{k+1}}{k} \\
-  &amp; = \sum_{k=1}^{n} \left(-1\right)^{k+1} \int_{0}^{1} x^{k-1} dx \\
-  &amp; = \int_{0}^{1} \sum_{k=1}^{n} (-x)^{k-1} dx \\
-  &amp; = \int_{0}^{1} \frac{ 1 - (-x)^n }{ 1 + x } dx \\
-  &amp; = \int_{0}^{1} \frac{ dx }{ 1 + x } - \frac{ \left(-x\right)^n }{ 1 + x } dx \\
-  &amp; = ln(2) - \int_{0}^{1} \frac{ \left(-x\right)^n }{ 1 + x } dx
-\end{aligned} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;And since &lt;script type=&quot;math/tex&quot;&gt;\lvert \int_{0}^{1} \frac{ (-x)^n }{ 1 + x } dx \lvert \le \int_{0}^{1} (-x)^n = \frac{ 1 }{ n + 1 } \require{AMScd} \begin{CD} @&gt;&gt;{n \to \infty}&gt;\end{CD} 0&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;It follows that &lt;script type=&quot;math/tex&quot;&gt;\lim \limits_{ n \to \infty } S_n = ln(2)&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;Hence the series converges to &lt;script type=&quot;math/tex&quot;&gt;ln(2)&lt;/script&gt; but it does not converge absolutely.&lt;/p&gt;
-
-&lt;p&gt;Let’s check this result in python, we will use the symbolic library &lt;code&gt;sympy&lt;/code&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sympy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;symbols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;oo&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;symbols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;k n&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ps&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#  lets calculate the partial sum&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ps&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;doit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lerchphi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exp_polar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#  the infinite sum&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ps&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;oo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;12&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;doit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;13&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;14&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;evalf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;15&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.693147180559945&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;N.B.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;A series that converges but does not converge absolutely, is called semi-convergent or conditionally convergent.&lt;/p&gt;
-
-&lt;h3 id=&quot;leibnitz-rule-for-testing-the-convergence-of-alternating-series&quot;&gt;3- Leibnitz rule for testing the convergence of alternating series&lt;/h3&gt;
-
-&lt;p&gt;Let &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt; be a series over reals, if &lt;script type=&quot;math/tex&quot;&gt;\sum U_{n}&lt;/script&gt; is an alternating series, i.e. &lt;script type=&quot;math/tex&quot;&gt;U_n = (-1)^{n} \lvert U_n \lvert&lt;/script&gt; or &lt;script type=&quot;math/tex&quot;&gt;U_n = (-1)^{ n + 1 } \lvert U_n \lvert&lt;/script&gt;, and &lt;script type=&quot;math/tex&quot;&gt;(\lvert U_n \lvert)_n&lt;/script&gt; is decreasing and converges to 0, then the series &lt;script type=&quot;math/tex&quot;&gt;\sum U_n&lt;/script&gt; converges and &lt;script type=&quot;math/tex&quot;&gt;R_n = S - S_n \lt \lvert U_{ n + 1} \lvert&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Proof&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Let’s suppose that &lt;script type=&quot;math/tex&quot;&gt;\forall n \in {\mathbb{ N }} U_n = (-1)^n \lvert U_n \lvert&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\forall n \in {\mathbb{ N }} \,\, S_n = \sum_{k=0}^{n} U_k&lt;/script&gt;&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned}
-\text{ We have } \,\, S_{ 2(n+1) } - S_{2n} &amp; = U_{ 2n + 1 } + U_{ 2n + 2 } \\
-  &amp; = -\lvert U_{ 2n + 1 } \lvert + \lvert U_{ 2n + 2 } \lvert
-\end{aligned} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;Hence &lt;script type=&quot;math/tex&quot;&gt;{(S_{2n})}_n&lt;/script&gt; is decreasing. The same way we can show that &lt;script type=&quot;math/tex&quot;&gt;{(S_{2n + 1})}_n&lt;/script&gt; is increasing. And since &lt;script type=&quot;math/tex&quot;&gt;{(S_{2n + 1})}_n - {(S_{2n})}_n = U_{2n + 1} \require{AMScd} \begin{CD} @&gt;&gt;{n \to \infty}&gt;\end{CD} 0&lt;/script&gt;, both &lt;script type=&quot;math/tex&quot;&gt;{(S_{2n + 1})}_n&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;{(S_{2n})}_n&lt;/script&gt; converge to the same limit &lt;script type=&quot;math/tex&quot;&gt;S&lt;/script&gt;, then we find that &lt;script type=&quot;math/tex&quot;&gt;\lim \limits_{n \to \infty} S_n = S&lt;/script&gt;.&lt;/p&gt;
-
-&lt;p&gt;Also, since&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned}
-R_n &amp; = S - S_n \\
-\lvert R_{2n} \lvert &amp; = \lvert S - S_{2n} \lvert \le \lvert S_{2n} - S_{2n + 1} \lvert = \lvert U_{2n + 1} \lvert \\
-\lvert R_{2n + 1} \lvert &amp; = \lvert S - S_{2n + 1} \lvert \le \lvert S_{2n + 2} - S_{2n + 1} \lvert = \lvert U_{2n + 2} \lvert \\
-\forall n \in {\mathbb{ N }} \,\, \lvert R_n \lvert &amp; \le \lvert U_{n+1} \lvert
-\end{aligned} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;&lt;strong&gt;Example&lt;/strong&gt;&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned}
-&amp; \sum \frac{(-1)^n}{n}  \, \text{converges} \\
-\forall \alpha &gt; 0 , \,\, &amp; \sum \frac{(-1)^n}{n^\alpha} \, \text{converges}
-\end{aligned} %]]&gt;&lt;/script&gt;
-
-&lt;h3 id=&quot;comparison-test&quot;&gt;4- Comparison test&lt;/h3&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sum U_n \,\, \text{converges} \, \iff \, \exists c \, \text{constant} \forall n \, S_n \le c&lt;/script&gt;
-
-&lt;p&gt;&lt;strong&gt;Proof&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;We know that &lt;script type=&quot;math/tex&quot;&gt;S_{n + 1} - S_n = U_{n + 1} &gt;= 0&lt;/script&gt; and that the sequence &lt;script type=&quot;math/tex&quot;&gt;{(S_n)}_n&lt;/script&gt; is increasing.&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;{(S_n)}_n \, \text{converges} \, \iff \, \exists c \, \text{constant} \forall n \, S_n \le c&lt;/script&gt;
-
-&lt;p&gt;Based on this property we can deduce many other properties related to comparing series in different ways, i.e. using &lt;script type=&quot;math/tex&quot;&gt;\sim , \, o , \, O , \, ...&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Example: Riemann series&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;We cal a Riemann series, a series of the form &lt;script type=&quot;math/tex&quot;&gt;\sum \frac{1}{ n^\alpha } , \, \alpha \in {\mathbb{R}}&lt;/script&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Case when &lt;script type=&quot;math/tex&quot;&gt;\alpha \le 0&lt;/script&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The series &lt;script type=&quot;math/tex&quot;&gt;\sum \frac{1}{ n^\alpha }&lt;/script&gt; obviously diverges.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Case when &lt;script type=&quot;math/tex&quot;&gt;\alpha = 1&lt;/script&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We saw that &lt;script type=&quot;math/tex&quot;&gt;\sum \frac{1}{n}&lt;/script&gt; diverges.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Case when &lt;script type=&quot;math/tex&quot;&gt;\alpha \in [ 0, 1 ]&lt;/script&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The series &lt;script type=&quot;math/tex&quot;&gt;\sum \frac{1}{ n^\alpha }&lt;/script&gt; diverges, because &lt;script type=&quot;math/tex&quot;&gt;\frac{1}{n} =o \frac{1}{ n^\alpha }&lt;/script&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Case when &lt;script type=&quot;math/tex&quot;&gt;\alpha &gt; 1&lt;/script&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Let’s consider the application &lt;script type=&quot;math/tex&quot;&gt;f&lt;/script&gt;&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned}
-f : [ 0, +\infty [ &amp; \rightarrow {\mathbb{R}} \\
-x &amp; \mapsto \frac{ x^{1 -\alpha } }{ 1 - \alpha }
-\end{aligned} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;The application &lt;script type=&quot;math/tex&quot;&gt;f&lt;/script&gt; is of class &lt;script type=&quot;math/tex&quot;&gt;C^1&lt;/script&gt;, and by applying the Mean value theorem over &lt;script type=&quot;math/tex&quot;&gt;[n, n+1]&lt;/script&gt;, we have the following result &lt;script type=&quot;math/tex&quot;&gt;\exists \theta_n \in [n, n+1]&lt;/script&gt; such that &lt;script type=&quot;math/tex&quot;&gt;f\left( n+1 \right) - f\left( n \right) = f^{&#39;&#39;}\left( \theta_n \right) = \frac{ 1 }{ { \theta_n }^\alpha }&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;And since &lt;script type=&quot;math/tex&quot;&gt;\theta_n \sim n&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;It follows that &lt;script type=&quot;math/tex&quot;&gt;\frac{1}{ { \theta_n }^\alpha } \sim \frac{1}{ n^\alpha }&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;Which means that &lt;script type=&quot;math/tex&quot;&gt;\frac{1}{ n^\alpha } \sim \left( f\left( n+1 \right) - f\left( n \right) \right)&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;We know that the series &lt;script type=&quot;math/tex&quot;&gt;\sum \left( f\left( n+1 \right) - f\left( n \right) \right)&lt;/script&gt; converges, because &lt;script type=&quot;math/tex&quot;&gt;\sum_{ k = 1 }^{ n } \left( f\left( n+1 \right) - f\left( n \right) \right) = f\left( n+1 \right) - f\left( 1 \right) \require{AMScd} \begin{CD} @&gt;&gt;{n \to \infty}&gt;\end{CD} -f \left( 1 \right)&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;Finally &lt;script type=&quot;math/tex&quot;&gt;\sum \frac{1}{n^\alpha}&lt;/script&gt; converges if &lt;script type=&quot;math/tex&quot;&gt;\alpha &gt; 1&lt;/script&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sympy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;symbols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;oo&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;symbols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;symbols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;n k&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ps&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ps&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;oo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#  the infinite sum for a &amp;lt; 0&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;doit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;oo&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;12&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#  the infinite sum for a == 1&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;13&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;doit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;14&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;oo&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;15&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;16&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#  the infinite sum for a &amp;gt; 1&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;17&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;doit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;18&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pi&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;19&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;20&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;doit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;21&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zeta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;22&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;23&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;doit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;24&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pi&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;90&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;25&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;26&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;doit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;27&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zeta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-</content>
- </entry>
- 
- <entry>
-   <title>Spark context manager</title>
-   <link href="http://mourafiq.com/2015/05/30/adding-spark-to-python-projects.html"/>
-   <published>2015-05-30T00:00:00+02:00</published>
-   <updated>2015-05-30T00:00:00+02:00</updated>
-   <id>http://mourafiq.com/2015/05/30/adding-spark-to-python-projects</id>
-   <content type="html">&lt;p&gt;Spark is data processing and clustering framework that allows developers to create parallel apps in Scala, Java, and Python.&lt;/p&gt;
-
-&lt;p&gt;For Python developers, Spark exposes it’s programming model through a Python API (&lt;a href=&quot;https://spark.apache.org/docs/latest/api/python/index.html&quot;&gt;pyspark&lt;/a&gt;). And in order to communicate with Spark from a python application, let’s say django, we need context during this communication.&lt;/p&gt;
-
-&lt;p&gt;First step check that &lt;code&gt;SPARK_HOME&lt;/code&gt; is set, otherwise you need to do it.&lt;/p&gt;
-
-&lt;p&gt;If you are using a virtualenv for you python project, you need to add spark to this virtualenv:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-console&quot; data-lang=&quot;console&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;gp&quot;&gt;&amp;gt;&lt;/span&gt;  add2virtualenv path-to-spark/python
-&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;gp&quot;&gt;&amp;gt;&lt;/span&gt;  add2virtualenv path-to-spark/python/lib/py4j-0.8.2.1-src.zip&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;This will add the spark to your virtualenv python path. You can check that &lt;code&gt;_virtualenv_path_extensions.pth&lt;/code&gt; contains this new entries.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-console&quot; data-lang=&quot;console&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;gp&quot;&gt;&amp;gt;&lt;/span&gt;  path-to-virtualenv/lib/python2.7/site-packages/_virtualenv_path_extensions.pth&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Now we are ready to add a spark context manager:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;contextlib&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyspark&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SparkContext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SparkConf&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SPARK_MASTER&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;local&amp;#39;&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SPARK_APP_NAME&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;app&amp;#39;&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;@contextlib.contextmanager&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;spark_manager&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark_master&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SPARK_MASTER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt;                   &lt;span class=&quot;n&quot;&gt;spark_app_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SPARK_APP_NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt;                   &lt;span class=&quot;n&quot;&gt;spark_executor_memory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;12&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;13&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;conf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SparkConf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setMaster&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark_master&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;14&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;conf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setAppName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spark_app_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;15&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;16&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark_executor_memory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;17&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;conf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;spark.executor.memory&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark_executor_memory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;18&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;19&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;spark_context&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SparkContext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;conf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;conf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;20&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;21&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;22&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark_context&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;23&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;finally&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;24&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;spark_context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;And you can use this context manager for spark related jobs, you only need to wrap in a &lt;code&gt;with&lt;/code&gt; statement.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark_manager&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parallelize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;collect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 </content>
  </entry>
  
